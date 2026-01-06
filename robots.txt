@@ -1,0 +1,20 @@
+User-Agent: *
+Disallow: /page92736376.html
+Disallow: /page91164406.html
+Disallow: /page96436236.html
+Disallow: /page90163256.html
+Disallow: /tilda/form*
+Disallow: /tilda/rec*
+Disallow: /tilda/click*
+Disallow: /tilda/scroll*
+Disallow: /tilda/popup*
+Disallow: /tilda/cart*
+Disallow: /tilda/product*
+Disallow: /tilda/event*
+Disallow: /members/login*
+Disallow: /members/signup*
+Disallow:
+
+
+Sitemap: https://www.kv-tyumen.ru/sitemap.xml
+Sitemap: https://www.kv-tyumen.ru/sitemap-store.xml

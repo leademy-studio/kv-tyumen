@@ -1,0 +1,110 @@
+ErrorDocument 403 /page96436236.html
+ErrorDocument 404 /page96436236.html
+
+DirectoryIndex page87792296.html
+
+RewriteEngine On
+
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^(.*)$ https://www\.kv-tyumen\.ru/$1 [R=301,L]
+
+RewriteCond %{HTTP:X-Forwarded-Proto} =https
+RewriteCond %{HTTP_HOST} ^kv-tyumen.ru [NC]
+RewriteRule ^(.*)$ https://www\.kv-tyumen\.ru/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} /robots.txt
+RewriteCond "%{DOCUMENT_ROOT}/robots_%{HTTP_HOST}.txt" -f
+RewriteRule ^(.*)$ robots_%{HTTP_HOST}.txt [NC,L]
+RewriteRule ^about$ page24781456.html [NC]
+RewriteRule ^about/$ page24781456.html [NC]
+
+RewriteRule ^main2$ page30194341.html [NC]
+RewriteRule ^main2/$ page30194341.html [NC]
+
+RewriteRule ^apart$ page30200579.html [NC]
+RewriteRule ^apart/$ page30200579.html [NC]
+
+RewriteRule ^design$ page30201390.html [NC]
+RewriteRule ^design/$ page30201390.html [NC]
+
+RewriteRule ^homepage1$ page48016787.html [NC]
+RewriteRule ^homepage1/$ page48016787.html [NC]
+
+RewriteRule ^berezyaki$ page93172786.html [NC]
+RewriteRule ^berezyaki/$ page93172786.html [NC]
+
+RewriteRule ^aivazovski$ page93174506.html [NC]
+RewriteRule ^aivazovski/$ page93174506.html [NC]
+
+RewriteRule ^aivazovsky$ page94982546.html [NC]
+RewriteRule ^aivazovsky/$ page94982546.html [NC]
+
+RewriteRule ^myravlenko$ page93175826.html [NC]
+RewriteRule ^myravlenko/$ page93175826.html [NC]
+
+RewriteRule ^domashni$ page93177296.html [NC]
+RewriteRule ^domashni/$ page93177296.html [NC]
+
+RewriteRule ^perevalovo$ page93178806.html [NC]
+RewriteRule ^perevalovo/$ page93178806.html [NC]
+
+RewriteRule ^paderina$ page93180946.html [NC]
+RewriteRule ^paderina/$ page93180946.html [NC]
+
+RewriteRule ^syhodolie$ page93182626.html [NC]
+RewriteRule ^syhodolie/$ page93182626.html [NC]
+
+RewriteRule ^vidniy$ page94709016.html [NC]
+RewriteRule ^vidniy/$ page94709016.html [NC]
+
+RewriteRule ^pojarnih-i-spasatelei$ page94741846.html [NC]
+RewriteRule ^pojarnih-i-spasatelei/$ page94741846.html [NC]
+
+RewriteRule ^energetikov$ page94980356.html [NC]
+RewriteRule ^energetikov/$ page94980356.html [NC]
+
+RewriteRule ^melnikaite$ page94980546.html [NC]
+RewriteRule ^melnikaite/$ page94980546.html [NC]
+
+RewriteRule ^charkova$ page94981496.html [NC]
+RewriteRule ^charkova/$ page94981496.html [NC]
+
+RewriteRule ^evropeiskiy-kvartal$ page94981906.html [NC]
+RewriteRule ^evropeiskiy-kvartal/$ page94981906.html [NC]
+
+RewriteRule ^portfolio$ page90173806.html [NC]
+RewriteRule ^portfolio/$ page90173806.html [NC]
+
+RewriteRule ^portfolio-design-project$ page92812756.html [NC]
+RewriteRule ^portfolio-design-project/$ page92812756.html [NC]
+
+RewriteRule ^portfolio-repairs$ page92812696.html [NC]
+RewriteRule ^portfolio-repairs/$ page92812696.html [NC]
+
+RewriteRule ^blog$ page90180306.html [NC]
+RewriteRule ^blog/$ page90180306.html [NC]
+
+RewriteRule ^design-project$ page91924706.html [NC]
+RewriteRule ^design-project/$ page91924706.html [NC]
+
+RewriteRule ^repairs$ page91258946.html [NC]
+RewriteRule ^repairs/$ page91258946.html [NC]
+
+RewriteRule ^about-company$ page91319926.html [NC]
+RewriteRule ^about-company/$ page91319926.html [NC]
+
+RewriteRule ^sotrudnichestvo$ page91863966.html [NC]
+RewriteRule ^sotrudnichestvo/$ page91863966.html [NC]
+
+RewriteRule ^rabota$ page91934626.html [NC]
+RewriteRule ^rabota/$ page91934626.html [NC]
+
+RewriteRule ^contacts$ page91878156.html [NC]
+RewriteRule ^contacts/$ page91878156.html [NC]
+
+RewriteRule ^politics$ page94984666.html [NC]
+RewriteRule ^politics/$ page94984666.html [NC]
+
+RewriteRule ^members/ ma_start.html [NC,L]
+
+

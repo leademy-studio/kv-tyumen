@@ -1,0 +1,289 @@
+uuid: b4a96a52-2211-4604-a7e5-d093a70fc81b
+handle: Site\MainPage
+type: global
+name: Главная страница
+
+customMessages:
+    titleUpdateForm: Редактирование главной страницы
+
+primaryNavigation:
+    label: Сайт
+    icon: octo-icon-globe
+    order: 90
+
+navigation:
+    label: Главная страница
+    icon: octo-icon-home
+    order: 10
+
+fields:
+    _section_meta:
+        label: Мета-теги
+        type: section
+        tab: SEO
+
+    meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title'
+        type: text
+        tab: SEO
+
+    meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description'
+        type: textarea
+        size: small
+        tab: SEO
+
+    _section_cases:
+        label: Кейсы
+        type: section
+        tab: Кейсы
+
+    _section_advantages:
+        label: Преимущества
+        type: section
+        tab: Преимущества
+
+    advantages_image:
+        label: Изображение секции
+        type: mediafinder
+        mode: image
+        tab: Преимущества
+
+    _section_advantage1:
+        label: Преимущество 1
+        type: section
+        tab: Преимущества
+
+    advantage1_title:
+        label: Заголовок
+        type: text
+        tab: Преимущества
+
+    advantage1_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Преимущества
+
+    _section_advantage2:
+        label: Преимущество 2
+        type: section
+        tab: Преимущества
+
+    advantage2_title:
+        label: Заголовок
+        type: text
+        tab: Преимущества
+
+    advantage2_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Преимущества
+
+    _section_advantage3:
+        label: Преимущество 3
+        type: section
+        tab: Преимущества
+
+    advantage3_title:
+        label: Заголовок
+        type: text
+        tab: Преимущества
+
+    advantage3_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Преимущества
+
+    _section_advantage4:
+        label: Преимущество 4
+        type: section
+        tab: Преимущества
+
+    advantage4_title:
+        label: Заголовок
+        type: text
+        tab: Преимущества
+
+    advantage4_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Преимущества
+
+    _section_case1:
+        label: Кейс 1
+        type: section
+        tab: Кейсы
+
+    case1_url:
+        label: Ссылка
+        commentAbove: 'Например: /perevalovo'
+        type: text
+        tab: Кейсы
+
+    case1_title:
+        label: Название
+        commentAbove: 'Например: Перевалово'
+        type: text
+        tab: Кейсы
+
+    case1_service:
+        label: Услуга
+        commentAbove: 'Например: Ремонт по дизайн-проекту'
+        type: text
+        tab: Кейсы
+
+    case1_image:
+        label: Изображение
+        type: mediafinder
+        mode: image
+        tab: Кейсы
+
+    _section_case2:
+        label: Кейс 2
+        type: section
+        tab: Кейсы
+
+    case2_url:
+        label: Ссылка
+        commentAbove: 'Например: /berezyaki'
+        type: text
+        tab: Кейсы
+
+    case2_title:
+        label: Название
+        commentAbove: 'Например: Березяки'
+        type: text
+        tab: Кейсы
+
+    case2_service:
+        label: Услуга
+        type: text
+        tab: Кейсы
+
+    case2_image:
+        label: Изображение
+        type: mediafinder
+        mode: image
+        tab: Кейсы
+
+    _section_case3:
+        label: Кейс 3
+        type: section
+        tab: Кейсы
+
+    case3_url:
+        label: Ссылка
+        commentAbove: 'Например: /paderina'
+        type: text
+        tab: Кейсы
+
+    case3_title:
+        label: Название
+        commentAbove: 'Например: Падерина'
+        type: text
+        tab: Кейсы
+
+    case3_service:
+        label: Услуга
+        type: text
+        tab: Кейсы
+
+    case3_image:
+        label: Изображение
+        type: mediafinder
+        mode: image
+        tab: Кейсы
+
+    _section_case4:
+        label: Кейс 4
+        type: section
+        tab: Кейсы
+
+    case4_url:
+        label: Ссылка
+        commentAbove: 'Например: /myravlenko'
+        type: text
+        tab: Кейсы
+
+    case4_title:
+        label: Название
+        type: text
+        tab: Кейсы
+
+    case4_service:
+        label: Услуга
+        type: text
+        tab: Кейсы
+
+    case4_image:
+        label: Изображение
+        type: mediafinder
+        mode: image
+        tab: Кейсы
+
+    _section_about:
+        label: О компании
+        type: section
+
+    _section_block1:
+        label: Слайд 1
+        type: section
+
+    block1_title:
+        label: Заголовок
+        commentAbove: 'Текст заголовка (например: Дом)'
+        type: text
+
+    block1_subtitle:
+        label: Подзаголовок слайда 1
+        type: richeditor
+        size: small
+
+    block1_image:
+        label: Изображение слайда 1
+        type: mediafinder
+        mode: image
+
+    _section_block2:
+        label: Слайд 2
+        type: section
+
+    block2_title:
+        label: Слайд 2
+        commentAbove: 'Текст заголовка (например: Материалы)'
+        type: text
+
+    block2_subtitle:
+        label: Подзаголовок слайда 2
+        type: richeditor
+        size: small
+
+    block2_image:
+        label: Изображение слайда 2
+        type: mediafinder
+        mode: image
+
+    _section_block3:
+        label: Слайд 3
+        type: section
+
+    block3_title:
+        label: Заголовок слайда 3
+        commentAbove: 'Текст заголовка (3-й слайд)'
+        type: text
+
+    block3_subtitle:
+        label: Подзаголовок слайда 3
+        type: richeditor
+        size: small
+
+    block3_image:
+        label: Изображение слайда 3
+        type: mediafinder
+        mode: image
