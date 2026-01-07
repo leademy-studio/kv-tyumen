@@ -1,7 +1,34 @@
 title = "Пакетный ремонт"
 url = "/repairs"
 layout = "default"
+
+[global services]
+handle = "Site\\Services"
 ==
+{% set crBackgroundImage = services.cr_background_image ? services.cr_background_image|media : 'assets/images/tild3331-6138-4464-b465-616363356435__rectangle_4754.png'|theme %}
+{% set crTitle = services.cr_title | default('Пакетный ремонт') %}
+{% set crSection2Title = services.cr_section2_title | default('Всё включено, без сюрпризов') %}
+{% set crSection2Subtitle = services.cr_section2_subtitle | default('Если вы хотите заехать в готовую квартиру без стресса и постоянного контроля — пакетный ремонт под ключ для вас.') %}
+{% set crCard1Image = services.cr_card1_image ? services.cr_card1_image|media : 'assets/images/tild3637-3366-4363-b836-666332613231_______.png'|theme %}
+{% set crCard2Image = services.cr_card2_image ? services.cr_card2_image|media : 'assets/images/tild3766-6432-4361-b035-326530303433______.png'|theme %}
+{% set crCard3Image = services.cr_card3_image ? services.cr_card3_image|media : 'assets/images/tild3334-6636-4165-b933-336332396232_______.png'|theme %}
+{% set crCard4Image = services.cr_card4_image ? services.cr_card4_image|media : 'assets/images/tild3937-6139-4534-a464-353737323864_______.png'|theme %}
+{% set crCard5Image = services.cr_card5_image ? services.cr_card5_image|media : 'assets/images/tild3964-3764-4461-b462-356261373962_______.png'|theme %}
+{% set crTariff1Title = services.cr_tariff1_title | default('Стандарт') %}
+{% set crTariff1Price = services.cr_tariff1_price | default('30 000 ₽ / м²') %}
+{% set crTariff1Feature1 = services.cr_tariff1_feature_1 | default('Базовый пакет ремонта под ключ') %}
+{% set crTariff1Feature2 = services.cr_tariff1_feature_2 | default('Черновые + отделочные материалы') %}
+{% set crTariff1Feature3 = services.cr_tariff1_feature_3 | default('Подсветка ниш и парящей стены') %}
+{% set crTariff1Feature4 = services.cr_tariff1_feature_4 | default('Водонагреватель в подарок') %}
+{% set crTariff1Feature5 = services.cr_tariff1_feature_5 | default('Уборка и вывоз мусора') %}
+{% set crTariff2Title = services.cr_tariff2_title | default('Премиум') %}
+{% set crTariff2Price = services.cr_tariff2_price | default('35 000 ₽ / м²') %}
+{% set crTariff2Feature1 = services.cr_tariff2_feature_1 | default('Расширенный комплект отделки') %}
+{% set crTariff2Feature2 = services.cr_tariff2_feature_2 | default('Улучшенные материалы и освещение') %}
+{% set crTariff2Feature3 = services.cr_tariff2_feature_3 | default('Кондиционер в подарок') %}
+{% set crTariff2Feature4 = services.cr_tariff2_feature_4 | default('Обои премиум-класса') %}
+{% set crTariff2Feature5 = services.cr_tariff2_feature_5 | default('Декоративный свет в каждую комнату') %}
+
 {% put head %}
         <base href="{{ 'assets'|theme }}/">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8341,14 +8368,7 @@ layout = "default"
                             data-field-widthmode-res-640-value="fixed"
                             data-field-heightmode-res-640-value="fixed"
                         >
-                            <div
-                                class="tn-atom t-bgimg"
-                                style="
-                                    background-image: url(&quot;images/tild3331-6138-4464-b465-616363356435__rectangle_4754.png&quot;);
-                                "
-                                aria-label=""
-                                role="img"
-                            ></div>
+                            <div class="tn-atom t-bgimg" style="background-image: url('{{ crBackgroundImage }}');" aria-label="" role="img"></div>
                         </div>
                         <div
                             class="t396__elem tn-elem tn-elem__1504430981176163587316244360"
@@ -8406,7 +8426,7 @@ layout = "default"
                             data-field-top-res-640-value="309"
                             data-field-left-res-640-value="70"
                         >
-                            <h1 class="tn-atom" field="tn_text_176094950781015430">Пакетный ремонт</h1>
+                            <h1 class="tn-atom" field="tn_text_176094950781015430">{{ crTitle }}</h1>
                         </div>
                     </div>
                 </div>
@@ -8766,10 +8786,7 @@ layout = "default"
                             data-field-textfit-res-320-value="autoheight"
                             data-field-fontsize-res-320-value="14"
                         >
-                            <div class="tn-atom" field="tn_text_176190963383537240">
-                                Если&nbsp;вы&nbsp;хотите заехать в&nbsp;готовую квартиру без&nbsp;стресса
-                                и&nbsp;постоянного контроля&nbsp;— пакетный ремонт под&nbsp;ключ для&nbsp;вас.
-                            </div>
+                            <div class="tn-atom" field="tn_text_176190963383537240">{{ crSection2Subtitle|raw }}</div>
                         </div>
                         <div
                             class="t396__elem tn-elem tn-elem__1504417581176096108149381830"
@@ -8794,7 +8811,7 @@ layout = "default"
                             data-field-width-res-320-value="200"
                             data-field-fontsize-res-320-value="24"
                         >
-                            <div class="tn-atom" field="tn_text_176096108149381830">Всё включено, без сюрпризов</div>
+                            <div class="tn-atom" field="tn_text_176096108149381830">{{ crSection2Title }}</div>
                         </div>
                         <div
                             class="t396__elem tn-elem tn-elem__15044175811760962309065"
@@ -8828,7 +8845,7 @@ layout = "default"
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="images/tild3637-3366-4363-b836-666332613231_______.png"
+                                data-original="{{ crCard1Image }}"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -8965,7 +8982,7 @@ layout = "default"
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="images/tild3766-6432-4361-b035-326530303433______.png"
+                                data-original="{{ crCard2Image }}"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -9101,7 +9118,7 @@ layout = "default"
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="images/tild3334-6636-4165-b933-336332396232_______.png"
+                                data-original="{{ crCard3Image }}"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -9237,7 +9254,7 @@ layout = "default"
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="images/tild3937-6139-4534-a464-353737323864_______.png"
+                                data-original="{{ crCard4Image }}"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -9373,7 +9390,7 @@ layout = "default"
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="images/tild3964-3764-4461-b462-356261373962_______.png"
+                                data-original="{{ crCard5Image }}"
                                 aria-label=""
                                 role="img"
                             ></div>

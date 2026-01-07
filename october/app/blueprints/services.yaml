@@ -42,6 +42,36 @@ fields:
         size: small
         tab: Дизайн-проект
 
+    cr_card1_image:
+        label: Изображение карточки 1
+        type: mediafinder
+        mode: image
+        tab: Пакетный ремонт
+
+    cr_card2_image:
+        label: Изображение карточки 2
+        type: mediafinder
+        mode: image
+        tab: Пакетный ремонт
+
+    cr_card3_image:
+        label: Изображение карточки 3
+        type: mediafinder
+        mode: image
+        tab: Пакетный ремонт
+
+    cr_card4_image:
+        label: Изображение карточки 4
+        type: mediafinder
+        mode: image
+        tab: Пакетный ремонт
+
+    cr_card5_image:
+        label: Изображение карточки 5
+        type: mediafinder
+        mode: image
+        tab: Пакетный ремонт
+
     _section_we_can:
         label: Блок "Мы можем"
         type: section
@@ -70,3 +100,126 @@ fields:
         type: richeditor
         size: small
         tab: Дизайн-проект
+
+    _section_complex_repair:
+        label: Пакетный ремонт
+        type: section
+        tab: Пакетный ремонт
+
+    cr_background_image:
+        label: Фоновое изображение страницы
+        type: mediafinder
+        mode: image
+        tab: Пакетный ремонт
+
+    cr_title:
+        label: Заголовок страницы
+        type: text
+        tab: Пакетный ремонт
+        default: 'Пакетный ремонт'
+
+    cr_section2_title:
+        label: Заголовок второй секции
+        type: text
+        tab: Пакетный ремонт
+        default: 'Всё включено, без сюрпризов'
+
+    cr_section2_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Пакетный ремонт
+
+    _section_cr_tariff1:
+        label: Тариф 1 "Стандарт"
+        type: section
+        tab: Пакетный ремонт
+
+    cr_tariff1_title:
+        label: Название тарифа
+        type: text
+        tab: Пакетный ремонт
+        default: 'Стандарт'
+
+    cr_tariff1_price:
+        label: Стоимость тарифа
+        type: text
+        tab: Пакетный ремонт
+        default: '30 000 ₽ / м²'
+
+    cr_tariff1_feature_1:
+        label: Опция 1
+        type: text
+        tab: Пакетный ремонт
+        default: 'Базовый пакет ремонта под ключ'
+
+    cr_tariff1_feature_2:
+        label: Опция 2
+        type: text
+        tab: Пакетный ремонт
+        default: 'Черновые + отделочные материалы'
+
+    cr_tariff1_feature_3:
+        label: Опция 3
+        type: text
+        tab: Пакетный ремонт
+        default: 'Подсветка ниш и парящей стены'
+
+    cr_tariff1_feature_4:
+        label: Опция 4
+        type: text
+        tab: Пакетный ремонт
+        default: 'Водонагреватель в подарок'
+
+    cr_tariff1_feature_5:
+        label: Опция 5
+        type: text
+        tab: Пакетный ремонт
+        default: 'Уборка и вывоз мусора'
+
+    _section_cr_tariff2:
+        label: Тариф 2 "Премиум"
+        type: section
+        tab: Пакетный ремонт
+
+    cr_tariff2_title:
+        label: Название тарифа
+        type: text
+        tab: Пакетный ремонт
+        default: 'Премиум'
+
+    cr_tariff2_price:
+        label: Стоимость тарифа
+        type: text
+        tab: Пакетный ремонт
+        default: '35 000 ₽ / м²'
+
+    cr_tariff2_feature_1:
+        label: Опция 1
+        type: text
+        tab: Пакетный ремонт
+        default: 'Расширенный комплект отделки'
+
+    cr_tariff2_feature_2:
+        label: Опция 2
+        type: text
+        tab: Пакетный ремонт
+        default: 'Улучшенные материалы и освещение'
+
+    cr_tariff2_feature_3:
+        label: Опция 3
+        type: text
+        tab: Пакетный ремонт
+        default: 'Кондиционер в подарок'
+
+    cr_tariff2_feature_4:
+        label: Опция 4
+        type: text
+        tab: Пакетный ремонт
+        default: 'Обои премиум-класса'
+
+    cr_tariff2_feature_5:
+        label: Опция 5
+        type: text
+        tab: Пакетный ремонт
+        default: 'Декоративный свет в каждую комнату'
