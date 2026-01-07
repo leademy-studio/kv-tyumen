@@ -1,0 +1,72 @@
+handle: Site\Services
+type: global
+name: Услуги
+
+primaryNavigation:
+    label: Сайт
+    icon: octo-icon-globe
+    order: 90
+
+navigation:
+    label: Услуги
+    icon: octo-icon-briefcase
+    order: 25
+
+fields:
+    _section_design_project:
+        label: Дизайн-проект
+        type: section
+        tab: Дизайн-проект
+
+    dp_background_image:
+        label: Фоновое изображение страницы
+        type: mediafinder
+        mode: image
+        tab: Дизайн-проект
+
+    dp_title:
+        label: Заголовок страницы
+        type: text
+        tab: Дизайн-проект
+        default: 'Ремонт по дизайн проекту'
+
+    dp_section2_title:
+        label: Заголовок второй секции
+        type: text
+        tab: Дизайн-проект
+        default: 'Под ваш стиль, задачи и бюджет'
+
+    dp_section2_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Дизайн-проект
+
+    _section_we_can:
+        label: Блок "Мы можем"
+        type: section
+        tab: Дизайн-проект
+
+    dp_we_can_image1:
+        label: Изображение 1
+        type: mediafinder
+        mode: image
+        tab: Дизайн-проект
+
+    dp_we_can_text1:
+        label: Текст 1
+        type: richeditor
+        size: small
+        tab: Дизайн-проект
+
+    dp_we_can_image2:
+        label: Изображение 2
+        type: mediafinder
+        mode: image
+        tab: Дизайн-проект
+
+    dp_we_can_text2:
+        label: Текст 2
+        type: richeditor
+        size: small
+        tab: Дизайн-проект

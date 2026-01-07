@@ -6,9 +6,12 @@ description = "Default layout"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ this.page.title ?: 'kv-vopros' }}</title>
+    {% placeholder head %}
     {% styles %}
+    <link href="{{ 'assets/css/main.css'|theme }}" rel="stylesheet">
+    <link href="{{ 'assets/css/footer.css'|theme }}" rel="stylesheet">
 </head>
-<body>
+<body{% if this.page.bodyClass %} class="{{ this.page.bodyClass }}"{% endif %}{% if this.page.bodyStyle %} style="{{ this.page.bodyStyle }}"{% endif %}>
     {% page %}
 
     {% scripts %}

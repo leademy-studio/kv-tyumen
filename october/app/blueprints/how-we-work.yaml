@@ -1,0 +1,96 @@
+handle: Site\HowWeWork
+type: global
+name: Как мы работаем
+
+primaryNavigation:
+    label: Сайт
+    icon: octo-icon-globe
+    order: 90
+
+navigation:
+    label: Как мы работаем
+    icon: octo-icon-list
+    order: 20
+
+fields:
+    how_we_work_title:
+        label: Заголовок секции
+        type: text
+        default: 'Как мы работаем'
+
+    _section_hww_step1:
+        label: Шаг 1
+        type: section
+    hww_step1_title:
+        label: Заголовок
+        type: text
+    hww_step1_description:
+        label: Описание
+        type: richeditor
+        size: small
+
+    _section_hww_step2:
+        label: Шаг 2
+        type: section
+    hww_step2_title:
+        label: Заголовок
+        type: text
+    hww_step2_description:
+        label: Описание
+        type: richeditor
+        size: small
+
+    _section_hww_step3:
+        label: Шаг 3
+        type: section
+    hww_step3_title:
+        label: Заголовок
+        type: text
+    hww_step3_description:
+        label: Описание
+        type: richeditor
+        size: small
+
+    _section_hww_step4:
+        label: Шаг 4
+        type: section
+    hww_step4_title:
+        label: Заголовок
+        type: text
+    hww_step4_description:
+        label: Описание
+        type: richeditor
+        size: small
+
+    _section_hww_step5:
+        label: Шаг 5
+        type: section
+    hww_step5_title:
+        label: Заголовок
+        type: text
+    hww_step5_description:
+        label: Описание
+        type: richeditor
+        size: small
+
+    _section_hww_step6:
+        label: Шаг 6
+        type: section
+    hww_step6_title:
+        label: Заголовок
+        type: text
+    hww_step6_description:
+        label: Описание
+        type: richeditor
+        size: small
+
+    _section_hww_step7:
+        label: Шаг 7
+        type: section
+    hww_step7_title:
+        label: Заголовок
+        type: text
+    hww_step7_description:
+        label: Описание
+        type: richeditor
+        size: small

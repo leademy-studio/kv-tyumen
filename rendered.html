@@ -1,50 +1,24 @@
-title = "Квартирный вопрос"
-url = "/"
-layout = "default"
-bodyClass = "t-body"
-bodyStyle = "margin: 0"
 
-[global mainPage]
-handle = "Site\\MainPage"
-==
-{% set block1Image = mainPage.block1_image ? mainPage.block1_image|media : 'assets/images/tild3538-3834-4833-b766-316234396565___.png'|theme %}
-{% set block2Image = mainPage.block2_image ? mainPage.block2_image|media : 'assets/images/tild6261-6639-4034-a538-626363373736___.png'|theme %}
-{% set block3Image = mainPage.block3_image ? mainPage.block3_image|media : 'assets/images/tild3532-6635-4636-b735-323635396665___.png'|theme %}
 
-{% set case1Url = mainPage.case1_url ?: '/perevalovo' %}
-{% set case1Title = mainPage.case1_title ?: 'Перевалово' %}
-{% set case1Service = mainPage.case1_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case1Image = mainPage.case1_image ? mainPage.case1_image|media : 'assets/images/tild6161-3733-4563-a161-303736643237__rectangle_4710.png'|theme %}
 
-{% set case2Url = mainPage.case2_url ?: '/berezyaki' %}
-{% set case2Title = mainPage.case2_title ?: 'Березяки' %}
-{% set case2Service = mainPage.case2_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case2Image = mainPage.case2_image ? mainPage.case2_image|media : 'assets/images/tild6536-6533-4262-b839-653831316135__rectangle_4711.png'|theme %}
 
-{% set case3Url = mainPage.case3_url ?: '/paderina' %}
-{% set case3Title = mainPage.case3_title ?: 'Падерина' %}
-{% set case3Service = mainPage.case3_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case3Image = mainPage.case3_image ? mainPage.case3_image|media : 'assets/images/tild6132-3530-4363-a336-386466376439__rectangle_4712.png'|theme %}
 
-{% set case4Url = mainPage.case4_url ?: '/myravlenko' %}
-{% set case4Title = mainPage.case4_title ?: 'Муравленко' %}
-{% set case4Service = mainPage.case4_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case4Image = mainPage.case4_image ? mainPage.case4_image|media : 'assets/images/tild3633-3437-4731-b731-333236666338__rectangle_4709.png'|theme %}
 
-{% set advantagesImage = mainPage.advantages_image ? mainPage.advantages_image|media : 'assets/images/tild6565-6237-4266-b763-663834336663____1_1.png'|theme %}
-{% put head %}
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
   <meta charset="utf-8"/>
-    <base href="{{ 'assets'|theme }}/"/>
+    <base href="http://localhost:8081/themes/kv-vopros/assets/"/>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <!--metatextblock-->
     <title>
-     {{ mainPage.meta_title ?: 'Квартирный вопрос' }}
+     Квартирный вопрос
     </title>
-    <meta content="{{ mainPage.meta_description ?: '' }}" name="description"/>
+    <meta content="" name="description"/>
   <meta content="https://www.kv-tyumen.ru" property="og:url"/>
-    <meta content="{{ mainPage.meta_title ?: 'Квартирный вопрос' }}" property="og:title"/>
-    <meta content="{{ mainPage.meta_description ?: '' }}" property="og:description"/>
+    <meta content="Квартирный вопрос" property="og:title"/>
+    <meta content="" property="og:description"/>
   <meta content="website" property="og:type"/>
   <meta content="images/tild3436-6364-4635-a564-623733643839__photo.png" property="og:image"/>
   <link href="https://www.kv-tyumen.ru" rel="canonical"/>
@@ -315,11 +289,109 @@ handle = "Site\\MainPage"
                 }
             })();
   </script>
-{% endput %}
+ </head>
+ <body class="t-body" style="margin: 0">
   <!--allrecords-->
   <div class="t-records" data-hook="blocks-collection-content-node" data-tilda-export="yes" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-page-id="87792296" data-tilda-project-country="RU" data-tilda-project-headcode="yes" data-tilda-project-id="5057845" data-tilda-project-lang="RU" data-tilda-root-zone="com" id="allrecords">
-   {% partial 'header' %}
-   <div class="r t-rec t-screenmin-1200px" data-animationappear="off" data-record-type="396" data-screen-min="1200px" id="rec1531686931" style="">
+   <div class="r t-rec" data-animationappear="off" data-record-type="396" id="rec1531676791" style="">
+ <!-- T396 -->
+ <div class="t396">
+  <div class="t396__artboard" data-artboard-height="650" data-artboard-height-res-320="690" data-artboard-height-res-640="860" data-artboard-recid="1531676791" data-artboard-screens="320,640,1200" data-artboard-upscale="window" data-artboard-valign="center">
+   <div class="t396__carrier" data-artboard-recid="1531676791">
+   </div>
+   <div class="t396__filter" data-artboard-recid="1531676791">
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15316767911760949327145" data-elem-id="1760949327145" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="428" data-field-height-res-640-value="557" data-field-height-value="603" data-field-heightunits-value="px" data-field-left-res-320-value="58" data-field-left-res-640-value="255" data-field-left-value="791" data-field-leftunits-value="px" data-field-top-res-320-value="318" data-field-top-res-640-value="502" data-field-top-value="255" data-field-topunits-value="px" data-field-width-res-320-value="380" data-field-width-res-640-value="497" data-field-width-value="537" data-field-widthunits-value="px">
+    <div aria-label="Квартирный вопрос Цветок на фоне" class="tn-atom t-bgimg" data-original="images/tild3463-6361-4462-b730-616665323365______.png" role="img">
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176094962825110540" data-elem-id="176094962825110540" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-height-res-320-value="651" data-field-height-res-640-value="818" data-field-height-value="903" data-field-heightunits-value="px" data-field-left-res-320-value="-11" data-field-left-res-640-value="-8" data-field-left-value="149" data-field-leftunits-value="px" data-field-top-res-320-value="58" data-field-top-res-640-value="59" data-field-top-value="-26" data-field-topunits-value="px" data-field-width-res-320-value="304" data-field-width-res-640-value="380" data-field-width-value="420" data-field-widthunits-value="px">
+    <div aria-label="Квартирный вопрос Лампа на фоне" class="tn-atom t-bgimg" data-original="images/tild3139-6139-4763-a464-356236643237______.png" role="img">
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176232250954572970" data-elem-id="176232250954572970" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="16" data-field-fontsize-value="20" data-field-height-value="48" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="150" data-field-left-value="432" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="487" data-field-top-res-640-value="732" data-field-top-value="502" data-field-topunits-value="px" data-field-width-res-320-value="262" data-field-width-value="336" data-field-widthunits-value="px">
+    <div class="tn-atom" field="tn_text_176232250954572970">
+     с нами ремонт – ваш путь к дому, в котором хочется жить
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176231100533571640" data-elem-id="176231100533571640" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="58" data-field-height-res-640-value="56" data-field-height-value="57" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="0" data-field-left-res-640-value="10" data-field-left-value="17" data-field-leftunits-value="px" data-field-top-res-320-value="0" data-field-top-res-640-value="10" data-field-top-value="17" data-field-topunits-value="px" data-field-width-res-320-value="320" data-field-width-res-640-value="620" data-field-width-value="1166" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <div class="tn-atom">
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15316767911760943941674" data-elem-id="1760943941674" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-value="14" data-field-height-value="17" data-field-heightunits-value="px" data-field-left-res-320-value="1990" data-field-left-res-640-value="40" data-field-left-value="965" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-640-value="29" data-field-top-value="37" data-field-topunits-value="px" data-field-width-value="114" data-field-widthunits-value="px">
+    <div class="tn-atom">
+     <a href="#zeroform" style="color: inherit">
+      Заказать звонок
+     </a>
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176232367535416880" data-elem-id="176232367535416880" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-value="14" data-field-height-value="17" data-field-heightunits-value="px" data-field-left-res-320-value="1990" data-field-left-res-640-value="2042" data-field-left-value="222" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-640-value="-73" data-field-top-value="37" data-field-topunits-value="px" data-field-width-value="64" data-field-widthunits-value="px">
+    <div class="tn-atom">
+     <a href="/contacts" style="color: inherit">
+      Контакты
+     </a>
+    </div>
+   </div>
+   <div class="t396__elem tn-elem menuNolim068 tn-elem__15316767911762311617527" data-elem-id="1762311617527" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="5" data-field-filewidth-value="7" data-field-height-res-320-value="6" data-field-height-res-640-value="6" data-field-height-value="6" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="2610" data-field-left-res-640-value="1917" data-field-left-value="97" data-field-leftunits-value="px" data-field-top-res-320-value="-66" data-field-top-res-640-value="-66" data-field-top-value="44" data-field-topunits-value="px" data-field-width-value="8" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <a class="tn-atom" href="#rec1531686931">
+     <img alt="" class="tn-atom__img t-img" data-original="images/tild3432-6565-4435-b439-343033393630___.svg" imgfield="tn_img_1762311617527" src="images/tild3432-6565-4435-b439-343033393630___.svg"/>
+    </a>
+   </div>
+   <div class="t396__elem tn-elem menuNolim068 tn-elem__1531676791176232363208669570" data-elem-id="176232363208669570" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-value="14" data-field-height-value="17" data-field-heightunits-value="px" data-field-left-res-320-value="2560" data-field-left-res-640-value="1867" data-field-left-value="47" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="-73" data-field-top-res-640-value="-73" data-field-top-value="37" data-field-topunits-value="px" data-field-width-value="47" data-field-widthunits-value="px">
+    <div class="tn-atom">
+     <a href="#rec1531686931" style="color: inherit">
+      Услуги
+     </a>
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15316767911762323782953" data-elem-id="1762323782953" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="14" data-field-filewidth-value="41" data-field-height-res-320-value="14" data-field-height-res-640-value="14" data-field-height-value="14" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="259" data-field-left-res-640-value="559" data-field-left-value="1112" data-field-leftunits-value="px" data-field-top-res-320-value="22" data-field-top-res-640-value="31" data-field-top-value="39" data-field-topunits-value="px" data-field-width-value="41" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <a class="tn-atom" href="#zeropopup">
+     <img alt="" class="tn-atom__img t-img" data-original="images/tild3863-3839-4864-b438-633566343830__photo.svg" imgfield="tn_img_1762323782953" src="images/tild3863-3839-4864-b438-633566343830__photo.svg"/>
+    </a>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176233199635139750" data-elem-id="176233199635139750" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-value="15" data-field-height-res-320-value="28" data-field-height-value="28" data-field-heightunits-value="px" data-field-left-res-320-value="1990" data-field-left-res-640-value="269" data-field-left-value="549" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-640-value="24" data-field-top-value="32" data-field-topunits-value="px" data-field-width-value="102" data-field-widthunits-value="px">
+    <div class="tn-atom">
+     <a href="/" style="color: inherit">
+      Квартирный вопрос
+     </a>
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176233199636760970" data-elem-id="176233199636760970" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-res-640-value="84" data-field-fontsize-value="165" data-field-height-res-320-value="152" data-field-height-value="298" data-field-heightunits-value="px" data-field-left-res-320-value="1990" data-field-left-res-640-value="41" data-field-left-value="33" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-640-value="350" data-field-top-value="140" data-field-topunits-value="px" data-field-width-res-640-value="558" data-field-width-value="1135" data-field-widthunits-value="px">
+    <h1 class="tn-atom" field="tn_text_176233199636760970">
+     Квартирный вопрос
+    </h1>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176232364795290710" data-elem-id="176232364795290710" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-value="14" data-field-height-value="17" data-field-heightunits-value="px" data-field-left-res-320-value="1990" data-field-left-res-640-value="1945" data-field-left-value="125" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-640-value="-73" data-field-top-value="37" data-field-topunits-value="px" data-field-width-value="77" data-field-widthunits-value="px">
+    <div class="tn-atom">
+     <a href="/portfolio" style="color: inherit">
+      Портфолио
+     </a>
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15316767911762333316912" data-elem-id="1762333316912" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="77" data-field-filewidth-value="282" data-field-height-res-320-value="30" data-field-height-res-640-value="3" data-field-height-value="3" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-value="6365" data-field-leftunits-value="px" data-field-top-res-320-value="14" data-field-top-value="205" data-field-topunits-value="px" data-field-width-res-320-value="110" data-field-width-value="10" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <a class="tn-atom" href="/">
+     <img alt="" class="tn-atom__img t-img" data-original="images/tild6435-3730-4332-b561-623465626532_____.svg" imgfield="tn_img_1762333316912" src="images/tild6435-3730-4332-b561-623465626532_____.svg"/>
+    </a>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1531676791176233338131610010" data-elem-id="176233338131610010" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="77" data-field-filewidth-value="282" data-field-height-res-320-value="77" data-field-height-res-640-value="3" data-field-height-value="3" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-value="6365" data-field-leftunits-value="px" data-field-top-res-320-value="240" data-field-top-value="205" data-field-topunits-value="px" data-field-width-res-320-value="282" data-field-width-value="10" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <div class="tn-atom">
+     <img alt="" class="tn-atom__img t-img" data-original="images/tild6435-3730-4332-b561-623465626532_____.svg" imgfield="tn_img_176233338131610010" src="images/tild6435-3730-4332-b561-623465626532_____.svg"/>
+    </div>
+   </div>
+  </div>
+ </div>
+ <script>
+  t_onFuncLoad("t396_initialScale", function () {
+                    t396_initialScale("1531676791");
+                });
+                t_onReady(function () {
+                    t_onFuncLoad("t396_init", function () {
+                        t396_init("1531676791");
+                    });
+                });
+ </script>
+ <!-- /T396 -->
+</div>   <div class="r t-rec t-screenmin-1200px" data-animationappear="off" data-record-type="396" data-screen-min="1200px" id="rec1531686931" style="">
     <!-- T396 -->
     <div class="t396">
      <div class="t396__artboard" data-artboard-height="185" data-artboard-height-res-320="59" data-artboard-ovrflw="visible" data-artboard-recid="1531686931" data-artboard-screens="320,1200" data-artboard-upscale="window" data-artboard-valign="center">
@@ -352,7 +424,7 @@ handle = "Site\\MainPage"
        <a class="tn-atom" href="/design-project">
         <div class="tn-atom__button-content">
          <span class="tn-atom__button-text">
-          Ремонт по дизайн-проекту
+          Ремонт по дизайн-проекту
          </span>
         </div>
        </a>
@@ -416,7 +488,7 @@ handle = "Site\\MainPage"
        <a class="tn-atom" href="/design-project">
         <div class="tn-atom__button-content">
          <span class="tn-atom__button-text">
-          Ремонт по дизайн-проекту
+          Ремонт по дизайн-проекту
          </span>
         </div>
        </a>
@@ -2799,7 +2871,7 @@ handle = "Site\\MainPage"
        <a class="tn-atom" href="/design-project">
         <div class="tn-atom__button-content">
          <span class="tn-atom__button-text">
-          Ремонт по дизайн-проекту
+          Ремонт по дизайн-проекту
          </span>
         </div>
        </a>
@@ -2934,7 +3006,7 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1521078181176251300469477010" data-elem-id="176251300469477010" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-fontsize-value="14" data-field-height-res-320-value="17" data-field-height-res-640-value="34" data-field-height-value="34" data-field-heightunits-value="px" data-field-left-res-320-value="40" data-field-left-res-640-value="223" data-field-left-value="750" data-field-leftunits-value="px" data-field-textfit-res-640-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="466" data-field-top-res-640-value="350" data-field-top-value="362" data-field-topunits-value="px" data-field-width-res-320-value="242" data-field-width-res-640-value="239" data-field-width-value="262" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176251300469477010">
-        Готовые варианты с фиксированной ценой и сроками
+        Готовые варианты с фиксированной ценой и сроками
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1521078181176251300477560200" data-animate-mobile="y" data-animate-sbs-event="hover" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'ti':0,'dt':0},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'ti':200,'dt':0}]" data-animate-sbs-trgels="176251156191870010" data-elem-id="176251300477560200" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="25" data-field-fontsize-res-640-value="38" data-field-fontsize-value="46" data-field-height-value="82" data-field-heightunits-value="px" data-field-left-res-320-value="40" data-field-left-res-640-value="222" data-field-left-value="678" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="410" data-field-top-res-640-value="262" data-field-top-value="260" data-field-topunits-value="px" data-field-width-res-320-value="221" data-field-width-res-640-value="301" data-field-width-value="412" data-field-widthunits-value="px">
@@ -2950,7 +3022,7 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1521078181176252089702863970 t396__elem--anim-hidden" data-animate-sbs-event="hover" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'ti':0,'ea':'0','dt':0},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'ti':0,'ea':'0','dt':0},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'ti':200,'ea':'0','dt':0}]" data-animate-sbs-trgels="176251156191870010" data-elem-id="176252089702863970" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-fontsize-value="14" data-field-height-res-320-value="17" data-field-height-res-640-value="34" data-field-height-value="34" data-field-heightunits-value="px" data-field-left-res-320-value="2620" data-field-left-res-640-value="2470" data-field-left-value="758" data-field-leftunits-value="px" data-field-textfit-res-640-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="-108" data-field-top-res-640-value="-114" data-field-top-value="362" data-field-topunits-value="px" data-field-width-res-320-value="209" data-field-width-res-640-value="123" data-field-width-value="246" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176252089702863970">
-        Готовые варианты с фиксированной ценой и сроками
+        Готовые варианты с фиксированной ценой и сроками
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1521078181176252089705181890 t396__elem--anim-hidden" data-animate-sbs-event="hover" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'ti':0,'ea':'0','dt':0},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'ti':0,'ea':'0','dt':0},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'ti':200,'ea':'0','dt':0}]" data-animate-sbs-trgels="176251156191870010" data-elem-id="176252089705181890" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="19" data-field-fontsize-value="46" data-field-height-value="82" data-field-heightunits-value="px" data-field-left-res-320-value="2620" data-field-left-res-640-value="2310" data-field-left-value="678" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="-82" data-field-top-res-640-value="-209" data-field-top-value="260" data-field-topunits-value="px" data-field-width-res-640-value="223" data-field-width-value="412" data-field-widthunits-value="px">
@@ -3032,13 +3104,13 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1454143191176096108148730010" data-elem-id="176096108148730010" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="32" data-field-height-value="38" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="70" data-field-left-value="95" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="97" data-field-top-res-640-value="117" data-field-top-value="162" data-field-topunits-value="px" data-field-width-res-320-value="256" data-field-width-value="402" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108148730010">
-        Только до [дата] — поможем создать интерьер вашей мечты с нуля и воплотим его
+        Только до [дата] — поможем создать интерьер вашей мечты с нуля и воплотим его
                                 под ключ.
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1454143191176096108149381830" data-elem-id="176096108149381830" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="24" data-field-fontsize-res-640-value="33" data-field-fontsize-value="45" data-field-height-res-320-value="72" data-field-height-value="100" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="70" data-field-left-value="95" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="15" data-field-top-res-640-value="30" data-field-top-value="45" data-field-topunits-value="px" data-field-width-res-320-value="254" data-field-width-res-640-value="469" data-field-width-value="690" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108149381830">
-        Дизайн-проект — в подарок при заказе ремонта
+        Дизайн-проект — в подарок при заказе ремонта
        </div>
       </div>
       <div class="t396__elem tn-elem class106 tn-elem__14541431911760961239652" data-elem-id="1760961239652" data-elem-type="button" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="45" data-field-height-value="47" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="70" data-field-left-value="95" data-field-leftunits-value="px" data-field-top-res-320-value="165" data-field-top-res-640-value="183" data-field-top-value="230" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-res-640-value="301" data-field-width-value="260" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
@@ -3102,34 +3174,30 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1457990821176096108148730010" data-animate-mobile="y" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':350,'dd':'0','fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':250,'dd':410,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="200" data-elem-id="176096108148730010" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="224" data-field-height-value="209" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="46" data-field-top-res-640-value="86" data-field-top-value="115" data-field-topunits-value="px" data-field-width-res-320-value="279" data-field-width-res-640-value="461" data-field-width-value="471" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108148730010">
-        {% if mainPage.block1_subtitle %}
-         {{ mainPage.block1_subtitle|raw }}
-        {% else %}
-         в который хочется возвращаться
+                 в который хочется возвращаться
          <br/>
          <br/>
-         Каждый проект мы создаём
-                    под клиента: с учётом образа жизни, вкуса, привычек и будущих
+         Каждый проект мы создаём
+                    под клиента: с учётом образа жизни, вкуса, привычек и будущих
                     сценариев.
          <br/>
          <br/>
-         Никаких шаблонов — только индивидуальный подход, внимание
-                    к деталям и чистая эстетика.
+         Никаких шаблонов — только индивидуальный подход, внимание
+                    к деталям и чистая эстетика.
          <br/>
          <br/>
-         В итоге вы получаете
-                    не просто красивую визуализацию, а настоящую основу будущего интерьера,
-                    где всё логично и удобно.
-        {% endif %}
-       </div>
+         В итоге вы получаете
+                    не просто красивую визуализацию, а настоящую основу будущего интерьера,
+                    где всё логично и удобно.
+               </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1457990821176096108149381830" data-elem-id="176096108149381830" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="36" data-field-fontsize-res-640-value="33" data-field-fontsize-value="82" data-field-height-res-320-value="36" data-field-height-value="90" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="0" data-field-top-res-640-value="30" data-field-top-value="0" data-field-topunits-value="px" data-field-width-res-320-value="254" data-field-width-res-640-value="469" data-field-width-value="568" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108149381830">
-                {{ mainPage.block1_title ?: 'Дом' }}
+                Дом
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__14579908211760962309065" data-animate-mobile="y" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':-7,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':-14,'di':490,'dd':120,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':350,'dd':360,'fi':'0'}]" data-animate-sbs-opts-res-640="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':350,'dd':'0','fi':'0'}]" data-animate-sbs-trg="1" data-animate-sbs-trgofst="-800" data-animate-sbs-trgofst-res-320="0" data-elem-id="1760962309065" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-height-res-320-value="214" data-field-height-res-640-value="468" data-field-height-value="417" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="613" data-field-leftunits-value="px" data-field-top-res-320-value="290" data-field-top-res-640-value="335" data-field-top-value="10" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="537" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <div aria-label="" class="tn-atom t-bgimg" data-original="{{ block1Image }}" role="img">
+    <div aria-label="" class="tn-atom t-bgimg" data-original="http://localhost:8081/themes/kv-vopros/assets/images/tild3538-3834-4833-b766-316234396565___.png" role="img">
        </div>
       </div>
      </div>
@@ -3156,29 +3224,25 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1458368161176096108148730010" data-animate-mobile="y" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':350,'dd':70,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':250,'dd':320,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="200" data-elem-id="176096108148730010" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="32" data-field-height-value="171" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="96" data-field-top-res-640-value="56" data-field-top-value="235" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="483" data-field-width-value="471" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108148730010">
-        {% if mainPage.block2_subtitle %}
-         {{ mainPage.block2_subtitle|raw }}
-        {% else %}
-         Превращаем идею в реальность: подбираем и закупаем материалы
+                 Превращаем идею в реальность: подбираем и закупаем материалы
          <br/>
          <br/>
-         Мы не просто
-                    рисуем красивый проект — мы сразу подбираем реальные отделочные материалы,
-                    мебель и декор, доступные в Тюмени или на ближайших складах.
+         Мы не просто
+                    рисуем красивый проект — мы сразу подбираем реальные отделочные материалы,
+                    мебель и декор, доступные в Тюмени или на ближайших складах.
          <br/>
          <br/>
-         Все закупки
-                    и логистика — на нас. Вы экономите время, нервы и бюджет.
-        {% endif %}
-       </div>
+         Все закупки
+                    и логистика — на нас. Вы экономите время, нервы и бюджет.
+               </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1458368161176096108149381830" data-elem-id="176096108149381830" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="36" data-field-fontsize-res-640-value="33" data-field-fontsize-value="82" data-field-height-res-320-value="72" data-field-height-value="90" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="50" data-field-top-res-640-value="0" data-field-top-value="120" data-field-topunits-value="px" data-field-width-res-320-value="254" data-field-width-res-640-value="469" data-field-width-value="568" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108149381830">
-                {{ mainPage.block2_title ?: 'Материалы' }}
+                Материалы
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1458368161176104195921537630" data-animate-mobile="y" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-877,'my':-102,'sx':1,'sy':1,'op':1,'ro':-35,'di':860,'dd':80,'fi':'0'},{'mx':-877,'my':-102,'sx':1,'sy':1,'op':1,'ro':-52,'di':800,'dd':120,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':0,'ro':0,'di':350,'dd':330,'fi':'0'}]" data-animate-sbs-trg="1" data-animate-sbs-trgofst="300" data-animate-sbs-trgofst-res-320="0" data-elem-id="176104195921537630" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="214" data-field-height-res-640-value="467" data-field-height-value="417" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="1489" data-field-leftunits-value="px" data-field-top-res-320-value="292" data-field-top-res-640-value="267" data-field-top-value="142" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="537" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <div aria-label="" class="tn-atom t-bgimg" data-original="{{ block2Image }}" role="img">
+    <div aria-label="" class="tn-atom t-bgimg" data-original="http://localhost:8081/themes/kv-vopros/assets/images/tild6261-6639-4034-a538-626363373736___.png" role="img">
        </div>
       </div>
      </div>
@@ -3205,31 +3269,27 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1458705411176096108148730010" data-elem-id="176096108148730010" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="32" data-field-height-value="171" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="146" data-field-top-res-640-value="56" data-field-top-value="225" data-field-topunits-value="px" data-field-width-res-320-value="279" data-field-width-value="471" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176096108148730010">
-        {% if mainPage.block3_subtitle %}
-         {{ mainPage.block3_subtitle|raw }}
-        {% else %}
-         От мечты до готовой квартиры — мы берём на себя всё
+                 От мечты до готовой квартиры — мы берём на себя всё
          <br/>
          <br/>
-         Мы занимаемся
-                    полным циклом ремонта: от первых набросков до чистовой отделки. Команда
-                    дизайнеров, снабженцев, мастеров и прораба работает слаженно, под вашим
-                    кураторством или полностью самостоятельно.
+         Мы занимаемся
+                    полным циклом ремонта: от первых набросков до чистовой отделки. Команда
+                    дизайнеров, снабженцев, мастеров и прораба работает слаженно, под вашим
+                    кураторством или полностью самостоятельно.
          <br/>
          <br/>
-         Хотите — участвуйте
-                    в каждом шаге. Хотите — просто получите ключи и переезжайте
-                    в готовый интерьер.
-        {% endif %}
-       </div>
+         Хотите — участвуйте
+                    в каждом шаге. Хотите — просто получите ключи и переезжайте
+                    в готовый интерьер.
+               </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1458705411176104333501819000" data-elem-id="176104333501819000" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="36" data-field-fontsize-res-640-value="33" data-field-fontsize-value="82" data-field-height-res-320-value="72" data-field-height-value="90" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="100" data-field-top-res-640-value="0" data-field-top-value="110" data-field-topunits-value="px" data-field-width-res-320-value="254" data-field-width-res-640-value="469" data-field-width-value="568" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176104333501819000">
-                {{ mainPage.block3_title ?: 'Ремонт' }}
+                Ремонт
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1458705411176104195921537630" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-977,'my':-102,'sx':1,'sy':1,'op':1,'ro':-35,'di':860,'dd':80,'fi':'0'}]" data-animate-sbs-trg="1" data-animate-sbs-trgofst="500" data-elem-id="176104195921537630" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="214" data-field-height-res-640-value="467" data-field-height-value="417" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="1589" data-field-leftunits-value="px" data-field-top-res-320-value="390" data-field-top-res-640-value="267" data-field-top-value="32" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="537" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <div aria-label="" class="tn-atom t-bgimg" data-original="{{ block3Image }}" role="img">
+    <div aria-label="" class="tn-atom t-bgimg" data-original="http://localhost:8081/themes/kv-vopros/assets/images/tild3532-6635-4636-b735-323635396665___.png" role="img">
        </div>
       </div>
      </div>
@@ -3561,7 +3621,7 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1492612611176353529648920740" data-animate-fix="0.5" data-animate-fix-dist="800" data-animate-fix-dist-res-320="650" data-animate-mobile="y" data-elem-id="176353529648920740" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="28" data-field-fontsize-value="82" data-field-height-res-320-value="84" data-field-height-value="270" data-field-heightunits-value="px" data-field-left-res-320-value="32" data-field-left-value="150" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="0" data-field-top-value="134" data-field-topunits-value="px" data-field-width-res-320-value="257" data-field-width-value="900" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176353529648920740">
-        ваш путь к дому, в котором
+        ваш путь к дому, в котором
         <br/>
         хочется жить
        </div>
@@ -3611,31 +3671,31 @@ handle = "Site\\MainPage"
       <div class="t396__filter" data-artboard-recid="1498383661">
       </div>
       <div class="t396__elem tn-elem tn-elem__14983836611760962309065" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-11,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':-22,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':-34,'sx':0.85,'sy':0.85,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':-45,'sx':0.8,'sy':0.8,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':-56,'sx':0.75,'sy':0.75,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-6,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':200,'dd':80,'fi':'0'},{'mx':0,'my':-12,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':200,'dd':'0','fi':'0'},{'mx':0,'my':-18,'sx':0.85,'sy':0.85,'op':1,'ro':0,'di':200,'dd':'0','fi':'0'},{'mx':0,'my':-24,'sx':0.8,'sy':0.8,'op':1,'ro':0,'di':200,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="200" data-elem-id="1760962309065" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="240" data-field-height-value="450" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-top-res-320-value="0" data-field-top-res-640-value="0" data-field-top-value="0" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="1100" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-       <a aria-label="" class="tn-atom t-bgimg" href="{{ case1Url }}" role="img" style='
-                                    background-image: url("{{ case1Image }}");
+       <a aria-label="" class="tn-atom t-bgimg" href="/perevalovo" role="img" style='
+                                    background-image: url("http://localhost:8081/themes/kv-vopros/assets/images/tild6161-3733-4563-a161-303736643237__rectangle_4710.png");
                                 '>
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1498383661176181202276843520" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':20,'my':-20,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':47,'my':-41,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="522" data-elem-id="176181202276843520" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="73" data-field-height-res-640-value="102" data-field-height-value="111" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="30" data-field-left-res-640-value="55" data-field-left-value="67" data-field-leftunits-value="px" data-field-top-res-320-value="157" data-field-top-res-640-value="333" data-field-top-value="322" data-field-topunits-value="px" data-field-width-res-320-value="260" data-field-width-res-640-value="273" data-field-width-value="330" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case1Url }}">
+    <a class="tn-atom" href="/perevalovo">
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1498383661176181177164438380" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':25,'my':-17,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':53,'my':-39,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="539" data-elem-id="176181177164438380" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-fontsize-value="14" data-field-height-res-320-value="17" data-field-height-res-640-value="34" data-field-height-value="34" data-field-heightunits-res-640-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-res-640-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="339" data-field-topunits-value="px" data-field-width-res-320-value="209" data-field-width-res-640-value="123" data-field-width-value="119" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case1Url }}" style="color: inherit">
-                 {{ case1Service }}
+        <a href="/perevalovo" style="color: inherit">
+                 Ремонт по дизайн-проекту
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1498383661176181182503279850" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':21,'my':-22,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':48,'my':-43,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="593" data-elem-id="176181182503279850" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="19" data-field-fontsize-value="26" data-field-height-value="23" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="198" data-field-top-res-640-value="397" data-field-top-value="393" data-field-topunits-value="px" data-field-width-res-640-value="216" data-field-width-value="274" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case1Url }}" style="color: inherit">
-                 {{ case1Title }}
+        <a href="/perevalovo" style="color: inherit">
+                 Перевалово
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__14983836611761812144053" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':11,'my':-18,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':39,'my':-38,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="539" data-elem-id="1761812144053" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="16" data-field-filewidth-value="16" data-field-height-res-320-value="14" data-field-height-res-640-value="14" data-field-height-value="14" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="261" data-field-left-res-640-value="299" data-field-left-value="366" data-field-leftunits-value="px" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="339" data-field-topunits-value="px" data-field-width-value="14" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case1Url }}">
+    <a class="tn-atom" href="/perevalovo">
         <img alt="" class="tn-atom__img t-img" data-original="images/tild3035-3661-4337-b834-616138303737___1.svg" imgfield="tn_img_1761812144053" src="images/tild3035-3661-4337-b834-616138303737___1.svg"/>
        </a>
       </div>
@@ -3662,29 +3722,29 @@ handle = "Site\\MainPage"
       <div class="t396__filter" data-artboard-recid="1498817301">
       </div>
       <div class="t396__elem tn-elem tn-elem__14988173011760962309065" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':0,'fi':'0'},{'mx':0,'my':-141,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':0,'fi':'0'},{'mx':0,'my':-152,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':-164,'sx':0.85,'sy':0.85,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':200,'dd':80,'fi':'0'},{'mx':0,'my':-6,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':200,'dd':0,'fi':'0'},{'mx':0,'my':-12,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':200,'dd':'0','fi':'0'},{'mx':0,'my':-18,'sx':0.85,'sy':0.85,'op':1,'ro':0,'di':200,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="360" data-elem-id="1760962309065" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="240" data-field-height-value="450" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-top-res-320-value="0" data-field-top-res-640-value="0" data-field-top-value="130" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="1100" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a aria-label="" class="tn-atom t-bgimg" data-original="{{ case2Image }}" href="{{ case2Url }}" role="img">
+    <a aria-label="" class="tn-atom t-bgimg" data-original="http://localhost:8081/themes/kv-vopros/assets/images/tild6536-6533-4262-b839-653831316135__rectangle_4711.png" href="/berezyaki" role="img">
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1498817301176181202276843520" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':20,'my':-149,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="662" data-elem-id="176181202276843520" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="73" data-field-height-res-640-value="102" data-field-height-value="111" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="30" data-field-left-res-640-value="55" data-field-left-value="67" data-field-leftunits-value="px" data-field-top-res-320-value="157" data-field-top-res-640-value="333" data-field-top-value="452" data-field-topunits-value="px" data-field-width-res-320-value="260" data-field-width-res-640-value="273" data-field-width-value="330" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case2Url }}">
+    <a class="tn-atom" href="/berezyaki">
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1498817301176181177164438380" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':25,'my':-146,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="679" data-elem-id="176181177164438380" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-fontsize-value="14" data-field-height-res-320-value="17" data-field-height-res-640-value="34" data-field-height-value="34" data-field-heightunits-res-640-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-res-640-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="469" data-field-topunits-value="px" data-field-width-res-320-value="209" data-field-width-res-640-value="123" data-field-width-value="119" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case2Url }}" style="color: inherit">
-         {{ case2Service }}
+        <a href="/berezyaki" style="color: inherit">
+         Ремонт по дизайн-проекту
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1498817301176181182503279850" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':21,'my':-152,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="733" data-elem-id="176181182503279850" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="19" data-field-fontsize-value="26" data-field-height-value="23" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="198" data-field-top-res-640-value="397" data-field-top-value="523" data-field-topunits-value="px" data-field-width-res-640-value="216" data-field-width-value="274" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case2Url }}" style="color: inherit">
-         {{ case2Title }}
+        <a href="/berezyaki" style="color: inherit">
+         Березяки
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__14988173011761812144053" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':12,'my':-146,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="679" data-elem-id="1761812144053" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="16" data-field-filewidth-value="16" data-field-height-res-320-value="14" data-field-height-res-640-value="14" data-field-height-value="14" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="261" data-field-left-res-640-value="299" data-field-left-value="366" data-field-leftunits-value="px" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="469" data-field-topunits-value="px" data-field-width-value="14" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case2Url }}">
+    <a class="tn-atom" href="/berezyaki">
         <img alt="" class="tn-atom__img t-img" data-original="images/tild3035-3661-4337-b834-616138303737___1.svg" imgfield="tn_img_1761812144053" src="images/tild3035-3661-4337-b834-616138303737___1.svg"/>
        </a>
       </div>
@@ -3711,31 +3771,31 @@ handle = "Site\\MainPage"
       <div class="t396__filter" data-artboard-recid="1503311301">
       </div>
       <div class="t396__elem tn-elem tn-elem__15033113011760962309065" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':0,'fi':'0'},{'mx':0,'my':-141,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':0,'fi':'0'},{'mx':0,'my':-152,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':200,'dd':80,'fi':'0'},{'mx':0,'my':-6,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':200,'dd':0,'fi':'0'},{'mx':0,'my':-12,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':200,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="360" data-elem-id="1760962309065" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="240" data-field-height-value="450" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-top-res-320-value="0" data-field-top-res-640-value="0" data-field-top-value="130" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="1100" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-       <a aria-label="" class="tn-atom t-bgimg" href="{{ case3Url }}" role="img" style='
-                                    background-image: url("{{ case3Image }}");
+       <a aria-label="" class="tn-atom t-bgimg" href="/paderina" role="img" style='
+                                    background-image: url("http://localhost:8081/themes/kv-vopros/assets/images/tild6132-3530-4363-a336-386466376439__rectangle_4712.png");
                                 '>
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1503311301176181202276843520" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':20,'my':-149,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="662" data-elem-id="176181202276843520" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="73" data-field-height-res-640-value="102" data-field-height-value="111" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="30" data-field-left-res-640-value="55" data-field-left-value="67" data-field-leftunits-value="px" data-field-top-res-320-value="157" data-field-top-res-640-value="333" data-field-top-value="452" data-field-topunits-value="px" data-field-width-res-320-value="260" data-field-width-res-640-value="273" data-field-width-value="330" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case3Url }}">
+    <a class="tn-atom" href="/paderina">
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1503311301176181177164438380" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':25,'my':-146,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="679" data-elem-id="176181177164438380" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-fontsize-value="14" data-field-height-res-320-value="17" data-field-height-res-640-value="34" data-field-height-value="34" data-field-heightunits-res-640-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-res-640-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="469" data-field-topunits-value="px" data-field-width-res-320-value="209" data-field-width-res-640-value="123" data-field-width-value="119" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case3Url }}" style="color: inherit">
-         {{ case3Service }}
+        <a href="/paderina" style="color: inherit">
+         Ремонт по дизайн-проекту
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1503311301176181182503279850" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':21,'my':-152,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="733" data-elem-id="176181182503279850" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="19" data-field-fontsize-value="26" data-field-height-value="23" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="198" data-field-top-res-640-value="397" data-field-top-value="523" data-field-topunits-value="px" data-field-width-res-640-value="216" data-field-width-value="274" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case3Url }}" style="color: inherit">
-         {{ case3Title }}
+        <a href="/paderina" style="color: inherit">
+         Падерина
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__15033113011761812144053" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':12,'my':-146,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="679" data-elem-id="1761812144053" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="16" data-field-filewidth-value="16" data-field-height-res-320-value="14" data-field-height-res-640-value="14" data-field-height-value="14" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="261" data-field-left-res-640-value="299" data-field-left-value="366" data-field-leftunits-value="px" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="469" data-field-topunits-value="px" data-field-width-value="14" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case3Url }}">
+    <a class="tn-atom" href="/paderina">
         <img alt="" class="tn-atom__img t-img" data-original="images/tild3035-3661-4337-b834-616138303737___1.svg" imgfield="tn_img_1761812144053" src="images/tild3035-3661-4337-b834-616138303737___1.svg"/>
        </a>
       </div>
@@ -3762,29 +3822,29 @@ handle = "Site\\MainPage"
       <div class="t396__filter" data-artboard-recid="1503390711">
       </div>
       <div class="t396__elem tn-elem tn-elem__15033907111760962309065" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':0,'fi':'0'},{'mx':0,'my':-141,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':0,'fi':'0'},{'mx':0,'my':-152,'sx':0.9,'sy':0.9,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':0,'my':-164,'sx':0.85,'sy':0.85,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="360" data-elem-id="1760962309065" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="240" data-field-height-value="450" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-top-res-320-value="0" data-field-top-res-640-value="0" data-field-top-value="180" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="1100" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a aria-label="" class="tn-atom t-bgimg" data-original="{{ case4Image }}" href="{{ case4Url }}" role="img">
+    <a aria-label="" class="tn-atom t-bgimg" data-original="http://localhost:8081/themes/kv-vopros/assets/images/tild3633-3437-4731-b731-333236666338__rectangle_4709.png" href="/myravlenko" role="img">
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1503390711176181202276843520" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':20,'my':-149,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="662" data-elem-id="176181202276843520" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="73" data-field-height-res-640-value="102" data-field-height-value="111" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="30" data-field-left-res-640-value="55" data-field-left-value="67" data-field-leftunits-value="px" data-field-top-res-320-value="157" data-field-top-res-640-value="333" data-field-top-value="502" data-field-topunits-value="px" data-field-width-res-320-value="260" data-field-width-res-640-value="273" data-field-width-value="330" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case4Url }}">
+    <a class="tn-atom" href="/myravlenko">
        </a>
       </div>
       <div class="t396__elem tn-elem tn-elem__1503390711176181177164438380" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':25,'my':-146,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="679" data-elem-id="176181177164438380" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-fontsize-value="14" data-field-height-res-320-value="17" data-field-height-res-640-value="34" data-field-height-value="34" data-field-heightunits-res-640-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-res-640-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="519" data-field-topunits-value="px" data-field-width-res-320-value="209" data-field-width-res-640-value="123" data-field-width-value="119" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case4Url }}" style="color: inherit">
-         {{ case4Service }}
+        <a href="/myravlenko" style="color: inherit">
+         Ремонт по дизайн-проекту
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1503390711176181182503279850" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':1,'sy':1,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':21,'my':-152,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="733" data-elem-id="176181182503279850" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="19" data-field-fontsize-value="26" data-field-height-value="23" data-field-heightunits-value="px" data-field-left-res-320-value="45" data-field-left-res-640-value="70" data-field-left-value="84" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="198" data-field-top-res-640-value="397" data-field-top-value="573" data-field-topunits-value="px" data-field-width-res-640-value="216" data-field-width-value="274" data-field-widthunits-value="px">
        <div class="tn-atom">
-        <a href="{{ case4Url }}" style="color: inherit">
-         {{ case4Title }}
+        <a href="/myravlenko" style="color: inherit">
+         Муравленко
         </a>
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__15033907111761812144053" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-130,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'},{'mx':12,'my':-146,'sx':0.95,'sy':0.95,'op':1,'ro':0,'di':490,'dd':'0','fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="679" data-elem-id="1761812144053" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="16" data-field-filewidth-value="16" data-field-height-res-320-value="14" data-field-height-res-640-value="14" data-field-height-value="14" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="261" data-field-left-res-640-value="299" data-field-left-value="366" data-field-leftunits-value="px" data-field-top-res-320-value="172" data-field-top-res-640-value="348" data-field-top-value="519" data-field-topunits-value="px" data-field-width-value="14" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <a class="tn-atom" href="{{ case4Url }}">
+    <a class="tn-atom" href="/myravlenko">
         <img alt="" class="tn-atom__img t-img" data-original="images/tild3035-3661-4337-b834-616138303737___1.svg" imgfield="tn_img_1761812144053" src="images/tild3035-3661-4337-b834-616138303737___1.svg"/>
        </a>
       </div>
@@ -4126,13 +4186,13 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182571451669820" data-elem-id="176182571451669820" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="32" data-field-height-value="57" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-value="425" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="326" data-field-top-value="377" data-field-topunits-value="px" data-field-width-res-320-value="269" data-field-width-value="362" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182571451669820">
-        Мы берём на себя всё: от проекта до последней розетки. Без задержек,
-                                лишних затрат и «самодеятельности» на объекте.
+        Мы берём на себя всё: от проекта до последней розетки. Без задержек,
+                                лишних затрат и «самодеятельности» на объекте.
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176104333501819000" data-elem-id="176104333501819000" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="19" data-field-fontsize-value="41" data-field-height-res-320-value="72" data-field-height-value="129" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-value="52" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="77" data-field-top-value="101" data-field-topunits-value="px" data-field-width-res-320-value="289" data-field-width-value="728" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176104333501819000">
-        Мы занимаемся ремонтом квартир и собрали команду, которой можно доверять.
+        Мы занимаемся ремонтом квартир и собрали команду, которой можно доверять.
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176181940668661090" data-elem-id="176181940668661090" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="47" data-field-fontsize-value="82" data-field-height-res-320-value="72" data-field-height-value="90" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-value="50" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="15" data-field-top-value="0" data-field-topunits-value="px" data-field-width-res-320-value="254" data-field-width-value="568" data-field-widthunits-value="px">
@@ -4141,7 +4201,7 @@ handle = "Site\\MainPage"
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182318964636260" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-375,'my':-93,'sx':3.15,'sy':3.15,'op':1,'ro':0,'di':700,'dd':'0','fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':22,'sx':3.8,'sy':3.8,'op':1,'ro':0,'di':700,'dd':100,'fi':'0'}]" data-animate-sbs-trg="1" data-animate-sbs-trgofst="-200" data-elem-id="176182318964636260" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="132" data-field-height-value="165" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-value="800" data-field-leftunits-value="px" data-field-top-res-320-value="164" data-field-top-value="270" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-value="350" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
-    <div aria-label="" class="tn-atom t-bgimg" data-original="{{ advantagesImage }}" role="img">
+    <div aria-label="" class="tn-atom t-bgimg" data-original="http://localhost:8081/themes/kv-vopros/assets/images/tild6565-6237-4266-b763-663834336663____1_1.png" role="img">
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182661812454190" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':0,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1615,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':0,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="530" data-elem-id="176182661812454190" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="305" data-field-height-value="273" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="1347" data-field-left-value="860" data-field-leftunits-value="px" data-field-top-res-320-value="99" data-field-top-value="1200" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-value="245" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
@@ -4150,20 +4210,16 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182661813517430" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':0,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1600,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':0,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="547" data-animate-sbs-trgofst-res-320="145" data-elem-id="176182661813517430" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-value="30" data-field-height-value="54" data-field-heightunits-value="px" data-field-left-res-320-value="1361" data-field-left-value="877" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="114" data-field-top-value="1217" data-field-topunits-value="px" data-field-width-value="209" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182661813517430">
-        {{ mainPage.advantage4_title ?: 'Ремонт с заботой' }}
+        Ремонт с заботой
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182661814744190" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':0,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1600,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':0,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="616" data-animate-sbs-trgofst-res-320="210" data-elem-id="176182661814744190" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="14" data-field-height-res-320-value="170" data-field-height-value="170" data-field-heightunits-value="px" data-field-left-res-320-value="1362" data-field-left-value="877" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="179" data-field-top-value="1286" data-field-topunits-value="px" data-field-width-res-320-value="220" data-field-width-value="211" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182661814744190">
-        {% if mainPage.advantage4_subtitle %}
-         {{ mainPage.advantage4_subtitle|raw }}
-        {% else %}
-         Мы ценим ваше время и силы. Поэтому сделали ремонт простым и удобным:
-                    фото- и видеоотчёты, постоянная связь с менеджером, возможность удалённого
-                    контроля. Хотите — участвуйте в процессе, хотите — просто получите ключи
-                    от готовой квартиры.
-        {% endif %}
-       </div>
+                 Мы ценим ваше время и силы. Поэтому сделали ремонт простым и удобным:
+                    фото- и видеоотчёты, постоянная связь с менеджером, возможность удалённого
+                    контроля. Хотите — участвуйте в процессе, хотите — просто получите ключи
+                    от готовой квартиры.
+               </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182671049476110" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':80,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1600,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':80,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="400" data-elem-id="176182671049476110" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="305" data-field-height-value="273" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="1007" data-field-left-value="590" data-field-leftunits-value="px" data-field-top-res-320-value="99" data-field-top-value="990" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-value="245" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom">
@@ -4171,19 +4227,15 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182671050493430" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':80,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1615,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':80,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="417" data-animate-sbs-trgofst-res-320="10" data-elem-id="176182671050493430" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-value="30" data-field-height-value="27" data-field-heightunits-value="px" data-field-left-res-320-value="1021" data-field-left-value="607" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="114" data-field-top-value="1007" data-field-topunits-value="px" data-field-width-value="209" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182671050493430">
-        {{ mainPage.advantage3_title ?: 'Под ключ' }}
+        Под ключ
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182671051777510" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':80,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1615,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':80,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="459" data-animate-sbs-trgofst-res-320="48" data-elem-id="176182671051777510" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="14" data-field-height-res-320-value="170" data-field-height-value="136" data-field-heightunits-value="px" data-field-left-res-320-value="1022" data-field-left-value="607" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="152" data-field-top-value="1049" data-field-topunits-value="px" data-field-width-res-320-value="220" data-field-width-value="211" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182671051777510">
-        {% if mainPage.advantage3_subtitle %}
-         {{ mainPage.advantage3_subtitle|raw }}
-        {% else %}
-         От дизайн-проекта до финальной отделки — всё в одних руках.
-                    Мы подберём материалы, организуем закупку и доставку, проконтролируем каждый
+                 От дизайн-проекта до финальной отделки — всё в одних руках.
+                    Мы подберём материалы, организуем закупку и доставку, проконтролируем каждый
                     этап. Вам остаётся только принимать готовый результат.
-        {% endif %}
-       </div>
+               </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182665917252230" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':90,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1600,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':290,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="200" data-elem-id="176182665917252230" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="305" data-field-height-value="273" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="667" data-field-left-value="858" data-field-leftunits-value="px" data-field-top-res-320-value="99" data-field-top-value="780" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-value="245" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom">
@@ -4191,19 +4243,15 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182665918154750" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':57,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1600,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':290,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="183" data-animate-sbs-trgofst-res-320="12" data-elem-id="176182665918154750" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-value="30" data-field-height-value="54" data-field-heightunits-value="px" data-field-left-res-320-value="681" data-field-left-value="875" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="114" data-field-top-value="797" data-field-topunits-value="px" data-field-width-value="209" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182665918154750">
-        {{ mainPage.advantage2_title ?: 'Сильная команда' }}
+        Сильная команда
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182665919198630" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':6,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1600,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':290,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="200" data-animate-sbs-trgofst-res-320="77" data-elem-id="176182665919198630" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="14" data-field-height-res-320-value="170" data-field-height-value="153" data-field-heightunits-value="px" data-field-left-res-320-value="682" data-field-left-value="875" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="179" data-field-top-value="866" data-field-topunits-value="px" data-field-width-res-320-value="220" data-field-width-value="211" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182665919198630">
-        {% if mainPage.advantage2_subtitle %}
-         {{ mainPage.advantage2_subtitle|raw }}
-        {% else %}
-         В нашей команде работают дизайнеры, прорабы, снабженцы и мастера, которых
-                    объединяет одно — любовь к своему делу. Каждый берёт личную ответственность
-                    за результат и работает так, как сделал бы для себя.
-        {% endif %}
-       </div>
+                 В нашей команде работают дизайнеры, прорабы, снабженцы и мастера, которых
+                    объединяет одно — любовь к своему делу. Каждый берёт личную ответственность
+                    за результат и работает так, как сделал бы для себя.
+               </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182662152018280" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':100,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1558,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':500,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="0" data-elem-id="176182662152018280" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-height-res-320-value="305" data-field-height-value="273" data-field-heightmode-res-320-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="327" data-field-left-value="588" data-field-leftunits-value="px" data-field-top-res-320-value="99" data-field-top-value="570" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-value="245" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom">
@@ -4211,20 +4259,16 @@ handle = "Site\\MainPage"
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182662154280020" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':83,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1529,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':483,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="0" data-animate-sbs-trgofst-res-320="-4" data-elem-id="176182662154280020" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-value="30" data-field-height-res-320-value="27" data-field-height-value="27" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="341" data-field-left-value="605" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="114" data-field-top-value="587" data-field-topunits-value="px" data-field-width-res-320-value="209" data-field-width-value="209" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182662154280020">
-        {{ mainPage.advantage1_title ?: '13 лет опыта' }}
+        13 лет опыта
        </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__1499216181176182662155123680" data-animate-sbs-event="scroll" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':0,'my':-970,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':41,'fi':'0'}]" data-animate-sbs-opts-res-320="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':'0','dd':'0','fi':'0'},{'mx':-1529,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'di':500,'dd':441,'fi':'0'}]" data-animate-sbs-trg="0" data-animate-sbs-trgofst="0" data-animate-sbs-trgofst-res-320="-8" data-elem-id="176182662155123680" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="14" data-field-height-res-320-value="170" data-field-height-value="170" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="342" data-field-left-value="605" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="152" data-field-top-value="629" data-field-topunits-value="px" data-field-width-res-320-value="220" data-field-width-value="211" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
        <div class="tn-atom" field="tn_text_176182662155123680">
-        {% if mainPage.advantage1_subtitle %}
-         {{ mainPage.advantage1_subtitle|raw }}
-        {% else %}
-         Мы ценим ваше время и силы. Поэтому сделали ремонт простым и удобным:
-                    фото- и видеоотчёты, постоянная связь с менеджером, возможность удалённого
-                    контроля. Хотите — участвуйте в процессе, хотите — просто получите ключи
-                    от готовой квартиры.
-        {% endif %}
-       </div>
+                 Мы ценим ваше время и силы. Поэтому сделали ремонт простым и удобным:
+                    фото- и видеоотчёты, постоянная связь с менеджером, возможность удалённого
+                    контроля. Хотите — участвуйте в процессе, хотите — просто получите ключи
+                    от готовой квартиры.
+               </div>
       </div>
      </div>
     </div>
@@ -4553,8 +4597,76 @@ handle = "Site\\MainPage"
      </div>
     </div>
    </div>
-   {% partial 'zeroform-popup' %}
-   <!--footer-->
+   <div class="r t-rec" data-animationappear="off" data-record-type="396" id="rec1559022031" style="">
+ <!-- T396 -->
+ <div class="t396">
+  <div class="t396__artboard" data-artboard-height="391" data-artboard-height-res-320="327" data-artboard-height-res-640="385" data-artboard-recid="1559022031" data-artboard-screens="320,640,1200" data-artboard-upscale="window" data-artboard-valign="center">
+   <div class="t396__carrier" data-artboard-recid="1559022031">
+   </div>
+   <div class="t396__filter" data-artboard-recid="1559022031">
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15590220311760960855415" data-elem-id="1760960855415" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="326" data-field-height-res-640-value="384" data-field-height-value="390" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="150" data-field-left-value="425" data-field-leftunits-value="px" data-field-top-res-320-value="0" data-field-top-value="0" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="340" data-field-width-value="350" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <div class="tn-atom">
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1559022031176250513072873600" data-elem-id="176250513072873600" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="27" data-field-fontsize-res-640-value="33" data-field-fontsize-value="36" data-field-height-res-320-value="72" data-field-height-value="40" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="170" data-field-left-value="450" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="40" data-field-top-res-640-value="50" data-field-top-value="50" data-field-topunits-value="px" data-field-width-res-320-value="249" data-field-width-res-640-value="270" data-field-width-value="292" data-field-widthunits-value="px">
+    <div class="tn-atom" field="tn_text_176250513072873600">
+     Оставьте завку
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15590220311761636775245" data-elem-id="1761636775245" data-elem-type="form" data-field-axisx-value="left" data-field-axisy-value="top" data-field-buttonbgcolor-value="#3e3c38" data-field-buttoncolor-value="#ffffff" data-field-buttonfontfamily-value="Manrope" data-field-buttonfontsize-res-320-value="14" data-field-buttonfontsize-value="16" data-field-buttonfontweight-value="500" data-field-buttonheight-res-320-value="45" data-field-buttonheight-value="47" data-field-buttonhoverbgcolor-value="#ffffff" data-field-buttonhovercolor-value="#3e3c38" data-field-buttonradius-value="7" data-field-buttontitle-value="Отправить" data-field-buttonwidth-res-320-value="250" data-field-buttonwidth-res-640-value="300" data-field-buttonwidth-value="300" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-height-res-640-value="234" data-field-height-value="220" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-inputbgcolor-value="#ffffff" data-field-inputbordersize-value="0" data-field-inputcolor-value="#3e3c38" data-field-inputelsfontsize-value="12" data-field-inputelsfontweight-value="400" data-field-inputfontfamily-value="Manrope" data-field-inputfontsize-res-320-value="14" data-field-inputfontsize-value="16" data-field-inputfontweight-value="500" data-field-inputheight-res-320-value="45" data-field-inputheight-value="47" data-field-inputmargbottom-res-320-value="10" data-field-inputmargbottom-value="15" data-field-inputmargright-value="20" data-field-inputpos-value="v" data-field-inputradius-value="7" data-field-inputtitlecolor-value="#000000" data-field-inputtitlefontsize-value="16" data-field-inputtitlefontweight-value="400" data-field-inputtitlemargbottom-value="5" data-field-left-res-320-value="35" data-field-left-res-640-value="170" data-field-left-value="450" data-field-leftunits-value="px" data-field-receivers-value="e5c5adf876e2ecfd190926b0a1b142e7,2298cfc6fa4e94e6beaddab4f0c0fd3b,218185b64ca3375d29087f10af6fdf97" data-field-top-res-320-value="87" data-field-top-res-640-value="114" data-field-top-value="120" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-res-640-value="300" data-field-width-value="300" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <div class="tn-atom tn-atom__form">
+    </div>
+    <!--googleoff: all-->
+    <!--noindex-->
+    <div class="tn-atom__inputs-wrapp" data-nosnippet="true" style="display: none">
+     <textarea class="tn-atom__inputs-textarea">
+    [{"lid":"1761636775246","ls":"10","loff":"","li_parent_id":"","li_type":"nm","li_ph":"Имя","li_req":"y","li_nm":"Name"},{"lid":"1761636775247","ls":"20","loff":"","li_parent_id":"","li_type":"ph","li_ph":"Номер телефона","li_mask":"+7 (999) 999-99-99","li_req":"y","li_nm":"Phone"},{"lid":"1761636827375","ls":"30","loff":"","li_parent_id":"","li_type":"cb","li_label":"Согласен с <u><a href='/politics' target='_blank' rel='noreferrer noopener'>политикой обработки персональных данных</a></u>","li_req":"y","li_nm":"Checkbox"}]</textarea>
+    </div>
+    <!-- Form export deps: css/tilda-zero-form-errorbox.min.css css/tilda-zero-form-horizontal.min.css js/tilda-phone-mask-1.1.min.js css/tilda-date-picker-1.0.min.css js/tilda-date-picker-1.0.min.js js/tilda-calc-1.0.min.js js/tilda-upwidget-1.1.min.js js/uploadcare-3.x.full.min.js js/uploadcare-3.x.min.js js/tilda-range-1.0.min.js css/tilda-range-1.0.min.css js/tilda-img-select-1.0.min.js css/tilda-img-select-1.0.min.css -->
+    <!--/noindex-->
+    <!--googleon: all-->
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1559022031176250477871212120" data-animate-sbs-event="hover" data-animate-sbs-opts="[{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':0,'ti':0,'ea':'0','dt':0},{'mx':0,'my':0,'sx':1,'sy':1,'op':1,'ro':-90,'ti':200,'ea':'0','dt':0}]" data-elem-id="176250477871212120" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fileheight-value="30" data-field-filewidth-value="30" data-field-height-res-320-value="15" data-field-height-res-640-value="20" data-field-height-value="20" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="275" data-field-left-res-640-value="455" data-field-left-value="745" data-field-leftunits-value="px" data-field-top-res-320-value="10" data-field-top-res-640-value="15" data-field-top-value="10" data-field-topunits-value="px" data-field-width-res-320-value="15" data-field-width-res-640-value="20" data-field-width-value="20" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <a class="tn-atom" href="#closepopup">
+     <img alt="" class="tn-atom__img t-img" data-original="images/tild3162-6139-4135-b031-396231323536___.svg" imgfield="tn_img_176250477871212120" src="images/tild3162-6139-4135-b031-396231323536___.svg"/>
+    </a>
+   </div>
+  </div>
+ </div>
+ <script>
+  t_onFuncLoad("t396_initialScale", function () {
+                    t396_initialScale("1559022031");
+                });
+                t_onReady(function () {
+                    t_onFuncLoad("t396_init", function () {
+                        t396_init("1559022031");
+                    });
+                });
+ </script>
+ <!-- /T396 -->
+</div>
+<div class="r t-rec" data-animationappear="off" data-record-type="1093" id="rec1559022331" style="">
+ <!-- t1093 -->
+ <div class="t1093">
+  <div aria-modal="true" class="t-popup" data-anim="appearfromtop" data-anim-timeout="0.3" data-popup-rec-ids="rec1559022031" data-tooltip-hook="#zeroform" role="dialog" tabindex="-1">
+   <div class="t-popup__container t-width t-valign_middle">
+   </div>
+  </div>
+  <div class="t-popup__bg">
+  </div>
+ </div>
+ <script>
+  t_onReady(function () {
+                    t_onFuncLoad("t1093__init", function () {
+                        t1093__init("1559022331");
+                    });
+                    t_onFuncLoad("t1093__initPopup", function () {
+                        t1093__initPopup("1559022331");
+                    });
+                });
+ </script>
+</div>   <!--footer-->
    <footer class="t-records" data-hook="blocks-collection-content-node" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-page-id="91164406" data-tilda-project-country="RU" data-tilda-project-headcode="yes" data-tilda-project-id="5057845" data-tilda-project-lang="RU" data-tilda-root-zone="com" id="t-footer">
     <div class="r t-rec" data-animationappear="off" data-record-type="396" id="rec1502996111" style="">
      <!-- T396 -->
@@ -4684,8 +4796,55 @@ handle = "Site\\MainPage"
       </div>
      </div>
     </div>
-    {% partial 'cost-form' %}
-    <div class="r t-rec" data-animationappear="off" data-record-type="396" id="rec1502996151" style="">
+    <div class="r t-rec" data-animationappear="off" data-record-type="396" id="rec1502996131" style="">
+ <!-- T396 -->
+ <div class="t396">
+  <div class="t396__artboard" data-artboard-height="311" data-artboard-height-res-320="417" data-artboard-height-res-640="423" data-artboard-recid="1502996131" data-artboard-screens="320,640,1200" data-artboard-upscale="window" data-artboard-valign="center">
+   <div class="t396__carrier" data-artboard-recid="1502996131">
+   </div>
+   <div class="t396__filter" data-artboard-recid="1502996131">
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15029961311760960855415" data-elem-id="1760960855415" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-320-value="416" data-field-height-res-640-value="422" data-field-height-value="310" data-field-heightmode-res-320-value="fixed" data-field-heightmode-res-640-value="fixed" data-field-heightmode-value="fixed" data-field-heightunits-value="px" data-field-left-res-320-value="20" data-field-left-res-640-value="40" data-field-left-value="50" data-field-leftunits-value="px" data-field-top-value="0" data-field-topunits-value="px" data-field-width-res-320-value="280" data-field-width-res-640-value="560" data-field-width-value="1100" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <div class="tn-atom">
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1502996131176096108149381830" data-elem-id="176096108149381830" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="23" data-field-fontsize-res-640-value="33" data-field-fontsize-value="45" data-field-height-res-320-value="72" data-field-height-value="150" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="70" data-field-left-value="95" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="35" data-field-top-res-640-value="35" data-field-top-value="45" data-field-topunits-value="px" data-field-width-res-320-value="249" data-field-width-res-640-value="513" data-field-width-value="636" data-field-widthunits-value="px">
+    <div class="tn-atom" field="tn_text_176096108149381830">
+     Рассчитаем стоимость ремонта за З часа — бесплатно
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__1502996131176096108148730010" data-elem-id="176096108148730010" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-res-320-value="grid" data-field-container-value="grid" data-field-fontsize-res-320-value="14" data-field-fontsize-value="16" data-field-height-res-320-value="32" data-field-height-value="57" data-field-heightunits-res-320-value="px" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="70" data-field-left-value="420" data-field-leftunits-value="px" data-field-textfit-res-320-value="autoheight" data-field-textfit-value="autoheight" data-field-top-res-320-value="114" data-field-top-res-640-value="122" data-field-top-value="169" data-field-topunits-value="px" data-field-width-res-320-value="256" data-field-width-res-640-value="384" data-field-width-value="274" data-field-widthunits-value="px">
+    <div class="tn-atom" field="tn_text_176096108148730010">
+     Оставьте заявку — подберём решение, сориентируем по срокам и бюджету.
+    </div>
+   </div>
+   <div class="t396__elem tn-elem tn-elem__15029961311761636775245" data-elem-id="1761636775245" data-elem-type="form" data-field-axisx-value="left" data-field-axisy-value="top" data-field-buttonbgcolor-value="#3e3c38" data-field-buttoncolor-value="#ffffff" data-field-buttonfontfamily-value="Manrope" data-field-buttonfontsize-res-320-value="14" data-field-buttonfontsize-value="16" data-field-buttonfontweight-value="500" data-field-buttonheight-res-320-value="45" data-field-buttonheight-value="47" data-field-buttonhoverbgcolor-value="#ffffff" data-field-buttonhovercolor-value="#3e3c38" data-field-buttonradius-value="7" data-field-buttontitle-value="Отправить" data-field-buttonwidth-res-320-value="250" data-field-buttonwidth-res-640-value="400" data-field-buttonwidth-value="300" data-field-container-res-640-value="grid" data-field-container-value="grid" data-field-height-res-640-value="234" data-field-height-value="220" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-inputbgcolor-value="#ffffff" data-field-inputbordersize-value="0" data-field-inputcolor-value="#3e3c38" data-field-inputelsfontsize-value="12" data-field-inputelsfontweight-value="400" data-field-inputfontfamily-value="Manrope" data-field-inputfontsize-res-320-value="14" data-field-inputfontsize-value="16" data-field-inputfontweight-value="500" data-field-inputheight-res-320-value="45" data-field-inputheight-value="47" data-field-inputmargbottom-res-320-value="10" data-field-inputmargbottom-value="15" data-field-inputmargright-value="20" data-field-inputpos-value="v" data-field-inputradius-value="7" data-field-inputtitlecolor-value="#000000" data-field-inputtitlefontsize-value="16" data-field-inputtitlefontweight-value="400" data-field-inputtitlemargbottom-value="5" data-field-left-res-320-value="35" data-field-left-res-640-value="70" data-field-left-value="805" data-field-leftunits-value="px" data-field-receivers-value="e5c5adf876e2ecfd190926b0a1b142e7,2298cfc6fa4e94e6beaddab4f0c0fd3b,218185b64ca3375d29087f10af6fdf97" data-field-top-res-320-value="182" data-field-top-res-640-value="182" data-field-top-value="45" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-res-640-value="400" data-field-width-value="300" data-field-widthmode-res-320-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
+    <div class="tn-atom tn-atom__form">
+    </div>
+    <!--googleoff: all-->
+    <!--noindex-->
+    <div class="tn-atom__inputs-wrapp" data-nosnippet="true" style="display: none">
+     <textarea class="tn-atom__inputs-textarea">
+[{"lid":"1761636775246","ls":"10","loff":"","li_parent_id":"","li_type":"nm","li_ph":"Имя","li_req":"y","li_nm":"Name"},{"lid":"1761636775247","ls":"20","loff":"","li_parent_id":"","li_type":"ph","li_ph":"Номер телефона","li_mask":"+7 (999) 999-99-99","li_req":"y","li_nm":"Phone"},{"lid":"1761636827375","ls":"30","loff":"","li_parent_id":"","li_type":"cb","li_label":"Согласен с <u><a href='/politics' target='_blank' rel='noreferrer noopener'>политикой обработки персональных данных</a></u>","li_req":"y","li_nm":"Checkbox"}]</textarea>
+    </div>
+    <!-- Form export deps: css/tilda-zero-form-errorbox.min.css css/tilda-zero-form-horizontal.min.css js/tilda-phone-mask-1.1.min.js css/tilda-date-picker-1.0.min.css js/tilda-date-picker-1.0.min.js js/tilda-calc-1.0.min.js js/tilda-upwidget-1.1.min.js js/uploadcare-3.x.full.min.js js/uploadcare-3.x.min.js js/tilda-range-1.0.min.js css/tilda-range-1.0.min.css js/tilda-img-select-1.0.min.js css/tilda-img-select-1.0.min.css -->
+    <!--/noindex-->
+    <!--googleon: all-->
+   </div>
+  </div>
+ </div>
+ <script>
+  t_onFuncLoad("t396_initialScale", function () {
+                t396_initialScale("1502996131");
+            });
+            t_onReady(function () {
+                t_onFuncLoad("t396_init", function () {
+                    t396_init("1502996131");
+                });
+            });
+ </script>
+ <!-- /T396 -->
+</div>    <div class="r t-rec" data-animationappear="off" data-record-type="396" id="rec1502996151" style="">
      <!-- T396 -->
      <div class="t396">
       <div class="t396__artboard" data-artboard-height="130" data-artboard-recid="1502996151" data-artboard-screens="320,640,1200" data-artboard-upscale="window" data-artboard-valign="center">
@@ -4833,7 +4992,7 @@ handle = "Site\\MainPage"
         <a class="tn-atom" href="/design-project">
          <div class="tn-atom__button-content">
           <span class="tn-atom__button-text">
-           Ремонт по дизайн-проекту
+           Ремонт по дизайн-проекту
           </span>
          </div>
         </a>
@@ -4893,8 +5052,8 @@ handle = "Site\\MainPage"
      <div class="t886 t886_closed" data-storage-item="t886cookiename_5057845" style="right: 20px">
       <div class="t886__wrapper" style="background-color: #f2f2f2; width: 700px">
        <div class="t886__text t-text t-text_xs t-valign_middle" field="text">
-        Пользуясь сайтом, вы даёте согласие на использование файлов cookie, помогающих
-                                нам сделать его удобнее. Подробная информация в
+        Пользуясь сайтом, вы даёте согласие на использование файлов cookie, помогающих
+                                нам сделать его удобнее. Подробная информация в
         <a href="/politics" rel="noreferrer noopener" style="color: rgb(0, 0, 0); font-weight: 500" target="_blank">
          соответствующих правилах
         </a>
@@ -5042,8 +5201,44 @@ handle = "Site\\MainPage"
     </div>
    <!--/footer-->
   </div>
-  {% partial "footer" %}
-  <!--/allrecords-->
+  <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-row-top">
+            <div class="footer-section-left">
+                <div class="footer-logo">
+                    <img class="footer-logo-img" src="http://localhost:8081/themes/kv-vopros/assets/images/Vector.svg" alt="Логотип">
+                </div>
+                <div class="footer-links-column">
+                    <a href="#" class="footer-link">Сотрудничество</a>
+                    <a href="#" class="footer-link">Карьера</a>
+                    <a href="#" class="footer-link">О нас</a>
+                    <a href="#" class="footer-link">Контакты</a>
+                </div>
+                <div class="footer-links-column">
+                    <a href="#" class="footer-link">Ремонт по дизайн-проекту</a>
+                    <a href="#" class="footer-link">Пакетный ремонт</a>
+                    <a href="#" class="footer-link">Портфолио</a>
+                    <a href="#" class="footer-link">Блог</a>
+                </div>
+            </div>
+            <div class="footer-section-right">
+                <div class="footer-links-column">
+                    <a href="tel:+79829631283" class="footer-link">+7 982 963 12 83</a>
+                    <span class="footer-address">Тюмень, ул. Федюнинского, 62</span>
+                </div>
+                <div class="footer-links-column">
+                    <div class="footer-socials">
+                        <a href="#" class="footer-link">VK</a>
+                        <a href="#" class="footer-link">Telegram</a>
+                        <a href="#" class="footer-link">Почта</a>
+                        <a href="#" class="footer-link">Instagram*</a>
+                    </div>
+                    <p class="footer-disclaimer">*запрещенная в РФ соцсеть компании Meta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>  <!--/allrecords-->
   <!-- Stat -->
   <!-- Yandex.Metrika counter 95716206 -->
   </script>
@@ -5052,4 +5247,5 @@ handle = "Site\\MainPage"
     <img alt="" src="https://mc.yandex.ru/watch/95716206" style="position: absolute; left: -9999px"/>
    </div>
   </noscript>
-
+ </body>
+</html>
