@@ -230,35 +230,7 @@ handle = "Site\\Services"
             onerror="this.loaderr='y';"
         ></script>
         <!-- nominify begin -->
-        <!-- Facebook Pixel Code -->
-        <script>
-            !(function (f, b, e, v, n, t, s) {
-                if (f.fbq) return;
-                n = f.fbq = function () {
-                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-                };
-                if (!f._fbq) f._fbq = n;
-                n.push = n;
-                n.loaded = !0;
-                n.version = "2.0";
-                n.queue = [];
-                t = b.createElement(e);
-                t.async = !0;
-                t.src = v;
-                s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s);
-            })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-            fbq("init", "448420000255317");
-            fbq("track", "PageView");
-        </script>
-        <noscript
-            ><img
-                height="1"
-                width="1"
-                style="display: none"
-                src="https://www.facebook.com/tr?id=448420000255317&ev=PageView&noscript=1"
-        /></noscript>
-        <!-- End Facebook Pixel Code -->
+        {% if not isLocal %}
         <!-- Facebook Pixel Code -->
         <script>
             !(function (f, b, e, v, n, t, s) {
@@ -318,6 +290,7 @@ handle = "Site\\Services"
         <!-- /Yandex.Metrika counter -->
         <script src="//cdn.callibri.ru/callibri.js" type="text/javascript" charset="utf-8"></script>
         <script src="https://cdn.postnikovmd.com/tilda@1.4/mods.min.js"></script>
+        {% endif %}
         <!-- nominify end -->
         <script type="text/javascript">
             window.dataLayer = window.dataLayer || [];
@@ -9958,6 +9931,7 @@ handle = "Site\\Services"
                     </li>
                 </div>
                 <script>
+                    {% if not isLocal %}
                     t_onReady(function () {
                         var prodcard_optsObj = {
                             blockId: "",
@@ -10070,6 +10044,7 @@ handle = "Site\\Services"
                             t_store_init("1513757151", options);
                         });
                     });
+                    {% endif %}
                 </script>
                 <template id="button_loadmore_1513757151">
                     <button

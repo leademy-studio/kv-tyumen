@@ -1,5 +1,17 @@
 description = "Default layout"
 ==
+function onStart()
+{
+    $this['bodyClass'] = $this->page->bodyClass ?? null;
+    $this['bodyStyle'] = $this->page->bodyStyle ?? null;
+
+    $host = request()->getHost();
+    $this['isLocal'] = app()->environment('local')
+        || $host === 'localhost'
+        || $host === '127.0.0.1'
+        || str_ends_with($host, '.local');
+}
+==
 <!doctype html>
 <html lang="ru">
 <head>
@@ -11,7 +23,7 @@ description = "Default layout"
     <link href="{{ 'assets/css/main.css'|theme }}" rel="stylesheet">
     <link href="{{ 'assets/css/footer.css'|theme }}" rel="stylesheet">
 </head>
-<body{% if this.page.bodyClass %} class="{{ this.page.bodyClass }}"{% endif %}{% if this.page.bodyStyle %} style="{{ this.page.bodyStyle }}"{% endif %}>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}{% if bodyStyle %} style="{{ bodyStyle }}"{% endif %}>
     {% page %}
 
     {% scripts %}
