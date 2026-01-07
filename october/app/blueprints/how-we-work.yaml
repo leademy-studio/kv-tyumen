@@ -1,10 +1,10 @@
-uuid: c86c2eab-397f-46e8-aa05-fa0272120168
+uuid: 1564d020-4902-46e2-bb65-7adf11fa7ae4
 handle: Site\HowWeWork
 type: global
 name: Как мы работаем
 
 primaryNavigation:
-    label: Сайт
+    label: Как мы работаем
     icon: octo-icon-globe
     order: 90
 

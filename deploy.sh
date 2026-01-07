@@ -10,6 +10,8 @@
 #
 # ВАЖНО:
 # - Данные из админки хранятся в БД (volume) и не должны теряться при рестарте.
+# - Потеря данных обычно происходит ТОЛЬКО если удалили volume (например `docker compose down -v`)
+#   или если volume был сгенерирован с другим именем (из-за смены compose project name/пути).
 # - На сервере обычно есть свой `.env` (домен/пароли). Этот скрипт сохраняет
 #   существующий `.env` при `git reset --hard`, чтобы он не затирался.
 #
@@ -58,6 +60,26 @@ ssh "${REMOTE_USER}@${REMOTE_HOST}" bash -se <<EOF
 set -euo pipefail
 
 cd "${REMOTE_PATH}"
+
+echo '--- 0. Бэкап базы данных (пользователи/права/контент) ---'
+# Храним дампы на сервере в папке backups рядом с проектом.
+# Восстановление на другом сервере:
+#   scp root@server:${REMOTE_PATH}/backups/db_YYYYmmdd_HHMMSS.sql.gz ./
+#   gunzip -c db_*.sql.gz | docker compose exec -T db mariadb -u"\$MYSQL_USER" -p"\$MYSQL_PASSWORD" "\$MYSQL_DATABASE"
+mkdir -p backups
+TS=\$(date +%Y%m%d_%H%M%S)
+BACKUP_FILE="backups/db_\${TS}.sql"
+if command -v gzip >/dev/null 2>&1; then
+  BACKUP_FILE="\${BACKUP_FILE}.gz"
+  docker compose exec -T db sh -lc 'mariadb-dump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' | gzip -9 > "\${BACKUP_FILE}"
+else
+  docker compose exec -T db sh -lc 'mariadb-dump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' > "\${BACKUP_FILE}"
+fi
+echo "OK: Бэкап создан: \${BACKUP_FILE}"
+
+echo '--- 0.1 Ротация бэкапов (оставляем последние 7) ---'
+# Удаляем всё, кроме 7 самых новых файлов db_*.sql / db_*.sql.gz
+ls -1t backups/db_*.sql* 2>/dev/null | tail -n +8 | xargs -r rm -f || true
 
 echo '--- 1. Обновление кода (с сохранением серверного .env) ---'
 if [ -f .env ]; then

@@ -1,10 +1,10 @@
-uuid: b2a27ee4-44da-4db6-b917-dbdd3cbe5103
+uuid: c5394852-f619-428c-964d-0157db6d4f57
 handle: Site\Services
 type: global
 name: Услуги
 
 primaryNavigation:
-    label: Сайт
+    label: Услуги
     icon: octo-icon-globe
     order: 90
 

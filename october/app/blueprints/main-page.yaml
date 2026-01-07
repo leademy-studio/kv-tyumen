@@ -1,4 +1,4 @@
-uuid: b4a96a52-2211-4604-a7e5-d093a70fc81b
+uuid: cc0b77a3-7dc4-4e91-afec-e8d1c0a932ff
 handle: Site\MainPage
 type: global
 name: Главная страница
@@ -7,7 +7,7 @@ customMessages:
     titleUpdateForm: Редактирование главной страницы
 
 primaryNavigation:
-    label: Сайт
+    label: Главная страница
     icon: octo-icon-globe
     order: 90
 

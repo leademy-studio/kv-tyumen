@@ -29,6 +29,7 @@ services:
       - ./.env
     volumes:
       - ./october:/var/www/html
+      - ./.env:/var/www/html/.env:ro
     depends_on:
       db:
         condition: service_healthy
@@ -96,4 +97,5 @@ networks:
 
 volumes:
   kv_vopros_db_data:
+    name: kv_vopros_db_data
     driver: local
