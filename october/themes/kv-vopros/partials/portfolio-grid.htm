@@ -1,0 +1,31 @@
+{#
+    Это демонстрационные данные.
+    Вам нужно будет заменить этот массив на данные из вашего компонента.
+#}
+{% set portfolioItems = [ { title: 'Падерина', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'design-project' }, { title: 'Европейский', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'package-repair' }, { title: 'Новин', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'design-project' }, { title: 'Видный', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'package-repair' }, { title: 'Центральный', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'design-project' }, { title: 'На Мысу', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'package-repair' }, { title: 'Падерина 2', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'design-project' }, { title: 'Европейский 2', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'package-repair' }, { title: 'Новин 2', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'design-project' }, { title: 'Видный 2', image: 'assets/images/tild-3366-6465-4730-a639-613631376230__photo.png'|theme, link: '#', category: 'package-repair' } ] %}
+
+<div class="portfolio-grid-wrapper">
+    <h1 class="portfolio-title">Портфолио</h1>
+    <div class="portfolio-tabs-container">
+        <button class="portfolio-tab active" data-filter="all">Все</button>
+        <button class="portfolio-tab" data-filter="design-project">Ремонт по дизайн проекту</button>
+        <button class="portfolio-tab" data-filter="package-repair">Пакетный ремонт</button>
+    </div>
+    <div class="portfolio-grid-container">
+        {% for item in portfolioItems %}
+            <div class="portfolio-card-wrapper" data-category="{{ item.category }}">
+                {% partial 'portfolio-card' title=item.title image=item.image link=item.link %}
+            </div>
+        {% endfor %}
+    </div>
+    {% if portfolioItems|length > 0 %}
+    <div class="portfolio-show-more-wrapper">
+        <button class="portfolio-show-more">
+            <span>Показать еще</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+    {% endif %}
+</div>

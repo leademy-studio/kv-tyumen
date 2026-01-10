@@ -1,0 +1,28 @@
+title = "Детальная страница кейса"
+url = "/portfolio/:slug"
+layout = "default"
+
+[global services]
+handle = "Site\\Services"
+==
+{% put head %}
+    <style>
+        /* Здесь можно добавить специфичные стили для этой страницы, если потребуется */
+    </style>
+{% endput %}
+>
+    {# Шапка сайта подключается через layout/default.htm #}
+
+    <section class="case-study-hero">
+        <div class="case-study-banner" style="background-image: url('{{ 'assets/images/case-study-banner-placeholder.png'|theme }}');">
+            <div class="case-study-plaque">
+                <h1 class="case-study-plaque-title">Название объекта</h1>
+            </div>
+        </div>
+    </section>
+
+    <footer id="t-footer" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="5057845" data-tilda-page-id="92736376" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-project-lang="RU" data-tilda-root-zone="com" data-tilda-project-headcode="yes" data-tilda-project-country="RU">
+        {% partial 'cost-form' %}
+        {% partial "footer" %}
+    </footer>
+</div>

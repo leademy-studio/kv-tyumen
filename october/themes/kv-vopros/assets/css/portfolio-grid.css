@@ -1,0 +1,248 @@
+.portfolio-grid-wrapper {
+    background-color: #e8e7e6;
+    /* Увеличиваем верхний отступ, чтобы избежать перекрытия шапкой */
+    padding: 150px 0 80px;
+}
+
+.portfolio-title {
+    color: #3E3C38;
+    font-family: "Bona Nova SC", serif;
+    font-size: 67px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -2.68px;
+    text-transform: uppercase;
+    /* Выравниваем по левому краю и задаем ширину как у сетки */
+    width: 90vw;
+    margin: 0 auto 60px;
+    text-align: left;
+}
+
+.portfolio-tabs-container {
+    width: 90vw;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.portfolio-tab {
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(62, 60, 56, 0.1);
+    color: #3E3C38;
+    font-size: 16px;
+    font-family: "Manrope", Arial, sans-serif;
+    line-height: 105%;
+    font-weight: 500;
+    border-radius: 7px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.portfolio-tab.active,
+.portfolio-tab:hover {
+    background-color: #B9EA00;
+    color: #3E3C38;
+}
+
+.portfolio-grid-container {
+    width: 90vw;
+    margin: 0 auto;
+    display: grid;
+    /* Строго 3 колонки в ряду для десктопов */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-content: center;
+}
+
+.portfolio-card {
+    position: relative;
+    width: 360px;
+    height: 290px;
+    border-radius: 7px;
+    overflow: hidden; /* Чтобы фон и плашка не выходили за скругленные углы */
+    display: flex;
+    align-items: flex-end; /* Позиционируем плашку внизу */
+    justify-content: center; /* Центрируем плашку по горизонтали */
+    margin: 0 auto; /* Центрируем саму карточку, если в ряду есть место */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.portfolio-card:hover {
+    transform: scale(1.03);
+}
+
+.portfolio-card__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.portfolio-card__overlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 320px;
+    height: 68px;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px); /* Для поддержки Safari */
+    margin-bottom: 15px; /* Небольшой отступ от нижнего края карточки */
+}
+
+.portfolio-card__title {
+    color: #FFF;
+    font-family: "Bona Nova SC", serif;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90%;
+    letter-spacing: -0.93px;
+    margin: 0;
+}
+
+.portfolio-card-wrapper.is-hidden {
+    display: none;
+}
+
+.portfolio-show-more-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.portfolio-show-more {
+    display: inline-flex;
+    width: 406px;
+    height: 55px;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #3E3C38;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-show-more:hover {
+    background-color: #555; /* A slightly lighter black for hover */
+}
+
+.portfolio-show-more span {
+    color: #FFF;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+/* Адаптивность для планшетов и мобильных устройств */
+@media (max-width: 1200px) {
+    .portfolio-grid-container {
+        /* 2 колонки для планшетов */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .portfolio-grid-container {
+        /* 1 колонка для мобильных */
+        grid-template-columns: 1fr;
+    }
+    .portfolio-show-more {
+        width: 100%;
+    }
+
+    .portfolio-title {
+        font-size: 48px;
+        letter-spacing: -1.5px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-title {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+}
+
+/* Case Study Page Styles */
+.case-study-hero {
+    padding-top: 100px; /* Отступ сверху, чтобы избежать перекрытия фиксированной шапкой */
+    background-color: #e8e7e6; /* Фоновый цвет, соответствующий остальной части портфолио */
+    padding-bottom: 80px; /* Отступ снизу */
+}
+
+.case-study-banner {
+    width: 90vw;
+    height: 470px;
+    border-radius: 15px;
+    margin: 0 auto; /* Центрирование баннера */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Позиционирование плашки внизу */
+    justify-content: flex-start; /* Позиционирование плашки слева */
+    overflow: hidden; /* Обрезка содержимого по border-radius */
+    position: relative; /* Для позиционирования плашки */
+}
+
+.case-study-plaque {
+    display: inline-flex;
+    padding: 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px); /* Для поддержки Safari */
+    margin-left: 40px; /* Отступ от левого края баннера */
+    margin-bottom: 40px; /* Отступ от нижнего края баннера */
+}
+
+.case-study-plaque-title {
+    color: #FFF; /* Белый цвет для контраста на полупрозрачном фоне */
+    font-family: "Bona Nova SC", serif;
+    font-size: 67px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 67px */
+    letter-spacing: -2.68px;
+    text-transform: uppercase;
+    margin: 0; /* Удаление стандартных отступов h1 */
+}
+
+/* Адаптивность для баннера и плашки */
+@media (max-width: 1200px) {
+    .case-study-banner { height: 350px; }
+    .case-study-plaque { margin-left: 30px; margin-bottom: 30px; padding: 15px; gap: 8px; }
+    .case-study-plaque-title { font-size: 50px; letter-spacing: -2px; }
+}
+
+@media (max-width: 767px) {
+    .case-study-banner { height: 250px; border-radius: 10px; }
+    .case-study-plaque { margin-left: 20px; margin-bottom: 20px; padding: 10px; gap: 5px; }
+    .case-study-plaque-title { font-size: 36px; letter-spacing: -1.5px; }
+}
+
+@media (max-width: 480px) {
+    .case-study-banner { height: 200px; border-radius: 8px; }
+    .case-study-plaque { margin-left: 15px; margin-bottom: 15px; padding: 8px; gap: 5px; }
+    .case-study-plaque-title { font-size: 24px; letter-spacing: -1px; }
+}

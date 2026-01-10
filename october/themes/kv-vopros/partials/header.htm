@@ -44,7 +44,7 @@
    </div>
    <div class="t396__elem tn-elem menuNolim068 tn-elem__1531676791176232363208669570" data-elem-id="176232363208669570" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-fontsize-res-320-value="8" data-field-fontsize-value="14" data-field-height-value="17" data-field-heightunits-value="px" data-field-left-res-320-value="2560" data-field-left-res-640-value="1867" data-field-left-value="47" data-field-leftunits-value="px" data-field-textfit-value="autoheight" data-field-top-res-320-value="-73" data-field-top-res-640-value="-73" data-field-top-value="37" data-field-topunits-value="px" data-field-width-value="47" data-field-widthunits-value="px">
     <div class="tn-atom">
-     <a href="#rec1531686931" style="color: inherit">
+         <a href="#rec1531686931" class="services-link" aria-expanded="false" style="color: inherit">
       Услуги
      </a>
     </div>
@@ -83,8 +83,48 @@
      <img alt="" class="tn-atom__img t-img" data-original="images/tild6435-3730-4332-b561-623465626532_____.svg" imgfield="tn_img_176233338131610010" src="images/tild6435-3730-4332-b561-623465626532_____.svg"/>
     </div>
    </div>
+   <div class="services-dropdown" id="servicesDropdown">
+    <a class="services-dropdown__item" href="/design-project">Ремонт по дизайн-проекту</a>
+    <a class="services-dropdown__item" href="/repairs">Пакетный ремонт</a>
+   </div>
   </div>
  </div>
+ <style>
+ #rec1531676791 .services-dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000000;
+  min-width: 240px;
+  padding: 12px 0;
+  margin: 0;
+  background: #3e3c38;
+  border-radius: 7px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+ }
+ #rec1531676791 .services-dropdown.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+ }
+ #rec1531676791 .services-dropdown__item {
+  display: block;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-decoration: none;
+ }
+ #rec1531676791 .services-dropdown__item:hover {
+  color: #b9ea00;
+ }
+ </style>
  <script>
   t_onFuncLoad("t396_initialScale", function () {
                     t396_initialScale("1531676791");
@@ -94,6 +134,52 @@
                         t396_init("1531676791");
                     });
                 });
+ </script>
+ <script>
+ document.addEventListener("DOMContentLoaded", function () {
+  var servicesLink = document.querySelector("#rec1531676791 .services-link");
+  var dropdown = document.getElementById("servicesDropdown");
+  if (!servicesLink || !dropdown) return;
+
+  function positionDropdown() {
+   var rect = servicesLink.getBoundingClientRect();
+   dropdown.style.left = rect.left + window.scrollX + "px";
+   dropdown.style.top = rect.bottom + window.scrollY + 10 + "px";
+  }
+
+  function openDropdown() {
+   dropdown.classList.add("is-open");
+   servicesLink.setAttribute("aria-expanded", "true");
+   positionDropdown();
+  }
+
+  function closeDropdown() {
+   dropdown.classList.remove("is-open");
+   servicesLink.setAttribute("aria-expanded", "false");
+  }
+
+  servicesLink.addEventListener("click", function (event) {
+   event.preventDefault();
+   if (dropdown.classList.contains("is-open")) {
+    closeDropdown();
+   } else {
+    openDropdown();
+   }
+  });
+
+  document.addEventListener("click", function (event) {
+   if (dropdown.contains(event.target) || servicesLink.contains(event.target)) return;
+   closeDropdown();
+  });
+
+  window.addEventListener("resize", function () {
+   if (dropdown.classList.contains("is-open")) positionDropdown();
+  });
+
+  document.addEventListener("scroll", function () {
+   if (dropdown.classList.contains("is-open")) positionDropdown();
+  });
+ });
  </script>
  <!-- /T396 -->
 </div>
