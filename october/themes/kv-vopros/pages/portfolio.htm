@@ -16,7 +16,6 @@ function onStart()
     // Include drafts so we can apply our own publish filters and avoid Tailor scoping them out
     $this['cases'] = \Tailor\Models\EntryRecord::inSection($section)->withDrafts()
         ->where('is_enabled', 1)
-        ->where('draft_mode', 0)
         ->where(function ($q) {
             $q->whereNull('published_at')->orWhere('published_at', '<=', now());
         })

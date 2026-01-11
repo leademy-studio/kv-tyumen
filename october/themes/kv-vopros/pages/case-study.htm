@@ -13,7 +13,6 @@ function onStart()
     $case = \Tailor\Models\EntryRecord::inSection($section)
         ->withDrafts()
         ->where('is_enabled', 1)
-        ->where('draft_mode', 0)
         ->where('slug', $slug)
         ->first();
 
