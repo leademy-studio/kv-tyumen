@@ -1,0 +1,48 @@
+uuid: 4a9f8c1e-7b2d-4e8a-9f0a-1b2c3d4e5f6a
+handle: Site\CaseStudy
+type: stream
+name: Кейсы портфолио
+
+fields:
+    title:
+        label: Название объекта
+        type: text
+        required: true
+
+    slug:
+        label: Slug (URL)
+        type: slug
+        preset:
+            field: title
+        required: true
+
+    service_type:
+        label: Тип услуги
+        type: dropdown
+        required: true
+        options:
+            design-project: Ремонт по дизайн-проекту
+            package-repair: Пакетный ремонт
+
+    main_image:
+        label: Главное изображение (для сетки портфолио)
+        type: mediafinder
+        mode: image
+        required: true
+
+    banner_image:
+        label: Изображение для баннера (на детальной странице)
+        type: mediafinder
+        mode: image
+        required: true
+
+    gallery_images:
+        label: Галерея изображений
+        type: repeater
+        prompt: Добавить изображение в галерею
+        form:
+            fields:
+                image:
+                    label: Изображение
+                    type: mediafinder
+                    mode: image

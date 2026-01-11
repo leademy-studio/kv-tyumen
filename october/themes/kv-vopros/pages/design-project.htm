@@ -2,6 +2,11 @@ title = "Ремонт по дизайн проекту"
 url = "/design-project"
 layout = "default"
 
+[builderList caseList]
+modelClass = "Site\\CaseStudy"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
 [global services]
 handle = "Site\\Services"
 ==
@@ -373,6 +378,9 @@ handle = "Site\\Services"
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 2;
             }
+            .portfolio-tabs-container {
+                display: none !important;
+            }
         </style>
 {% endput %}
 {% put scripts %}
@@ -383,11 +391,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const showMoreButton = document.querySelector('.portfolio-show-more');
     const allCards = Array.from(portfolioContainer.querySelectorAll('.portfolio-card-wrapper'));
-    const itemsPerLoad = 6; // 2 ряда * 3 колонки
+    const itemsPerLoad = 6; // 2 ряда по 3 карточки
     let currentlyVisible = itemsPerLoad;
+    const activeFilter = 'design-project'; // Фильтруем только по "Ремонт по дизайн-проекту"
 
     function updateDisplay() {
-        allCards.forEach((card, index) => {
+        const matchingCards = [];
+
+        // Сначала отфильтровываем нужные карточки и скрываем остальные
+        allCards.forEach(card => {
+            if (card.dataset.category === activeFilter) {
+                matchingCards.push(card);
+            } else {
+                card.classList.add('is-hidden');
+            }
+        });
+
+        // Применяем логику "показать еще" только к отфильтрованным карточкам
+        matchingCards.forEach((card, index) => {
             if (index < currentlyVisible) {
                 card.classList.remove('is-hidden');
             } else {
@@ -396,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (showMoreButton) {
-            if (currentlyVisible >= allCards.length) {
+            if (currentlyVisible >= matchingCards.length) {
                 showMoreButton.parentElement.style.display = 'none';
             } else {
                 showMoreButton.parentElement.style.display = 'block';

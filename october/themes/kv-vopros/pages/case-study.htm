@@ -2,47 +2,37 @@ title = "Детальная страница кейса"
 url = "/portfolio/:slug"
 layout = "default"
 
+[builderDetails case]
+modelClass = "Site\\CaseStudy"
+identifierValue = "{{ :slug }}"
+modelKey = "slug"
+displayColumn = "title"
+noRecordsMessage = "Запись не найдена"
 [global services]
 handle = "Site\\Services"
 ==
 {% put head %}
+    <link rel="stylesheet" href="{{ 'assets/css/portfolio-grid.css'|theme }}" type="text/css" media="all" />
     <style>
         /* Здесь можно добавить специфичные стили для этой страницы, если потребуется */
     </style>
 {% endput %}
->
+{% set case = case.record %}
     {# Шапка сайта подключается через layout/default.htm #}
 
     <section class="case-study-hero">
-        <div class="case-study-banner" style="background-image: url('{{ 'assets/images/case-study-banner-placeholder.png'|theme }}');">
+        <div class="case-study-banner" style="background-image: url('{{ case.banner_image.path }}');">
             <div class="case-study-plaque">
-                <h1 class="case-study-plaque-title">Название объекта</h1>
+                <h1 class="case-study-plaque-title">{{ case.title }}</h1>
             </div>
         </div>
-        {#
-            ВАЖНО: Замените этот статический массив `images` на динамическую переменную из вашего компонента,
-            которая будет содержать коллекцию изображений для галереи.
-            Например: {% set images = case.gallery_images %}
-        #}
-        {% set images = [
-            'assets/images/tild3637-3366-4363-b836-666332613231_______.png',
-            'assets/images/tild3766-6432-4361-b035-326530303433______.png',
-            'assets/images/tild3334-6636-4165-b933-336332396232_______.png',
-            'assets/images/tild3937-6139-4534-a464-353737323864_______.png',
-            'assets/images/tild3964-3764-4461-b462-356261373962_______.png',
-            'assets/images/case-study-banner-placeholder.png',
-            'assets/images/tild3637-3366-4363-b836-666332613231_______.png',
-            'assets/images/tild3766-6432-4361-b035-326530303433______.png',
-            'assets/images/tild3334-6636-4165-b933-336332396232_______.png',
-            'assets/images/tild3937-6139-4534-a464-353737323864_______.png'
-        ] %}
         <div class="gallery-container">
-            {% for row in images|batch(5) %}
+            {% for row in case.gallery_images|batch(5) %}
                 <div class="case-study-gallery {% if loop.index is odd %}large-left{% else %}large-right{% endif %}">
-                    <div class="gallery-item large-image" style="background-image: url('{{ row[0]|theme }}');"></div>
+                    <div class="gallery-item large-image" style="background-image: url('{{ row[0].image.path }}');"></div>
                     <div class="small-images-grid">
                         {% for i in 1..4 if row[i] is defined %}
-                            <div class="gallery-item" style="background-image: url('{{ row[i]|theme }}');"></div>
+                            <div class="gallery-item" style="background-image: url('{{ row[i].image.path }}');"></div>
                         {% endfor %}
                     </div>
                 </div>
@@ -51,7 +41,68 @@ handle = "Site\\Services"
     </section>
 
     <footer id="t-footer" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="5057845" data-tilda-page-id="92736376" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-project-lang="RU" data-tilda-root-zone="com" data-tilda-project-headcode="yes" data-tilda-project-country="RU">
+        <!-- Lightbox -->
+        <div id="portfolio-lightbox" class="portfolio-lightbox">
+            <span class="portfolio-lightbox-close">&times;</span>
+            <div class="portfolio-lightbox-content">
+                <a class="portfolio-lightbox-prev">&#10094;</a>
+                <img class="portfolio-lightbox-image" src="">
+                <a class="portfolio-lightbox-next">&#10095;</a>
+            </div>
+        </div>
         {% partial 'cost-form' %}
         {% partial "footer" %}
     </footer>
 </div>
+{% put scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const lightbox = document.getElementById('portfolio-lightbox');
+    if (!lightbox) return;
+
+    const galleryItems = document.querySelectorAll('.gallery-container .gallery-item');
+    const galleryImages = Array.from(galleryItems).map(item => {
+        const match = item.style.backgroundImage.match(/url\("?(.+?)"?\)/);
+        return match ? match[1] : null;
+    }).filter(url => url);
+
+    let currentImageIndex = 0;
+    const lightboxImage = lightbox.querySelector('.portfolio-lightbox-image');
+    const closeBtn = lightbox.querySelector('.portfolio-lightbox-close');
+    const prevBtn = lightbox.querySelector('.portfolio-lightbox-prev');
+    const nextBtn = lightbox.querySelector('.portfolio-lightbox-next');
+
+    const openLightbox = (index) => {
+        if (index < 0 || index >= galleryImages.length) return;
+        currentImageIndex = index;
+        lightboxImage.src = galleryImages[currentImageIndex];
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = '';
+    };
+
+    const showNextImage = () => openLightbox((currentImageIndex + 1) % galleryImages.length);
+    const showPrevImage = () => openLightbox((currentImageIndex - 1 + galleryImages.length) % galleryImages.length);
+
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNextImage);
+    prevBtn.addEventListener('click', showPrevImage);
+    lightbox.addEventListener('click', (e) => e.target === lightbox && closeLightbox());
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+        }
+    });
+});
+</script>
+{% endput %}

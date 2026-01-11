@@ -2,6 +2,11 @@ title = "Портфолио"
 url = "/portfolio"
 layout = "default"
 
+[builderList caseList]
+modelClass = "Site\\CaseStudy"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
 [global services]
 handle = "Site\\Services"
 ==
@@ -8583,7 +8588,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </style>
             </div>
             {% partial 'portfolio-grid' %}
-
+            {% partial 'portfolio-grid' cases=caseList.records %}
             <!-- Lightbox -->
             <div id="portfolio-lightbox" class="portfolio-lightbox">
                 <span class="portfolio-lightbox-close">&times;</span>
