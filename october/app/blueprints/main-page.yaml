@@ -8,12 +8,12 @@ customMessages:
 
 primaryNavigation:
     label: Главная страница
-    icon: octo-icon-globe
+    icon: icon-bank
     order: 90
 
 navigation:
     label: Главная страница
-    icon: octo-icon-home
+    icon: icon-bank
     order: 10
 
 fields:

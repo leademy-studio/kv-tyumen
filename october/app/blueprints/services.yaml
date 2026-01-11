@@ -5,12 +5,12 @@ name: Услуги
 
 primaryNavigation:
     label: Услуги
-    icon: octo-icon-globe
-    order: 90
+    icon: icon-briefcase
+    order: 100
 
 navigation:
     label: Услуги
-    icon: octo-icon-briefcase
+    icon: icon-briefcase
     order: 25
 
 fields:

@@ -5,12 +5,12 @@ name: Как мы работаем
 
 primaryNavigation:
     label: Как мы работаем
-    icon: octo-icon-globe
-    order: 90
+    icon: icon-list-ol
+    order: 100
 
 navigation:
     label: Как мы работаем
-    icon: octo-icon-list
+    icon: icon-list-ol
     order: 20
 
 fields:
