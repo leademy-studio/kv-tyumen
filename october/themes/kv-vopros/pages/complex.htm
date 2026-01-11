@@ -10,6 +10,23 @@ noRecordsMessage = "No records found"
 [global services]
 handle = "Site\\Services"
 ==
+function onStart()
+{
+    $section = 'Site\\CaseStudy';
+    // Include drafts so we can apply our own publish filters and avoid Tailor scoping them out
+    $this['cases'] = \Tailor\Models\EntryRecord::inSection($section)->withDrafts()
+        ->where('is_enabled', 1)
+        ->where('draft_mode', 0)
+        ->where(function ($q) {
+            $q->whereNull('published_at')->orWhere('published_at', '<=', now());
+        })
+        ->where(function ($q) {
+            $q->whereNull('expired_at')->orWhere('expired_at', '>=', now());
+        })
+        ->orderBy('published_at', 'desc')
+        ->get();
+}
+==
 {% set crBackgroundImage = services.cr_background_image ? services.cr_background_image|media : 'assets/images/tild3331-6138-4464-b465-616363356435__rectangle_4754.png'|theme %}
 {% set crTitle = services.cr_title | default('Пакетный ремонт') %}
 {% set crSection2Title = services.cr_section2_title | default('Всё включено, без сюрпризов') %}
