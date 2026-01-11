@@ -259,8 +259,11 @@
 }
 
 /* Case Study Page Styles */
+:root {
+    --case-study-radius: 15px;
+}
 .case-study-hero {
-    padding-top: 100px; /* Отступ сверху, чтобы избежать перекрытия фиксированной шапкой */
+    padding-top: 120px; /* Чуть больше отступа под шапку */
     background-color: #e8e7e6; /* Фоновый цвет, соответствующий остальной части портфолио */
     padding-bottom: 80px; /* Отступ снизу */
 }
@@ -268,7 +271,7 @@
 .case-study-banner {
     width: 90vw;
     height: 470px;
-    border-radius: 15px;
+    border-radius: var(--case-study-radius);
     margin: 0 auto; /* Центрирование баннера */
     background-size: cover;
     background-position: center;
@@ -325,9 +328,9 @@
 
 /* Gallery styles */
 .gallery-container {
-    max-width: 1200px;
-    margin: 30px auto 0;
-    padding: 0 15px;
+    width: 90vw;
+    margin: 40px auto 0;
+    padding: 0;
 }
 .case-study-gallery {
     display: grid;
@@ -352,11 +355,26 @@
     padding-top: 100%; /* Creates a square aspect ratio */
     background-size: cover;
     background-position: center;
+    border-radius: var(--case-study-radius);
+    overflow: hidden;
+    position: relative;
+}
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.18) 100%);
+    pointer-events: none;
 }
 .small-images-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+}
+@media (max-width: 1200px) {
+    .gallery-container {
+        width: 95vw;
+    }
 }
 @media (max-width: 768px) {
     .case-study-gallery {
@@ -370,4 +388,14 @@
     .case-study-gallery.large-right .small-images-grid {
         order: initial;
     }
+}
+
+.case-study-form-wrapper {
+    width: 90vw;
+    margin: 60px auto 60px;
+}
+
+.case-study-footer-wrapper {
+    background-color: #3e3c38;
+    padding-top: 20px;
 }

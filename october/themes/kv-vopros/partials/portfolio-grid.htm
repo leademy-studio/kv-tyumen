@@ -6,9 +6,11 @@
         <button class="portfolio-tab" data-filter="package-repair">Пакетный ремонт</button>
     </div>
     <div class="portfolio-grid-container">
+        <!-- cases_count: {{ cases|length }} -->
         {% for case in cases %}
             <div class="portfolio-card-wrapper" data-category="{{ case.service_type }}">
-                {% partial 'portfolio-card' title=case.title image=case.main_image.path link=('/portfolio/' ~ case.slug) %}
+                {% set previewImage = case.main_image ?: case.banner_image %}
+                {% partial 'portfolio-card' title=case.title image=previewImage link=('/portfolio/' ~ case.slug) %}
             </div>
         {% endfor %}
     </div>

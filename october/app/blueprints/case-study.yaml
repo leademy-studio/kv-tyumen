@@ -1,4 +1,4 @@
-uuid: 4a9f8c1e-7b2d-4e8a-9f0a-1b2c3d4e5f6a
+uuid: 436d0096-0a01-4dfe-a76b-9385dce1be3a
 handle: Site\CaseStudy
 type: stream
 name: Кейсы портфолио
@@ -38,11 +38,5 @@ fields:
 
     gallery_images:
         label: Галерея изображений
-        type: repeater
-        prompt: Добавить изображение в галерею
-        form:
-            fields:
-                image:
-                    label: Изображение
-                    type: mediafinder
-                    mode: image
+        type: fileupload
+        mode: image

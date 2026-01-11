@@ -2,37 +2,104 @@ title = "Детальная страница кейса"
 url = "/portfolio/:slug"
 layout = "default"
 
-[builderDetails case]
-modelClass = "Site\\CaseStudy"
-identifierValue = "{{ :slug }}"
-modelKey = "slug"
-displayColumn = "title"
-noRecordsMessage = "Запись не найдена"
 [global services]
 handle = "Site\\Services"
 ==
+function onStart()
+{
+    $slug = $this->param('slug');
+    $section = 'Site\\CaseStudy';
+
+    $case = \Tailor\Models\EntryRecord::inSection($section)
+        ->withDrafts()
+        ->where('is_enabled', 1)
+        ->where('draft_mode', 0)
+        ->where('slug', $slug)
+        ->first();
+
+    if (!$case) {
+        return \Redirect::to('/404');
+    }
+
+    $case->load('gallery_images');
+    $this['case'] = $case;
+}
+==
 {% put head %}
+    <base href="{{ 'assets'|theme }}/">
+    <link rel="stylesheet" href="css/tilda-grid-3.0.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-blocks-page92736376.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-blocks-page90173806.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-forms-1.0.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-zero-form-errorbox.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-zero-form-horizontal.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-animation-2.0.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tilda-popup-1.1.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ 'assets/css/portfolio-grid.css'|theme }}" type="text/css" media="all" />
+    <script type="text/javascript">
+        function t_onReady(func) {
+            if (document.readyState !== 'loading') {
+                func();
+            } else {
+                document.addEventListener('DOMContentLoaded', func);
+            }
+        }
+        function t_onFuncLoad(funcName, okFunc, time) {
+            if (typeof window[funcName] === 'function') {
+                okFunc();
+            } else {
+                setTimeout(function () {
+                    t_onFuncLoad(funcName, okFunc, time);
+                }, time || 100);
+            }
+        }
+        function t396_initialScale(t) {
+            var e = document.getElementById('rec' + t);
+            if (!e) return;
+            var i = e.querySelector('.t396__artboard');
+            if (!i) return;
+            window.tn_scale_initial_window_width = window.tn_scale_initial_window_width || document.documentElement.clientWidth;
+            var a = window.tn_scale_initial_window_width;
+            var screens = i.getAttribute('data-artboard-screens');
+            var r = screens ? screens.split(',').map(function (n) { return parseInt(n, 10); }) : [320, 480, 640, 960, 1200];
+            var n = r[0];
+            for (var o = 0; o < r.length; o++) {
+                if (a >= r[o]) n = r[o];
+            }
+            var height = i.getAttribute('data-artboard-height');
+            if (!height) return;
+            var h = parseFloat((a / n).toFixed(3));
+            var elems = [i, i.querySelector('.t396__carrier'), i.querySelector('.t396__filter')];
+            var newHeight = Math.floor(parseInt(height, 10) * h) + 'px';
+            elems.forEach(function (el) {
+                if (el) el.style.height = newHeight;
+            });
+        }
+    </script>
     <style>
         /* Здесь можно добавить специфичные стили для этой страницы, если потребуется */
     </style>
 {% endput %}
-{% set case = case.record %}
+{% set gallery = case.gallery_images ?: [] %}
     {# Шапка сайта подключается через layout/default.htm #}
 
     <section class="case-study-hero">
-        <div class="case-study-banner" style="background-image: url('{{ case.banner_image.path }}');">
+        <div class="case-study-banner" style="background-image: url('{{ case.banner_image|media }}');">
             <div class="case-study-plaque">
                 <h1 class="case-study-plaque-title">{{ case.title }}</h1>
             </div>
         </div>
         <div class="gallery-container">
-            {% for row in case.gallery_images|batch(5) %}
+            {% for row in gallery|batch(5) %}
                 <div class="case-study-gallery {% if loop.index is odd %}large-left{% else %}large-right{% endif %}">
-                    <div class="gallery-item large-image" style="background-image: url('{{ row[0].image.path }}');"></div>
+                    {% if row[0] is defined %}
+                    <div class="gallery-item large-image" style="background-image: url('{{ row[0].path }}');"></div>
+                    {% endif %}
                     <div class="small-images-grid">
-                        {% for i in 1..4 if row[i] is defined %}
-                            <div class="gallery-item" style="background-image: url('{{ row[i].image.path }}');"></div>
+                        {% for i in 1..4 %}
+                            {% if row[i] is defined %}
+                                <div class="gallery-item" style="background-image: url('{{ row[i].path }}');"></div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -40,7 +107,7 @@ handle = "Site\\Services"
         </div>
     </section>
 
-    <footer id="t-footer" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="5057845" data-tilda-page-id="92736376" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-project-lang="RU" data-tilda-root-zone="com" data-tilda-project-headcode="yes" data-tilda-project-country="RU">
+    <footer id="allrecords" class="t-records" data-tilda-export="yes" data-hook="blocks-collection-content-node" data-tilda-project-id="5057845" data-tilda-page-id="92736376" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-project-lang="RU" data-tilda-root-zone="com" data-tilda-project-headcode="yes" data-tilda-project-country="RU">
         <!-- Lightbox -->
         <div id="portfolio-lightbox" class="portfolio-lightbox">
             <span class="portfolio-lightbox-close">&times;</span>
@@ -53,8 +120,16 @@ handle = "Site\\Services"
         {% partial 'cost-form' %}
         {% partial "footer" %}
     </footer>
-</div>
 {% put scripts %}
+<script src="js/jquery-1.10.2.min.js" charset="utf-8"></script>
+<script src="js/tilda-scripts-3.0.min.js" charset="utf-8"></script>
+<script src="js/tilda-forms-1.0.min.js" charset="utf-8"></script>
+<script src="js/tilda-zero-forms-1.0.min.js" charset="utf-8"></script>
+<script src="js/tilda-zero-1.1.min.js" charset="utf-8"></script>
+<script src="js/tilda-phone-mask-1.1.min.js" charset="utf-8"></script>
+<script src="js/tilda-events-1.0.min.js" charset="utf-8"></script>
+<script src="js/tilda-blocks-page92736376.min.js" charset="utf-8"></script>
+<script src="js/tilda-blocks-page90173806.min.js" charset="utf-8"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const lightbox = document.getElementById('portfolio-lightbox');
