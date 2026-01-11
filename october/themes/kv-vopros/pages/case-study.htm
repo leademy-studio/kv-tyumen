@@ -19,6 +19,35 @@ handle = "Site\\Services"
                 <h1 class="case-study-plaque-title">Название объекта</h1>
             </div>
         </div>
+        {#
+            ВАЖНО: Замените этот статический массив `images` на динамическую переменную из вашего компонента,
+            которая будет содержать коллекцию изображений для галереи.
+            Например: {% set images = case.gallery_images %}
+        #}
+        {% set images = [
+            'assets/images/tild3637-3366-4363-b836-666332613231_______.png',
+            'assets/images/tild3766-6432-4361-b035-326530303433______.png',
+            'assets/images/tild3334-6636-4165-b933-336332396232_______.png',
+            'assets/images/tild3937-6139-4534-a464-353737323864_______.png',
+            'assets/images/tild3964-3764-4461-b462-356261373962_______.png',
+            'assets/images/case-study-banner-placeholder.png',
+            'assets/images/tild3637-3366-4363-b836-666332613231_______.png',
+            'assets/images/tild3766-6432-4361-b035-326530303433______.png',
+            'assets/images/tild3334-6636-4165-b933-336332396232_______.png',
+            'assets/images/tild3937-6139-4534-a464-353737323864_______.png'
+        ] %}
+        <div class="gallery-container">
+            {% for row in images|batch(5) %}
+                <div class="case-study-gallery {% if loop.index is odd %}large-left{% else %}large-right{% endif %}">
+                    <div class="gallery-item large-image" style="background-image: url('{{ row[0]|theme }}');"></div>
+                    <div class="small-images-grid">
+                        {% for i in 1..4 if row[i] is defined %}
+                            <div class="gallery-item" style="background-image: url('{{ row[i]|theme }}');"></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
 
     <footer id="t-footer" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="5057845" data-tilda-page-id="92736376" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-project-lang="RU" data-tilda-root-zone="com" data-tilda-project-headcode="yes" data-tilda-project-country="RU">

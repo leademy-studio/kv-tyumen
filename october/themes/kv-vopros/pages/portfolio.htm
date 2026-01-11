@@ -105,6 +105,7 @@ handle = "Site\\Services"
             onerror="this.loaderr='y';"
         />
         <noscript><link rel="stylesheet" href="css/tilda-zoom-2.0.min.css" type="text/css" media="all" /></noscript>
+        <link rel="stylesheet" href="css/portfolio-grid.css" type="text/css" media="all" />
         <script nomodule src="js/tilda-polyfill-1.0.min.js" charset="utf-8"></script>
         <script type="text/javascript">
             function t_onReady(func) {
@@ -294,16 +295,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const showMoreButton = document.querySelector('.portfolio-show-more');
     const portfolioContainer = document.querySelector('.portfolio-grid-container');
 
-    if (!tabsContainer || !portfolioContainer) return;
+    if (!portfolioContainer) return;
 
     const allCards = Array.from(portfolioContainer.querySelectorAll('.portfolio-card-wrapper'));
     const itemsPerLoad = 6;
     let currentlyVisible = itemsPerLoad;
     let activeFilter = 'all';
 
+    const lightbox = document.getElementById('portfolio-lightbox');
+    let galleryImages = [];
+    let currentImageIndex = 0;
+
+    function getImageUrl(card) {
+        const bgElement = card.querySelector('.portfolio-card__bg');
+        if (bgElement && bgElement.style.backgroundImage) {
+            const match = bgElement.style.backgroundImage.match(/url\("?(.+?)"?\)/);
+            return match ? match[1] : null;
+        }
+        return null;
+    }
+
+    function updateGalleryImages(visibleCards) {
+        if (!lightbox) return;
+        galleryImages = visibleCards
+            .map(getImageUrl)
+            .filter(url => url);
+    }
+
     function updateDisplay() {
         let visibleCount = 0;
         let totalMatching = 0;
+        const visibleCards = [];
 
         allCards.forEach(card => {
             const category = card.dataset.category;
@@ -313,6 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalMatching++;
                 if (visibleCount < currentlyVisible) {
                     card.classList.remove('is-hidden');
+                    visibleCards.push(card);
                     visibleCount++;
                 } else {
                     card.classList.add('is-hidden');
@@ -329,22 +352,87 @@ document.addEventListener('DOMContentLoaded', function () {
                 showMoreButton.parentElement.style.display = 'block';
             }
         }
+        updateGalleryImages(visibleCards);
     }
 
-    tabsContainer.addEventListener('click', function (e) {
-        if (e.target.matches('.portfolio-tab')) {
-            tabsContainer.querySelector('.portfolio-tab.active').classList.remove('active');
-            e.target.classList.add('active');
-            activeFilter = e.target.dataset.filter;
-            currentlyVisible = itemsPerLoad;
-            updateDisplay();
-        }
-    });
+    if (tabsContainer) {
+        tabsContainer.addEventListener('click', function (e) {
+            if (e.target.matches('.portfolio-tab')) {
+                const activeTab = tabsContainer.querySelector('.portfolio-tab.active');
+                if (activeTab) activeTab.classList.remove('active');
+                e.target.classList.add('active');
+                activeFilter = e.target.dataset.filter;
+                currentlyVisible = itemsPerLoad;
+                updateDisplay();
+            }
+        });
+    }
 
     if (showMoreButton) {
         showMoreButton.addEventListener('click', function () {
             currentlyVisible += itemsPerLoad;
             updateDisplay();
+        });
+    }
+
+    if (lightbox) {
+        const lightboxImage = lightbox.querySelector('.portfolio-lightbox-image');
+        const closeBtn = lightbox.querySelector('.portfolio-lightbox-close');
+        const prevBtn = lightbox.querySelector('.portfolio-lightbox-prev');
+        const nextBtn = lightbox.querySelector('.portfolio-lightbox-next');
+
+        const openLightbox = (index) => {
+            if (index < 0 || index >= galleryImages.length) return;
+            currentImageIndex = index;
+            lightboxImage.src = galleryImages[currentImageIndex];
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeLightbox = () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+
+        const showNextImage = () => {
+            openLightbox((currentImageIndex + 1) % galleryImages.length);
+        };
+
+        const showPrevImage = () => {
+            openLightbox((currentImageIndex - 1 + galleryImages.length) % galleryImages.length);
+        };
+
+        portfolioContainer.addEventListener('click', function(e) {
+            const cardWrapper = e.target.closest('.portfolio-card-wrapper');
+            if (cardWrapper && !cardWrapper.classList.contains('is-hidden')) {
+                const cardLink = e.target.closest('.portfolio-card');
+                if (cardLink) {
+                    e.preventDefault();
+                    const clickedImageUrl = getImageUrl(cardWrapper);
+                    const index = galleryImages.indexOf(clickedImageUrl);
+                    if (index !== -1) {
+                        openLightbox(index);
+                    }
+                }
+            }
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        nextBtn.addEventListener('click', showNextImage);
+        prevBtn.addEventListener('click', showPrevImage);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') showNextImage();
+                if (e.key === 'ArrowLeft') showPrevImage();
+            }
         });
     }
 
@@ -8495,6 +8583,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 </style>
             </div>
             {% partial 'portfolio-grid' %}
+
+            <!-- Lightbox -->
+            <div id="portfolio-lightbox" class="portfolio-lightbox">
+                <span class="portfolio-lightbox-close">&times;</span>
+                <div class="portfolio-lightbox-content">
+                    <a class="portfolio-lightbox-prev">&#10094;</a>
+                    <img class="portfolio-lightbox-image" src="">
+                    <a class="portfolio-lightbox-next">&#10095;</a>
+                </div>
+            </div>
             <!--footer-->
             <footer
                 id="t-footer"
