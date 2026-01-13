@@ -67,15 +67,15 @@ echo '--- 0. Бэкап базы данных (пользователи/прав
 #   scp root@server:${REMOTE_PATH}/backups/db_YYYYmmdd_HHMMSS.sql.gz ./
 #   gunzip -c db_*.sql.gz | docker compose exec -T db mariadb -u"\$MYSQL_USER" -p"\$MYSQL_PASSWORD" "\$MYSQL_DATABASE"
 mkdir -p backups
-TS=\$(date +%Y%m%d_%H%M%S)
-BACKUP_FILE="backups/db_\${TS}.sql"
+TS=$(date +%Y%m%d_%H%M%S)
+BACKUP_FILE="backups/db_${TS}.sql"
 if command -v gzip >/dev/null 2>&1; then
-  BACKUP_FILE="\${BACKUP_FILE}.gz"
-  docker compose exec -T db sh -lc 'mariadb-dump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' | gzip -9 > "\${BACKUP_FILE}"
+  BACKUP_FILE="${BACKUP_FILE}.gz"
+  docker compose exec -T db sh -lc 'mariadb-dump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' | gzip -9 > "${BACKUP_FILE}"
 else
-  docker compose exec -T db sh -lc 'mariadb-dump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' > "\${BACKUP_FILE}"
+  docker compose exec -T db sh -lc 'mariadb-dump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' > "${BACKUP_FILE}"
 fi
-echo "OK: Бэкап создан: \${BACKUP_FILE}"
+echo "OK: Бэкап создан: ${BACKUP_FILE}"
 
 echo '--- 0.1 Ротация бэкапов (оставляем последние 7) ---'
 # Удаляем всё, кроме 7 самых новых файлов db_*.sql / db_*.sql.gz
