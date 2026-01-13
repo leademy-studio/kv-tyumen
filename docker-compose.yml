@@ -53,7 +53,7 @@ services:
     labels:
       - "traefik.enable=true"
       # Роутер для основного домена
-      - "traefik.http.routers.kv-vopros-app.rule=Host(`kv-vopros.local`)" # <-- ЗАМЕНИТЕ НА ВАШ ДОМЕН
+      - "traefik.http.routers.kv-vopros-app.rule=Host(`kv-tyumen.ru`)"
       - "traefik.http.routers.kv-vopros-app.entrypoints=websecure"
       - "traefik.http.routers.kv-vopros-app.tls=true"
       - "traefik.http.routers.kv-vopros-app.tls.certresolver=letsencrypt"
@@ -61,7 +61,7 @@ services:
       - "traefik.http.services.kv-vopros-app.loadbalancer.server.port=80"
       - "traefik.docker.network=kv_vopros_network"
       # Роутер и middleware для редиректа с www
-      - "traefik.http.routers.kv-vopros-www.rule=Host(`www.kv-vopros.local`)" # <-- ЗАМЕНИТЕ НА ВАШ WWW-ДОМЕН
+      - "traefik.http.routers.kv-vopros-www.rule=Host(`www.kv-tyumen.ru`)"
       - "traefik.http.routers.kv-vopros-www.entrypoints=websecure"
       - "traefik.http.routers.kv-vopros-www.tls=true"
       - "traefik.http.routers.kv-vopros-www.tls.certresolver=letsencrypt"

@@ -22,7 +22,7 @@
 # --- НАСТРОЙКИ (ПОМЕНЯЙТЕ ПОД СЕБЯ) ---
 # Пользователь и адрес вашего сервера
 REMOTE_USER="root"
-REMOTE_HOST="your.server.ip.or.domain"
+REMOTE_HOST="31.130.135.132"
 
 # Путь к папке с проектом НА СЕРВЕРЕ (там где лежит docker-compose.yml)
 REMOTE_PATH="/var/www/kv-tyumen"
