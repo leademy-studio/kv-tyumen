@@ -1,0 +1,3 @@
+ssh root@31.130.135.132
+password: mf+wnNyVN4vEa*
+https://kv-tyumen.ru
