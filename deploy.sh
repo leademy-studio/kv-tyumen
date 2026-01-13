@@ -73,9 +73,9 @@ REMOTE_COMMANDS="
   docker compose exec -T app sh -lc 'mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache' && \\
   echo '--- 5. Node.js/npm (если нужно) + сборка фронтенда ---' && \\
   docker compose exec -T app sh -lc 'command -v npm >/dev/null 2>&1 || apk add --no-cache nodejs npm' && \\
-  docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && if [ -f package.json ]; then if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi; npm run prod; else echo "Skip: package.json not found"; fi' && \\
+  docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && if [ -f package.json ]; then if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi; npm run prod; else echo Skip: package.json not found; fi' && \\
   echo '--- 6. Composer install ---' && \\
-  docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && if [ -f composer.json ]; then composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader; else echo "Skip: composer.json not found"; fi' && \\
+  docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && if [ -f composer.json ]; then composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader; else echo Skip: composer.json not found; fi' && \\
   echo '--- 7. Artisan (storage link, migrations, cache clear) ---' && \\
   docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan storage:link --force || true' && \\
   docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan october:up' && \\
