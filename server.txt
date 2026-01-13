@@ -1,3 +1,6 @@
 ssh root@31.130.135.132
-password: mf+wnNyVN4vEa*
-domain: https://kv-tyumen.ru
+password: <store in password manager>
+URL: https://kv-tyumen.ru
+
+docker login -u ravilfromtmn
+DOCKERHUB_TOKEN=<store in password manager>
