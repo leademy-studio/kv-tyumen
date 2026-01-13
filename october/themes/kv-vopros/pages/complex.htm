@@ -26,15 +26,15 @@ function onStart()
         ->get();
 }
 ==
-{% set crBackgroundImage = services.cr_background_image ? services.cr_background_image|media : 'assets/images/tild3331-6138-4464-b465-616363356435__rectangle_4754.png'|theme %}
+{% set crBackgroundImage = services.cr_background_image ? services.cr_background_image|media : '/themes/kv-vopros/assets/images/tild3331-6138-4464-b465-616363356435__rectangle_4754.png' %}
 {% set crTitle = services.cr_title | default('Пакетный ремонт') %}
 {% set crSection2Title = services.cr_section2_title | default('Всё включено, без сюрпризов') %}
 {% set crSection2Subtitle = services.cr_section2_subtitle | default('Если вы хотите заехать в готовую квартиру без стресса и постоянного контроля — пакетный ремонт под ключ для вас.') %}
-{% set crCard1Image = services.cr_card1_image ? services.cr_card1_image|media : 'assets/images/tild3637-3366-4363-b836-666332613231_______.png'|theme %}
-{% set crCard2Image = services.cr_card2_image ? services.cr_card2_image|media : 'assets/images/tild3766-6432-4361-b035-326530303433______.png'|theme %}
-{% set crCard3Image = services.cr_card3_image ? services.cr_card3_image|media : 'assets/images/tild3334-6636-4165-b933-336332396232_______.png'|theme %}
-{% set crCard4Image = services.cr_card4_image ? services.cr_card4_image|media : 'assets/images/tild3937-6139-4534-a464-353737323864_______.png'|theme %}
-{% set crCard5Image = services.cr_card5_image ? services.cr_card5_image|media : 'assets/images/tild3964-3764-4461-b462-356261373962_______.png'|theme %}
+{% set crCard1Image = services.cr_card1_image ? services.cr_card1_image|media : '/themes/kv-vopros/assets/images/tild3637-3366-4363-b836-666332613231_______.png' %}
+{% set crCard2Image = services.cr_card2_image ? services.cr_card2_image|media : '/themes/kv-vopros/assets/images/tild3766-6432-4361-b035-326530303433______.png' %}
+{% set crCard3Image = services.cr_card3_image ? services.cr_card3_image|media : '/themes/kv-vopros/assets/images/tild3334-6636-4165-b933-336332396232_______.png' %}
+{% set crCard4Image = services.cr_card4_image ? services.cr_card4_image|media : '/themes/kv-vopros/assets/images/tild3937-6139-4534-a464-353737323864_______.png' %}
+{% set crCard5Image = services.cr_card5_image ? services.cr_card5_image|media : '/themes/kv-vopros/assets/images/tild3964-3764-4461-b462-356261373962_______.png' %}
 {% set crTariff1Title = services.cr_tariff1_title | default('Стандарт') %}
 {% set crTariff1Price = services.cr_tariff1_price | default('30 000 ₽ / м²') %}
 {% set crTariff1Feature1 = services.cr_tariff1_feature_1 | default('Базовый пакет ремонта под ключ') %}
@@ -51,7 +51,6 @@ function onStart()
 {% set crTariff2Feature5 = services.cr_tariff2_feature_5 | default('Декоративный свет в каждую комнату') %}
 
 {% put head %}
-        <base href="{{ 'assets'|theme }}/">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!--metatextblock-->
@@ -59,31 +58,31 @@ function onStart()
         <meta property="og:title" content="Пакетный ремонт" />
         <meta property="og:description" content="" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="{{ 'assets/images/tild3861-6430-4066-b137-613263646436__photo.png'|theme }}" />
+        <meta property="og:image" content="/themes/kv-vopros/assets/images/tild3861-6430-4066-b137-613263646436__photo.png" />
         <link rel="canonical" href="https://www.kv-tyumen.ru/repairs" />
         <!--/metatextblock-->
         <meta name="format-detection" content="telephone=no" />
         <meta http-equiv="x-dns-prefetch-control" content="on" />
         <link rel="dns-prefetch" href="https://ws.tildacdn.com" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="{{ 'assets/images/tild3365-6131-4163-b038-373235396664__logo.png'|theme }}" />
-        <link rel="apple-touch-icon" sizes="76x76" href="{{ 'assets/images/tild3365-6131-4163-b038-373235396664__logo.png'|theme }}" />
-        <link rel="apple-touch-icon" sizes="152x152" href="{{ 'assets/images/tild3365-6131-4163-b038-373235396664__logo.png'|theme }}" />
-        <link rel="apple-touch-startup-image" href="{{ 'assets/images/tild3365-6131-4163-b038-373235396664__logo.png'|theme }}" />
+        <link rel="apple-touch-icon" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png" />
+        <link rel="apple-touch-startup-image" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png" />
         <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="msapplication-TileImage" content="{{ 'assets/images/tild6165-3039-4231-b863-383936363934__logo.png'|theme }}" />
+        <meta name="msapplication-TileImage" content="/themes/kv-vopros/assets/images/tild6165-3039-4231-b863-383936363934__logo.png" />
         <!-- Assets -->
         <script src="https://neo.tildacdn.com/js/tilda-fallback-1.0.min.js" async charset="utf-8"></script>
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-grid-3.0.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-grid-3.0.min.css"
             type="text/css"
             media="all"
             onerror="this.loaderr='y';"
         />
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-blocks-page91258946.min.css?t=1767512178'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-blocks-page91258946.min.css?t=1767512178"
             type="text/css"
             media="all"
             onerror="this.loaderr='y';"
@@ -95,62 +94,62 @@ function onStart()
         />
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-animation-2.0.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-animation-2.0.min.css"
             type="text/css"
             media="all"
             onerror="this.loaderr='y';"
         />
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-popup-1.1.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-popup-1.1.min.css"
             type="text/css"
             media="print"
             onload="this.media='all';"
             onerror="this.loaderr='y';"
         />
-        <noscript><link rel="stylesheet" href="{{ 'assets/css/tilda-popup-1.1.min.css'|theme }}" type="text/css" media="all" /></noscript>
+        <noscript><link rel="stylesheet" href="/themes/kv-vopros/assets/css/tilda-popup-1.1.min.css" type="text/css" media="all" /></noscript>
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-slds-1.4.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-slds-1.4.min.css"
             type="text/css"
             media="print"
             onload="this.media='all';"
             onerror="this.loaderr='y';"
         />
-        <noscript><link rel="stylesheet" href="{{ 'assets/css/tilda-slds-1.4.min.css'|theme }}" type="text/css" media="all" /></noscript>
+        <noscript><link rel="stylesheet" href="/themes/kv-vopros/assets/css/tilda-slds-1.4.min.css" type="text/css" media="all" /></noscript>
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-catalog-1.1.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-catalog-1.1.min.css"
             type="text/css"
             media="print"
             onload="this.media='all';"
             onerror="this.loaderr='y';"
         />
-        <noscript><link rel="stylesheet" href="{{ 'assets/css/tilda-catalog-1.1.min.css'|theme }}" type="text/css" media="all" /></noscript>
+        <noscript><link rel="stylesheet" href="/themes/kv-vopros/assets/css/tilda-catalog-1.1.min.css" type="text/css" media="all" /></noscript>
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-forms-1.0.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-forms-1.0.min.css"
             type="text/css"
             media="all"
             onerror="this.loaderr='y';"
         />
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-catalog-filters-1.0.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-catalog-filters-1.0.min.css"
             type="text/css"
             media="all"
             onerror="this.loaderr='y';"
         />
         <link
             rel="stylesheet"
-            href="{{ 'assets/css/tilda-zoom-2.0.min.css'|theme }}"
+            href="/themes/kv-vopros/assets/css/tilda-zoom-2.0.min.css"
             type="text/css"
             media="print"
             onload="this.media='all';"
             onerror="this.loaderr='y';"
         />
-        <noscript><link rel="stylesheet" href="{{ 'assets/css/tilda-zoom-2.0.min.css'|theme }}" type="text/css" media="all" /></noscript>
-        <script nomodule src="{{ 'assets/js/tilda-polyfill-1.0.min.js'|theme }}" charset="utf-8"></script>
+        <noscript><link rel="stylesheet" href="/themes/kv-vopros/assets/css/tilda-zoom-2.0.min.css" type="text/css" media="all" /></noscript>
+        <script nomodule src="/themes/kv-vopros/assets/js/tilda-polyfill-1.0.min.js" charset="utf-8"></script>
         <script type="text/javascript">
             function t_onReady(func) {
                 if (document.readyState != "loading") {
@@ -242,32 +241,32 @@ function onStart()
             }
             (window.TN_SCALE_INITIAL_VER = "1.0"), (window.tn_scale_initial_window_width = null);
         </script>
-        <script src="{{ 'assets/js/jquery-1.10.2.min.js'|theme }}" charset="utf-8" onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-scripts-3.0.min.js'|theme }}" charset="utf-8" defer onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/jquery-1.10.2.min.js" charset="utf-8" onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-scripts-3.0.min.js" charset="utf-8" defer onerror="this.loaderr='y';"></script>
         <script
-            src="{{ 'assets/js/tilda-blocks-page91258946.min.js?t=1767512178'|theme }}"
+            src="/themes/kv-vopros/assets/js/tilda-blocks-page91258946.min.js?t=1767512178"
             charset="utf-8"
             async
             onerror="this.loaderr='y';"
         ></script>
-        <script src="{{ 'assets/js/lazyload-1.3.min.export.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-animation-2.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-zero-1.1.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/hammer.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-slds-1.4.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-products-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-catalog-1.1.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-popup-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-forms-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-zero-forms-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-animation-sbs-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-zoom-2.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-zero-scale-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-zero-fixed-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
-        <script src="{{ 'assets/js/tilda-events-1.0.min.js'|theme }}" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/lazyload-1.3.min.export.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-animation-2.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-zero-1.1.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/hammer.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-slds-1.4.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-products-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-catalog-1.1.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-popup-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-forms-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-zero-forms-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-animation-sbs-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-zoom-2.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-zero-scale-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-zero-fixed-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
+        <script src="/themes/kv-vopros/assets/js/tilda-events-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script>
         <script
             type="text/javascript"
-            src="{{ 'assets/js/tilda-lk-dashboard-1.0.min.js'|theme }}"
+            src="/themes/kv-vopros/assets/js/tilda-lk-dashboard-1.0.min.js"
             charset="utf-8"
             async
             onerror="this.loaderr='y';"
@@ -419,7 +418,7 @@ function onStart()
                 display: none !important;
             }
         </style>
-        <link rel="stylesheet" href="{{ 'assets/css/portfolio-grid.css'|theme }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="/themes/kv-vopros/assets/css/portfolio-grid.css" type="text/css" media="all" />
 {% endput %}
 {% put scripts %}
 <script>
@@ -1160,8 +1159,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="#rec1525567271">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild3432-6565-4435-b439-343033393630___.svg'|theme }}"
-                                        src="{{ 'assets/images/tild3432-6565-4435-b439-343033393630___.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild3432-6565-4435-b439-343033393630___.svg"
+                                        src="/themes/kv-vopros/assets/images/tild3432-6565-4435-b439-343033393630___.svg"
                                         alt=""
                                         imgfield="tn_img_1762311617527"
                                     />
@@ -1221,8 +1220,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="#zeropopup">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild3863-3839-4864-b438-633566343830__photo.svg'|theme }}"
-                                        src="{{ 'assets/images/tild3863-3839-4864-b438-633566343830__photo.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild3863-3839-4864-b438-633566343830__photo.svg"
+                                        src="/themes/kv-vopros/assets/images/tild3863-3839-4864-b438-633566343830__photo.svg"
                                         alt=""
                                         imgfield="tn_img_1762323782953"
                                     />
@@ -1308,8 +1307,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="/">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild6435-3730-4332-b561-623465626532_____.svg'|theme }}"
-                                        src="{{ 'assets/images/tild6435-3730-4332-b561-623465626532_____.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild6435-3730-4332-b561-623465626532_____.svg"
+                                        src="/themes/kv-vopros/assets/images/tild6435-3730-4332-b561-623465626532_____.svg"
                                         alt=""
                                         imgfield="tn_img_1762333316912"
                                     />
@@ -1882,8 +1881,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <div class="tn-atom">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild6134-3165-4466-b662-646536323536____.svg'|theme }}"
-                                        src="{{ 'assets/images/tild6134-3165-4466-b662-646536323536____.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild6134-3165-4466-b662-646536323536____.svg"
+                                        src="/themes/kv-vopros/assets/images/tild6134-3165-4466-b662-646536323536____.svg"
                                         alt=""
                                         imgfield="tn_img_176240016524012740"
                                     />
@@ -2479,8 +2478,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <div class="tn-atom">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild6134-3165-4466-b662-646536323536____.svg'|theme }}"
-                                        src="{{ 'assets/images/tild6134-3165-4466-b662-646536323536____.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild6134-3165-4466-b662-646536323536____.svg"
+                                        src="/themes/kv-vopros/assets/images/tild6134-3165-4466-b662-646536323536____.svg"
                                         alt=""
                                         imgfield="tn_img_176240016524012740"
                                     />
@@ -3099,8 +3098,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="#rec1525567261">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild3432-6565-4435-b439-343033393630___.svg'|theme }}"
-                                        src="{{ 'assets/images/tild3432-6565-4435-b439-343033393630___.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild3432-6565-4435-b439-343033393630___.svg"
+                                        src="/themes/kv-vopros/assets/images/tild3432-6565-4435-b439-343033393630___.svg"
                                         alt=""
                                         imgfield="tn_img_1762311617527"
                                     />
@@ -3160,8 +3159,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="#zeropopup">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild3863-3839-4864-b438-633566343830__photo.svg'|theme }}"
-                                        src="{{ 'assets/images/tild3863-3839-4864-b438-633566343830__photo.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild3863-3839-4864-b438-633566343830__photo.svg"
+                                        src="/themes/kv-vopros/assets/images/tild3863-3839-4864-b438-633566343830__photo.svg"
                                         alt=""
                                         imgfield="tn_img_1762323782953"
                                     />
@@ -3245,8 +3244,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="/">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild6435-3730-4332-b561-623465626532_____.svg'|theme }}"
-                                        src="{{ 'assets/images/tild6435-3730-4332-b561-623465626532_____.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild6435-3730-4332-b561-623465626532_____.svg"
+                                        src="/themes/kv-vopros/assets/images/tild6435-3730-4332-b561-623465626532_____.svg"
                                         alt=""
                                         imgfield="tn_img_1762333316912"
                                     />
@@ -7448,8 +7447,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="#closepopup">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild3263-3263-4431-a234-626462396665__rhtcn_vty.svg'|theme }}"
-                                        src="{{ 'assets/images/tild3263-3263-4431-a234-626462396665__rhtcn_vty.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild3263-3263-4431-a234-626462396665__rhtcn_vty.svg"
+                                        src="/themes/kv-vopros/assets/images/tild3263-3263-4431-a234-626462396665__rhtcn_vty.svg"
                                         alt=""
                                         imgfield="tn_img_176239873114963230"
                                     />
@@ -8161,8 +8160,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <a class="tn-atom" href="#closepopup">
                                     <img
                                         class="tn-atom__img t-img"
-                                        data-original="{{ 'assets/images/tild3162-6139-4135-b031-396231323536___.svg'|theme }}"
-                                        src="{{ 'assets/images/tild3162-6139-4135-b031-396231323536___.svg'|theme }}"
+                                        data-original="/themes/kv-vopros/assets/images/tild3162-6139-4135-b031-396231323536___.svg"
+                                        src="/themes/kv-vopros/assets/images/tild3162-6139-4135-b031-396231323536___.svg"
                                         alt=""
                                         imgfield="tn_img_176250477871212120"
                                     />
@@ -10998,8 +10997,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 16px;
                         height: 16px;
                         order: 1;
-                        --icon: url("{{ 'assets/images/tild3931-6130-4439-b937-663430353633_____.svg'|theme }}");
-                        --icon-hover: url("{{ 'assets/images/tild3839-3963-4432-a332-363431356334_____.svg'|theme }}");
+                        --icon: url("/themes/kv-vopros/assets/images/tild3931-6130-4439-b937-663430353633_____.svg");
+                        --icon-hover: url("/themes/kv-vopros/assets/images/tild3839-3963-4432-a332-363431356334_____.svg");
                     }
                     #rec1505141701 .tn-elem[data-elem-id="176191563716710940"] .tn-atom .tn-atom__button-content {
                         column-gap: 100px;
@@ -11800,8 +11799,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 16px;
                         height: 16px;
                         order: 1;
-                        --icon: url("{{ 'assets/images/tild3931-6130-4439-b937-663430353633_____.svg'|theme }}");
-                        --icon-hover: url("{{ 'assets/images/tild3839-3963-4432-a332-363431356334_____.svg'|theme }}");
+                        --icon: url("/themes/kv-vopros/assets/images/tild3931-6130-4439-b937-663430353633_____.svg");
+                        --icon-hover: url("/themes/kv-vopros/assets/images/tild3839-3963-4432-a332-363431356334_____.svg");
                     }
                     #rec1505141701 .tn-elem[data-elem-id="176250096849656930"] .tn-atom .tn-atom__button-content {
                         column-gap: 100px;
@@ -12165,8 +12164,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 16px;
                         height: 16px;
                         order: 1;
-                        --icon: url("{{ 'assets/images/tild3931-6130-4439-b937-663430353633_____.svg'|theme }}");
-                        --icon-hover: url("{{ 'assets/images/tild3839-3963-4432-a332-363431356334_____.svg'|theme }}");
+                        --icon: url("/themes/kv-vopros/assets/images/tild3931-6130-4439-b937-663430353633_____.svg");
+                        --icon-hover: url("/themes/kv-vopros/assets/images/tild3839-3963-4432-a332-363431356334_____.svg");
                     }
                     #rec1505141701 .tn-elem[data-elem-id="176250099496731640"] .tn-atom .tn-atom__button-content {
                         column-gap: 100px;
@@ -12458,7 +12457,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="{{ 'assets/images/tild3964-3232-4136-a532-356464636334__rectangle_4747.png'|theme }}"
+                                data-original="/themes/kv-vopros/assets/images/tild3964-3232-4136-a532-356464636334__rectangle_4747.png"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -12957,7 +12956,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="{{ 'assets/images/tild6162-6536-4532-b263-346432323130__rectangle_4748.png'|theme }}"
+                                data-original="/themes/kv-vopros/assets/images/tild6162-6536-4532-b263-346432323130__rectangle_4748.png"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -13423,7 +13422,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="{{ 'assets/images/tild3133-3335-4466-b536-643836373637__rectangle_4736.png'|theme }}"
+                                data-original="/themes/kv-vopros/assets/images/tild3133-3335-4466-b536-643836373637__rectangle_4736.png"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -14339,8 +14338,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 16px;
                         height: 16px;
                         order: 1;
-                        --icon: url("{{ 'assets/images/tild3931-6130-4439-b937-663430353633_____.svg'|theme }}");
-                        --icon-hover: url("{{ 'assets/images/tild3839-3963-4432-a332-363431356334_____.svg'|theme }}");
+                        --icon: url("/themes/kv-vopros/assets/images/tild3931-6130-4439-b937-663430353633_____.svg");
+                        --icon-hover: url("/themes/kv-vopros/assets/images/tild3839-3963-4432-a332-363431356334_____.svg");
                     }
                     #rec1528079061 .tn-elem[data-elem-id="176250105837616060"] .tn-atom .tn-atom__button-content {
                         column-gap: 100px;
@@ -15147,8 +15146,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 16px;
                         height: 16px;
                         order: 1;
-                        --icon: url("{{ 'assets/images/tild3931-6130-4439-b937-663430353633_____.svg'|theme }}");
-                        --icon-hover: url("{{ 'assets/images/tild3839-3963-4432-a332-363431356334_____.svg'|theme }}");
+                        --icon: url("/themes/kv-vopros/assets/images/tild3931-6130-4439-b937-663430353633_____.svg");
+                        --icon-hover: url("/themes/kv-vopros/assets/images/tild3839-3963-4432-a332-363431356334_____.svg");
                     }
                     #rec1528079061 .tn-elem[data-elem-id="176250106379153090"] .tn-atom .tn-atom__button-content {
                         column-gap: 100px;
@@ -15518,8 +15517,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 16px;
                         height: 16px;
                         order: 1;
-                        --icon: url("{{ 'assets/images/tild3931-6130-4439-b937-663430353633_____.svg'|theme }}");
-                        --icon-hover: url("{{ 'assets/images/tild3839-3963-4432-a332-363431356334_____.svg'|theme }}");
+                        --icon: url("/themes/kv-vopros/assets/images/tild3931-6130-4439-b937-663430353633_____.svg");
+                        --icon-hover: url("/themes/kv-vopros/assets/images/tild3839-3963-4432-a332-363431356334_____.svg");
                     }
                     #rec1528079061 .tn-elem[data-elem-id="176250102505131110"] .tn-atom .tn-atom__button-content {
                         column-gap: 100px;
@@ -15721,7 +15720,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="{{ 'assets/images/tild6361-3565-4363-b763-376165363462__rectangle_4747.png'|theme }}"
+                                data-original="/themes/kv-vopros/assets/images/tild6361-3565-4363-b763-376165363462__rectangle_4747.png"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -16220,7 +16219,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="{{ 'assets/images/tild3732-3966-4039-a131-316336643231__rectangle_4748.png'|theme }}"
+                                data-original="/themes/kv-vopros/assets/images/tild3732-3966-4039-a131-316336643231__rectangle_4748.png"
                                 aria-label=""
                                 role="img"
                             ></div>
@@ -16686,7 +16685,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         >
                             <div
                                 class="tn-atom t-bgimg"
-                                data-original="{{ 'assets/images/tild3863-6331-4231-a636-623065306462__rectangle_4736.png'|theme }}"
+                                data-original="/themes/kv-vopros/assets/images/tild3863-6331-4231-a636-623065306462__rectangle_4736.png"
                                 aria-label=""
                                 role="img"
                             ></div>
