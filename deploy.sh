@@ -91,6 +91,10 @@ if [ -f .env.deploy.backup ]; then
   mv .env.deploy.backup .env
 fi
 
+echo '--- 1.1 Подготовка acme.json для Traefik ---'
+touch traefik/acme.json
+chmod 600 traefik/acme.json
+
 echo '--- 2. Поднимаем/обновляем контейнеры (без удаления volumes) ---'
 docker compose up -d --build
 
