@@ -56,7 +56,7 @@ echo "OK: Код успешно отправлен на GitHub."
 # 3. Подключаемся к серверу и скачиваем обновления
 echo "--- 2/2: Деплой на сервер ---"
 
-ssh "${REMOTE_USER}@${REMOTE_HOST}" bash -se <<EOF
+ssh "${REMOTE_USER}@${REMOTE_HOST}" "REMOTE_PATH='${REMOTE_PATH}' GIT_BRANCH='${GIT_BRANCH}' bash -se" <<'EOF'
 set -euo pipefail
 
 cd "${REMOTE_PATH}"
