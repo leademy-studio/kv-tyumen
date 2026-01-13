@@ -25,9 +25,13 @@ fi
 # Опционально: можно раскомментировать для автоматического запуска миграций при старте
 # php artisan migrate --force
 
-# 4. Создание супер-пользователя для Backend панели (для тестирования)
+# 4. Создание супер-пользователя для Backend панели (если команда доступна)
 echo "Creating/updating Backend superuser..."
-php artisan kv:create-superuser "admin" "admin@localhost" "15ae57c4666e804280dba5ba"
+if php artisan list --raw | grep -q '^kv:create-superuser'; then
+  php artisan kv:create-superuser "admin" "admin@localhost" "15ae57c4666e804280dba5ba"
+else
+  echo "Skipping kv:create-superuser: command not found."
+fi
 
 # 5. Запуск основного процесса контейнера (php-fpm)
 if [ "$#" -eq 0 ]; then
