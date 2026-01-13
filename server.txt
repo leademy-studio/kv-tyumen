@@ -4,3 +4,4 @@ URL: https://kv-tyumen.ru
 
 docker login -u ravilfromtmn
 DOCKERHUB_TOKEN=<store in password manager>
+ssh
