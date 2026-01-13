@@ -28,6 +28,8 @@ REMOTE_PATH="/var/www/kv-tyumen"
 
 # Ветка для деплоя
 GIT_BRANCH="main"
+# Репозиторий для клонирования на сервере
+GIT_REPO="https://github.com/leademy-studio/kv-tyumen/"
 
 # --- КОД СКРИПТА ---
 
@@ -57,12 +59,24 @@ echo "--- 2/2: Деплой на сервер ---"
 
 REMOTE_COMMANDS="
   set -euo pipefail && \\
-  cd ${REMOTE_PATH} && \\
-  echo '--- 1. Обновление кода (с сохранением серверного .env) ---' && \\
-  if [ -f .env ]; then cp .env .env.deploy.backup; fi && \\
-  git fetch origin ${GIT_BRANCH} && \\
-  git reset --hard origin/${GIT_BRANCH} && \\
-  if [ -f .env.deploy.backup ]; then mv .env.deploy.backup .env; fi && \\
+  if [ -d \"${REMOTE_PATH}/.git\" ]; then \\
+    cd ${REMOTE_PATH} && \\
+    echo '--- 1. Обновление кода (с сохранением серверного .env) ---' && \\
+    if [ -f .env ]; then cp .env .env.deploy.backup; fi && \\
+    git fetch origin ${GIT_BRANCH} && \\
+    git reset --hard origin/${GIT_BRANCH} && \\
+    if [ -f .env.deploy.backup ]; then mv .env.deploy.backup .env; fi; \\
+  else \\
+    if [ -d \"${REMOTE_PATH}\" ] && [ -n \"\$(ls -A ${REMOTE_PATH} 2>/dev/null)\" ]; then \\
+      echo 'ERROR: ${REMOTE_PATH} существует и не является git-репозиторием.'; \\
+      echo 'Очистите папку или укажите другой путь для деплоя.'; \\
+      exit 1; \\
+    fi; \\
+    echo '--- 1. Клонирование репозитория ---' && \\
+    mkdir -p ${REMOTE_PATH} && \\
+    git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${REMOTE_PATH} && \\
+    cd ${REMOTE_PATH}; \\
+  fi && \\
   echo '--- 1.1 Подготовка acme.json для Traefik ---' && \\
   mkdir -p traefik && touch traefik/acme.json && chmod 600 traefik/acme.json && \\
   echo '--- 2. Проверка Docker ---' && \\
