@@ -1,0 +1,363 @@
+[
+    {
+        "id": 1,
+        "title": "Европейский квартал",
+        "slug": "evropejskij-kvartal",
+        "is_enabled": 1,
+        "published_at": "2026-01-10 00:00:00",
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "package-repair",
+        "main_image": [
+            "\/portfolio\/repairs\/euro-kvartal\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/euro-kvartal\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1440.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1441.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1442.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1443.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1444.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1445.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1446.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1447.webp",
+            "\/portfolio\/repairs\/euro-kvartal\/IMG_1448.webp"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Айвазовский",
+        "slug": "ajvazovskij",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/ayvazovsky\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/ayvazovsky\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1450.webp",
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1451.webp",
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1452.webp",
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1453.webp",
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1454.webp",
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1455.webp",
+            "\/portfolio\/repairs\/aivazovsky\/IMG_1456.webp"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Чаркова",
+        "slug": "charkova",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "package-repair",
+        "main_image": [
+            "\/portfolio\/repairs\/charkova\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/charkova\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/charkova\/IMG_1457.webp",
+            "\/portfolio\/repairs\/charkova\/IMG_1460.webp",
+            "\/portfolio\/repairs\/charkova\/IMG_1461.webp",
+            "\/portfolio\/repairs\/charkova\/IMG_1462.webp",
+            "\/portfolio\/repairs\/charkova\/IMG_1463.webp"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Энергетиков",
+        "slug": "energetikov",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "package-repair",
+        "main_image": [
+            "\/portfolio\/repairs\/energetikov\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/energetikov\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/energetikov\/IMG_1419.webp",
+            "\/portfolio\/repairs\/energetikov\/IMG_1420.webp",
+            "\/portfolio\/repairs\/energetikov\/IMG_1421.webp",
+            "\/portfolio\/repairs\/energetikov\/IMG_1422.webp",
+            "\/portfolio\/repairs\/energetikov\/IMG_1423.webp",
+            "\/portfolio\/repairs\/energetikov\/IMG_1425.webp",
+            "\/portfolio\/repairs\/energetikov\/IMG_1427.webp"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Мельникайте",
+        "slug": "melnikajte",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "package-repair",
+        "main_image": [
+            "\/portfolio\/repairs\/melnikayte\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/melnikayte\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/melnikayte\/IMG_1429.webp",
+            "\/portfolio\/repairs\/melnikayte\/IMG_1431.webp",
+            "\/portfolio\/repairs\/melnikayte\/IMG_1432.webp",
+            "\/portfolio\/repairs\/melnikayte\/IMG_1435.webp",
+            "\/portfolio\/repairs\/melnikayte\/IMG_1436.webp"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Муравленко",
+        "slug": "muravlenko",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/muravlenko\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/muravlenko\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/muravlenko\/IMG_3645-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3657-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3665-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3681-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3693-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3697-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3705-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3713-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3733-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3741-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3757-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3781-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3789-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3805-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3813-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3821-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3833-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3841-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3857-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3861-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3873-HDR.webp",
+            "\/portfolio\/repairs\/muravlenko\/IMG_3905-HDR.webp"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Падерино",
+        "slug": "paderino",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/paderino\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/paderino\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/paderino\/IMG_7307-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7311-HDR_1.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7319-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7327-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7339-HDR_1.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7343-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7351-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7367-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7423-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7479-HDR.webp",
+            "\/portfolio\/repairs\/paderino\/IMG_7547-HDR.webp"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Видный",
+        "slug": "vidnyj",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/vidniy\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/vidniy\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/vidniy\/IMG_4181.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4184.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4186.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4188.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4189.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4192.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4196.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4199.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4200.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4203.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4245.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4247.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4249.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4256.webp",
+            "\/portfolio\/repairs\/vidniy\/IMG_4258.webp"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Пожарных и спасателей",
+        "slug": "pozharnyh-i-spasatelej",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/pozharnykh\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/pozharnykh\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7650.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7652.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7672.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7682.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7689.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7690.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7697.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7700.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7706.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7711.webp",
+            "\/portfolio\/repairs\/pozharnykh\/_ASC7714.webp",
+            "\/portfolio\/repairs\/pozharnykh\/IMG_2941_1.webp"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Перевалово",
+        "slug": "perevalovo",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/perevalovo\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/perevalovo\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/perevalovo\/IMG_0284.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0319-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0335-HDR_1.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0367-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0387-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0407-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0419-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0515-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0535-HDR_1.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0563-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0583-HDR_1.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0603-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0623-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0643-HDR_1.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0647-HDR.webp",
+            "\/portfolio\/repairs\/perevalovo\/IMG_0655-HDR.webp"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Суходолье",
+        "slug": "suhodole",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/sukhodolye\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/sukhodolye\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/sukhodolye\/IMG_0986-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_0998-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_0986-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_0998-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1018-HDR_.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1022-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1026-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1034-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1042-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1050-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1058-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1062-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1066-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1070-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1094-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1114-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1210-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1222-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1242-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1266-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1278-HDR.webp",
+            "\/portfolio\/repairs\/sukhodolye\/IMG_1290-HDR.webp"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Домашний",
+        "slug": "domashnij",
+        "is_enabled": 1,
+        "published_at": null,
+        "expired_at": null,
+        "content_group": null,
+        "service_type": "design-project",
+        "main_image": [
+            "\/portfolio\/repairs\/domashniy\/Главное фото.webp"
+        ],
+        "banner_image": [
+            "\/portfolio\/repairs\/domashniy\/Главное фото.webp"
+        ],
+        "gallery_images": [
+            "\/portfolio\/repairs\/domashniy\/IMG_1286.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1301.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1305.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1311.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1320.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1338.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1341.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1351.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1355.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1358.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1360.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1365.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1366.webp",
+            "\/portfolio\/repairs\/domashniy\/IMG_1375.webp"
+        ]
+    }
+]
