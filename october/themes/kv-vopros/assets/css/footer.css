@@ -50,7 +50,7 @@
 }
 
 .footer-link:hover {
-    color: #b9ea00;
+    color: #b9ea00 !important;
 }
 
 .footer-address {
