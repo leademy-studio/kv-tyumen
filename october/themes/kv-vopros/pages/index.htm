@@ -87,6 +87,7 @@ handle = "Site\\MainPage"
   </noscript>
   <link href="/themes/kv-vopros/assets/css/tilda-forms-1.0.min.css" media="all" onerror="this.loaderr='y';" rel="stylesheet" type="text/css"/>
   <link href="/themes/kv-vopros/assets/css/main.css" rel="stylesheet" type="text/css"/>
+  <link href="/themes/kv-vopros/assets/css/preloader.css" rel="stylesheet" type="text/css"/>
   <script charset="utf-8" nomodule="" src="/themes/kv-vopros/assets/js/tilda-polyfill-1.0.min.js">
   </script>
   <script type="text/javascript">
@@ -330,6 +331,10 @@ handle = "Site\\MainPage"
             })();
   </script>
 {% endput %}
+  <div class="site-preloader" data-site-preloader hidden aria-hidden="true">
+   <div class="site-preloader__spinner" role="status" aria-label="Loading">
+   </div>
+  </div>
   <!--allrecords-->
   <div class="t-records" data-hook="blocks-collection-content-node" data-tilda-export="yes" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-page-id="87792296" data-tilda-project-country="RU" data-tilda-project-headcode="yes" data-tilda-project-id="5057845" data-tilda-project-lang="RU" data-tilda-root-zone="com" id="allrecords">
    {% partial 'header' %}
@@ -5066,3 +5071,7 @@ handle = "Site\\MainPage"
     <img alt="" src="https://mc.yandex.ru/watch/95716206" style="position: absolute; left: -9999px"/>
    </div>
   </noscript>
+{% put scripts %}
+  <script src="/themes/kv-vopros/assets/js/preloader.js" defer>
+  </script>
+{% endput %}

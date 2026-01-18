@@ -1,0 +1,42 @@
+.site-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8e7e6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.site-preloader.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.site-preloader__spinner {
+    width: 75px;
+    height: 75px;
+    border: 10px solid #f3f3f3;
+    border-left-color: #b9ea00;
+    border-radius: 50%;
+    animation: site-preloader-spin 1.3s linear infinite;
+}
+
+@keyframes site-preloader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-preloader__spinner {
+        animation-duration: 2.4s;
+    }
+}
