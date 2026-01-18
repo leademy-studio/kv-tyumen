@@ -38,5 +38,5 @@ fields:
 
     gallery_images:
         label: Галерея изображений
-        type: fileupload
+        type: mediafinder
         mode: image
