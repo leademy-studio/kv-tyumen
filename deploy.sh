@@ -36,23 +36,35 @@ GIT_REPO="https://github.com/leademy-studio/kv-tyumen/"
 # Выходим, если любая команда завершилась с ошибкой
 set -e
 
-# 1. Запрашиваем у пользователя сообщение для коммита
-read -r -p "Введите сообщение для коммита: " COMMIT_MESSAGE
-
-# Проверяем, что сообщение не пустое
-if [ -z "$COMMIT_MESSAGE" ]; then
-  echo
-  echo "Ошибка: Сообщение для коммита не может быть пустым."
-  exit 1
-fi
-
-# 2. Добавляем и отправляем изменения на GitHub
+# 1. Добавляем и отправляем изменения на GitHub
 echo "--- 1/2: Отправка изменений на GitHub ---"
 git add -A
-git commit -m "$COMMIT_MESSAGE"
-git push origin "$GIT_BRANCH"
+git fetch -q origin "$GIT_BRANCH"
 
-echo "OK: Код успешно отправлен на GitHub."
+if git diff --cached --quiet; then
+  AHEAD_COUNT=$(git rev-list --count "origin/${GIT_BRANCH}..${GIT_BRANCH}")
+  if [ "$AHEAD_COUNT" -gt 0 ]; then
+    echo "Нет новых локальных изменений, но есть ${AHEAD_COUNT} незапушенных коммит(ов). Пушим..."
+    git push origin "$GIT_BRANCH"
+    echo "OK: Коммиты отправлены на GitHub."
+  else
+    echo "Нет локальных изменений и незапушенных коммитов. Пропускаем commit/push."
+  fi
+else
+  # Запрашиваем у пользователя сообщение для коммита
+  read -r -p "Введите сообщение для коммита: " COMMIT_MESSAGE
+
+  # Проверяем, что сообщение не пустое
+  if [ -z "$COMMIT_MESSAGE" ]; then
+    echo
+    echo "Ошибка: Сообщение для коммита не может быть пустым."
+    exit 1
+  fi
+
+  git commit -m "$COMMIT_MESSAGE"
+  git push origin "$GIT_BRANCH"
+  echo "OK: Код успешно отправлен на GitHub."
+fi
 
 # 3. Подключаемся к серверу и скачиваем обновления
 echo "--- 2/2: Деплой на сервер ---"
