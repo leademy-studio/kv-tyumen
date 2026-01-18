@@ -11,25 +11,40 @@ handle = "Site\\MainPage"
 {% set block2Image = mainPage.block2_image ? mainPage.block2_image|media : '/themes/kv-vopros/assets/images/tild6261-6639-4034-a538-626363373736___.png' %}
 {% set block3Image = mainPage.block3_image ? mainPage.block3_image|media : '/themes/kv-vopros/assets/images/tild3532-6635-4636-b735-323635396665___.png' %}
 
-{% set case1Url = mainPage.case1_url ?: '/perevalovo' %}
-{% set case1Title = mainPage.case1_title ?: 'Перевалово' %}
-{% set case1Service = mainPage.case1_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case1Image = mainPage.case1_image ? mainPage.case1_image|media : '/themes/kv-vopros/assets/images/tild6161-3733-4563-a161-303736643237__rectangle_4710.png' %}
+{% set serviceTypeLabels = {
+    'design-project': 'Ремонт по дизайн-проекту',
+    'package-repair': 'Пакетный ремонт'
+} %}
 
-{% set case2Url = mainPage.case2_url ?: '/berezyaki' %}
-{% set case2Title = mainPage.case2_title ?: 'Березяки' %}
-{% set case2Service = mainPage.case2_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case2Image = mainPage.case2_image ? mainPage.case2_image|media : '/themes/kv-vopros/assets/images/tild6536-6533-4262-b839-653831316135__rectangle_4711.png' %}
+{% set casesEntries = mainPage.cases_entries ?: [] %}
+{% set case1Entry = casesEntries|length > 0 ? casesEntries[0] : null %}
+{% set case2Entry = casesEntries|length > 1 ? casesEntries[1] : null %}
+{% set case3Entry = casesEntries|length > 2 ? casesEntries[2] : null %}
+{% set case4Entry = casesEntries|length > 3 ? casesEntries[3] : null %}
 
-{% set case3Url = mainPage.case3_url ?: '/paderina' %}
-{% set case3Title = mainPage.case3_title ?: 'Падерина' %}
-{% set case3Service = mainPage.case3_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case3Image = mainPage.case3_image ? mainPage.case3_image|media : '/themes/kv-vopros/assets/images/tild6132-3530-4363-a336-386466376439__rectangle_4712.png' %}
+{% set case1Url = case1Entry ? '/portfolio/' ~ case1Entry.slug : (mainPage.case1_url ?: '/perevalovo') %}
+{% set case1Title = case1Entry ? case1Entry.title : (mainPage.case1_title ?: 'Перевалово') %}
+{% set case1Service = case1Entry ? (serviceTypeLabels[case1Entry.service_type] ?? case1Entry.service_type) : (mainPage.case1_service ?: 'Ремонт по дизайн-проекту') %}
+{% set case1HeroImage = case1Entry ? (case1Entry.banner_image ?: case1Entry.main_image) : null %}
+{% set case1Image = case1HeroImage ? case1HeroImage|media : (mainPage.case1_image ? mainPage.case1_image|media : '/themes/kv-vopros/assets/images/tild6161-3733-4563-a161-303736643237__rectangle_4710.png') %}
 
-{% set case4Url = mainPage.case4_url ?: '/myravlenko' %}
-{% set case4Title = mainPage.case4_title ?: 'Муравленко' %}
-{% set case4Service = mainPage.case4_service ?: 'Ремонт по дизайн-проекту' %}
-{% set case4Image = mainPage.case4_image ? mainPage.case4_image|media : '/themes/kv-vopros/assets/images/tild3633-3437-4731-b731-333236666338__rectangle_4709.png' %}
+{% set case2Url = case2Entry ? '/portfolio/' ~ case2Entry.slug : (mainPage.case2_url ?: '/berezyaki') %}
+{% set case2Title = case2Entry ? case2Entry.title : (mainPage.case2_title ?: 'Березяки') %}
+{% set case2Service = case2Entry ? (serviceTypeLabels[case2Entry.service_type] ?? case2Entry.service_type) : (mainPage.case2_service ?: 'Ремонт по дизайн-проекту') %}
+{% set case2HeroImage = case2Entry ? (case2Entry.banner_image ?: case2Entry.main_image) : null %}
+{% set case2Image = case2HeroImage ? case2HeroImage|media : (mainPage.case2_image ? mainPage.case2_image|media : '/themes/kv-vopros/assets/images/tild6536-6533-4262-b839-653831316135__rectangle_4711.png') %}
+
+{% set case3Url = case3Entry ? '/portfolio/' ~ case3Entry.slug : (mainPage.case3_url ?: '/paderina') %}
+{% set case3Title = case3Entry ? case3Entry.title : (mainPage.case3_title ?: 'Падерина') %}
+{% set case3Service = case3Entry ? (serviceTypeLabels[case3Entry.service_type] ?? case3Entry.service_type) : (mainPage.case3_service ?: 'Ремонт по дизайн-проекту') %}
+{% set case3HeroImage = case3Entry ? (case3Entry.banner_image ?: case3Entry.main_image) : null %}
+{% set case3Image = case3HeroImage ? case3HeroImage|media : (mainPage.case3_image ? mainPage.case3_image|media : '/themes/kv-vopros/assets/images/tild6132-3530-4363-a336-386466376439__rectangle_4712.png') %}
+
+{% set case4Url = case4Entry ? '/portfolio/' ~ case4Entry.slug : (mainPage.case4_url ?: '/myravlenko') %}
+{% set case4Title = case4Entry ? case4Entry.title : (mainPage.case4_title ?: 'Муравленко') %}
+{% set case4Service = case4Entry ? (serviceTypeLabels[case4Entry.service_type] ?? case4Entry.service_type) : (mainPage.case4_service ?: 'Ремонт по дизайн-проекту') %}
+{% set case4HeroImage = case4Entry ? (case4Entry.banner_image ?: case4Entry.main_image) : null %}
+{% set case4Image = case4HeroImage ? case4HeroImage|media : (mainPage.case4_image ? mainPage.case4_image|media : '/themes/kv-vopros/assets/images/tild3633-3437-4731-b731-333236666338__rectangle_4709.png') %}
 
 {% set advantagesImage = mainPage.advantages_image ? mainPage.advantages_image|media : '/themes/kv-vopros/assets/images/tild6565-6237-4266-b763-663834336663____1_1.png' %}
 {% put head %}
@@ -5051,4 +5066,3 @@ handle = "Site\\MainPage"
     <img alt="" src="https://mc.yandex.ru/watch/95716206" style="position: absolute; left: -9999px"/>
    </div>
   </noscript>
-

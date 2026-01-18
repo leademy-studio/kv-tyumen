@@ -40,6 +40,14 @@ fields:
         type: section
         tab: Кейсы
 
+    cases_entries:
+        label: Карточки портфолио (4)
+        commentAbove: 'Выберите 4 кейса: ссылки, hero-изображения и типы ремонта берутся из записи.'
+        type: entries
+        source: Site\CaseStudy
+        maxItems: 4
+        tab: Кейсы
+
     _section_advantages:
         label: Преимущества
         type: section
