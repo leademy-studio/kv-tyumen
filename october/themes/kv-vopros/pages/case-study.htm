@@ -20,7 +20,6 @@ function onStart()
         return \Redirect::to('/404');
     }
 
-    $case->load('gallery_images');
     $this['case'] = $case;
 }
 ==
@@ -8225,12 +8224,16 @@ document.addEventListener('DOMContentLoaded', function () {
             {% for row in gallery|batch(5) %}
                 <div class="case-study-gallery {% if loop.index is odd %}large-left{% else %}large-right{% endif %}">
                     {% if row[0] is defined %}
-                    <div class="gallery-item large-image" style="background-image: url('{{ row[0].path }}');"></div>
+                    {% set firstImage = row[0] %}
+                    {% set firstImageUrl = firstImage and firstImage.path is defined ? firstImage.path : (firstImage ? firstImage|media : '') %}
+                    <div class="gallery-item large-image" style="background-image: url('{{ firstImageUrl }}');"></div>
                     {% endif %}
                     <div class="small-images-grid">
                         {% for i in 1..4 %}
                             {% if row[i] is defined %}
-                                <div class="gallery-item" style="background-image: url('{{ row[i].path }}');"></div>
+                                {% set galleryImage = row[i] %}
+                                {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|media : '') %}
+                                <div class="gallery-item" style="background-image: url('{{ galleryImageUrl }}');"></div>
                             {% endif %}
                         {% endfor %}
                     </div>
