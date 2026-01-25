@@ -16,6 +16,11 @@ fields:
             field: title
         required: true
 
+    sort_order:
+        label: Порядок в портфолио
+        type: number
+        commentAbove: 'Чем меньше значение, тем выше карточка в списке.'
+
     service_type:
         label: Тип услуги
         type: dropdown

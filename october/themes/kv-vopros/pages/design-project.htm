@@ -22,6 +22,8 @@ function onStart()
         ->where(function ($q) {
             $q->whereNull('expired_at')->orWhere('expired_at', '>=', now());
         })
+        ->orderByRaw('sort_order is null')
+        ->orderBy('sort_order', 'asc')
         ->orderBy('published_at', 'desc')
         ->get();
 }
