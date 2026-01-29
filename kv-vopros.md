@@ -60,7 +60,7 @@ kv-tyumen/
 ### Tailor модели и данные
 
 - `october/app/blueprints/case-study.yaml` — поток `Site\CaseStudy` для кейсов портфолио.
-  - Поля: `title`, `slug`, `service_type`, `main_image`, `banner_image`, `gallery_images`.
+  - Поля: `title`, `slug`, `sort_order`, `service_type`, `main_image`, `banner_image`, `gallery_images`.
 - `october/app/blueprints/services.yaml` — глобальный набор `Site\Services` (используется в страницах как `[global services]`).
 - `october/app/blueprints/main-page.yaml` и `october/app/blueprints/how-we-work.yaml` — данные для главной и информационных блоков.
 
@@ -69,7 +69,7 @@ kv-tyumen/
 - Список кейсов: `october/themes/kv-vopros/pages/portfolio.htm`.
   - Запрос через `Tailor\Models\EntryRecord::inSection('Site\CaseStudy')->withDrafts()`.
   - Фильтры: `is_enabled=1`, `published_at <= now()`, `expired_at IS NULL OR expired_at >= now()`.
-  - Сортировка: `published_at` по убыванию.
+  - Сортировка: `sort_order` по возрастанию (пустые значения в конце), затем `published_at` по убыванию.
   - Рендер: частичный шаблон `october/themes/kv-vopros/partials/portfolio-grid.htm`.
 - Карточка кейса: `october/themes/kv-vopros/partials/portfolio-card.htm`.
   - Превью: `main_image`, при отсутствии используется `banner_image`.
@@ -77,6 +77,9 @@ kv-tyumen/
 - Детальная страница: `october/themes/kv-vopros/pages/case-study.htm`.
   - Ищет запись по `slug` и `is_enabled=1`.
   - Загружает `gallery_images`, при отсутствии записи редиректит на `/404`.
+  - Галерея строится пачками по 5:
+    - Для пятёрки: крупное изображение слева (нечётные ряды) или справа (чётные ряды). Для чётных рядов крупным берётся последнее изображение из пятёрки (зеркально).
+    - Остаток 1–4 изображений выводится отдельной полосой на всю ширину, с количеством колонок по числу изображений (на планшетах 2 колонки, на мобильных 1).
 
 ### Хранение медиа
 

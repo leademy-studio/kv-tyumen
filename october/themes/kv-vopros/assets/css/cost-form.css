@@ -65,10 +65,10 @@
     margin: 0;
     text-align: right;
     position: absolute;
-    left: var(--cost-form-subtitle-left);
+    right: calc(var(--cost-form-form-width) + var(--cost-form-gap));
     top: var(--cost-form-subtitle-top);
-    width: 40%;
-    max-width: calc(100% - var(--cost-form-subtitle-left) - var(--cost-form-form-width) - var(--cost-form-gap));
+    width: clamp(220px, 32vw, 560px);
+    max-width: calc(100% - var(--cost-form-form-width) - var(--cost-form-gap));
 }
 
 .cost-form__form-content {
@@ -210,7 +210,6 @@
     .cost-form__subtitle {
         position: static;
         text-align: left;
-        width: 100%;
         max-width: 100%;
         margin-top: var(--cost-form-form-gap);
     }
