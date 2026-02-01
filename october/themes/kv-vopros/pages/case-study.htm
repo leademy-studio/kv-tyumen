@@ -8222,23 +8222,26 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="gallery-container">
             {% for row in gallery|batch(5) %}
-                {% set row = row|values %}
-                {% set rowLength = row|length %}
+                {% set rowItems = [] %}
+                {% for item in row %}
+                    {% set rowItems = rowItems|merge([item]) %}
+                {% endfor %}
+                {% set rowLength = rowItems|length %}
                 {% if rowLength == 5 %}
                     {% set isLargeLeft = loop.index is odd %}
                     {% set largeIndex = isLargeLeft ? 0 : (rowLength - 1) %}
                     {% set smallStart = isLargeLeft ? 1 : 0 %}
                     {% set smallEnd = isLargeLeft ? (rowLength - 1) : (rowLength - 2) %}
                     <div class="case-study-gallery {% if isLargeLeft %}large-left{% else %}large-right{% endif %}">
-                        {% if row[largeIndex] is defined %}
-                            {% set largeImage = row[largeIndex] %}
+                        {% if rowItems[largeIndex] is defined %}
+                            {% set largeImage = rowItems[largeIndex] %}
                             {% set largeImageUrl = largeImage and largeImage.path is defined ? largeImage.path : (largeImage ? largeImage|media : '') %}
                             <div class="gallery-item large-image" style="background-image: url('{{ largeImageUrl }}');"></div>
                         {% endif %}
                         <div class="small-images-grid">
                             {% for i in smallStart..smallEnd %}
-                                {% if row[i] is defined %}
-                                    {% set galleryImage = row[i] %}
+                                {% if rowItems[i] is defined %}
+                                    {% set galleryImage = rowItems[i] %}
                                     {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|media : '') %}
                                     <div class="gallery-item" style="background-image: url('{{ galleryImageUrl }}');"></div>
                                 {% endif %}
@@ -8247,7 +8250,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 {% else %}
                     <div class="case-study-gallery case-study-gallery--strip" style="--strip-columns: {{ rowLength }};">
-                        {% for galleryImage in row %}
+                        {% for galleryImage in rowItems %}
                             {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|media : '') %}
                             <div class="gallery-item" style="background-image: url('{{ galleryImageUrl }}');"></div>
                         {% endfor %}
