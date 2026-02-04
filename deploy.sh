@@ -154,6 +154,7 @@ docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && if [ -f c
 echo '--- 7. Artisan (storage link, migrations, cache clear) ---'
 docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan storage:link --force || true'
 docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan october:up'
+docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan theme:clear && php artisan theme:cache'
 docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan route:clear && php artisan view:clear && php artisan config:clear && php artisan cache:clear'
 
 echo 'OK: Деплой завершен.'
