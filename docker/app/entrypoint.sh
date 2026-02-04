@@ -14,6 +14,11 @@ mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Запуск artisan-команд от имени www-data, чтобы не оставлять root-owned cache files
+run_artisan() {
+  su -s /bin/sh www-data -c "cd /var/www/html && php artisan $*"
+}
+
 # 3. Установка зависимостей Composer, если есть composer.json, но нет папки vendor
 if [ -f "/var/www/html/composer.json" ] && [ ! -d "/var/www/html/vendor" ]; then
     echo "composer.json found, installing dependencies..."
@@ -27,8 +32,8 @@ fi
 
 # 4. Создание супер-пользователя для Backend панели (если команда доступна)
 echo "Creating/updating Backend superuser..."
-if php artisan list --raw | grep -q '^kv:create-superuser'; then
-  php artisan kv:create-superuser "admin" "admin@localhost" "15ae57c4666e804280dba5ba"
+if run_artisan list --raw | grep -q '^kv:create-superuser'; then
+  run_artisan kv:create-superuser "admin" "admin@localhost" "15ae57c4666e804280dba5ba"
 else
   echo "Skipping kv:create-superuser: command not found."
 fi
