@@ -17,7 +17,7 @@
     --cost-form-gap: clamp(20px, calc(40px + 0.0208333333 * var(--cost-form-fluid)), 80px);
     --cost-form-form-gap: clamp(12px, calc(20px + 0.0104166667 * var(--cost-form-fluid)), 40px);
     --cost-form-radius: clamp(10px, calc(15px + 0.0078125 * var(--cost-form-fluid)), 30px);
-    --cost-form-input-height: clamp(50px, calc(100px + 0.0520833333 * var(--cost-form-fluid)), 200px);
+    --cost-form-input-height: clamp(50px, calc(75px + 0.0395833333 * var(--cost-form-fluid)), 151px);
     --cost-form-input-padding-y: clamp(8px, calc(14px + 0.0072916667 * var(--cost-form-fluid)), 28px);
     --cost-form-input-padding-x: clamp(10px, calc(15px + 0.0078125 * var(--cost-form-fluid)), 30px);
     --cost-form-button-padding-x: clamp(16px, calc(20px + 0.0104166667 * var(--cost-form-fluid)), 40px);
@@ -66,10 +66,14 @@
     margin: 0;
     text-align: right;
     position: absolute;
-    right: 0;
-    top: var(--cost-form-subtitle-top);
-    width: min(100%, 520px);
-    max-width: 100%;
+    right: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    padding-left: var(--cost-form-subtitle-left);
+    padding-top: var(--cost-form-subtitle-top);
+    box-sizing: border-box;
 }
 
 .cost-form__form-content {
@@ -213,6 +217,7 @@
         text-align: left;
         max-width: 100%;
         margin-top: var(--cost-form-form-gap);
+        padding: 0;
     }
 }
 
