@@ -45,3 +45,9 @@ fields:
         label: Галерея изображений
         type: mediafinder
         mode: image
+
+    vk_video_url:
+        label: VK Video для мини-плеера
+        type: text
+        commentAbove: 'Вставьте ссылку на плеер VK (video_ext.php) или на видео вида vk.com/video-123_456. Если пусто — плеер не показывается.'
+        placeholder: 'https://vk.com/video_ext.php?oid=...&id=...&hash=...'

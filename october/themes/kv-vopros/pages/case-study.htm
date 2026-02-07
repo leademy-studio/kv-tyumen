@@ -8260,6 +8260,9 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </section>
     {% partial 'cost-form' %}
+    {% if case.vk_video_url %}
+        {% partial 'vk-reels-player' video_url=case.vk_video_url %}
+    {% endif %}
     <footer id="t-footer" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="5057845" data-tilda-page-id="92736376" data-tilda-formskey="f6d15a994fb9512745363c8965057845" data-tilda-lazy="yes" data-tilda-project-lang="RU" data-tilda-root-zone="com" data-tilda-project-headcode="yes" data-tilda-project-country="RU">
         <!-- Lightbox -->
         <div id="portfolio-lightbox" class="portfolio-lightbox">

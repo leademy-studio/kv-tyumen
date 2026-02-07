@@ -1,0 +1,45 @@
+{% set vkVideoUrl = video_url ?? '' %}
+{% if vkVideoUrl %}
+{% put head %}
+<link rel="stylesheet" href="/themes/kv-vopros/assets/css/vk-reels-player.css">
+{% endput %}
+
+<div class="vk-reels-player" data-vk-url="{{ vkVideoUrl|e }}">
+    <div class="vk-reels-player__frame">
+        <iframe
+            class="vk-reels-player__iframe"
+            title="VK Видео"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+        ></iframe>
+    </div>
+    <div class="vk-reels-player__controls" aria-hidden="false">
+        <button class="vk-reels-player__control vk-reels-player__control--play" type="button" data-action="play" aria-label="Пауза" aria-pressed="true">
+            <svg class="vk-reels-player__icon vk-reels-player__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="6" y="5" width="4" height="14" rx="1"></rect>
+                <rect x="14" y="5" width="4" height="14" rx="1"></rect>
+            </svg>
+            <svg class="vk-reels-player__icon vk-reels-player__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 5.5v13l11-6.5-11-6.5z"></path>
+            </svg>
+        </button>
+        <button class="vk-reels-player__control vk-reels-player__control--mute" type="button" data-action="mute" aria-label="Звук выключен" aria-pressed="true">
+            <svg class="vk-reels-player__icon vk-reels-player__icon--mute" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 9h4l5-4v14l-5-4H4V9z"></path>
+                <path d="M16.5 8.5l4 7" stroke-width="2" fill="none"></path>
+                <path d="M20.5 8.5l-4 7" stroke-width="2" fill="none"></path>
+            </svg>
+            <svg class="vk-reels-player__icon vk-reels-player__icon--sound" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 9h4l5-4v14l-5-4H4V9z"></path>
+                <path d="M16 8c1.5 1.5 1.5 6.5 0 8" stroke-width="2" fill="none"></path>
+                <path d="M18.5 6c3 3 3 9 0 12" stroke-width="2" fill="none"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+
+{% put scripts %}
+<script src="/themes/kv-vopros/assets/js/vk-reels-player.js" defer></script>
+{% endput %}
+{% endif %}

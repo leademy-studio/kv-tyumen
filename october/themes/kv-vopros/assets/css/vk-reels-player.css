@@ -1,0 +1,116 @@
+.vk-reels-player {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    width: clamp(160px, 18vw, 260px);
+    aspect-ratio: 9 / 16;
+    background-color: #000;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+}
+
+.vk-reels-player__frame,
+.vk-reels-player__iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.vk-reels-player__controls {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.vk-reels-player__control {
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(62, 60, 56, 0.75);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.vk-reels-player__control:hover {
+    transform: scale(1.05);
+    background: rgba(62, 60, 56, 0.9);
+}
+
+.vk-reels-player__icon {
+    width: 18px;
+    height: 18px;
+    fill: #b9ea00;
+    stroke: #b9ea00;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.vk-reels-player__icon--play {
+    display: none;
+}
+
+.vk-reels-player__icon--sound {
+    display: none;
+}
+
+.vk-reels-player.is-paused .vk-reels-player__icon--pause {
+    display: none;
+}
+
+.vk-reels-player.is-paused .vk-reels-player__icon--play {
+    display: block;
+}
+
+.vk-reels-player.is-muted .vk-reels-player__icon--mute {
+    display: block;
+}
+
+.vk-reels-player.is-muted .vk-reels-player__icon--sound {
+    display: none;
+}
+
+.vk-reels-player:not(.is-muted) .vk-reels-player__icon--mute {
+    display: none;
+}
+
+.vk-reels-player:not(.is-muted) .vk-reels-player__icon--sound {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .vk-reels-player {
+        right: 16px;
+        bottom: 16px;
+        width: clamp(140px, 40vw, 210px);
+        border-radius: 14px;
+    }
+
+    .vk-reels-player__control {
+        width: 38px;
+        height: 38px;
+    }
+
+    .vk-reels-player__icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .vk-reels-player {
+        width: clamp(130px, 48vw, 190px);
+    }
+}
