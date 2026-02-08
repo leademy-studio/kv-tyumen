@@ -91,7 +91,8 @@ return [
     |
     */
 
-    'enable_route_cache' => env('CMS_ROUTE_CACHE', true),
+    // Default to false to avoid stale routes after deploys when CMS_ROUTE_CACHE is not set.
+    'enable_route_cache' => env('CMS_ROUTE_CACHE', false),
 
     /*
     |--------------------------------------------------------------------------
