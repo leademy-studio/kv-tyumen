@@ -62,9 +62,9 @@
     position: relative;
     height: 400px;
     border-radius: 7px;
-    overflow: hidden; /* Чтобы фон и плашка не выходили за скругленные углы */
+    overflow: hidden; 
     display: flex;
-    align-items: flex-end; /* Позиционируем плашку внизу */
+    align-items: flex-end; 
     justify-content: center; /* Центрируем плашку по горизонтали */
     margin: 0 auto; /* Центрируем саму карточку, если в ряду есть место */
     cursor: pointer;
