@@ -99,8 +99,8 @@
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.20);
     backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(13px); /* Для поддержки Safari */
-    margin-bottom: 15px; /* Небольшой отступ от нижнего края карточки */
+    -webkit-backdrop-filter: blur(13px);
+    margin-bottom: 15px; 
 }
 
 .portfolio-card__title {
