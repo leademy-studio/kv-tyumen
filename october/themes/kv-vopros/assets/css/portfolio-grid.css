@@ -125,8 +125,8 @@
 
 .portfolio-show-more {
     display: inline-flex;
-    width: 406px;
-    height: 55px;
+    width: 26.9%;
+    height: 35px;
     padding: 20px;
     justify-content: space-between;
     align-items: center;
@@ -144,16 +144,27 @@
 .portfolio-show-more span {
     color: #FFF;
     font-family: Manrope, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
 }
 
-/* Адаптивность для планшетов и мобильных устройств */
+
+@media (max-width: 1680px) {
+    .portfolio-card__overlay {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1440px) {
+    .portfolio-show-more {
+        width: 400px;
+    }
+}
+
 @media (max-width: 1200px) {
     .portfolio-grid-container {
-        /* 2 колонки для планшетов */
         grid-template-columns: repeat(2, 1fr);
     }
 }
