@@ -61,7 +61,6 @@
     font-size: var(--cost-form-subtitle-size);
     font-style: normal;
     font-weight: 500;
-    opacity: 0.6;
     line-height: 115%;
     margin: 0;
     text-align: left;
@@ -69,7 +68,7 @@
     right: auto;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 87%;
     max-width: none;
     padding-left: calc(var(--cost-form-subtitle-left) - var(--cost-form-padding-x));
     padding-top: calc(var(--cost-form-subtitle-top) - var(--cost-form-padding-y));
