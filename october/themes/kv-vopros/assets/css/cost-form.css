@@ -71,8 +71,8 @@
     top: 0;
     width: 100%;
     max-width: none;
-    padding-left: var(--cost-form-subtitle-left);
-    padding-top: var(--cost-form-subtitle-top);
+    padding-left: calc(var(--cost-form-subtitle-left) - var(--cost-form-padding-x));
+    padding-top: calc(var(--cost-form-subtitle-top) - var(--cost-form-padding-y));
     box-sizing: border-box;
 }
 
