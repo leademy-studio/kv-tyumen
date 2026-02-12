@@ -65,7 +65,7 @@
     overflow: hidden; 
     display: flex;
     align-items: flex-end; 
-    justify-content: center; /* Центрируем плашку по горизонтали */
+    justify-content: center;
     margin: 0 auto;
     cursor: pointer;
     transition: transform 0.3s ease;
