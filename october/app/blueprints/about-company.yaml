@@ -1,0 +1,49 @@
+uuid: b1d442fd-0fcc-48d1-8e84-b686fc45be28
+handle: Site\AboutCompany
+type: global
+name: О компании
+
+customMessages:
+    titleUpdateForm: Редактирование страницы "О компании"
+
+primaryNavigation:
+    label: О компании
+    icon: icon-info
+    order: 95
+
+navigation:
+    label: О компании
+    icon: icon-info
+    order: 15
+
+fields:
+    _section_video:
+        label: Видео
+        type: section
+
+    video_url:
+        label: Ссылка на видео
+        commentAbove: 'Вставьте ссылку на VK или Kinescope (например: https://kinescope.io/xhL8CKdy5NpHh4hmRy6vDp)'
+        type: text
+
+    _section_team:
+        label: Наша команда
+        type: section
+
+    team_members:
+        label: Сотрудники
+        type: repeater
+        titleFrom: name
+        commentAbove: 'Добавляйте сотрудников в любом количестве.'
+        form:
+            fields:
+                name:
+                    label: Имя
+                    type: text
+                role:
+                    label: Должность
+                    type: text
+                photo:
+                    label: Фото
+                    type: mediafinder
+                    mode: image

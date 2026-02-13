@@ -1,30 +1,45 @@
 <link rel="stylesheet" href="/themes/kv-vopros/assets/css/our-team.css">
 
+{% set teamMembers = aboutCompany is defined ? (aboutCompany.team_members ?: []) : [] %}
+{% set fallbackPhoto = '/themes/kv-vopros/assets/images/tild3366-6465-4730-a639-613631376230__photo.png' %}
+
 <section class="our-team-section" id="our-team">
     <div class="our-team-container">
         <h2 class="our-team-title">Наша команда — это ваша опора в ремонта</h2>
         <div class="our-team-slider" role="list">
-            <article class="our-team-card" role="listitem">
-                <div class="our-team-card__photo-wrap">
-                    <img class="our-team-card__photo" src="/themes/kv-vopros/assets/images/tild3366-6465-4730-a639-613631376230__photo.png" alt="Имя Фамилия">
-                </div>
-                <p class="our-team-card__name">Имя Фамилия</p>
-                <p class="our-team-card__role">Должность</p>
-            </article>
-            <article class="our-team-card" role="listitem">
-                <div class="our-team-card__photo-wrap">
-                    <img class="our-team-card__photo" src="/themes/kv-vopros/assets/images/tild3436-6364-4635-a564-623733643839__photo.png" alt="Имя Фамилия">
-                </div>
-                <p class="our-team-card__name">Имя Фамилия</p>
-                <p class="our-team-card__role">Должность</p>
-            </article>
-            <article class="our-team-card" role="listitem">
-                <div class="our-team-card__photo-wrap">
-                    <img class="our-team-card__photo" src="/themes/kv-vopros/assets/images/tild3535-3738-4235-b832-363539386461__photo.png" alt="Имя Фамилия">
-                </div>
-                <p class="our-team-card__name">Имя Фамилия</p>
-                <p class="our-team-card__role">Должность</p>
-            </article>
+            {% if teamMembers|length %}
+                {% for member in teamMembers %}
+                    <article class="our-team-card" role="listitem">
+                        <div class="our-team-card__photo-wrap">
+                            <img class="our-team-card__photo" src="{{ member.photo ? member.photo|media : fallbackPhoto }}" alt="{{ member.name ?: 'Сотрудник' }}">
+                        </div>
+                        <p class="our-team-card__name">{{ member.name ?: 'Имя Фамилия' }}</p>
+                        <p class="our-team-card__role">{{ member.role ?: 'Должность' }}</p>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <article class="our-team-card" role="listitem">
+                    <div class="our-team-card__photo-wrap">
+                        <img class="our-team-card__photo" src="/themes/kv-vopros/assets/images/tild3366-6465-4730-a639-613631376230__photo.png" alt="Имя Фамилия">
+                    </div>
+                    <p class="our-team-card__name">Имя Фамилия</p>
+                    <p class="our-team-card__role">Должность</p>
+                </article>
+                <article class="our-team-card" role="listitem">
+                    <div class="our-team-card__photo-wrap">
+                        <img class="our-team-card__photo" src="/themes/kv-vopros/assets/images/tild3436-6364-4635-a564-623733643839__photo.png" alt="Имя Фамилия">
+                    </div>
+                    <p class="our-team-card__name">Имя Фамилия</p>
+                    <p class="our-team-card__role">Должность</p>
+                </article>
+                <article class="our-team-card" role="listitem">
+                    <div class="our-team-card__photo-wrap">
+                        <img class="our-team-card__photo" src="/themes/kv-vopros/assets/images/tild3535-3738-4235-b832-363539386461__photo.png" alt="Имя Фамилия">
+                    </div>
+                    <p class="our-team-card__name">Имя Фамилия</p>
+                    <p class="our-team-card__role">Должность</p>
+                </article>
+            {% endif %}
         </div>
     </div>
 </section>
