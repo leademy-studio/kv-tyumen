@@ -1,6 +1,9 @@
 .our-team-section {
     padding: 120px 0;
     color: #3e3c38;
+    --our-team-title-size: 52px;
+    --our-team-card-width: 405px;
+    --our-team-card-height: 520px;
 }
 
 .our-team-section,
@@ -20,7 +23,7 @@
     margin: 0;
     font-family: "Bona Nova SC", serif;
     font-weight: 400;
-    font-size: 71.31px;
+    font-size: var(--our-team-title-size);
     line-height: 1;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -49,8 +52,8 @@
 }
 
 .our-team-card {
-    flex: 0 0 557px;
-    height: 714px;
+    flex: 0 0 var(--our-team-card-width);
+    height: var(--our-team-card-height);
     display: flex;
     flex-direction: column;
     gap: 27px;
@@ -93,18 +96,25 @@
     line-height: 1.2;
 }
 
+@media screen and (min-width: 1400px) {
+    .our-team-section {
+        --our-team-title-size: clamp(52px, calc(52px + 19.31 * ((100vw - 1400px) / 520)), 71.31px);
+        --our-team-card-width: clamp(405px, calc(405px + 152 * ((100vw - 1400px) / 520)), 557px);
+        --our-team-card-height: clamp(520px, calc(520px + 194 * ((100vw - 1400px) / 520)), 714px);
+    }
+}
+
+@media screen and (max-width: 1399px) {
+    .our-team-section {
+        --our-team-title-size: clamp(24px, calc(24px + 28 * ((100vw - 320px) / 1080)), 52px);
+        --our-team-card-width: clamp(265px, calc(265px + 140 * ((100vw - 320px) / 1080)), 405px);
+        --our-team-card-height: clamp(339px, calc(339px + 181 * ((100vw - 320px) / 1080)), 520px);
+    }
+}
+
 @media screen and (max-width: 1199px) {
     .our-team-section {
         padding: 90px 0;
-    }
-
-    .our-team-title {
-        font-size: 54px;
-    }
-
-    .our-team-card {
-        flex-basis: 460px;
-        height: 620px;
     }
 
     .our-team-card__name {
@@ -125,19 +135,9 @@
         gap: 32px;
     }
 
-    .our-team-title {
-        font-size: 32px;
-    }
-
     .our-team-card {
-        flex-basis: 80vw;
-        height: auto;
         padding: 20px;
         gap: 20px;
-    }
-
-    .our-team-card__photo-wrap {
-        height: 260px;
     }
 
     .our-team-card__name {
