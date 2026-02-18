@@ -240,7 +240,7 @@
     }
 
     .footer-company-name {
-        font-size: 70px;
+        font-size: calc(56px + 14 * ((100vw - 360px) / 208));
         line-height: 0.9;
         white-space: normal;
         width: 100vw;
