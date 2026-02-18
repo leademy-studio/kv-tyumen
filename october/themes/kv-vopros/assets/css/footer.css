@@ -250,4 +250,26 @@
         text-wrap: balance;
         text-align: left;
     }
+
+    .footer-backlink {
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-backlink::after {
+        display: none;
+    }
+
+    .footer-backlink a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
