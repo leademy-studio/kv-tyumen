@@ -16,6 +16,22 @@ navigation:
     order: 15
 
 fields:
+    _section_images:
+        label: Изображения
+        type: section
+
+    hero_repair_bg:
+        label: Фон секции "Ваш ремонт — наша забота"
+        type: mediafinder
+        mode: image
+        commentAbove: 'Фоновое изображение верхней секции.'
+
+    trust_process_bg:
+        label: Изображение секции "Мы слушаем. Мы отвечаем..."
+        type: mediafinder
+        mode: image
+        commentAbove: 'Изображение рядом с текстом про этапы ремонта.'
+
     _section_video:
         label: Видео
         type: section
