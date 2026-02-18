@@ -53,7 +53,8 @@
 
 .our-team-card {
     flex: 0 0 var(--our-team-card-width);
-    height: var(--our-team-card-height);
+    min-height: var(--our-team-card-height);
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 27px;
@@ -66,10 +67,11 @@
 }
 
 .our-team-card__photo-wrap {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 1004 / 1045;
     border-radius: 10px;
     overflow: hidden;
-    min-height: 0;
 }
 
 .our-team-card__photo {
@@ -83,7 +85,7 @@
     margin: 0;
     font-family: "Bona Nova SC", serif;
     font-weight: 400;
-    font-size: 42.51px;
+    font-size: 42.5px;
     line-height: 0.9;
     letter-spacing: -0.03em;
 }
@@ -102,6 +104,14 @@
         --our-team-card-width: clamp(405px, calc(405px + 152 * ((100vw - 1400px) / 520)), 557px);
         --our-team-card-height: clamp(520px, calc(520px + 194 * ((100vw - 1400px) / 520)), 714px);
     }
+
+    .our-team-card__name {
+        font-size: clamp(30px, calc(30px + 12.5 * ((100vw - 1400px) / 520)), 42.5px);
+    }
+
+    .our-team-card__role {
+        font-size: clamp(16px, calc(16px + 6 * ((100vw - 1400px) / 520)), 22px);
+    }
 }
 
 @media screen and (max-width: 1399px) {
@@ -110,19 +120,19 @@
         --our-team-card-width: clamp(265px, calc(265px + 140 * ((100vw - 320px) / 1080)), 405px);
         --our-team-card-height: clamp(339px, calc(339px + 181 * ((100vw - 320px) / 1080)), 520px);
     }
+
+    .our-team-card__name {
+        font-size: clamp(26px, calc(26px + 4 * ((100vw - 640px) / 760)), 30px);
+    }
+
+    .our-team-card__role {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 1199px) {
     .our-team-section {
         padding: 90px 0;
-    }
-
-    .our-team-card__name {
-        font-size: 34px;
-    }
-
-    .our-team-card__role {
-        font-size: 18px;
     }
 }
 
@@ -141,10 +151,10 @@
     }
 
     .our-team-card__name {
-        font-size: 28px;
+        font-size: clamp(18px, calc(18px + 8 * ((100vw - 320px) / 320)), 26px);
     }
 
     .our-team-card__role {
-        font-size: 16px;
+        font-size: clamp(14px, calc(14px + 2 * ((100vw - 320px) / 320)), 16px);
     }
 }
