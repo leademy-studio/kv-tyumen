@@ -36,15 +36,24 @@
                 return;
             }
 
-            if (event.deltaY > 0 && canScrollRight()) {
-                event.preventDefault();
+            var before = slider.scrollLeft;
+            var shouldScrollRight = event.deltaY > 0 && canScrollRight();
+            var shouldScrollLeft = event.deltaY < 0 && canScrollLeft();
+
+            if (shouldScrollRight || shouldScrollLeft) {
                 slider.scrollLeft += event.deltaY;
-                return;
+
+                // Block page scroll only if horizontal position really changed.
+                if (Math.abs(slider.scrollLeft - before) > 0.5) {
+                    event.preventDefault();
+                    return;
+                }
             }
 
-            if (event.deltaY < 0 && canScrollLeft()) {
+            // Fallback for environments where default wheel action gets swallowed on the slider.
+            if (event.target && section.contains(event.target)) {
+                window.scrollBy(0, event.deltaY);
                 event.preventDefault();
-                slider.scrollLeft += event.deltaY;
             }
         }
 
