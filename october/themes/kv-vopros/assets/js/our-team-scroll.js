@@ -26,21 +26,21 @@
 
         section.dataset.ourTeamScrollInit = "1";
 
-        // Target scroll position driven by wheel events.
+        // Desired horizontal position (may be ahead of the real scrollLeft
+        // while the RAF animation is still running).
         var targetLeft = 0;
-        // Whether a RAF animation loop is already running.
         var rafPending = false;
-        // Ease factor: fraction of remaining distance covered per frame (~60 fps).
-        var EASE = 0.12;
+        // Ease factor per frame at ~60 fps.
+        var EASE = 0.10;
 
-        // Return true when the section's vertical centre is close to the
-        // viewport's vertical centre (within 25 % of viewport height).
+        // True when the section's vertical centre is within 20 % of vh from
+        // the viewport's centre — the activation zone for horizontal capture.
         function isSectionCentered() {
             var rect = section.getBoundingClientRect();
             var vh = window.innerHeight || document.documentElement.clientHeight;
             var sectionMid = rect.top + rect.height / 2;
             var viewportMid = vh / 2;
-            return Math.abs(sectionMid - viewportMid) < vh * 0.25;
+            return Math.abs(sectionMid - viewportMid) < vh * 0.20;
         }
 
         // RAF animation loop: eases slider.scrollLeft toward targetLeft.
@@ -63,12 +63,11 @@
                 return;
             }
 
-            // Only intercept wheel when section is vertically centred.
             if (!isSectionCentered()) {
                 return;
             }
 
-            // Ignore predominantly horizontal wheel events.
+            // Ignore predominantly horizontal events (trackpad side-scroll, etc.).
             if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
                 return;
             }
@@ -79,22 +78,24 @@
             }
 
             var rawDelta = normalizeWheelDelta(event);
-            var actual = slider.scrollLeft;
 
-            // At hard boundaries release to page scroll.
-            if (rawDelta > 0 && actual >= maxLeft - 1) {
-                targetLeft = maxLeft;
-                return;
-            }
-            if (rawDelta < 0 && actual <= 1) {
-                targetLeft = 0;
-                return;
-            }
-
-            // Re-sync target with actual position when the animation is idle
-            // (e.g., after a touch/drag).
+            // Sync targetLeft with actual scrollLeft only when animation is idle
+            // so dragging / touch doesn't lose its position.
             if (!rafPending) {
-                targetLeft = actual;
+                targetLeft = slider.scrollLeft;
+            }
+
+            // BOUNDARY CHECK uses targetLeft (queued position), NOT actual
+            // scrollLeft.  This way the section releases vertical scroll the
+            // moment all cards have been "used up", without waiting for the
+            // animation to finish.
+            if (rawDelta > 0 && targetLeft >= maxLeft - 1) {
+                // Slider already queued to the end — let the page scroll down.
+                return;
+            }
+            if (rawDelta < 0 && targetLeft <= 1) {
+                // Slider already queued to the start — let the page scroll up.
+                return;
             }
 
             targetLeft += rawDelta;
