@@ -33,14 +33,19 @@
         // Ease factor per frame at ~60 fps.
         var EASE = 0.10;
 
-        // True when the section's vertical centre is within 20 % of vh from
-        // the viewport's centre — the activation zone for horizontal capture.
+        // Activation zone for horizontal capture.
+        // Works when viewport center is inside slider bounds with a small
+        // tolerance, or when slider center is close to viewport center.
         function isSectionCentered() {
-            var rect = section.getBoundingClientRect();
+            var rect = slider.getBoundingClientRect();
             var vh = window.innerHeight || document.documentElement.clientHeight;
-            var sectionMid = rect.top + rect.height / 2;
             var viewportMid = vh / 2;
-            return Math.abs(sectionMid - viewportMid) < vh * 0.20;
+            var tolerance = vh * 0.08;
+            var sliderMid = rect.top + rect.height / 2;
+            var viewportCenterInsideSlider = viewportMid >= rect.top - tolerance && viewportMid <= rect.bottom + tolerance;
+            var centersClose = Math.abs(sliderMid - viewportMid) <= vh * 0.30;
+
+            return viewportCenterInsideSlider || centersClose;
         }
 
         // RAF animation loop: eases slider.scrollLeft toward targetLeft.
