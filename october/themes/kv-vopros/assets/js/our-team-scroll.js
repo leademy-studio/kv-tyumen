@@ -33,7 +33,8 @@
         function isSectionActive() {
             var rect = section.getBoundingClientRect();
             var vh = window.innerHeight || document.documentElement.clientHeight;
-            return rect.top < vh * 0.8 && rect.bottom > vh * 0.2;
+            var viewportMid = vh / 2;
+            return rect.top <= viewportMid && rect.bottom >= viewportMid;
         }
 
         function runAnimation() {
@@ -75,10 +76,10 @@
                 targetLeft = current;
             }
 
-            if (rawDelta > 0 && targetLeft >= maxLeft - 1 && current >= maxLeft - 2) {
+            if (rawDelta > 0 && targetLeft >= maxLeft - 1) {
                 return;
             }
-            if (rawDelta < 0 && targetLeft <= 1 && current <= 2) {
+            if (rawDelta < 0 && targetLeft <= 1) {
                 return;
             }
 
@@ -95,9 +96,9 @@
             }
         }
 
-        // Intercept wheel globally while section is active; keeps behavior
-        // stable when cursor is over child elements.
-        window.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
+        // Intercept only inside this section, without global page lock.
+        section.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
+        slider.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
 
         return true;
     }
