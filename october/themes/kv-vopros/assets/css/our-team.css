@@ -33,7 +33,7 @@
     display: flex;
     gap: 27px;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     padding-bottom: 8px;
     -webkit-overflow-scrolling: touch;
 }

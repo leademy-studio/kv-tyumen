@@ -26,55 +26,36 @@
 
         section.dataset.ourTeamScrollInit = "1";
 
-        // Accumulated raw delta between snap-jumps (prevents over-sensitivity).
-        var deltaAccum = 0;
-        var DELTA_THRESHOLD = 60; // px of accumulated wheel movement to trigger a card jump
+        // Target scroll position driven by wheel events.
+        var targetLeft = 0;
+        // Whether a RAF animation loop is already running.
+        var rafPending = false;
+        // Ease factor: fraction of remaining distance covered per frame (~60 fps).
+        var EASE = 0.12;
 
-        function isSectionFullyApproached() {
+        // Return true when the section's vertical centre is close to the
+        // viewport's vertical centre (within 25 % of viewport height).
+        function isSectionCentered() {
             var rect = section.getBoundingClientRect();
-            var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-            // Only intercept wheel events when the section occupies a meaningful
-            // portion of the viewport (at least 40 % visible).
-            var visible = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-            return visible > 0 && visible / rect.height >= 0.4;
+            var vh = window.innerHeight || document.documentElement.clientHeight;
+            var sectionMid = rect.top + rect.height / 2;
+            var viewportMid = vh / 2;
+            return Math.abs(sectionMid - viewportMid) < vh * 0.25;
         }
 
-        function getCardWidth() {
-            var card = slider.querySelector(".our-team-card");
-            if (!card) { return slider.clientWidth; }
-            // Include the gap (margin / CSS gap) by measuring offset difference.
-            var cards = slider.querySelectorAll(".our-team-card");
-            if (cards.length > 1) {
-                return cards[1].offsetLeft - cards[0].offsetLeft;
-            }
-            return card.offsetWidth;
-        }
-
-        function snapToCard(direction) {
-            var cardWidth = getCardWidth();
-            if (cardWidth <= 0) { return false; }
-
+        // RAF animation loop: eases slider.scrollLeft toward targetLeft.
+        function animateToTarget() {
             var current = slider.scrollLeft;
-            var maxLeft = slider.scrollWidth - slider.clientWidth;
+            var diff = targetLeft - current;
 
-            // Find the index of the next snap point in the given direction.
-            var targetIndex;
-            if (direction > 0) {
-                targetIndex = Math.floor(current / cardWidth) + 1;
-            } else {
-                targetIndex = Math.ceil(current / cardWidth) - 1;
+            if (Math.abs(diff) < 0.5) {
+                slider.scrollLeft = targetLeft;
+                rafPending = false;
+                return;
             }
 
-            var targetLeft = targetIndex * cardWidth;
-            if (targetLeft < 0) { targetLeft = 0; }
-            if (targetLeft > maxLeft) { targetLeft = maxLeft; }
-
-            if (Math.abs(targetLeft - current) <= 0.5) {
-                return false; // Already at this boundary — let the page scroll.
-            }
-
-            slider.scrollTo({ left: targetLeft, behavior: "smooth" });
-            return true;
+            slider.scrollLeft = current + diff * EASE;
+            requestAnimationFrame(animateToTarget);
         }
 
         function handleWheel(event) {
@@ -82,10 +63,12 @@
                 return;
             }
 
-            if (!isSectionFullyApproached()) {
+            // Only intercept wheel when section is vertically centred.
+            if (!isSectionCentered()) {
                 return;
             }
 
+            // Ignore predominantly horizontal wheel events.
             if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
                 return;
             }
@@ -96,40 +79,35 @@
             }
 
             var rawDelta = normalizeWheelDelta(event);
-            var current = slider.scrollLeft;
+            var actual = slider.scrollLeft;
 
-            // At the hard boundaries, release the page scroll.
-            if (rawDelta > 0 && current >= maxLeft - 1) {
-                deltaAccum = 0;
+            // At hard boundaries release to page scroll.
+            if (rawDelta > 0 && actual >= maxLeft - 1) {
+                targetLeft = maxLeft;
                 return;
             }
-            if (rawDelta < 0 && current <= 1) {
-                deltaAccum = 0;
+            if (rawDelta < 0 && actual <= 1) {
+                targetLeft = 0;
                 return;
             }
 
-            // Reset accumulator if direction reversed.
-            if ((rawDelta > 0 && deltaAccum < 0) || (rawDelta < 0 && deltaAccum > 0)) {
-                deltaAccum = 0;
+            // Re-sync target with actual position when the animation is idle
+            // (e.g., after a touch/drag).
+            if (!rafPending) {
+                targetLeft = actual;
             }
 
-            deltaAccum += rawDelta;
+            targetLeft += rawDelta;
+            if (targetLeft < 0) { targetLeft = 0; }
+            if (targetLeft > maxLeft) { targetLeft = maxLeft; }
 
             event.__ourTeamWheelHandled = true;
             event.preventDefault();
             event.stopPropagation();
 
-            if (Math.abs(deltaAccum) >= DELTA_THRESHOLD) {
-                var direction = deltaAccum > 0 ? 1 : -1;
-                var didSnap = snapToCard(direction);
-                deltaAccum = 0;
-
-                // If snap found no next card (we're at the boundary), immediately
-                // stop consuming events so the page can start scrolling.
-                if (!didSnap) {
-                    event.__ourTeamWheelHandled = false;
-                    return;
-                }
+            if (!rafPending) {
+                rafPending = true;
+                requestAnimationFrame(animateToTarget);
             }
         }
 
