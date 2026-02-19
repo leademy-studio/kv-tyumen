@@ -26,41 +26,28 @@
 
         section.dataset.ourTeamScrollInit = "1";
 
-        // Desired horizontal position (may be ahead of the real scrollLeft
-        // while the RAF animation is still running).
         var targetLeft = 0;
-        var rafPending = false;
-        // Ease factor per frame at ~60 fps.
-        var EASE = 0.10;
+        var rafId = 0;
+        var EASE = 0.22;
 
-        // Activation zone for horizontal capture.
-        // Works when viewport center is inside slider bounds with a small
-        // tolerance, or when slider center is close to viewport center.
-        function isSectionCentered() {
-            var rect = slider.getBoundingClientRect();
+        function isSectionActive() {
+            var rect = section.getBoundingClientRect();
             var vh = window.innerHeight || document.documentElement.clientHeight;
-            var viewportMid = vh / 2;
-            var tolerance = vh * 0.08;
-            var sliderMid = rect.top + rect.height / 2;
-            var viewportCenterInsideSlider = viewportMid >= rect.top - tolerance && viewportMid <= rect.bottom + tolerance;
-            var centersClose = Math.abs(sliderMid - viewportMid) <= vh * 0.30;
-
-            return viewportCenterInsideSlider || centersClose;
+            return rect.top < vh * 0.8 && rect.bottom > vh * 0.2;
         }
 
-        // RAF animation loop: eases slider.scrollLeft toward targetLeft.
-        function animateToTarget() {
+        function runAnimation() {
             var current = slider.scrollLeft;
             var diff = targetLeft - current;
 
             if (Math.abs(diff) < 0.5) {
                 slider.scrollLeft = targetLeft;
-                rafPending = false;
+                rafId = 0;
                 return;
             }
 
             slider.scrollLeft = current + diff * EASE;
-            requestAnimationFrame(animateToTarget);
+            rafId = requestAnimationFrame(runAnimation);
         }
 
         function handleWheel(event) {
@@ -68,11 +55,10 @@
                 return;
             }
 
-            if (!isSectionCentered()) {
+            if (!isSectionActive()) {
                 return;
             }
 
-            // Ignore predominantly horizontal events (trackpad side-scroll, etc.).
             if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
                 return;
             }
@@ -83,23 +69,16 @@
             }
 
             var rawDelta = normalizeWheelDelta(event);
+            var current = slider.scrollLeft;
 
-            // Sync targetLeft with actual scrollLeft only when animation is idle
-            // so dragging / touch doesn't lose its position.
-            if (!rafPending) {
-                targetLeft = slider.scrollLeft;
+            if (!rafId) {
+                targetLeft = current;
             }
 
-            // BOUNDARY CHECK uses targetLeft (queued position), NOT actual
-            // scrollLeft.  This way the section releases vertical scroll the
-            // moment all cards have been "used up", without waiting for the
-            // animation to finish.
-            if (rawDelta > 0 && targetLeft >= maxLeft - 1) {
-                // Slider already queued to the end — let the page scroll down.
+            if (rawDelta > 0 && targetLeft >= maxLeft - 1 && current >= maxLeft - 2) {
                 return;
             }
-            if (rawDelta < 0 && targetLeft <= 1) {
-                // Slider already queued to the start — let the page scroll up.
+            if (rawDelta < 0 && targetLeft <= 1 && current <= 2) {
                 return;
             }
 
@@ -111,15 +90,13 @@
             event.preventDefault();
             event.stopPropagation();
 
-            if (!rafPending) {
-                rafPending = true;
-                requestAnimationFrame(animateToTarget);
+            if (!rafId) {
+                rafId = requestAnimationFrame(runAnimation);
             }
         }
 
-        // Add multiple capture listeners to survive third-party scroll hooks.
-        slider.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
-        document.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
+        // Intercept wheel globally while section is active; keeps behavior
+        // stable when cursor is over child elements.
         window.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
 
         return true;
