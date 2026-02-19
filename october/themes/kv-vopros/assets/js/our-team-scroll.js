@@ -26,29 +26,29 @@
 
         section.dataset.ourTeamScrollInit = "1";
 
-        var targetLeft = 0;
-        var rafId = 0;
+        var targetLeft = slider.scrollLeft || 0;
+        var animationId = 0;
         var EASE = 0.22;
 
-        function isSectionActive() {
+        function isCenterLineInsideSection() {
             var rect = section.getBoundingClientRect();
-            var vh = window.innerHeight || document.documentElement.clientHeight;
-            var viewportMid = vh / 2;
+            var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            var viewportMid = viewportHeight / 2;
             return rect.top <= viewportMid && rect.bottom >= viewportMid;
         }
 
-        function runAnimation() {
+        function animate() {
             var current = slider.scrollLeft;
             var diff = targetLeft - current;
 
             if (Math.abs(diff) < 0.5) {
                 slider.scrollLeft = targetLeft;
-                rafId = 0;
+                animationId = 0;
                 return;
             }
 
             slider.scrollLeft = current + diff * EASE;
-            rafId = requestAnimationFrame(runAnimation);
+            animationId = requestAnimationFrame(animate);
         }
 
         function handleWheel(event) {
@@ -56,7 +56,7 @@
                 return;
             }
 
-            if (!isSectionActive()) {
+            if (!isCenterLineInsideSection()) {
                 return;
             }
 
@@ -69,53 +69,55 @@
                 return;
             }
 
-            var rawDelta = normalizeWheelDelta(event);
-            var current = slider.scrollLeft;
-
-            if (!rafId) {
-                targetLeft = current;
+            if (!animationId) {
+                targetLeft = slider.scrollLeft;
             }
 
-            if (rawDelta > 0 && targetLeft >= maxLeft - 1) {
-                return;
-            }
-            if (rawDelta < 0 && targetLeft <= 1) {
+            var delta = normalizeWheelDelta(event);
+
+            if (delta > 0 && targetLeft >= maxLeft - 1) {
                 return;
             }
 
-            targetLeft += rawDelta;
-            if (targetLeft < 0) { targetLeft = 0; }
-            if (targetLeft > maxLeft) { targetLeft = maxLeft; }
+            if (delta < 0 && targetLeft <= 1) {
+                return;
+            }
+
+            targetLeft += delta;
+            if (targetLeft < 0) {
+                targetLeft = 0;
+            } else if (targetLeft > maxLeft) {
+                targetLeft = maxLeft;
+            }
 
             event.__ourTeamWheelHandled = true;
             event.preventDefault();
             event.stopPropagation();
 
-            if (!rafId) {
-                rafId = requestAnimationFrame(runAnimation);
+            if (!animationId) {
+                animationId = requestAnimationFrame(animate);
             }
         }
 
-        // Intercept only inside this section, without global page lock.
         section.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
         slider.addEventListener("wheel", handleWheel, LISTENER_OPTIONS);
 
         return true;
     }
 
-    function initOurTeamScroll() {
+    function initMagicScroll() {
         var sections = document.querySelectorAll(".our-team-section");
         var initializedAny = false;
 
-        for (var i = 0; i < sections.length; i += 1) {
-            initializedAny = initSection(sections[i]) || initializedAny;
+        for (var index = 0; index < sections.length; index += 1) {
+            initializedAny = initSection(sections[index]) || initializedAny;
         }
 
         return initializedAny;
     }
 
     function startInit() {
-        if (initOurTeamScroll()) {
+        if (initMagicScroll()) {
             return;
         }
 
@@ -123,12 +125,13 @@
         var maxAttempts = 80;
         var interval = window.setInterval(function () {
             attempts += 1;
-
-            if (initOurTeamScroll() || attempts >= maxAttempts) {
+            if (initMagicScroll() || attempts >= maxAttempts) {
                 window.clearInterval(interval);
             }
         }, 250);
     }
+
+    window.initMagicScroll = initMagicScroll;
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", startInit);
