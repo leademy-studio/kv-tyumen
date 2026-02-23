@@ -276,7 +276,7 @@
 
 @media (max-width: 419px) {
     .footer-company-name {
-        font-size: clamp(28px, calc(28px + 18 * ((100vw - 320px) / 99)), 46px);
+        font-size: clamp(48px, calc(48px + 12 * ((100vw - 320px) / 100)), 60px);
         line-height: 0.9;
         white-space: normal;
         width: 100vw;
