@@ -16,6 +16,26 @@ function onStart()
     $trustProcessBgDefault = '/themes/kv-vopros/assets/images/tild3635-6466-4164-b536-616464393430__rectangle_4739.png';
 
     $resolveImageUrl = static function ($value, $fallback) {
+        if (is_array($value)) {
+            $value = $value['path']
+                ?? $value['publicUrl']
+                ?? $value['url']
+                ?? $value['src']
+                ?? $value['value']
+                ?? reset($value)
+                ?? '';
+        } elseif (is_object($value)) {
+            if (isset($value->path)) {
+                $value = $value->path;
+            } elseif (isset($value->publicUrl)) {
+                $value = $value->publicUrl;
+            } elseif (method_exists($value, '__toString')) {
+                $value = (string) $value;
+            } else {
+                $value = '';
+            }
+        }
+
         $value = trim((string) $value);
         if ($value === '') {
             return $fallback;
@@ -29,7 +49,11 @@ function onStart()
             return $value;
         }
 
-        return \System\Classes\MediaLibrary::url($value);
+        try {
+            return \Storage::disk('media')->url(ltrim($value, '/'));
+        } catch (\Throwable $e) {
+            return $fallback;
+        }
     };
 
     if ($aboutCompany && isset($aboutCompany->video_url)) {
