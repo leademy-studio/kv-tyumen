@@ -24,12 +24,14 @@ fields:
         label: Фон секции "Ваш ремонт — наша забота"
         type: mediafinder
         mode: image
+        maxItems: 1
         commentAbove: 'Фоновое изображение верхней секции.'
 
     trust_process_bg:
         label: Изображение секции "Мы слушаем. Мы отвечаем..."
         type: mediafinder
         mode: image
+        maxItems: 1
         commentAbove: 'Изображение рядом с текстом про этапы ремонта.'
 
     _section_video:
@@ -62,3 +64,4 @@ fields:
                     label: Фото
                     type: mediafinder
                     mode: image
+                    maxItems: 1

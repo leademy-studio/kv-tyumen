@@ -15,28 +15,59 @@ function onStart()
     $heroRepairBgDefault = '/themes/kv-vopros/assets/images/tild3634-3066-4430-b536-373665336338__rectangle_4749.png';
     $trustProcessBgDefault = '/themes/kv-vopros/assets/images/tild3635-6466-4164-b536-616464393430__rectangle_4739.png';
 
-    $resolveImageUrl = static function ($value, $fallback) {
+    $extractMediaValue = static function ($value) use (&$extractMediaValue) {
+        if (is_string($value) || is_numeric($value)) {
+            return trim((string) $value);
+        }
+
         if (is_array($value)) {
-            $value = $value['path']
-                ?? $value['publicUrl']
-                ?? $value['url']
-                ?? $value['src']
-                ?? $value['value']
-                ?? reset($value)
-                ?? '';
-        } elseif (is_object($value)) {
-            if (isset($value->path)) {
-                $value = $value->path;
-            } elseif (isset($value->publicUrl)) {
-                $value = $value->publicUrl;
-            } elseif (method_exists($value, '__toString')) {
-                $value = (string) $value;
-            } else {
-                $value = '';
+            foreach (['path', 'publicUrl', 'url', 'src', 'value'] as $key) {
+                if (!array_key_exists($key, $value)) {
+                    continue;
+                }
+
+                $candidate = $extractMediaValue($value[$key]);
+                if ($candidate !== '') {
+                    return $candidate;
+                }
+            }
+
+            foreach ($value as $item) {
+                $candidate = $extractMediaValue($item);
+                if ($candidate !== '') {
+                    return $candidate;
+                }
+            }
+
+            return '';
+        }
+
+        if (is_object($value)) {
+            foreach (['path', 'publicUrl', 'url', 'src', 'value'] as $property) {
+                if (!isset($value->{$property})) {
+                    continue;
+                }
+
+                $candidate = $extractMediaValue($value->{$property});
+                if ($candidate !== '') {
+                    return $candidate;
+                }
+            }
+
+            if (method_exists($value, 'toArray')) {
+                return $extractMediaValue($value->toArray());
+            }
+
+            if (method_exists($value, '__toString')) {
+                return trim((string) $value);
             }
         }
 
-        $value = trim((string) $value);
+        return '';
+    };
+
+    $resolveImageUrl = static function ($value, $fallback) use ($extractMediaValue) {
+        $value = $extractMediaValue($value);
         if ($value === '') {
             return $fallback;
         }
@@ -47,6 +78,10 @@ function onStart()
 
         if (strpos($value, '/themes/') === 0 || strpos($value, '/storage/') === 0) {
             return $value;
+        }
+
+        if (strpos($value, 'themes/') === 0 || strpos($value, 'storage/') === 0) {
+            return '/' . ltrim($value, '/');
         }
 
         try {
