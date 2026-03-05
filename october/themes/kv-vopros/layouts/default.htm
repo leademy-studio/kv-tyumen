@@ -11,6 +11,67 @@ function onStart()
         || $host === '127.0.0.1'
         || str_ends_with($host, '.local');
 }
+
+function onFormSubmit()
+{
+    $data = post();
+
+    $validator = \Illuminate\Support\Facades\Validator::make($data, [
+        'name' => 'required|string|max:100',
+        'phone' => 'required|string|max:30',
+        'policy' => 'accepted',
+    ], [
+        'name.required' => 'Введите имя.',
+        'phone.required' => 'Введите номер телефона.',
+        'policy.accepted' => 'Необходимо согласие с политикой обработки данных.',
+    ]);
+
+    if ($validator->fails()) {
+        throw new \Illuminate\Validation\ValidationException($validator);
+    }
+
+    $name = trim((string) ($data['name'] ?? ''));
+    $phone = trim((string) ($data['phone'] ?? ''));
+    $pageUrl = request()->fullUrl();
+    $host = request()->getHost();
+    $submittedAt = now()->format('d.m.Y H:i:s');
+    $telegramToken = trim((string) env('TELEGRAM_BOT_TOKEN', ''));
+    $telegramChatId = trim((string) env('TELEGRAM_CHAT_ID', ''));
+
+    if ($telegramToken === '' || $telegramChatId === '') {
+        throw new \October\Rain\Exception\ApplicationException(
+            'Не настроен Telegram (TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID).'
+        );
+    }
+
+    $message = implode("\n", [
+        '<b>Новая заявка с сайта</b>',
+        '<b>Имя:</b> ' . e($name),
+        '<b>Телефон:</b> ' . e($phone),
+        '<b>Сайт:</b> ' . e($host),
+        '<b>Страница:</b> ' . e($pageUrl),
+        '<b>Время:</b> ' . e($submittedAt),
+    ]);
+
+    $response = \Illuminate\Support\Facades\Http::asForm()
+        ->timeout(10)
+        ->post('https://api.telegram.org/bot' . $telegramToken . '/sendMessage', [
+            'chat_id' => $telegramChatId,
+            'text' => $message,
+            'parse_mode' => 'HTML',
+            'disable_web_page_preview' => true,
+        ]);
+
+    if (!$response->successful() || !$response->json('ok')) {
+        throw new \October\Rain\Exception\ApplicationException('Не удалось отправить заявку в Telegram.');
+    }
+
+    return [
+        'status' => 'ok',
+        'message' => 'Заявка отправлена.',
+    ];
+}
+
 ==
 <!doctype html>
 <html lang="ru">
@@ -30,6 +91,7 @@ function onStart()
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}{% if bodyStyle %} style="{{ bodyStyle }}"{% endif %}>
     {% page %}
 
+    {% framework extras %}
     {% scripts %}
 </body>
 </html>
