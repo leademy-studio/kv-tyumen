@@ -37,6 +37,9 @@ function onFormSubmit()
     $submittedAt = now()->format('d.m.Y H:i:s');
     $telegramToken = trim((string) env('TELEGRAM_BOT_TOKEN', ''));
     $telegramChatId = trim((string) env('TELEGRAM_CHAT_ID', ''));
+    $maxToken = trim((string) env('MAX_MESSENGER_TOKEN', ''));
+    $maxChatId = trim((string) env('MAX_MESSENGER_CHAT_ID', ''));
+    $maxUserId = trim((string) env('MAX_MESSENGER_USER_ID', ''));
 
     if ($telegramToken === '' || $telegramChatId === '') {
         throw new \October\Rain\Exception\ApplicationException(
@@ -64,6 +67,38 @@ function onFormSubmit()
 
     if (!$response->successful() || !$response->json('ok')) {
         throw new \October\Rain\Exception\ApplicationException('Не удалось отправить заявку в Telegram.');
+    }
+
+    if ($maxToken !== '' && ($maxChatId !== '' || $maxUserId !== '')) {
+        $maxPayload = [
+            'text' => implode("\n", [
+                'Новая заявка с сайта',
+                'Имя: ' . $name,
+                'Телефон: ' . $phone,
+                'Сайт: ' . $host,
+                'Страница: ' . $pageUrl,
+                'Время: ' . $submittedAt,
+            ]),
+        ];
+
+        $maxRecipientQuery = $maxChatId !== ''
+            ? ['chat_id' => (int) $maxChatId]
+            : ['user_id' => (int) $maxUserId];
+
+        $maxResponse = \Illuminate\Support\Facades\Http::withHeaders([
+            'Authorization' => $maxToken,
+        ])->timeout(10)->post('https://platform-api.max.ru/messages?' . http_build_query($maxRecipientQuery), $maxPayload);
+
+        if (!$maxResponse->successful()) {
+            \Illuminate\Support\Facades\Log::warning('MAX notification failed', [
+                'status' => $maxResponse->status(),
+                'body' => $maxResponse->body(),
+            ]);
+        }
+    } elseif ($maxToken !== '') {
+        \Illuminate\Support\Facades\Log::warning(
+            'MAX token is set, but MAX_MESSENGER_CHAT_ID or MAX_MESSENGER_USER_ID is missing.'
+        );
     }
 
     return [
