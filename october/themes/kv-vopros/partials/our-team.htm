@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/themes/kv-vopros/assets/css/our-team.css">
 
-{% set teamMembers = aboutCompany is defined ? (aboutCompany.team_members ?: []) : [] %}
+{% set teamMembers = aboutTeamMembers is defined ? (aboutTeamMembers ?: []) : [] %}
 {% set fallbackPhoto = '/themes/kv-vopros/assets/images/tild3366-6465-4730-a639-613631376230__photo.png' %}
 
 <section class="our-team-section" id="our-team">
@@ -11,7 +11,7 @@
                 {% for member in teamMembers %}
                     <article class="our-team-card" role="listitem">
                         <div class="our-team-card__photo-wrap">
-                            <img class="our-team-card__photo" src="{{ member.photo ? member.photo|media : fallbackPhoto }}" alt="{{ member.name ?: 'Сотрудник' }}">
+                            <img class="our-team-card__photo" src="{{ member.photo_url ?: fallbackPhoto }}" alt="{{ member.name ?: 'Сотрудник' }}">
                         </div>
                         <p class="our-team-card__name">{{ member.name ?: 'Имя Фамилия' }}</p>
                         <p class="our-team-card__role">{{ member.role ?: 'Должность' }}</p>

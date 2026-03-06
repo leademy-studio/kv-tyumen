@@ -17,7 +17,24 @@ function onStart()
 
     $extractMediaValue = static function ($value) use (&$extractMediaValue) {
         if (is_string($value) || is_numeric($value)) {
-            return trim((string) $value);
+            $value = trim((string) $value);
+            if ($value === '') {
+                return '';
+            }
+
+            // Tailor may store mediafinder values as JSON strings (e.g. ["\/Команда\/file.png"]).
+            $firstChar = $value[0] ?? '';
+            if ($firstChar === '[' || $firstChar === '{') {
+                $decoded = json_decode($value, true);
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $candidate = $extractMediaValue($decoded);
+                    if ($candidate !== '') {
+                        return $candidate;
+                    }
+                }
+            }
+
+            return $value;
         }
 
         if (is_array($value)) {
@@ -137,6 +154,38 @@ function onStart()
     $this['aboutVideo'] = $video;
     $this['aboutHeroRepairBg'] = $resolveImageUrl($aboutCompany->hero_repair_bg ?? '', $heroRepairBgDefault);
     $this['aboutTrustProcessBg'] = $resolveImageUrl($aboutCompany->trust_process_bg ?? '', $trustProcessBgDefault);
+
+    $teamMembers = [];
+    $rawTeamMembers = $aboutCompany->team_members ?? [];
+    if (is_array($rawTeamMembers) || $rawTeamMembers instanceof \Traversable) {
+        foreach ($rawTeamMembers as $member) {
+            $name = '';
+            $role = '';
+            $photo = '';
+
+            if (is_array($member)) {
+                $name = trim((string) ($member['name'] ?? ''));
+                $role = trim((string) ($member['role'] ?? ''));
+                $photo = $member['photo'] ?? '';
+            } elseif (is_object($member)) {
+                $name = trim((string) ($member->name ?? ''));
+                $role = trim((string) ($member->role ?? ''));
+                $photo = $member->photo ?? '';
+            }
+
+            if ($name === '' && $role === '' && $photo === '') {
+                continue;
+            }
+
+            $teamMembers[] = [
+                'name' => $name,
+                'role' => $role,
+                'photo_url' => $resolveImageUrl($photo, ''),
+            ];
+        }
+    }
+
+    $this['aboutTeamMembers'] = $teamMembers;
 }
 ==
 {% put head %}
