@@ -1,5 +1,5 @@
 .our-team-section {
-    padding: 120px 0;
+    padding: 320px 0 120px;
     color: #3e3c38;
     --our-team-title-size: 52px;
     --our-team-card-width: 405px;
@@ -132,13 +132,13 @@
 
 @media screen and (max-width: 1199px) {
     .our-team-section {
-        padding: 90px 0;
+        padding: 290px 0 90px;
     }
 }
 
 @media screen and (max-width: 639px) {
     .our-team-section {
-        padding: 64px 0;
+        padding: 264px 0 64px;
     }
 
     .our-team-container {
