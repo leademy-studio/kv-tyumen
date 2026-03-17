@@ -85,9 +85,20 @@ function onFormSubmit()
             ? ['chat_id' => (int) $maxChatId]
             : ['user_id' => (int) $maxUserId];
 
+        $maxEndpoint = 'https://platform-api.max.ru/messages?' . http_build_query($maxRecipientQuery);
+
         $maxResponse = \Illuminate\Support\Facades\Http::withHeaders([
             'Authorization' => $maxToken,
-        ])->timeout(10)->post('https://platform-api.max.ru/messages?' . http_build_query($maxRecipientQuery), $maxPayload);
+        ])->timeout(10)->post($maxEndpoint, $maxPayload);
+
+        if (
+            !$maxResponse->successful()
+            && !str_contains($maxToken, ' ')
+        ) {
+            $maxResponse = \Illuminate\Support\Facades\Http::withHeaders([
+                'Authorization' => 'Bearer ' . $maxToken,
+            ])->timeout(10)->post($maxEndpoint, $maxPayload);
+        }
 
         if (!$maxResponse->successful()) {
             \Illuminate\Support\Facades\Log::warning('MAX notification failed', [
