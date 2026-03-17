@@ -214,10 +214,10 @@ function onFormSubmit()
                     '.t-form__errorbox',
                 ];
 
-                var nodes = [root];
+                var nodes = [];
                 selectors.forEach(function (selector) {
                     if (root.matches && root.matches(selector)) {
-                        return;
+                        nodes.push(root);
                     }
                     nodes = nodes.concat(Array.prototype.slice.call(root.querySelectorAll(selector)));
                 });
