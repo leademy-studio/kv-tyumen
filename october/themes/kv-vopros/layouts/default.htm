@@ -190,6 +190,119 @@ function onFormSubmit()
         <img src="/themes/kv-vopros/assets/images/pop-up.svg" alt="" aria-hidden="true">
     </a>
 
+    <script>
+        (function () {
+            function isBlockedMessage(text) {
+                if (typeof text !== 'string') {
+                    return false;
+                }
+
+                var normalized = text.toLowerCase();
+                return normalized.indexOf('данные заявки не были приняты') !== -1
+                    || (normalized.indexOf('истекла') !== -1 && normalized.indexOf('подписк') !== -1);
+            }
+
+            function removeBlockedPopups(root) {
+                if (!root || root.nodeType !== 1) {
+                    return;
+                }
+
+                var selectors = [
+                    '.t-form-success-popup',
+                    '#tildaformsuccesspopup',
+                    '#tildaformsuccesspopup-new',
+                    '.t-form__errorbox',
+                ];
+
+                var nodes = [root];
+                selectors.forEach(function (selector) {
+                    if (root.matches && root.matches(selector)) {
+                        return;
+                    }
+                    nodes = nodes.concat(Array.prototype.slice.call(root.querySelectorAll(selector)));
+                });
+
+                nodes.forEach(function (node) {
+                    var text = (node.textContent || '').trim();
+                    if (!isBlockedMessage(text)) {
+                        return;
+                    }
+
+                    var popup = node.closest('.t-form-success-popup, .t-popup, .t-form__errorbox') || node;
+                    if (popup && popup.parentNode) {
+                        popup.parentNode.removeChild(popup);
+                    }
+                });
+            }
+
+            function patchTildaFormApi() {
+                if (!window.tildaForm || window.tildaForm.__kvPatched) {
+                    return;
+                }
+
+                var api = window.tildaForm;
+                var wrapMethod = function (name) {
+                    if (typeof api[name] !== 'function') {
+                        return;
+                    }
+
+                    var original = api[name];
+                    api[name] = function () {
+                        var args = Array.prototype.slice.call(arguments);
+                        var blocked = args.some(function (arg) {
+                            return isBlockedMessage(typeof arg === 'string' ? arg : '');
+                        });
+
+                        if (blocked) {
+                            return;
+                        }
+
+                        return original.apply(this, args);
+                    };
+                };
+
+                wrapMethod('showErrorInPopup');
+                wrapMethod('showSuccessPopup');
+                wrapMethod('showSuccessPopupNew');
+
+                api.__kvPatched = true;
+            }
+
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    Array.prototype.forEach.call(mutation.addedNodes || [], function (node) {
+                        removeBlockedPopups(node);
+                    });
+                });
+            });
+
+            if (document.documentElement) {
+                observer.observe(document.documentElement, {
+                    childList: true,
+                    subtree: true,
+                });
+            }
+
+            var tryPatch = function () {
+                patchTildaFormApi();
+                removeBlockedPopups(document.body);
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', tryPatch);
+            } else {
+                tryPatch();
+            }
+
+            var patchTimer = setInterval(function () {
+                patchTildaFormApi();
+                if (window.tildaForm && window.tildaForm.__kvPatched) {
+                    clearInterval(patchTimer);
+                }
+            }, 1000);
+        })();
+    </script>
+
     {% framework extras %}
     {% scripts %}
 </body>
