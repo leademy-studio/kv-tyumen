@@ -17,7 +17,7 @@
    </div>
    <div class="t396__elem tn-elem tn-elem__15590220311761636775245" data-elem-id="1761636775245" data-elem-type="shape" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-height-res-640-value="234" data-field-height-value="220" data-field-heightmode-value="hug" data-field-heightunits-value="px" data-field-left-res-320-value="35" data-field-left-res-640-value="170" data-field-left-value="450" data-field-leftunits-value="px" data-field-top-res-320-value="87" data-field-top-res-640-value="114" data-field-top-value="120" data-field-topunits-value="px" data-field-width-res-320-value="250" data-field-width-res-640-value="300" data-field-width-value="300" data-field-widthmode-res-320-value="fixed" data-field-widthmode-res-640-value="fixed" data-field-widthmode-value="fixed" data-field-widthunits-value="px">
     <div class="tn-atom kv-popup-form__atom">
-     <form class="kv-popup-form" data-request="onFormSubmit" data-request-validate data-request-success="kvPopupFormSuccess()">
+     <form class="kv-popup-form" data-request="onFormSubmit" data-request-validate data-request-flash data-request-success="kvPopupFormSuccess()" data-request-error="return kvPopupFormError(context, data);">
       <input autocomplete="name" class="kv-popup-form__input" maxlength="100" name="name" placeholder="Имя" required type="text"/>
       <div class="kv-popup-form__error" data-validate-for="name">
       </div>
@@ -181,6 +181,30 @@
    setTimeout(function () {
     window.location.hash = "#closepopup";
    }, 200);
+  };
+
+  window.kvPopupFormError = function (context, data) {
+   var message = "";
+   if (data && data.$env && typeof data.$env.getMessage === "function") {
+    message = data.$env.getMessage();
+   }
+   if (!message && data && typeof data.message === "string") {
+    message = data.message;
+   }
+   if (!message && context && context.el && typeof context.el.getAttribute === "function") {
+    message = context.el.getAttribute("data-error-message") || "";
+   }
+   if (!message) {
+    message = "Не удалось отправить заявку. Попробуйте позже.";
+   }
+
+   if (window.oc && window.oc.flashMsg) {
+    window.oc.flashMsg({ text: message, class: "error" });
+   } else if (typeof alert === "function") {
+    alert(message);
+   }
+
+   return false;
   };
 
   if (document.readyState === "loading") {
