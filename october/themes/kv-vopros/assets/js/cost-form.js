@@ -1,3 +1,38 @@
+window.kvCostFormSuccess = function () {
+    if (window.oc && window.oc.flashMsg) {
+        window.oc.flashMsg({ text: 'Заявка отправлена', class: 'success' });
+    }
+
+    var formEl = document.querySelector('.cost-form__form');
+    if (formEl && typeof formEl.reset === 'function') {
+        formEl.reset();
+    }
+};
+
+window.kvCostFormError = function (context, data) {
+    var message = '';
+    if (data && data.$env && typeof data.$env.getMessage === 'function') {
+        message = data.$env.getMessage();
+    }
+    if (!message && data && typeof data.message === 'string') {
+        message = data.message;
+    }
+    if (!message && context && context.el && typeof context.el.getAttribute === 'function') {
+        message = context.el.getAttribute('data-error-message') || '';
+    }
+    if (!message) {
+        message = 'Не удалось отправить заявку. Попробуйте позже.';
+    }
+
+    if (window.oc && window.oc.flashMsg) {
+        window.oc.flashMsg({ text: message, class: 'error' });
+    } else if (typeof alert === 'function') {
+        alert(message);
+    }
+
+    return false;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.querySelector('.cost-form__input[name="phone"]');
 

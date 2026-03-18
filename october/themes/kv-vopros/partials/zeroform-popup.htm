@@ -179,6 +179,15 @@
     formEl.reset();
    }
    setTimeout(function () {
+    var closeLink = document.querySelector("#rec1559022031 a[href='#closepopup']");
+    if (closeLink && typeof closeLink.click === "function") {
+     closeLink.click();
+     return;
+    }
+    if (typeof window.t1093__closePopup === "function") {
+     window.t1093__closePopup(false, -1, true);
+     return;
+    }
     window.location.hash = "#closepopup";
    }, 1000);
   };

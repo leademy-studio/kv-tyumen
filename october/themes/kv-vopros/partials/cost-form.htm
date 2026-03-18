@@ -15,7 +15,12 @@
             <p class="cost-form__subtitle">Оставьте заявку — подберём решение, сориентируем по срокам и бюджету.</p>
         </div>
         <div class="cost-form__form-content">
-            <form class="cost-form__form" data-request="onFormSubmit">
+            <form
+                class="cost-form__form"
+                data-request="onFormSubmit"
+                data-request-success="kvCostFormSuccess()"
+                data-request-error="return kvCostFormError(context, data);"
+            >
                 <input type="text" name="name" class="cost-form__input" placeholder="Ваше имя" required>
                 <input type="tel" name="phone" class="cost-form__input" placeholder="+7 999 999 99 99" required inputmode="numeric">
                 <div class="cost-form__checkbox-wrapper">
