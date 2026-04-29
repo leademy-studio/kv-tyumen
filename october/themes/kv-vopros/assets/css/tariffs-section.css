@@ -73,7 +73,7 @@
 
 .tariffs-card__title {
     margin: 0 0 24px;
-    color: var(--, #3e3c38);
+    color: #3e3c38 !important;
     font-family: "Bona Nova SC", serif;
     font-size: 42.514px;
     font-style: normal;
