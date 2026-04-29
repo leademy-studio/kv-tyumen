@@ -85,6 +85,11 @@
 .tariffs-card__list {
     margin: 0;
     padding: 0;
+}
+
+.tariffs-card__list ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -175,7 +180,7 @@
         width: 100%;
     }
 
-    .tariffs-card__list {
+    .tariffs-card__list ul {
         grid-template-columns: 1fr;
     }
 }
@@ -220,7 +225,7 @@
         letter-spacing: -0.81px;
     }
 
-    .tariffs-card__list {
+    .tariffs-card__list ul {
         grid-template-columns: 1fr;
         gap: 10px;
     }

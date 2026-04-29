@@ -21,24 +21,9 @@ fields:
         label: Заголовок карточки 1
         type: text
         default: Стандарт
-    tariff_card1_option_1:
-        label: Опция 1
-        type: text
-    tariff_card1_option_2:
-        label: Опция 2
-        type: text
-    tariff_card1_option_3:
-        label: Опция 3
-        type: text
-    tariff_card1_option_4:
-        label: Опция 4
-        type: text
-    tariff_card1_option_5:
-        label: Опция 5
-        type: text
-    tariff_card1_option_6:
-        label: Опция 6
-        type: text
+    tariff_card1_list:
+        label: Список карточки 1
+        type: richeditor
 
     _section_card2:
         label: Карточка 2
@@ -47,24 +32,9 @@ fields:
         label: Заголовок карточки 2
         type: text
         default: Стандарт+
-    tariff_card2_option_1:
-        label: Опция 1
-        type: text
-    tariff_card2_option_2:
-        label: Опция 2
-        type: text
-    tariff_card2_option_3:
-        label: Опция 3
-        type: text
-    tariff_card2_option_4:
-        label: Опция 4
-        type: text
-    tariff_card2_option_5:
-        label: Опция 5
-        type: text
-    tariff_card2_option_6:
-        label: Опция 6
-        type: text
+    tariff_card2_list:
+        label: Список карточки 2
+        type: richeditor
 
     _section_card3:
         label: Карточка 3
@@ -73,24 +43,9 @@ fields:
         label: Заголовок карточки 3
         type: text
         default: Премиум
-    tariff_card3_option_1:
-        label: Опция 1
-        type: text
-    tariff_card3_option_2:
-        label: Опция 2
-        type: text
-    tariff_card3_option_3:
-        label: Опция 3
-        type: text
-    tariff_card3_option_4:
-        label: Опция 4
-        type: text
-    tariff_card3_option_5:
-        label: Опция 5
-        type: text
-    tariff_card3_option_6:
-        label: Опция 6
-        type: text
+    tariff_card3_list:
+        label: Список карточки 3
+        type: richeditor
 
     _section_card4:
         label: Карточка 4
@@ -99,21 +54,6 @@ fields:
         label: Заголовок карточки 4
         type: text
         default: От шефа
-    tariff_card4_option_1:
-        label: Опция 1
-        type: text
-    tariff_card4_option_2:
-        label: Опция 2
-        type: text
-    tariff_card4_option_3:
-        label: Опция 3
-        type: text
-    tariff_card4_option_4:
-        label: Опция 4
-        type: text
-    tariff_card4_option_5:
-        label: Опция 5
-        type: text
-    tariff_card4_option_6:
-        label: Опция 6
-        type: text
+    tariff_card4_list:
+        label: Список карточки 4
+        type: richeditor

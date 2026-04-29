@@ -55,33 +55,13 @@ function onStart()
 {% set crTariff2Feature5 = services.cr_tariff2_feature_5 | default('Декоративный свет в каждую комнату') %}
 
 {% set tariffCard1Title = tariffs.tariff_card1_title | default('Стандарт') %}
-{% set tariffCard1Option1 = tariffs.tariff_card1_option_1 | default('Базовый пакет ремонта под ключ') %}
-{% set tariffCard1Option2 = tariffs.tariff_card1_option_2 | default('Черновые + отделочные материалы') %}
-{% set tariffCard1Option3 = tariffs.tariff_card1_option_3 | default('Подсветка ниш и парящей стены') %}
-{% set tariffCard1Option4 = tariffs.tariff_card1_option_4 | default('Водонагреватель в подарок') %}
-{% set tariffCard1Option5 = tariffs.tariff_card1_option_5 | default('Уборка и вывоз мусора') %}
-{% set tariffCard1Option6 = tariffs.tariff_card1_option_6 | default('30 000 ₽ / м²') %}
+{% set tariffCard1List = tariffs.tariff_card1_list | default('<ul><li>Базовый пакет ремонта под ключ</li><li>Черновые + отделочные материалы</li><li>Подсветка ниш и парящей стены</li><li>Водонагреватель в подарок</li><li>Уборка и вывоз мусора</li><li>30 000 ₽ / м²</li></ul>') %}
 {% set tariffCard2Title = tariffs.tariff_card2_title | default('Стандарт+') %}
-{% set tariffCard2Option1 = tariffs.tariff_card2_option_1 | default('Расширенный комплект отделки') %}
-{% set tariffCard2Option2 = tariffs.tariff_card2_option_2 | default('Улучшенные материалы и освещение') %}
-{% set tariffCard2Option3 = tariffs.tariff_card2_option_3 | default('Кондиционер в подарок') %}
-{% set tariffCard2Option4 = tariffs.tariff_card2_option_4 | default('Обои премиум-класса') %}
-{% set tariffCard2Option5 = tariffs.tariff_card2_option_5 | default('Декоративный свет в каждую комнату') %}
-{% set tariffCard2Option6 = tariffs.tariff_card2_option_6 | default('35 000 ₽ / м²') %}
+{% set tariffCard2List = tariffs.tariff_card2_list | default('<ul><li>Расширенный комплект отделки</li><li>Улучшенные материалы и освещение</li><li>Кондиционер в подарок</li><li>Обои премиум-класса</li><li>Декоративный свет в каждую комнату</li><li>35 000 ₽ / м²</li></ul>') %}
 {% set tariffCard3Title = tariffs.tariff_card3_title | default('Премиум') %}
-{% set tariffCard3Option1 = tariffs.tariff_card3_option_1 | default('Если нужен особый подход') %}
-{% set tariffCard3Option2 = tariffs.tariff_card3_option_2 | default('Подбор решений под ваш бюджет') %}
-{% set tariffCard3Option3 = tariffs.tariff_card3_option_3 | default('Гибкая комплектация материалов') %}
-{% set tariffCard3Option4 = tariffs.tariff_card3_option_4 | default('Отдельные сметы по этапам') %}
-{% set tariffCard3Option5 = tariffs.tariff_card3_option_5 | default('Персональный план-график работ') %}
-{% set tariffCard3Option6 = tariffs.tariff_card3_option_6 | default('Фиксация стоимости до старта') %}
+{% set tariffCard3List = tariffs.tariff_card3_list | default('<ul><li>Если нужен особый подход</li><li>Подбор решений под ваш бюджет</li><li>Гибкая комплектация материалов</li><li>Отдельные сметы по этапам</li><li>Персональный план-график работ</li><li>Фиксация стоимости до старта</li></ul>') %}
 {% set tariffCard4Title = tariffs.tariff_card4_title | default('От шефа') %}
-{% set tariffCard4Option1 = tariffs.tariff_card4_option_1 | default('Расширенный пакет под ключ') %}
-{% set tariffCard4Option2 = tariffs.tariff_card4_option_2 | default('Премиальные материалы в проекте') %}
-{% set tariffCard4Option3 = tariffs.tariff_card4_option_3 | default('Сложные инженерные решения') %}
-{% set tariffCard4Option4 = tariffs.tariff_card4_option_4 | default('Декоративное и сценарное освещение') %}
-{% set tariffCard4Option5 = tariffs.tariff_card4_option_5 | default('Контроль качества на каждом этапе') %}
-{% set tariffCard4Option6 = tariffs.tariff_card4_option_6 | default('Подготовка квартиры к заселению') %}
+{% set tariffCard4List = tariffs.tariff_card4_list | default('<ul><li>Расширенный пакет под ключ</li><li>Премиальные материалы в проекте</li><li>Сложные инженерные решения</li><li>Декоративное и сценарное освещение</li><li>Контроль качества на каждом этапе</li><li>Подготовка квартиры к заселению</li></ul>') %}
 
 {% put head %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
