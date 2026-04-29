@@ -148,35 +148,10 @@ fields:
         tab: Пакетный ремонт
         default: '30 000 ₽ / м²'
 
-    cr_tariff1_feature_1:
-        label: Опция 1
-        type: text
+    cr_tariff1_list:
+        label: Список тарифа
+        type: richeditor
         tab: Пакетный ремонт
-        default: 'Базовый пакет ремонта под ключ'
-
-    cr_tariff1_feature_2:
-        label: Опция 2
-        type: text
-        tab: Пакетный ремонт
-        default: 'Черновые + отделочные материалы'
-
-    cr_tariff1_feature_3:
-        label: Опция 3
-        type: text
-        tab: Пакетный ремонт
-        default: 'Подсветка ниш и парящей стены'
-
-    cr_tariff1_feature_4:
-        label: Опция 4
-        type: text
-        tab: Пакетный ремонт
-        default: 'Водонагреватель в подарок'
-
-    cr_tariff1_feature_5:
-        label: Опция 5
-        type: text
-        tab: Пакетный ремонт
-        default: 'Уборка и вывоз мусора'
 
     _section_cr_tariff2:
         label: Тариф 2 "Премиум"
@@ -195,32 +170,39 @@ fields:
         tab: Пакетный ремонт
         default: '35 000 ₽ / м²'
 
-    cr_tariff2_feature_1:
-        label: Опция 1
-        type: text
+    cr_tariff2_list:
+        label: Список тарифа
+        type: richeditor
         tab: Пакетный ремонт
-        default: 'Расширенный комплект отделки'
 
-    cr_tariff2_feature_2:
-        label: Опция 2
-        type: text
+    _section_cr_tariff3:
+        label: Тариф 3 "Индивидуальный"
+        type: section
         tab: Пакетный ремонт
-        default: 'Улучшенные материалы и освещение'
 
-    cr_tariff2_feature_3:
-        label: Опция 3
+    cr_tariff3_title:
+        label: Название тарифа
         type: text
         tab: Пакетный ремонт
-        default: 'Кондиционер в подарок'
+        default: 'Премиум'
 
-    cr_tariff2_feature_4:
-        label: Опция 4
-        type: text
+    cr_tariff3_list:
+        label: Список тарифа
+        type: richeditor
         tab: Пакетный ремонт
-        default: 'Обои премиум-класса'
 
-    cr_tariff2_feature_5:
-        label: Опция 5
+    _section_cr_tariff4:
+        label: Тариф 4 "От шефа"
+        type: section
+        tab: Пакетный ремонт
+
+    cr_tariff4_title:
+        label: Название тарифа
         type: text
         tab: Пакетный ремонт
-        default: 'Декоративный свет в каждую комнату'
+        default: 'От шефа'
+
+    cr_tariff4_list:
+        label: Список тарифа
+        type: richeditor
+        tab: Пакетный ремонт
