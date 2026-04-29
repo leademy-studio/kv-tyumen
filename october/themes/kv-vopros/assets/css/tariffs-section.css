@@ -265,14 +265,21 @@
 
 }
 
+@media screen and (max-width: 567px) {
+    .tariffs-card {
+        flex: 0 0 70%;
+        width: 70%;
+    }
+}
+
 @media screen and (max-width: 377px) {
     .tariffs-section__grid {
         gap: 12px;
     }
 
     .tariffs-card {
-        flex: 0 0 100%;
-        width: 100%;
+        flex: 0 0 70%;
+        width: 70%;
     }
 
     .tariffs-card__title {
