@@ -1,0 +1,119 @@
+uuid: 2d8bcf6f-7c6d-4d8f-8f27-2e3f5a6d9b12
+handle: Site\Tariffs
+type: global
+name: Тарифы
+
+primaryNavigation:
+    label: Тарифы
+    icon: icon-tags
+    order: 110
+
+navigation:
+    label: Тарифы
+    icon: icon-tags
+    order: 30
+
+fields:
+    _section_card1:
+        label: Карточка 1
+        type: section
+    tariff_card1_title:
+        label: Заголовок карточки 1
+        type: text
+        default: Стандарт
+    tariff_card1_option_1:
+        label: Опция 1
+        type: text
+    tariff_card1_option_2:
+        label: Опция 2
+        type: text
+    tariff_card1_option_3:
+        label: Опция 3
+        type: text
+    tariff_card1_option_4:
+        label: Опция 4
+        type: text
+    tariff_card1_option_5:
+        label: Опция 5
+        type: text
+    tariff_card1_option_6:
+        label: Опция 6
+        type: text
+
+    _section_card2:
+        label: Карточка 2
+        type: section
+    tariff_card2_title:
+        label: Заголовок карточки 2
+        type: text
+        default: Стандарт+
+    tariff_card2_option_1:
+        label: Опция 1
+        type: text
+    tariff_card2_option_2:
+        label: Опция 2
+        type: text
+    tariff_card2_option_3:
+        label: Опция 3
+        type: text
+    tariff_card2_option_4:
+        label: Опция 4
+        type: text
+    tariff_card2_option_5:
+        label: Опция 5
+        type: text
+    tariff_card2_option_6:
+        label: Опция 6
+        type: text
+
+    _section_card3:
+        label: Карточка 3
+        type: section
+    tariff_card3_title:
+        label: Заголовок карточки 3
+        type: text
+        default: Премиум
+    tariff_card3_option_1:
+        label: Опция 1
+        type: text
+    tariff_card3_option_2:
+        label: Опция 2
+        type: text
+    tariff_card3_option_3:
+        label: Опция 3
+        type: text
+    tariff_card3_option_4:
+        label: Опция 4
+        type: text
+    tariff_card3_option_5:
+        label: Опция 5
+        type: text
+    tariff_card3_option_6:
+        label: Опция 6
+        type: text
+
+    _section_card4:
+        label: Карточка 4
+        type: section
+    tariff_card4_title:
+        label: Заголовок карточки 4
+        type: text
+        default: От шефа
+    tariff_card4_option_1:
+        label: Опция 1
+        type: text
+    tariff_card4_option_2:
+        label: Опция 2
+        type: text
+    tariff_card4_option_3:
+        label: Опция 3
+        type: text
+    tariff_card4_option_4:
+        label: Опция 4
+        type: text
+    tariff_card4_option_5:
+        label: Опция 5
+        type: text
+    tariff_card4_option_6:
+        label: Опция 6
+        type: text
