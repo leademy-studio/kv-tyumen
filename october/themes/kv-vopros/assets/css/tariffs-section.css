@@ -90,10 +90,18 @@
 .tariffs-card__list ul {
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: none !important;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px 30px;
+}
+
+.tariffs-card__list li {
+    list-style: none !important;
+}
+
+.tariffs-card__list li::marker {
+    content: "";
 }
 
 .tariffs-card__list li {
