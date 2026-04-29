@@ -4,7 +4,7 @@
 }
 
 .tariffs-section__container {
-    width: min(1200px, calc(100% - 80px));
+    width: 90vw;
     margin: 0 auto;
 }
 
@@ -65,6 +65,7 @@
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(18px);
     box-sizing: border-box;
+    opacity: ; 0.6;
 }
 
 .tariffs-card--accent {
@@ -127,9 +128,9 @@
     justify-content: space-between;
     gap: 34.286px;
     flex-shrink: 0;
-    border-radius: 10.971px;
+    border-radius: 8px;
     background: var(--, #3e3c38);
-    backdrop-filter: blur(17.828571319580078px);
+    backdrop-filter: blur(13px);
     color: #fff;
     text-decoration: none;
     box-sizing: border-box;
@@ -138,17 +139,13 @@
 .tariffs-card__btn span {
     color: var(--, #fff);
     font-family: Inter, sans-serif;
-    font-size: 26.057px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: 115%;
 }
 
 @media screen and (max-width: 1199px) {
-    .tariffs-section__container {
-        width: calc(100% - 80px);
-    }
-
     .tariffs-section__head {
         flex-direction: column;
     }
@@ -234,10 +231,6 @@
         padding: 20px 0;
     }
 
-    .tariffs-section__container {
-        width: calc(100% - 40px);
-    }
-
     .tariffs-section__title {
         font-size: 46px;
         letter-spacing: -1px;
@@ -252,7 +245,43 @@
         padding: 16px 20px;
     }
 
+}
+
+@media screen and (max-width: 377px) {
+    .tariffs-section__grid {
+        gap: 12px;
+    }
+
+    .tariffs-card {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .tariffs-card__title {
+        color: var(--, #3e3c38);
+        font-family: "Bona Nova SC", serif;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 90%;
+        letter-spacing: -0.66px;
+    }
+
+    .tariffs-card__list li {
+        color: var(--, #3e3c38);
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 115%;
+    }
+
     .tariffs-card__btn span {
-        font-size: 20px;
+        color: var(--, #fff);
+        font-family: Inter, sans-serif;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 115%;
     }
 }
