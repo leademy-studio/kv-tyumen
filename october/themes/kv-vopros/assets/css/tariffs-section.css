@@ -99,7 +99,7 @@
 }
 
 .tariffs-section .tariffs-card__list-col ul {
-    padding-left: 5px;
+    padding-left: 5px !important;
 }
 
 .tariffs-card__list li {
@@ -121,8 +121,6 @@
     line-height: 120%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
 }
 
 .tariffs-card__list li::before {
