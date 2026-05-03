@@ -253,7 +253,17 @@
     }
 
     .tariffs-card__list {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tariffs-card__list-col {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .tariffs-card__list-col ul {
         gap: 10px;
     }
 
