@@ -275,6 +275,11 @@
         line-height: 115%;
     }
 
+    .tariffs-section .tariffs-card__btn {
+        height: 25px;
+        padding: 20px;
+    }
+
     .tariffs-section .tariffs-card__btn span {
         color: #FFF !important;
         font-family: Inter, sans-serif;
