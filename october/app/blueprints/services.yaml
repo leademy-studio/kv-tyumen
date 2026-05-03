@@ -148,8 +148,13 @@ fields:
         tab: Пакетный ремонт
         default: '30 000 ₽ / м²'
 
-    cr_tariff1_list:
-        label: Список тарифа
+    cr_tariff1_list_left:
+        label: Левый столбец списка
+        type: richeditor
+        tab: Пакетный ремонт
+
+    cr_tariff1_list_right:
+        label: Правый столбец списка
         type: richeditor
         tab: Пакетный ремонт
 
@@ -170,8 +175,13 @@ fields:
         tab: Пакетный ремонт
         default: '35 000 ₽ / м²'
 
-    cr_tariff2_list:
-        label: Список тарифа
+    cr_tariff2_list_left:
+        label: Левый столбец списка
+        type: richeditor
+        tab: Пакетный ремонт
+
+    cr_tariff2_list_right:
+        label: Правый столбец списка
         type: richeditor
         tab: Пакетный ремонт
 
@@ -186,8 +196,13 @@ fields:
         tab: Пакетный ремонт
         default: 'Премиум'
 
-    cr_tariff3_list:
-        label: Список тарифа
+    cr_tariff3_list_left:
+        label: Левый столбец списка
+        type: richeditor
+        tab: Пакетный ремонт
+
+    cr_tariff3_list_right:
+        label: Правый столбец списка
         type: richeditor
         tab: Пакетный ремонт
 
@@ -202,7 +217,12 @@ fields:
         tab: Пакетный ремонт
         default: 'От шефа'
 
-    cr_tariff4_list:
-        label: Список тарифа
+    cr_tariff4_list_left:
+        label: Левый столбец списка
+        type: richeditor
+        tab: Пакетный ремонт
+
+    cr_tariff4_list_right:
+        label: Правый столбец списка
         type: richeditor
         tab: Пакетный ремонт

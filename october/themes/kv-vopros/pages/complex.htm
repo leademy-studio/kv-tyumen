@@ -39,13 +39,17 @@ function onStart()
 {% set crCard5Image = services.cr_card5_image ? services.cr_card5_image|media : '/themes/kv-vopros/assets/images/tild3964-3764-4461-b462-356261373962_______.png' %}
 
 {% set tariffCard1Title = services.cr_tariff1_title | default('Стандарт') %}
-{% set tariffCard1List = services.cr_tariff1_list | default('<ul><li>Базовый пакет ремонта под ключ</li><li>Черновые + отделочные материалы</li><li>Подсветка ниш и парящей стены</li><li>Водонагреватель в подарок</li><li>Уборка и вывоз мусора</li><li>30 000 ₽ / м²</li></ul>') %}
+{% set tariffCard1ListLeft = services.cr_tariff1_list_left | default('<ul><li>Базовый пакет ремонта под ключ</li><li>Черновые + отделочные материалы</li><li>Подсветка ниш и парящей стены</li></ul>') %}
+{% set tariffCard1ListRight = services.cr_tariff1_list_right | default('<ul><li>Водонагреватель в подарок</li><li>Уборка и вывоз мусора</li><li>30 000 ₽ / м²</li></ul>') %}
 {% set tariffCard2Title = services.cr_tariff2_title | default('Стандарт+') %}
-{% set tariffCard2List = services.cr_tariff2_list | default('<ul><li>Расширенный комплект отделки</li><li>Улучшенные материалы и освещение</li><li>Кондиционер в подарок</li><li>Обои премиум-класса</li><li>Декоративный свет в каждую комнату</li><li>35 000 ₽ / м²</li></ul>') %}
+{% set tariffCard2ListLeft = services.cr_tariff2_list_left | default('<ul><li>Расширенный комплект отделки</li><li>Улучшенные материалы и освещение</li><li>Кондиционер в подарок</li></ul>') %}
+{% set tariffCard2ListRight = services.cr_tariff2_list_right | default('<ul><li>Обои премиум-класса</li><li>Декоративный свет в каждую комнату</li><li>35 000 ₽ / м²</li></ul>') %}
 {% set tariffCard3Title = services.cr_tariff3_title | default('Премиум') %}
-{% set tariffCard3List = services.cr_tariff3_list | default('<ul><li>Если нужен особый подход</li><li>Подбор решений под ваш бюджет</li><li>Гибкая комплектация материалов</li><li>Отдельные сметы по этапам</li><li>Персональный план-график работ</li><li>Фиксация стоимости до старта</li></ul>') %}
+{% set tariffCard3ListLeft = services.cr_tariff3_list_left | default('<ul><li>Если нужен особый подход</li><li>Подбор решений под ваш бюджет</li><li>Гибкая комплектация материалов</li></ul>') %}
+{% set tariffCard3ListRight = services.cr_tariff3_list_right | default('<ul><li>Отдельные сметы по этапам</li><li>Персональный план-график работ</li><li>Фиксация стоимости до старта</li></ul>') %}
 {% set tariffCard4Title = services.cr_tariff4_title | default('От шефа') %}
-{% set tariffCard4List = services.cr_tariff4_list | default('<ul><li>Расширенный пакет под ключ</li><li>Премиальные материалы в проекте</li><li>Сложные инженерные решения</li><li>Декоративное и сценарное освещение</li><li>Контроль качества на каждом этапе</li><li>Подготовка квартиры к заселению</li></ul>') %}
+{% set tariffCard4ListLeft = services.cr_tariff4_list_left | default('<ul><li>Расширенный пакет под ключ</li><li>Премиальные материалы в проекте</li><li>Сложные инженерные решения</li></ul>') %}
+{% set tariffCard4ListRight = services.cr_tariff4_list_right | default('<ul><li>Декоративное и сценарное освещение</li><li>Контроль качества на каждом этапе</li><li>Подготовка квартиры к заселению</li></ul>') %}
 
 {% put head %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

@@ -85,15 +85,21 @@
 .tariffs-card__list {
     margin: 0;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 30px;
 }
 
-.tariffs-card__list ul {
+.tariffs-card__list-col ul {
     margin: 0;
     padding: 0;
     list-style: none !important;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 30px;
+    gap: 12px;
+}
+
+.tariffs-section .tariffs-card__list-col ul {
+    padding-left: 5px;
 }
 
 .tariffs-card__list li {
@@ -113,6 +119,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 
 .tariffs-card__list li::before {
@@ -149,12 +159,13 @@
 }
 
 .tariffs-section .tariffs-card__btn span {
-    color: var(--, #FFF);
-    font-family: Inter;
-    font-size: 26.057px;
+    color: #FFF !important;
+    font-family: Inter, sans-serif;
+    font-size: 26px;
     font-style: normal;
     font-weight: 500;
     line-height: 115%;
+    letter-spacing: 0;
 }
 
 @media screen and (max-width: 1400px) {
@@ -163,8 +174,8 @@
         letter-spacing: -1.56px;
     }
     .tariffs-section .tariffs-card__btn span {
-        color: var(--, #FFF);
-        font-family: Inter;
+        color: #FFF !important;
+        font-family: Inter, sans-serif;
         font-size: 19px;
         font-style: normal;
         font-weight: 500;
@@ -192,7 +203,7 @@
         width: 100%;
     }
 
-    .tariffs-card__list ul {
+    .tariffs-card__list {
         grid-template-columns: 1fr;
     }
 }
@@ -232,7 +243,7 @@
     }
 
     .tariffs-card__title {
-        color: var(--, #3e3c38);
+        color: #3e3c38 !important;
         font-family: "Bona Nova SC", serif;
         font-size: 27px;
         font-style: normal;
@@ -241,13 +252,13 @@
         letter-spacing: -0.81px;
     }
 
-    .tariffs-card__list ul {
+    .tariffs-card__list {
         grid-template-columns: 1fr;
         gap: 10px;
     }
 
     .tariffs-card__list li {
-        color: var(--, #3e3c38);
+        color: #3e3c38 !important;
         font-family: Inter, sans-serif;
         font-size: 14px;
         font-style: normal;
@@ -256,12 +267,13 @@
     }
 
     .tariffs-section .tariffs-card__btn span {
-        color: var(--, #FFF);
-        font-family: Inter;
+        color: #FFF !important;
+        font-family: Inter, sans-serif;
         font-size: 15px;
         font-style: normal;
         font-weight: 500;
         line-height: 115%;
+        letter-spacing: 0;
     }
 }
 
@@ -304,7 +316,7 @@
     }
 
     .tariffs-card__title {
-        color: var(--, #3e3c38);
+        color: #3e3c38 !important;
         font-family: "Bona Nova SC", serif;
         font-size: 22px;
         font-style: normal;
@@ -314,7 +326,7 @@
     }
 
     .tariffs-card__list li {
-        color: var(--, #3e3c38);
+        color: #3e3c38 !important;
         font-family: Inter, sans-serif;
         font-size: 12px;
         font-style: normal;
@@ -323,8 +335,8 @@
     }
 
     .tariffs-section .tariffs-card__btn span {
-        color: var(--, #FFF);
-        font-family: Inter;
+        color: #FFF !important;
+        font-family: Inter, sans-serif;
         font-size: 15px;
         font-style: normal;
         font-weight: 500;
