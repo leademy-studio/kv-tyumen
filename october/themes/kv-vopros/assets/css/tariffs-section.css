@@ -94,7 +94,7 @@
     margin: 0;
     color: #3e3c38;
     font-family: Manrope, sans-serif;
-    font-size: 44px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
@@ -274,7 +274,7 @@
     }
 
     .tariffs-card__price {
-        font-size: 22px;
+        font-size: 14px;
     }
 
     .tariffs-card__list {
@@ -340,8 +340,8 @@
 
 @media screen and (max-width: 567px) {
     .tariffs-card {
-        flex: 0 0 70%;
-        width: 70%;
+        flex: 0 0 85%;
+        width: 85%;
     }
 }
 
@@ -351,8 +351,8 @@
     }
 
     .tariffs-card {
-        flex: 0 0 70%;
-        width: 70%;
+        flex: 0 0 85%;
+        width: 85%;
     }
 
     .tariffs-card__title {
@@ -366,7 +366,7 @@
     }
 
     .tariffs-card__price {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .tariffs-card__list li {
