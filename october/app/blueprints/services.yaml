@@ -196,6 +196,12 @@ fields:
         tab: Пакетный ремонт
         default: 'Премиум'
 
+    cr_tariff3_price:
+        label: Стоимость тарифа
+        type: text
+        tab: Пакетный ремонт
+        default: 'По запросу'
+
     cr_tariff3_list_left:
         label: Левый столбец списка
         type: richeditor
@@ -216,6 +222,12 @@ fields:
         type: text
         tab: Пакетный ремонт
         default: 'От шефа'
+
+    cr_tariff4_price:
+        label: Стоимость тарифа
+        type: text
+        tab: Пакетный ремонт
+        default: 'По запросу'
 
     cr_tariff4_list_left:
         label: Левый столбец списка

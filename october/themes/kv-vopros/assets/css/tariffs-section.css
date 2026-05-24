@@ -72,7 +72,7 @@
 }
 
 .tariffs-card__title {
-    margin: 0 0 24px;
+    margin: 0;
     color: #3e3c38 !important;
     font-family: "Bona Nova SC", serif;
     font-size: 42.514px;
@@ -80,6 +80,24 @@
     font-weight: 400;
     line-height: 90%;
     letter-spacing: -1.275px;
+}
+
+.tariffs-card__head {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    align-self: stretch;
+    margin-bottom: 24px;
+}
+
+.tariffs-card__price {
+    margin: 0;
+    color: #3e3c38;
+    font-family: Manrope, sans-serif;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
 }
 
 .tariffs-card__list {
@@ -251,6 +269,14 @@
         letter-spacing: -0.81px;
     }
 
+    .tariffs-card__head {
+        gap: 16px;
+    }
+
+    .tariffs-card__price {
+        font-size: 22px;
+    }
+
     .tariffs-card__list {
         display: flex;
         flex-direction: column;
@@ -337,6 +363,10 @@
         font-weight: 400;
         line-height: 90%;
         letter-spacing: -0.66px;
+    }
+
+    .tariffs-card__price {
+        font-size: 18px;
     }
 
     .tariffs-card__list li {
