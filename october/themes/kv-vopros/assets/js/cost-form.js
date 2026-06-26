@@ -1,4 +1,8 @@
 window.kvCostFormSuccess = function () {
+    if (typeof window.kvReachSubmitFormGoal === 'function') {
+        window.kvReachSubmitFormGoal();
+    }
+
     if (window.oc && window.oc.flashMsg) {
         window.oc.flashMsg({ text: 'Заявка отправлена', class: 'success' });
     }
