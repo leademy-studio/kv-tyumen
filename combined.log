@@ -18,3 +18,85 @@
 {"level":"info","message":"All categories enabled","timestamp":"2026-06-26T10:55:08.276Z"}
 {"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-06-26T10:55:08.276Z"}
 {"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-06-26T10:55:08.278Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-06-26T11:23:53.487Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-06-26T11:25:12.012Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-06-26T11:32:55.954Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-06-26T12:22:52.762Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-06-27T10:48:34.609Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-06-27T10:48:34.617Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-06-27T10:48:34.617Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-06-27T10:48:34.618Z"}
+{"arguments":{"domain":"kv-tyumen.ru","order":"desc","sort":"keywords_count"},"level":"info","message":"Tool call received: get_domain_regions_count","timestamp":"2026-06-27T10:50:00.346Z"}
+{"domain":"kv-tyumen.ru","level":"info","message":"Getting domain regions count","order":"desc","sort":"keywords_count","timestamp":"2026-06-27T10:50:00.347Z"}
+{"level":"error","message":"Tool get_domain_regions_count error: Serpstat API error: Api not allowed for your plan! (code: 32011)","stack":"Error: Serpstat API error: Api not allowed for your plan! (code: 32011)\n    at DomainService.makeRequest (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/services/base.js:62:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DomainService.getDomainRegionsCount (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/services/domain_tools.js:82:26)\n    at async DomainRegionsCountHandler.handle (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/handlers/domain_tools.js:407:28)\n    at async /Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/server.js:164:28\n    at async wrappedHandler (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@modelcontextprotocol/sdk/dist/cjs/server/index.js:128:32)","timestamp":"2026-06-27T10:50:00.818Z"}
+{"level":"info","message":"Tool call completed: get_domain_regions_count","responseLength":71,"success":false,"timestamp":"2026-06-27T10:50:00.818Z"}
+{"arguments":{"domain":"kv-tyumen.ru","se":"g_ru","size":10},"level":"info","message":"Tool call received: get_domain_competitors","timestamp":"2026-06-27T10:51:04.421Z"}
+{"domain":"kv-tyumen.ru","level":"info","message":"Getting competitors","se":"g_ru","timestamp":"2026-06-27T10:51:04.422Z"}
+{"level":"error","message":"Tool get_domain_competitors error: Serpstat API error: Api not allowed for your plan! (code: 32011)","stack":"Error: Serpstat API error: Api not allowed for your plan! (code: 32011)\n    at DomainService.makeRequest (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/services/base.js:62:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DomainService.getCompetitors (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/services/domain_tools.js:31:26)\n    at async CompetitorsHandler.handle (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/handlers/domain_tools.js:150:28)\n    at async /Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@serpstat/serpstat-mcp-server/dist/server.js:164:28\n    at async wrappedHandler (/Users/ravilsakirov/.npm/_npx/b1b9e50f7efe9f3f/node_modules/@modelcontextprotocol/sdk/dist/cjs/server/index.js:128:32)","timestamp":"2026-06-27T10:51:04.919Z"}
+{"level":"info","message":"Tool call completed: get_domain_competitors","responseLength":71,"success":false,"timestamp":"2026-06-27T10:51:04.920Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-06-27T11:05:48.565Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-06-27T11:05:48.581Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-06-27T11:05:48.581Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-06-27T11:05:48.582Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-06-27T11:22:27.403Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-06-27T11:38:19.089Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-07-12T18:39:47.993Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-07-12T18:39:47.999Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-07-12T18:39:47.999Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-07-12T18:39:48.000Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-07-12T18:40:02.538Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-07-12T18:40:02.545Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-07-12T18:40:02.545Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-07-12T18:40:02.546Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-07-12T19:10:08.983Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-07-13T05:55:20.487Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-07-13T05:55:20.494Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-07-13T05:55:20.494Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-07-13T05:55:20.495Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-07-13T05:55:30.306Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-07-13T05:55:30.312Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-07-13T05:55:30.313Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-07-13T05:55:30.313Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-07-13T06:25:33.773Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T07:00:52.719Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T07:00:52.725Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T07:00:52.726Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T07:00:52.726Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T07:02:08.573Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T07:02:08.579Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T07:02:08.580Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T07:02:08.580Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-09T07:02:08.603Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T07:02:21.947Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T07:02:21.954Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T07:02:21.954Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T07:02:21.955Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-09T07:32:27.324Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T07:43:56.277Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T07:43:56.285Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T07:43:56.285Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T07:43:56.286Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T12:39:17.949Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T12:39:17.956Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T12:39:17.957Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T12:39:17.957Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T12:40:08.602Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T12:40:08.609Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T12:40:08.609Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T12:40:08.610Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-09T12:40:08.637Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-09T12:40:21.633Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-09T12:40:21.642Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-09T12:40:21.643Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-09T12:40:21.644Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-09T13:10:24.970Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-10T06:47:12.064Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-10T06:47:12.071Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-10T06:47:12.071Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-10T06:47:12.072Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-10T06:47:57.106Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-10T06:47:57.113Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-10T06:47:57.113Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-10T06:47:57.114Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-10T07:18:02.720Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-10T08:17:06.884Z"}

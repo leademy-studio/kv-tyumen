@@ -1,7 +1,7 @@
 services:
   # Сервис Traefik (обратный прокси)
   traefik:
-    image: traefik:v2.10
+    image: traefik:v3
     container_name: kv_vopros_traefik
     restart: unless-stopped
     ports:

@@ -12,7 +12,7 @@
 # - Данные из админки хранятся в БД (volume) и не должны теряться при рестарте.
 # - Потеря данных обычно происходит ТОЛЬКО если удалили volume (например `docker compose down -v`).
 # - На сервере обычно есть свои `.env` (в корне и `october/.env`). Этот скрипт
-#   сохраняет оба env-файла при `git reset --hard`, чтобы они не затирались.
+#   сохраняет оба env-файла и traefik/acme.json при `git reset --hard`, чтобы они не затирались.
 #
 # Использование:
 #   ./deploy.sh
@@ -75,13 +75,15 @@ set -euo pipefail
 ensure_repo() {
   if [ -d "${REMOTE_PATH}/.git" ]; then
     cd "${REMOTE_PATH}"
-    echo '--- 1. Обновление кода (с сохранением серверных .env) ---'
+    echo '--- 1. Обновление кода (с сохранением серверных .env и acme.json) ---'
     if [ -f .env ]; then cp .env .env.deploy.backup; fi
     if [ -f october/.env ]; then cp october/.env october/.env.deploy.backup; fi
+    if [ -f traefik/acme.json ]; then cp traefik/acme.json traefik/acme.json.deploy.backup; fi
     git fetch origin "${GIT_BRANCH}"
     git reset --hard "origin/${GIT_BRANCH}"
     if [ -f .env.deploy.backup ]; then mv .env.deploy.backup .env; fi
     if [ -f october/.env.deploy.backup ]; then mv october/.env.deploy.backup october/.env; fi
+    if [ -f traefik/acme.json.deploy.backup ]; then mv traefik/acme.json.deploy.backup traefik/acme.json; fi
     return
   fi
 
@@ -110,12 +112,14 @@ ensure_repo() {
   if [ -d "${REMOTE_PATH}/backups" ]; then mv "${REMOTE_PATH}/backups" "${tmp_dir}/"; fi
   if [ -f "${REMOTE_PATH}/.env" ]; then mv "${REMOTE_PATH}/.env" "${tmp_dir}/"; fi
   if [ -f "${REMOTE_PATH}/october/.env" ]; then mv "${REMOTE_PATH}/october/.env" "${tmp_dir}/october.env"; fi
+  if [ -f "${REMOTE_PATH}/traefik/acme.json" ]; then mv "${REMOTE_PATH}/traefik/acme.json" "${tmp_dir}/acme.json"; fi
   rmdir "${REMOTE_PATH}" 2>/dev/null || true
   mkdir -p "${REMOTE_PATH}"
   git clone --branch "${GIT_BRANCH}" "${GIT_REPO}" "${REMOTE_PATH}"
   if [ -d "${tmp_dir}/backups" ]; then mv "${tmp_dir}/backups" "${REMOTE_PATH}/"; fi
   if [ -f "${tmp_dir}/.env" ]; then mv "${tmp_dir}/.env" "${REMOTE_PATH}/"; fi
   if [ -f "${tmp_dir}/october.env" ]; then mv "${tmp_dir}/october.env" "${REMOTE_PATH}/october/.env"; fi
+  if [ -f "${tmp_dir}/acme.json" ]; then mv "${tmp_dir}/acme.json" "${REMOTE_PATH}/traefik/acme.json"; fi
   rmdir "${tmp_dir}" 2>/dev/null || true
   cd "${REMOTE_PATH}"
 }

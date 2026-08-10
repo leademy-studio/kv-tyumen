@@ -155,7 +155,7 @@ while true; do
   if check_target; then
     write_fail_count "0"
     if [ "$state" = "down" ]; then
-      recovery_message="SERVER UP: ${TARGET_URL} (${current_utc})"
+      recovery_message="SERVER UP: ${TARGET_URL} ($(current_utc))"
       send_alerts "$recovery_message"
       log "Status changed: DOWN -> UP"
     fi
@@ -165,7 +165,7 @@ while true; do
     write_fail_count "$fail_count"
 
     if [ "$fail_count" -ge "$FAIL_THRESHOLD" ] && [ "$state" != "down" ]; then
-      down_message="SERVER DOWN: ${TARGET_URL} (${current_utc})"
+      down_message="SERVER DOWN: ${TARGET_URL} ($(current_utc))"
       send_alerts "$down_message"
       write_state "down"
       log "Status changed: UP -> DOWN (failures=${fail_count})"

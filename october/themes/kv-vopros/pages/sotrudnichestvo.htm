@@ -3,15 +3,22 @@ url = "/sotrudnichestvo"
 layout = "default"
 bodyClass = "t-body"
 bodyStyle = "margin: 0"
+
+[global seoPages]
+handle = "Site\\SeoPages"
 ==
+{% set seoTitle = seoPages.cooperation_meta_title ?: 'Сотрудничество' %}
+{% set seoDescription = seoPages.cooperation_meta_description ?: '' %}
 {% put head %}
 <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!--metatextblock-->
+        <title>{{ seoTitle|e }}</title>
+        <meta name="description" content="{{ seoDescription|e }}" />
         <meta property="og:url" content="https://www.kv-tyumen.ru/sotrudnichestvo" />
-        <meta property="og:title" content="Сотрудничество" />
-        <meta property="og:description" content="" />
+        <meta property="og:title" content="{{ seoTitle|e }}" />
+        <meta property="og:description" content="{{ seoDescription|e }}" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/themes/kv-vopros/assets/images/tild3662-3530-4939-b231-363366663632__photo.png" />
         <link rel="canonical" href="https://www.kv-tyumen.ru/sotrudnichestvo" />

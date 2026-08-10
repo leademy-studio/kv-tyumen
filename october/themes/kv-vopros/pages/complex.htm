@@ -37,6 +37,8 @@ function onStart()
 {% set crCard3Image = services.cr_card3_image ? services.cr_card3_image|media : '/themes/kv-vopros/assets/images/tild3334-6636-4165-b933-336332396232_______.png' %}
 {% set crCard4Image = services.cr_card4_image ? services.cr_card4_image|media : '/themes/kv-vopros/assets/images/tild3937-6139-4534-a464-353737323864_______.png' %}
 {% set crCard5Image = services.cr_card5_image ? services.cr_card5_image|media : '/themes/kv-vopros/assets/images/tild3964-3764-4461-b462-356261373962_______.png' %}
+{% set seoTitle = services.cr_meta_title ?: 'Пакетный ремонт' %}
+{% set seoDescription = services.cr_meta_description ?: '' %}
 
 {% set tariffCard1Title = services.cr_tariff1_title | default('Стандарт') %}
 {% set tariffCard1Price = services.cr_tariff1_price | default('30 000 ₽ / м²') %}
@@ -59,9 +61,11 @@ function onStart()
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!--metatextblock-->
+        <title>{{ seoTitle|e }}</title>
+        <meta name="description" content="{{ seoDescription|e }}" />
         <meta property="og:url" content="https://www.kv-tyumen.ru/repairs" />
-        <meta property="og:title" content="Пакетный ремонт" />
-        <meta property="og:description" content="" />
+        <meta property="og:title" content="{{ seoTitle|e }}" />
+        <meta property="og:description" content="{{ seoDescription|e }}" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/themes/kv-vopros/assets/images/tild3861-6430-4066-b137-613263646436__photo.png" />
         <link rel="canonical" href="https://www.kv-tyumen.ru/repairs" />

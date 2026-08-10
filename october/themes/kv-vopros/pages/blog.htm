@@ -3,17 +3,22 @@ url = "/blog"
 layout = "default"
 bodyClass = "t-body"
 bodyStyle = "margin: 0"
+
+[global seoPages]
+handle = "Site\\SeoPages"
 ==
+{% set seoTitle = seoPages.blog_meta_title ?: 'Блог' %}
+{% set seoDescription = seoPages.blog_meta_description ?: '' %}
 {% put head %}
-{% verbatim %}
 <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!--metatextblock-->
-        <title>Блог</title>
+        <title>{{ seoTitle|e }}</title>
+        <meta name="description" content="{{ seoDescription|e }}" />
         <meta property="og:url" content="https://www.kv-tyumen.ru/blog" />
-        <meta property="og:title" content="Блог" />
-        <meta property="og:description" content="" />
+        <meta property="og:title" content="{{ seoTitle|e }}" />
+        <meta property="og:description" content="{{ seoDescription|e }}" />
         <meta property="og:type" content="website" />
         <meta
             property="og:image"
@@ -21,6 +26,7 @@ bodyStyle = "margin: 0"
         />
         <link rel="canonical" href="https://www.kv-tyumen.ru/blog" />
         <!--/metatextblock-->
+{% verbatim %}
         <meta name="format-detection" content="telephone=no" />
         <meta http-equiv="x-dns-prefetch-control" content="on" />
         <link rel="dns-prefetch" href="https://ws.tildacdn.com" />

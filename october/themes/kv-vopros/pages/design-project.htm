@@ -31,12 +31,16 @@ function onStart()
 {% set dpBackgroundImage = services.dp_background_image ? services.dp_background_image|media : '/themes/kv-vopros/assets/images/tild3765-3735-4431-b566-623264663433__rectangle_4735.png' %}
 {% set dpWeCanImage1 = services.dp_we_can_image1 ? services.dp_we_can_image1|media : '/themes/kv-vopros/assets/images/tild3163-3966-4939-a634-366338396139__rectangle_4755.png' %}
 {% set dpWeCanImage2 = services.dp_we_can_image2 ? services.dp_we_can_image2|media : '/themes/kv-vopros/assets/images/tild6634-6364-4635-a630-353039323334__rectangle_4756.png' %}
+{% set seoTitle = services.dp_meta_title ?: 'Ремонт по дизайн проекту' %}
+{% set seoDescription = services.dp_meta_description ?: '' %}
 {% put head %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <!--metatextblock-->
+        <title>{{ seoTitle|e }}</title>
+        <meta name="description" content="{{ seoDescription|e }}" />
         <meta property="og:url" content="https://www.kv-tyumen.ru/design-project" />
-        <meta property="og:title" content="Ремонт по дизайн проекту" />
-        <meta property="og:description" content="" />
+        <meta property="og:title" content="{{ seoTitle|e }}" />
+        <meta property="og:description" content="{{ seoDescription|e }}" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/themes/kv-vopros/assets/images/tild6361-3863-4466-a566-313462386439__photo.png" />
         <link rel="canonical" href="https://www.kv-tyumen.ru/design-project" />

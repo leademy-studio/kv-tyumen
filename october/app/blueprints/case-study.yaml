@@ -16,15 +16,35 @@ fields:
             field: title
         required: true
 
+    _section_meta:
+        label: Мета-теги
+        type: section
+        tab: SEO
+
+    meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title детальной страницы кейса. Если пусто, используется название объекта.'
+        type: text
+        tab: SEO
+
+    meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description детальной страницы кейса.'
+        type: textarea
+        size: small
+        tab: SEO
+
     sort_order:
         label: Порядок в портфолио
         type: number
         commentAbove: 'Чем меньше значение, тем выше карточка в списке.'
+        tab: Контент
 
     service_type:
         label: Тип услуги
         type: dropdown
         required: true
+        tab: Контент
         options:
             design-project: Ремонт по дизайн-проекту
             package-repair: Пакетный ремонт
@@ -34,20 +54,24 @@ fields:
         type: mediafinder
         mode: image
         required: true
+        tab: Контент
 
     banner_image:
         label: Изображение для баннера (на детальной странице)
         type: mediafinder
         mode: image
         required: true
+        tab: Контент
 
     gallery_images:
         label: Галерея изображений
         type: mediafinder
         mode: image
+        tab: Контент
 
     vk_video_url:
         label: VK Video для мини-плеера
         type: text
         commentAbove: 'Вставьте ссылку на плеер VK (video_ext.php) или на видео вида vk.com/video-123_456. Если пусто — плеер не показывается.'
         placeholder: 'https://vk.com/video_ext.php?oid=...&id=...&hash=...'
+        tab: Контент

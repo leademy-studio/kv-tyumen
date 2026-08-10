@@ -3,18 +3,28 @@ url = "/rabota"
 layout = "default"
 bodyClass = "t-body"
 bodyStyle = "margin: 0"
+
+[global seoPages]
+handle = "Site\\SeoPages"
 ==
+{% set seoTitle = seoPages.career_meta_title ?: 'Карьера' %}
+{% set seoDescription = seoPages.career_meta_description ?: '' %}
 {% put head %}
-{% verbatim %}
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!--metatextblock--> <meta property="og:url" content="https://www.kv-tyumen.ru/rabota" />
-<meta property="og:title" content="Карьера" />
-<meta property="og:description" content="" />
+<!--metatextblock-->
+<title>{{ seoTitle|e }}</title>
+<meta name="description" content="{{ seoDescription|e }}" />
+<meta property="og:url" content="https://www.kv-tyumen.ru/rabota" />
+<meta property="og:title" content="{{ seoTitle|e }}" />
+<meta property="og:description" content="{{ seoDescription|e }}" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/themes/kv-vopros/assets/images/tild6361-3434-4334-a536-613937353030__photo.png" />
-<link rel="canonical" href="https://www.kv-tyumen.ru/rabota"> <!--/metatextblock--> <meta name="format-detection" content="telephone=no" />
+<link rel="canonical" href="https://www.kv-tyumen.ru/rabota">
+<!--/metatextblock-->
+{% verbatim %}
+<meta name="format-detection" content="telephone=no" />
 <meta http-equiv="x-dns-prefetch-control" content="on"> <link rel="dns-prefetch" href="https://ws.tildacdn.com">  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png"> <link rel="apple-touch-icon" sizes="76x76" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png"> <link rel="apple-touch-icon" sizes="152x152" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png"> <link rel="apple-touch-startup-image" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png"> <meta name="msapplication-TileColor" content="#000000"> <meta name="msapplication-TileImage" content="/themes/kv-vopros/assets/images/tild6165-3039-4231-b863-383936363934__logo.png"> <!-- Assets --> <script src="https://neo.tildacdn.com/js/tilda-fallback-1.0.min.js" async charset="utf-8"></script>
 <link rel="stylesheet" href="/themes/kv-vopros/assets/css/tilda-grid-3.0.min.css" type="text/css" media="all" onerror="this.loaderr='y';"/>

@@ -14,6 +14,60 @@ navigation:
     order: 25
 
 fields:
+    _section_design_project_seo:
+        label: Мета-теги страницы "Дизайн-проект"
+        type: section
+        tab: SEO
+
+    dp_meta_title:
+        label: Title для /design-project
+        commentAbove: 'Текст для тега <title> и og:title страницы /design-project.'
+        type: text
+        tab: SEO
+
+    dp_meta_description:
+        label: Description для /design-project
+        commentAbove: 'Текст для meta name="description" и og:description страницы /design-project.'
+        type: textarea
+        size: small
+        tab: SEO
+
+    _section_complex_repair_seo:
+        label: Мета-теги страницы "Пакетный ремонт"
+        type: section
+        tab: SEO
+
+    cr_meta_title:
+        label: Title для /repairs
+        commentAbove: 'Текст для тега <title> и og:title страницы /repairs.'
+        type: text
+        tab: SEO
+
+    cr_meta_description:
+        label: Description для /repairs
+        commentAbove: 'Текст для meta name="description" и og:description страницы /repairs.'
+        type: textarea
+        size: small
+        tab: SEO
+
+    _section_portfolio_seo:
+        label: Мета-теги страницы "Портфолио"
+        type: section
+        tab: SEO
+
+    portfolio_meta_title:
+        label: Title для /portfolio
+        commentAbove: 'Текст для тега <title> и og:title страницы /portfolio.'
+        type: text
+        tab: SEO
+
+    portfolio_meta_description:
+        label: Description для /portfolio
+        commentAbove: 'Текст для meta name="description" и og:description страницы /portfolio.'
+        type: textarea
+        size: small
+        tab: SEO
+
     _section_design_project:
         label: Дизайн-проект
         type: section

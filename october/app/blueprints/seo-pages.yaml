@@ -1,0 +1,108 @@
+uuid: f218ca75-6e5b-4e53-9db9-87bd65d68967
+handle: Site\SeoPages
+type: global
+name: SEO страниц
+
+customMessages:
+    titleUpdateForm: Редактирование SEO страниц
+
+primaryNavigation:
+    label: SEO страниц
+    icon: icon-search
+    order: 85
+
+navigation:
+    label: SEO страниц
+    icon: icon-search
+    order: 10
+
+fields:
+    _section_contacts:
+        label: Контакты
+        type: section
+        tab: Контакты
+
+    contacts_meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title страницы /contacts.'
+        type: text
+        tab: Контакты
+
+    contacts_meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description страницы /contacts.'
+        type: textarea
+        size: small
+        tab: Контакты
+
+    _section_blog:
+        label: Блог
+        type: section
+        tab: Блог
+
+    blog_meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title страницы /blog.'
+        type: text
+        tab: Блог
+
+    blog_meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description страницы /blog.'
+        type: textarea
+        size: small
+        tab: Блог
+
+    _section_cooperation:
+        label: Сотрудничество
+        type: section
+        tab: Сотрудничество
+
+    cooperation_meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title страницы /sotrudnichestvo.'
+        type: text
+        tab: Сотрудничество
+
+    cooperation_meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description страницы /sotrudnichestvo.'
+        type: textarea
+        size: small
+        tab: Сотрудничество
+
+    _section_career:
+        label: Карьера
+        type: section
+        tab: Карьера
+
+    career_meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title страницы /rabota.'
+        type: text
+        tab: Карьера
+
+    career_meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description страницы /rabota.'
+        type: textarea
+        size: small
+        tab: Карьера
+
+    _section_policy:
+        label: Политика обработки персональных данных
+        type: section
+        tab: Политика
+
+    policy_meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title страницы /policy.'
+        type: text
+        tab: Политика
+
+    policy_meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description страницы /policy.'
+        type: textarea
+        size: small
+        tab: Политика

@@ -17,9 +17,28 @@ navigation:
     order: 15
 
 fields:
+    _section_meta:
+        label: Мета-теги
+        type: section
+        tab: SEO
+
+    meta_title:
+        label: Title
+        commentAbove: 'Текст для тега <title> и og:title страницы /about-company.'
+        type: text
+        tab: SEO
+
+    meta_description:
+        label: Description
+        commentAbove: 'Текст для meta name="description" и og:description страницы /about-company.'
+        type: textarea
+        size: small
+        tab: SEO
+
     _section_images:
         label: Изображения
         type: section
+        tab: Контент
 
     hero_repair_bg:
         label: Фон секции "Ваш ремонт — наша забота"
@@ -27,6 +46,7 @@ fields:
         mode: image
         maxItems: 1
         commentAbove: 'Фоновое изображение верхней секции.'
+        tab: Контент
 
     trust_process_bg:
         label: Изображение секции "Мы слушаем. Мы отвечаем..."
@@ -34,25 +54,30 @@ fields:
         mode: image
         maxItems: 1
         commentAbove: 'Изображение рядом с текстом про этапы ремонта.'
+        tab: Контент
 
     _section_video:
         label: Видео
         type: section
+        tab: Контент
 
     video_url:
         label: Ссылка на видео
         commentAbove: 'Вставьте ссылку на VK или Kinescope (например: https://kinescope.io/xhL8CKdy5NpHh4hmRy6vDp)'
         type: text
+        tab: Контент
 
     _section_team:
         label: Наша команда
         type: section
+        tab: Команда
 
     team_members:
         label: Сотрудники
         type: repeater
         titleFrom: name
         commentAbove: 'Добавляйте сотрудников в любом количестве.'
+        tab: Команда
         form:
             fields:
                 name:
