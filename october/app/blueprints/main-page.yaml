@@ -41,11 +41,11 @@ fields:
         tab: Кейсы
 
     cases_entries:
-        label: Карточки портфолио (4)
-        commentAbove: 'Выберите 4 кейса: ссылки, hero-изображения и типы ремонта берутся из записи.'
+        label: Карточки портфолио (5)
+        commentAbove: 'Выберите 5 кейсов: ссылки, hero-изображения и типы ремонта берутся из записи.'
         type: entries
         source: Site\CaseStudy
-        maxItems: 4
+        maxItems: 5
         tab: Кейсы
 
     _section_advantages:

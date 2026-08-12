@@ -1,0 +1,221 @@
+/* cta-section — Figma 4:7744 (1920×673)
+   Декоративные слои-подложки из макета (4 шт.) перекрыты сплошной заливкой #e8e7e6,
+   поэтому в вёрстку не переносятся — визуально они не видны. */
+
+.cta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.857rem;
+    align-items: flex-start;
+    padding: 0 5.1429rem 11.1429rem;
+    background: var(--c-page);
+}
+
+.cta__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 30.9429rem;
+    padding: 4.2857rem 38.657rem 4.2857rem 4.2857rem;
+    border-radius: 1.2857rem;
+    background: var(--c-green);
+}
+
+.cta__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5714rem;
+    align-items: flex-start;
+    width: 66.7714rem;
+}
+
+.cta__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7143rem;
+    align-items: flex-start;
+    width: 100%;
+    color: var(--c-black);
+    word-break: break-word;
+}
+
+.cta__title {
+    width: 100%;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+}
+
+.cta__subtitle {
+    width: 36.6857rem;
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+    opacity: 0.6;
+}
+
+.cta__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30.6rem;
+    height: 4.7143rem;
+    padding: 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-black);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.cta__button:hover {
+    transform: translateY(-0.125rem);
+    opacity: 0.92;
+}
+
+.cta__button-text {
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1.6286rem;
+    line-height: 1.15;
+    color: var(--c-white);
+    white-space: nowrap;
+    word-break: break-word;
+}
+
+.cta__button-icon {
+    width: 1.3714rem;
+    height: 1.3714rem;
+    flex-shrink: 0;
+}
+
+.cta__image {
+    position: absolute;
+    right: 9.4286rem;
+    top: calc(50% - 5.5714rem);
+    transform: translateY(-50%);
+    width: 32.8432rem;
+    height: 22.3714rem;
+    border-radius: 1.2857rem;
+    overflow: hidden;
+}
+
+.cta__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+    .cta {
+        padding: 0 16px 64px;
+    }
+
+    .cta__panel {
+        height: auto;
+        padding: 32px 24px;
+    }
+
+    .cta__content {
+        width: 100%;
+    }
+
+    .cta__title {
+        font-size: clamp(28px, 7vw, 48px);
+    }
+
+    .cta__subtitle {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .cta__button {
+        width: 100%;
+        max-width: 320px;
+        height: 56px;
+        padding: 16px 20px;
+    }
+
+    .cta__button-text {
+        font-size: 18px;
+    }
+
+    .cta__button-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .cta__image {
+        position: static;
+        transform: none;
+        width: 100%;
+        height: 220px;
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 767px) {
+    .cta {
+        gap: 0;
+        padding: 0 20px 60px;
+    }
+
+    .cta__panel {
+        width: 100%;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .cta__content {
+        gap: 20px;
+    }
+
+    .cta__text {
+        gap: 10px;
+    }
+
+    .cta__title {
+        font-size: 24px;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        text-transform: none;
+    }
+
+    .cta__subtitle {
+        font-family: var(--font-ui);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.15;
+        opacity: 0.8;
+    }
+
+    .cta__button {
+        max-width: none;
+        height: 45px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .cta__button-text {
+        font-size: 15px;
+    }
+
+    .cta__button-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .cta__image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 345 / 235;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+}

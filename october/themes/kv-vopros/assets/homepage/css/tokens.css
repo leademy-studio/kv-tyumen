@@ -1,0 +1,26 @@
+/* Дизайн-токены главной страницы.
+   Источник: Figma «kv-vopros» → main-page (4:8580), локальные переменные файла. */
+
+:root {
+    /* Цвета (переменные Figma) */
+    --c-black: #3e3c38;   /* Черный */
+    --c-white: #ffffff;   /* Белый */
+    --c-green: #b9ea00;   /* Зеленый */
+
+    /* Поверхности */
+    --c-page: #e8e7e6;    /* фон страницы */
+    --c-surface: #edeceb; /* фон карточек */
+    --c-glass: rgba(255, 255, 255, 0.2);
+
+    /* Типографика */
+    --font-display: "Bona Nova SC", serif;
+    --font-text: "Manrope", Arial, sans-serif;
+    --font-ui: "Manrope", Arial, sans-serif;
+
+    /* Радиусы */
+    --radius-sm: 0.5rem;      /* 8px */
+    --radius-md: 0.6857rem;   /* 10.971px */
+
+    /* Ширина макета Figma — база для пересчёта rem */
+    --layout-width: 1920;
+}

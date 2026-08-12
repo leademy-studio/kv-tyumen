@@ -1,0 +1,287 @@
+/* services-section — Figma 4:7667 (1920×857)
+   Карточка: component set «service-card» 14:3621, состояния State=default / State=hover */
+
+.services {
+    display: flex;
+    gap: 2.5714rem;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 5.1429rem 11.1429rem;
+    background: var(--c-page);
+}
+
+.services__card {
+    position: relative;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    gap: 6.857rem;
+    align-items: center;
+    min-width: 0;
+    height: 42.4286rem;
+    padding: 4.2857rem 8.057rem 4.2857rem 8.1429rem;
+    border-radius: var(--radius-md);
+    background: var(--c-surface);
+    backdrop-filter: blur(1.1186rem);
+    -webkit-backdrop-filter: blur(1.1186rem);
+    overflow: hidden;
+    transition: background-color 0.35s ease, border-radius 0.35s ease;
+}
+
+.services__icon {
+    width: 18.6rem;
+    height: 18.6rem;
+    transition: opacity 0.25s ease;
+}
+
+.services__label {
+    width: 37.3714rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.6286rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-align: center;
+    color: var(--c-black);
+    word-break: break-word;
+    transition: opacity 0.25s ease;
+}
+
+/* State=hover (14:3613) */
+.services__hover {
+    position: absolute;
+    inset: 0;
+    color: var(--c-white);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.services__hover-arrow {
+    position: absolute;
+    top: 2.8125rem;
+    right: 2.8125rem;
+    width: 2.1875rem;
+    height: 2.1875rem;
+}
+
+.services__hover-icon {
+    position: absolute;
+    top: 4.375rem;
+    left: 50%;
+    width: 18.625rem;
+    height: 18.625rem;
+    transform: translateX(-50%);
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.services__hover-icon--mobile,
+.services__subtitle-text--mobile {
+    display: none;
+}
+
+.services__hover-text {
+    position: absolute;
+    bottom: 3.125rem;
+    left: 8.0986rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3125rem;
+    align-items: center;
+    width: 37.3652rem;
+    min-height: 13.3154rem;
+    text-align: center;
+    word-break: break-word;
+}
+
+.services__hover-title {
+    width: 100%;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 3.375rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.services__hover-subtitle {
+    width: 17.75rem;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.15;
+    opacity: 0.8;
+}
+
+.services__card.is-hover .services__icon,
+.services__card:hover .services__icon,
+.services__card:focus-visible .services__icon {
+    opacity: 0;
+}
+
+.services__card.is-hover .services__label,
+.services__card:hover .services__label,
+.services__card:focus-visible .services__label {
+    opacity: 0;
+}
+
+.services__card.is-hover,
+.services__card:hover,
+.services__card:active,
+.services__card:focus-visible {
+    border-radius: var(--radius-sm);
+    background: var(--c-black);
+    backdrop-filter: blur(0.8156rem);
+    -webkit-backdrop-filter: blur(0.8156rem);
+}
+
+.services__card.is-hover .services__hover,
+.services__card:hover .services__hover,
+.services__card:active .services__hover,
+.services__card:focus-visible .services__hover {
+    opacity: 1;
+}
+
+@media (max-width: 1200px) {
+    .services {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 16px 64px;
+    }
+
+    .services__card {
+        flex: 0 0 auto;
+        width: 100%;
+        gap: 40px;
+        min-height: 380px;
+        height: auto;
+        padding: 40px 24px;
+    }
+
+    .services__icon {
+        width: 160px;
+        height: 160px;
+    }
+
+    .services__label {
+        width: 100%;
+        font-size: clamp(32px, 8vw, 56px);
+    }
+
+    .services__hover-arrow {
+        top: 24px;
+        right: 24px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .services__hover-icon {
+        top: 40px;
+        width: 160px;
+        height: 160px;
+    }
+
+    .services__hover-text {
+        right: 24px;
+        bottom: 40px;
+        left: 24px;
+        width: auto;
+        min-height: 0;
+        gap: 14px;
+    }
+
+    .services__hover-title {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+    .services__hover-subtitle {
+        width: min(284px, 100%);
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .services {
+        gap: 15px;
+        padding: 0 20px 60px;
+    }
+
+    .services__card,
+    .services__card:hover,
+    .services__card:active,
+    .services__card:focus-visible {
+        width: 100%;
+        min-height: 0;
+        height: 203px;
+        padding: 15px;
+        border-radius: 8px;
+        background: var(--c-surface);
+        color: var(--c-black);
+        backdrop-filter: blur(13px);
+        -webkit-backdrop-filter: blur(13px);
+    }
+
+    .services__icon,
+    .services__label {
+        opacity: 0;
+    }
+
+    .services__hover,
+    .services__card:hover .services__hover,
+    .services__card:active .services__hover,
+    .services__card:focus-visible .services__hover {
+        opacity: 1;
+        color: var(--c-black);
+    }
+
+    .services__hover-arrow {
+        top: 15px;
+        right: 15px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .services__hover-icon {
+        top: 7px;
+        left: 7px;
+        width: 50px;
+        height: 50px;
+        transform: none;
+    }
+
+    .services__hover-icon--desktop,
+    .services__subtitle-text--desktop {
+        display: none;
+    }
+
+    .services__hover-icon--mobile,
+    .services__subtitle-text--mobile {
+        display: block;
+    }
+
+    .services__hover-text {
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+        gap: 15px;
+        align-items: flex-start;
+        width: auto;
+        min-height: 0;
+        text-align: left;
+    }
+
+    .services__hover-title {
+        font-size: 25px;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+    }
+
+    .services__hover-subtitle {
+        width: 100%;
+        font-family: var(--font-ui);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.15;
+        opacity: 0.8;
+    }
+}

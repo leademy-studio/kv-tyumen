@@ -1,0 +1,302 @@
+/* footer — Figma 4:8518 (1920×603) */
+
+.footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8.057rem;
+    align-items: flex-start;
+    padding: 2.5714rem 5.1429rem;
+    background: var(--c-black);
+    color: var(--c-white);
+    overflow: hidden;
+}
+
+.footer__top {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2857rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.footer__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer__brand {
+    display: flex;
+    gap: 8.5714rem;
+    align-items: flex-start;
+}
+
+.footer__mark {
+    flex-shrink: 0;
+    width: 3.5143rem;
+    height: 3.0857rem;
+    object-fit: contain;
+}
+
+.footer__nav {
+    display: flex;
+    gap: 6.3429rem;
+    align-items: center;
+}
+
+.footer__nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.857rem;
+    align-items: flex-start;
+}
+
+.footer__contacts {
+    display: flex;
+    gap: 6.4286rem;
+    align-items: flex-start;
+}
+
+.footer__contacts-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.857rem;
+    align-items: flex-start;
+}
+
+.footer__link,
+.footer__phone {
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1.3714rem;
+    line-height: 1.05;
+    color: var(--c-white);
+    word-break: break-word;
+    transition: opacity 0.2s ease;
+}
+
+.footer__link:hover {
+    opacity: 0.6;
+}
+
+.footer__address {
+    width: 15.2571rem;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1.3714rem;
+    line-height: 1.1;
+}
+
+.footer__note {
+    width: 11.486rem;
+    font-family: var(--font-ui);
+    font-weight: 400;
+    font-size: 1.0286rem;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    opacity: 0.4;
+}
+
+.footer__wordmark {
+    width: 100%;
+    aspect-ratio: 1280 / 114;
+}
+
+.footer__wordmark img {
+    width: 100%;
+    height: auto;
+}
+
+.footer__policy {
+    width: 14.2286rem;
+    font-family: var(--font-ui);
+    font-weight: 400;
+    font-size: 1.0286rem;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    opacity: 0.4;
+}
+
+/* Декоративная плашка с портретом в правом нижнем углу */
+.footer__badge {
+    position: absolute;
+    right: 0;
+    bottom: 2.2569rem;
+    width: 40.0286rem;
+    height: 6rem;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    background: var(--c-white);
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+.footer__portrait {
+    position: absolute;
+    right: 29.657rem;
+    bottom: 3.3906rem;
+    width: 8.4857rem;
+    height: 4.7808rem;
+    opacity: 0.4;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: url("../../img/footer-person-mask.svg");
+    mask-image: url("../../img/footer-person-mask.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 8.4857rem 4.7808rem;
+    mask-size: 8.4857rem 4.7808rem;
+}
+
+.footer__portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+    .footer {
+        gap: 40px;
+        padding: 32px 16px;
+    }
+
+    .footer__row {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .footer__brand {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .footer__nav {
+        gap: 32px;
+    }
+
+    .footer__contacts {
+        gap: 32px;
+    }
+
+    .footer__link,
+    .footer__phone,
+    .footer__address {
+        font-size: 16px;
+    }
+
+    .footer__address,
+    .footer__note,
+    .footer__policy {
+        width: auto;
+    }
+
+    .footer__note,
+    .footer__policy {
+        font-size: 12px;
+    }
+
+    .footer__badge,
+    .footer__portrait {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .footer__top {
+        gap: 31px;
+    }
+
+    .footer__row {
+        gap: 20px;
+    }
+
+    .footer__brand {
+        gap: 31px;
+    }
+
+    .footer__mark {
+        width: 33px;
+        height: 29px;
+    }
+
+    .footer__nav,
+    .footer__contacts {
+        gap: 22px;
+        width: 100%;
+        max-width: 420px;
+        align-items: flex-start;
+    }
+
+    .footer__nav-col,
+    .footer__contacts-col {
+        gap: 10px;
+        width: 133px;
+    }
+
+    .footer__contacts-col:first-child {
+        order: 2;
+        width: 125px;
+    }
+
+    .footer__contacts-col:nth-child(2) {
+        order: 1;
+        width: 133px;
+    }
+
+    .footer__link,
+    .footer__phone {
+        font-size: 14px;
+        line-height: 1.05;
+    }
+
+    .footer__address {
+        width: 125px;
+        font-size: 14px;
+        line-height: 1.1;
+    }
+
+    .footer__note {
+        width: 105px;
+        font-size: 12px;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+    }
+
+    .footer__policy {
+        width: 125px;
+        margin-left: 155px;
+        margin-top: -91px;
+        font-size: 12px;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+    }
+
+    .footer__wordmark {
+        width: 100%;
+        max-width: 420px;
+        aspect-ratio: auto;
+    }
+
+    .footer__wordmark img {
+        display: none;
+    }
+
+    .footer__wordmark::before {
+        content: "Квартирный\A вопрос";
+        display: block;
+        width: 250px;
+        font-family: var(--font-display);
+        font-size: 41px;
+        line-height: 0.89;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        white-space: pre-line;
+        color: var(--c-green);
+    }
+}

@@ -1,0 +1,257 @@
+/* all-in-one-section — Figma 4:7762 (1920×843)
+   Анимация: component set 18:3595, состояния State=default → step-1 → step-2.
+   Заголовки накапливаются («Дом» → + «Материалы» → + «Ремонт»),
+   текстовый блок и изображение сменяются на каждом шаге. */
+
+.all-in-one {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 5.1429rem 11.1429rem;
+    background: var(--c-page);
+}
+
+.all-in-one__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5714rem;
+    align-items: flex-start;
+    color: var(--c-black);
+    word-break: break-word;
+}
+
+.all-in-one__titles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.all-in-one__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 8.1429rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Накопление заголовков: до своего шага строка скрыта */
+.all-in-one__title[data-step] {
+    opacity: 0;
+    transform: translateY(0.75em);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.all-in-one__title.is-revealed {
+    opacity: 1;
+    transform: none;
+}
+
+.all-in-one__copy-stack {
+    position: relative;
+    width: 46.2857rem;
+}
+
+.all-in-one__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2857rem;
+    align-items: flex-start;
+    width: 100%;
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+}
+
+.all-in-one__copy p {
+    opacity: 0.6;
+}
+
+/* Все блоки, кроме активного, выключены из потока */
+.all-in-one__copy:not(.is-active) {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.all-in-one__copy.is-active {
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease 0.1s;
+}
+
+.all-in-one__media {
+    position: relative;
+    flex-shrink: 0;
+    width: 53.5714rem;
+    height: 41.5714rem;
+    border-radius: 1.2857rem;
+    overflow: hidden;
+}
+
+.all-in-one__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: scale(1.04);
+}
+
+.all-in-one__media img.is-active {
+    opacity: 1;
+    transform: none;
+}
+
+@media (max-width: 1200px) {
+    .all-in-one {
+        flex-direction: column;
+        gap: 32px;
+        padding: 0 16px 64px;
+    }
+
+    .all-in-one__text {
+        gap: 24px;
+        width: 100%;
+    }
+
+    .all-in-one__title {
+        font-size: clamp(44px, 12vw, 96px);
+    }
+
+    .all-in-one__copy-stack {
+        width: 100%;
+    }
+
+    .all-in-one__copy {
+        font-size: 16px;
+    }
+
+    .all-in-one__media {
+        width: 100%;
+        height: 280px;
+    }
+}
+
+@media (max-width: 767px) {
+    .pin[data-scene="all-in-one"] {
+        height: calc(3 * 100vh);
+    }
+
+    .pin[data-scene="all-in-one"] .pin__inner {
+        position: sticky;
+        top: 68px;
+        align-items: flex-start;
+        height: calc(100vh - 68px);
+        overflow: hidden;
+    }
+
+    .all-in-one {
+        gap: 30px;
+        justify-content: flex-start;
+        height: 645px;
+        padding: 0 20px 60px;
+        overflow: hidden;
+    }
+
+    .all-in-one__text {
+        gap: 20px;
+    }
+
+    .all-in-one__titles {
+        gap: 20px;
+    }
+
+    .all-in-one__title,
+    .all-in-one__title[data-step] {
+        font-size: 30px;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        transition: none;
+    }
+
+    .all-in-one .all-in-one__title[data-step],
+    .all-in-one .all-in-one__title.is-revealed {
+        transition: none;
+    }
+
+    .all-in-one__copy-stack {
+        width: 100%;
+    }
+
+    .all-in-one .all-in-one__copy,
+    .all-in-one .all-in-one__copy.is-active,
+    .all-in-one .all-in-one__copy:not(.is-active) {
+        gap: 8px;
+        font-family: var(--font-text);
+        font-size: 14px;
+        line-height: 1.15;
+        transition: none;
+    }
+
+    .all-in-one .all-in-one__copy:not(.is-active) {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .all-in-one .all-in-one__copy.is-active {
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .all-in-one__copy p {
+        opacity: 1;
+    }
+
+    .all-in-one__media {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        border-radius: 0;
+        background: none;
+        overflow: visible;
+    }
+
+    .all-in-one .all-in-one__media img {
+        position: relative;
+        grid-area: 1 / 1;
+        display: block;
+        width: 100%;
+        border-radius: 15px;
+        object-position: center bottom;
+        opacity: 0;
+        transform: none;
+        transition: none;
+    }
+
+    .all-in-one__media img:nth-child(1) {
+        z-index: 1;
+        margin-top: 0;
+    }
+
+    .all-in-one__media img:nth-child(2) {
+        z-index: 2;
+        margin-top: 8px;
+    }
+
+    .all-in-one__media img:nth-child(3) {
+        z-index: 3;
+        margin-top: 12px;
+    }
+
+    .all-in-one .all-in-one__media img.is-active {
+        opacity: 1;
+    }
+}

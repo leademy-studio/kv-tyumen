@@ -1,0 +1,184 @@
+/* animated-section — Figma 4:7984, component set 8:3559
+   Ключевые кадры (координаты в системе сцены 1400×700):
+     step-1 — фотографии разлетелись далеко за пределы сцены;
+     step-2 — стягиваются к заголовку и уменьшаются;
+     step-3 — схлопываются в точку 703×345 (центр сцены) с нулевым размером.
+   Позиции каждого кадра лежат в data-атрибутах фотографий в index.html,
+   интерполяцию делает assets/js/sections/animated.js. */
+
+.animated {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 49.25rem;
+    background: var(--c-page);
+    overflow: hidden;
+}
+
+.animated__stage {
+    position: relative;
+    width: 87.5rem;
+    height: 43.75rem;
+}
+
+.animated__heading {
+    position: absolute;
+    left: 0;
+    top: 9.375rem;
+    width: 87.5rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 5.9375rem;
+    line-height: 0.9;
+    letter-spacing: -0.0316em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--c-black);
+    white-space: pre-line;
+}
+
+.animated__photo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transform-origin: 0 0;
+    will-change: transform, width, height;
+}
+
+.animated__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+    .animated {
+        min-height: 60vh;
+        padding: 48px 16px;
+    }
+
+    .animated__stage {
+        width: 100%;
+        height: 60vh;
+    }
+
+    .animated__heading {
+        top: 30%;
+        width: 100%;
+        font-size: clamp(28px, 7vw, 56px);
+    }
+}
+
+@media (max-width: 767px) {
+    .pin[data-scene="animated"] {
+        height: calc(3 * 100vh);
+    }
+
+    .pin[data-scene="animated"] .pin__inner {
+        position: sticky;
+        top: 68px;
+        align-items: flex-start;
+        height: calc(100vh - 68px);
+        overflow: hidden;
+    }
+
+    .animated {
+        display: block;
+        height: 531px;
+        min-height: 531px;
+        padding: 0;
+    }
+
+    .animated__stage {
+        width: 320px;
+        max-width: 100vw;
+        height: 531px;
+        margin: 0 auto;
+    }
+
+    .animated__heading {
+        z-index: 2;
+        left: 50%;
+        top: 230px;
+        width: 250px;
+        font-size: 30px;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        text-transform: none;
+        transform: translateX(-50%);
+    }
+
+    .animated__photo {
+        z-index: 1;
+        border-radius: 8px;
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    .animated__photo:nth-of-type(1) {
+        left: 238px;
+        top: 277px;
+        width: 50px;
+        height: 72px;
+    }
+
+    .animated__photo:nth-of-type(2) {
+        left: -64px;
+        top: 226px;
+        width: 104px;
+        height: 64px;
+    }
+
+    .animated__photo:nth-of-type(3) {
+        left: 160px;
+        top: 105px;
+        width: 121px;
+        height: 73px;
+    }
+
+    .animated__photo:nth-of-type(4) {
+        left: 80px;
+        top: 142px;
+        width: 61px;
+        height: 86px;
+    }
+
+    .animated__photo:nth-of-type(5) {
+        left: -129px;
+        top: 14px;
+        width: 216px;
+        height: 130px;
+    }
+
+    .animated__photo:nth-of-type(6) {
+        left: 300px;
+        top: 53px;
+        width: 91px;
+        height: 125px;
+    }
+
+    .animated__photo:nth-of-type(7) {
+        left: 285px;
+        top: 328px;
+        width: 203px;
+        height: 122px;
+    }
+
+    .animated__photo:nth-of-type(8) {
+        left: -12px;
+        top: 344px;
+        width: 213px;
+        height: 127px;
+    }
+
+    .animated__photo:nth-of-type(n+9) {
+        display: none;
+    }
+}

@@ -1,0 +1,693 @@
+/* about-us-section — Figma 4:7813 и component set 24:3789.
+   Default: текстовый экран с малым фото. Steps: полноширинное фото с
+   затемнением и стеком glass-карточек справа. */
+
+.about {
+    position: relative;
+    width: 100%;
+    height: 52.3929rem;
+    overflow: hidden;
+    padding: 0 5.1429rem;
+    background: var(--c-page);
+}
+
+.about__intro {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    width: 65.2286rem;
+    color: var(--c-black);
+    transition:
+        left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        top 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 7.8857rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    transition: font-size 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__lead {
+    width: 63.5143rem;
+    margin-top: 0.4286rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.1143rem;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    transition:
+        margin-top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        font-size 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 109.7143rem;
+    margin-top: 2.5714rem;
+}
+
+.about__detailed {
+    display: flex;
+    gap: 15.1714rem;
+    align-items: flex-end;
+}
+
+.about__more {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: flex-start;
+    width: 22.2857rem;
+}
+
+.about__more-title {
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 1.8857rem;
+    line-height: 1.15;
+    color: var(--c-black);
+}
+
+.about__more-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 22.2857rem;
+    height: 4.2857rem;
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--radius-md);
+    background: var(--c-black);
+    color: var(--c-white);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1.6286rem;
+    line-height: 1.15;
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.about__more-link:hover {
+    transform: translateY(-0.125rem);
+}
+
+.about__more-link:active {
+    transform: translateY(0.0625rem);
+    opacity: 0.86;
+}
+
+.about__more-icon {
+    width: 1.3714rem;
+    height: 1.3714rem;
+    max-width: none;
+}
+
+.about__description {
+    width: 34.8rem;
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+    color: var(--c-black);
+    opacity: 0.6;
+}
+
+.about__image {
+    position: relative;
+    flex-shrink: 0;
+    width: 34.8857rem;
+    height: 18rem;
+    overflow: hidden;
+    border-radius: 1.2857rem;
+    transform-origin: 0 0;
+    transition: none;
+    will-change: transform;
+}
+
+.about__image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(62, 60, 56, 0.35);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.about__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.about__cards {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.about__card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+    width: 24.625rem;
+    height: 16.875rem;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(0.8125rem);
+    -webkit-backdrop-filter: blur(0.8125rem);
+    color: var(--c-white);
+    opacity: 0;
+    transform: none;
+    transition:
+        left 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        top 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease;
+}
+
+.about__card:nth-child(1) {
+    left: 55.5625rem;
+    top: 66.3125rem;
+}
+
+.about__card:nth-child(2) {
+    left: 82.75rem;
+    top: 74.75rem;
+}
+
+.about__card:nth-child(3) {
+    left: 82.75rem;
+    top: 94.1875rem;
+}
+
+.about__card:nth-child(4) {
+    left: 55.5625rem;
+    top: 85.75rem;
+}
+
+.about__card-title {
+    width: 100%;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.9375rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    white-space: pre-line;
+}
+
+.about__card-text {
+    width: 100%;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.15;
+    opacity: 0.8;
+    white-space: pre-line;
+}
+
+.about.is-compact {
+    padding: 0;
+}
+
+.about.is-compact .about__intro {
+    position: absolute;
+    z-index: 0;
+    left: 5.1429rem;
+    top: 0;
+    width: 65.2286rem;
+}
+
+.about.is-compact .about__title {
+    font-size: 7.8857rem;
+}
+
+.about.is-compact .about__lead {
+    margin-top: 0.4286rem;
+    font-size: 4.1143rem;
+}
+
+.about.is-compact .about__content {
+    position: static;
+    width: 100%;
+    margin: 0;
+}
+
+.about.is-compact .about__detailed {
+    display: contents;
+}
+
+.about.is-compact .about__more {
+    display: contents;
+}
+
+.about.is-compact .about__more-title {
+    position: absolute;
+    z-index: 0;
+    left: 5.1429rem;
+    top: 32.925rem;
+    width: 12.1rem;
+    font-size: 1.8857rem;
+    white-space: nowrap;
+}
+
+.about.is-compact .about__more-link {
+    position: absolute;
+    z-index: 0;
+    left: 5.1429rem;
+    top: 36.8938rem;
+    width: 22.2857rem;
+    height: 4.2857rem;
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--radius-md);
+    font-size: 1.6286rem;
+}
+
+.about.is-compact .about__more-icon {
+    width: 1.3714rem;
+    height: 1.3714rem;
+}
+
+.about.is-compact .about__description {
+    position: absolute;
+    z-index: 0;
+    left: 42.6rem;
+    top: 35.85rem;
+    width: 34.8rem;
+    font-size: 1.5429rem;
+    opacity: 0.6;
+}
+
+.about.is-compact .about__image {
+    position: absolute;
+    z-index: 1;
+    left: 5.3144rem;
+    top: 3.8156rem;
+    width: 109.4571rem;
+    height: 44.7431rem;
+    border-radius: 0.5rem;
+    transition: none;
+    will-change: transform;
+}
+
+.about.is-step-1 .about__image {
+    left: 21.7281rem;
+    top: 10.525rem;
+    width: 76.6063rem;
+    height: 31.325rem;
+}
+
+.about.is-compact .about__image::after {
+    opacity: 1;
+}
+
+.about.is-compact .about__cards {
+    pointer-events: auto;
+}
+
+.about.is-compact .about__card {
+    opacity: 1;
+}
+
+.about.is-step-1 .about__card:nth-child(1) {
+    left: 55.5625rem;
+    top: 66.3125rem;
+}
+
+.about.is-step-1 .about__card:nth-child(2) {
+    left: 82.75rem;
+    top: 74.75rem;
+}
+
+.about.is-step-1 .about__card:nth-child(3) {
+    left: 82.75rem;
+    top: 94.1875rem;
+}
+
+.about.is-step-1 .about__card:nth-child(4) {
+    left: 55.5625rem;
+    top: 85.75rem;
+}
+
+.about.is-step-2 .about__card:nth-child(1) {
+    left: 55.5625rem;
+    top: 66.3125rem;
+    height: 16.875rem;
+}
+
+.about.is-step-2 .about__card:nth-child(2) {
+    left: 82.75rem;
+    top: 74.75rem;
+    height: 16.875rem;
+}
+
+.about.is-step-2 .about__card:nth-child(3) {
+    left: 82.75rem;
+    top: 94.1875rem;
+    height: 16.875rem;
+}
+
+.about.is-step-2 .about__card:nth-child(4) {
+    left: 55.5625rem;
+    top: 85.75rem;
+    height: 16.875rem;
+}
+
+.about.is-step-3 .about__card:nth-child(1) {
+    left: 55.5625rem;
+    top: 35.0625rem;
+    height: 16.875rem;
+}
+
+.about.is-step-3 .about__card:nth-child(2) {
+    left: 82.75rem;
+    top: 43.5rem;
+    height: 16.875rem;
+}
+
+.about.is-step-3 .about__card:nth-child(3) {
+    left: 82.75rem;
+    top: 62.9375rem;
+    height: 16.875rem;
+}
+
+.about.is-step-3 .about__card:nth-child(4) {
+    left: 55.5625rem;
+    top: 54.5rem;
+    height: 16.875rem;
+}
+
+.about.is-step-4 .about__card:nth-child(1) {
+    left: 55.5625rem;
+    top: 19.4375rem;
+    height: 16.875rem;
+}
+
+.about.is-step-4 .about__card:nth-child(2) {
+    left: 82.75rem;
+    top: 27.875rem;
+    height: 16.875rem;
+}
+
+.about.is-step-4 .about__card:nth-child(3) {
+    left: 82.75rem;
+    top: 47.3125rem;
+    height: 16.875rem;
+}
+
+.about.is-step-4 .about__card:nth-child(4) {
+    left: 55.5625rem;
+    top: 38.875rem;
+    height: 16.875rem;
+}
+
+.about.is-step-5 .about__card:nth-child(1) {
+    left: 55.5625rem;
+    top: 3.8125rem;
+    height: 16.875rem;
+}
+
+.about.is-step-5 .about__card:nth-child(2) {
+    left: 82.75rem;
+    top: 12.25rem;
+    height: 16.875rem;
+}
+
+.about.is-step-5 .about__card:nth-child(3) {
+    left: 82.75rem;
+    top: 31.6875rem;
+    height: 16.875rem;
+}
+
+.about.is-step-5 .about__card:nth-child(4) {
+    left: 55.625rem;
+    top: 23.25rem;
+    height: 16.875rem;
+}
+
+@media (max-width: 1200px) {
+    .about,
+    .about.is-compact {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 0 16px 64px;
+    }
+
+    .about__intro,
+    .about.is-compact .about__intro {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+    }
+
+    .about__title,
+    .about.is-compact .about__title {
+        font-size: clamp(48px, 14vw, 110px);
+    }
+
+    .about__lead,
+    .about.is-compact .about__lead {
+        width: 100%;
+        margin-top: 8px;
+        font-size: clamp(22px, 5.5vw, 44px);
+        line-height: 1.06;
+    }
+
+    .about__content,
+    .about.is-compact .about__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        margin-top: 32px;
+    }
+
+    .about__detailed,
+    .about.is-compact .about__detailed {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .about__more,
+    .about.is-compact .about__more {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .about__more-title,
+    .about.is-compact .about__more-title,
+    .about__description,
+    .about.is-compact .about__description,
+    .about__more-link,
+    .about.is-compact .about__more-link,
+    .about__image,
+    .about.is-compact .about__image {
+        position: relative;
+        left: auto;
+        top: auto;
+        z-index: auto;
+    }
+
+    .about__more-title,
+    .about.is-compact .about__more-title {
+        width: auto;
+        font-size: 20px;
+    }
+
+    .about__more-link,
+    .about.is-compact .about__more-link {
+        width: 100%;
+        max-width: 320px;
+        height: 56px;
+        padding: 16px 20px;
+        font-size: 18px;
+    }
+
+    .about__description,
+    .about.is-compact .about__description {
+        width: 100%;
+        font-size: 16px;
+        opacity: 0.6;
+    }
+
+    .about__image,
+    .about.is-compact .about__image {
+        width: 100%;
+        height: 220px;
+        border-radius: var(--radius-md);
+    }
+
+    .about__image::after,
+    .about.is-compact .about__image::after {
+        opacity: 0;
+    }
+
+    .about__cards,
+    .about.is-compact .about__cards {
+        position: relative;
+        inset: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    .about__card,
+    .about.is-compact .about__card {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 20px;
+        color: var(--c-black);
+        background: var(--c-surface);
+        opacity: 1;
+        transform: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .about__card-title {
+        font-size: 22px;
+    }
+
+    .about__card-text {
+        font-family: var(--font-text);
+        font-size: 14px;
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 767px) {
+    .about,
+    .about.is-compact {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px 60px;
+        overflow: hidden;
+    }
+
+    .about__intro,
+    .about.is-compact .about__intro {
+        order: 1;
+        gap: 15px;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .about__title,
+    .about.is-compact .about__title {
+        font-size: 47px;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+    }
+
+    .about__lead,
+    .about.is-compact .about__lead {
+        width: 100%;
+        margin: 0;
+        font-size: 21px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    .about__content,
+    .about.is-compact .about__content,
+    .about__detailed,
+    .about.is-compact .about__detailed {
+        display: contents;
+    }
+
+    .about__image,
+    .about.is-compact .about__image {
+        order: 2;
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        aspect-ratio: 280 / 144;
+        border-radius: 15px;
+        transition: none;
+        will-change: auto;
+    }
+
+    .about__image img {
+        object-position: center bottom;
+    }
+
+    .about__description,
+    .about.is-compact .about__description {
+        order: 3;
+        width: 100%;
+        max-width: 420px;
+        font-family: var(--font-ui);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.15;
+        opacity: 0.8;
+    }
+
+    .about__more,
+    .about.is-compact .about__more {
+        order: 4;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .about__more-title,
+    .about.is-compact .about__more-title {
+        width: 100%;
+        font-family: var(--font-text);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.15;
+        white-space: normal;
+    }
+
+    .about__more-link,
+    .about.is-compact .about__more-link {
+        width: 100%;
+        max-width: none;
+        height: 45px;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    .about__more-icon,
+    .about.is-compact .about__more-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .about__cards,
+    .about.is-compact .about__cards {
+        display: none;
+    }
+}

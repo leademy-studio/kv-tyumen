@@ -4,6 +4,8 @@ function onStart()
 {
     $this['bodyClass'] = $this->page->bodyClass ?? null;
     $this['bodyStyle'] = $this->page->bodyStyle ?? null;
+    $this['htmlClass'] = $this->page->htmlClass ?? null;
+    $this['floatingWidgetHref'] = $this->page->floatingWidgetHref ?? '#zeroform';
 
     $host = request()->getHost();
     $this['isLocal'] = app()->environment('local')
@@ -141,7 +143,7 @@ function onFormSubmit()
 
 ==
 <!doctype html>
-<html lang="ru">
+<html lang="ru"{% if htmlClass %} class="{{ htmlClass }}"{% endif %}>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -176,6 +178,7 @@ function onFormSubmit()
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/themes/kv-vopros/assets/css/portfolio-grid.css" rel="stylesheet">
     <link href="/themes/kv-vopros/assets/css/footer.css" rel="stylesheet">
+    {% placeholder pageStyles %}
     <style>
         .kv-floating-widget {
             position: fixed;
@@ -209,7 +212,7 @@ function onFormSubmit()
     <noscript><div><img src="https://mc.yandex.ru/watch/110168876" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     {% page %}
 
-    <a class="kv-floating-widget" href="#zeroform" aria-label="Открыть форму обратной связи">
+    <a class="kv-floating-widget" href="{{ floatingWidgetHref }}" aria-label="Открыть форму обратной связи">
         <img src="/themes/kv-vopros/assets/images/pop-up.svg" alt="" aria-hidden="true">
     </a>
 

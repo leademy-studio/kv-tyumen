@@ -1,0 +1,272 @@
+/* cta-calculate-section — Figma 4:8558 (1920×546) */
+
+.cta-calc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.857rem;
+    align-items: flex-start;
+    padding: 0 5.1429rem 5.1429rem;
+    background: var(--c-page);
+}
+
+.cta-calc__panel {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 28.9714rem;
+    padding: 4.2857rem;
+    border-radius: 1.2857rem;
+    background: var(--c-green);
+}
+
+.cta-calc__text {
+    position: relative;
+    flex-shrink: 0;
+    color: var(--c-black);
+    word-break: break-word;
+}
+
+.cta-calc__title {
+    width: 67.886rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+}
+
+/* В макете подзаголовок наложен на заголовок сеткой в одну ячейку */
+.cta-calc__subtitle {
+    position: absolute;
+    left: 33.171rem;
+    top: 10.1144rem;
+    width: 26.5714rem;
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+}
+
+.cta-calc__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2857rem;
+    align-items: flex-start;
+    flex-shrink: 0;
+    width: 27.1714rem;
+}
+
+.cta-calc__input {
+    width: 100%;
+    height: 4.7143rem;
+    padding: 1.2rem 1.2857rem;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: var(--c-white);
+    font-family: var(--font-ui);
+    font-weight: 400;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+    color: var(--c-black);
+}
+
+.cta-calc__input::placeholder {
+    color: var(--c-black);
+    opacity: 0.35;
+}
+
+.cta-calc__error {
+    min-height: 0;
+    margin-top: -0.8571rem;
+    font-family: var(--font-ui);
+    font-size: 0.8571rem;
+    line-height: 1.2;
+    color: #b00020;
+}
+
+.cta-calc__policy {
+    display: flex;
+    gap: 0.7714rem;
+    align-items: center;
+    width: 100%;
+}
+
+.cta-calc__checkbox {
+    flex-shrink: 0;
+    width: 1.5429rem;
+    height: 1.5429rem;
+    margin: 0;
+    border: 0.0857rem solid var(--c-black);
+    border-radius: 0.1714rem;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+}
+
+.cta-calc__checkbox:checked {
+    background: var(--c-black);
+}
+
+.cta-calc__policy-label {
+    width: 21.7714rem;
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.0286rem;
+    line-height: 1.15;
+    color: var(--c-black);
+    word-break: break-word;
+    cursor: pointer;
+}
+
+    .cta-calc__policy-label span {
+    color: #848c65;
+}
+
+.cta-calc__policy-label a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.cta-calc__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 4.7143rem;
+    padding: 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-black);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 1.6288rem;
+    line-height: 1.15;
+    color: var(--c-white);
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.cta-calc__submit:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 1200px) {
+    .cta-calc {
+        padding: 0 16px 40px;
+    }
+
+    .cta-calc__panel {
+        flex-direction: column;
+        gap: 32px;
+        height: auto;
+        padding: 32px 24px;
+    }
+
+    .cta-calc__title {
+        width: 100%;
+        font-size: clamp(28px, 7vw, 48px);
+    }
+
+    .cta-calc__subtitle {
+        position: static;
+        width: 100%;
+        margin-top: 16px;
+        font-size: 16px;
+    }
+
+    .cta-calc__form {
+        width: 100%;
+    }
+
+    .cta-calc__input,
+    .cta-calc__submit {
+        height: 56px;
+        font-size: 16px;
+    }
+
+    .cta-calc__checkbox {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cta-calc__policy-label {
+        width: auto;
+        flex: 1;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .cta-calc {
+        padding: 0 20px 60px;
+    }
+
+    .cta-calc__panel {
+        gap: 20px;
+        width: 100%;
+        max-width: 420px;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .cta-calc__text {
+        width: 100%;
+    }
+
+    .cta-calc__title {
+        font-size: 24px;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        text-transform: none;
+    }
+
+    .cta-calc__subtitle {
+        margin-top: 10px;
+        font-family: var(--font-ui);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.15;
+        opacity: 0.8;
+    }
+
+    .cta-calc__form {
+        gap: 15px;
+    }
+
+    .cta-calc__input {
+        height: 45px;
+        padding: 14px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    .cta-calc__policy {
+        gap: 9px;
+        align-items: center;
+    }
+
+    .cta-calc__checkbox {
+        width: 18px;
+        height: 18px;
+        border-width: 1px;
+        border-radius: 0;
+    }
+
+    .cta-calc__policy-label {
+        font-family: var(--font-text);
+        font-size: 12px;
+        line-height: 1.15;
+    }
+
+    .cta-calc__submit {
+        height: 45px;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+}
