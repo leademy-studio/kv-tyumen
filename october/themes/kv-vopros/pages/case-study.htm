@@ -25,7 +25,7 @@ function onStart()
 ==
 {% set seoTitle = case.meta_title ?: case.title %}
 {% set seoDescription = case.meta_description ?: '' %}
-{% set canonicalUrl = 'https://www.kv-tyumen.ru/portfolio/' ~ case.slug %}
+{% set canonicalUrl = 'https://kv-tyumen.ru/portfolio/' ~ case.slug %}
 {% set ogImage = case.banner_image ? case.banner_image|media : '/themes/kv-vopros/assets/images/tild6361-3863-4466-a566-313462386439__photo.png' %}
 {% put head %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

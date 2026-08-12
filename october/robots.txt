@@ -1,20 +1,16 @@
-User-Agent: *
-Disallow: /page92736376.html
-Disallow: /page91164406.html
-Disallow: /page96436236.html
-Disallow: /page90163256.html
-Disallow: /tilda/form*
-Disallow: /tilda/rec*
-Disallow: /tilda/click*
-Disallow: /tilda/scroll*
-Disallow: /tilda/popup*
-Disallow: /tilda/cart*
-Disallow: /tilda/product*
-Disallow: /tilda/event*
-Disallow: /members/login*
-Disallow: /members/signup*
-Disallow:
+User-agent: *
+Allow: /
 
+# Служебные разделы October CMS
+Disallow: /backend
+Disallow: /storage/framework/
+Disallow: /storage/cms/
 
-Sitemap: https://www.kv-tyumen.ru/sitemap.xml
-Sitemap: https://www.kv-tyumen.ru/sitemap-store.xml
+# Технические и трекинговые параметры в URL
+Disallow: /*?*_token=
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ymclid&gclid&_openstat&from
+
+# Основное зеркало
+Host: https://kv-tyumen.ru
+
+Sitemap: https://kv-tyumen.ru/sitemap.xml
