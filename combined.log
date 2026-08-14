@@ -111,3 +111,28 @@
 {"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T09:14:57.468Z"}
 {"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T09:14:57.469Z"}
 {"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-12T09:45:00.969Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-12T09:59:47.825Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-12T09:59:47.831Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T09:59:47.831Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T09:59:47.832Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-12T10:00:00.836Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-12T10:00:00.848Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T10:00:00.849Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T10:00:00.851Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-12T10:00:25.740Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-12T10:00:25.751Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T10:00:25.751Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T10:00:25.752Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-12T10:00:26.345Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-12T10:00:26.352Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T10:00:26.352Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T10:00:26.353Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-12T10:01:00.997Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-12T10:01:01.004Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T10:01:01.004Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T10:01:01.005Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-12T10:01:04.094Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-12T10:01:04.103Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T10:01:04.103Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T10:01:04.104Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-12T10:31:07.465Z"}
