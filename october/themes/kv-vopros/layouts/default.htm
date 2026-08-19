@@ -129,6 +129,23 @@ function onFormSubmit()
         );
     }
 
+    try {
+        \KV\Leads\Models\Lead::create([
+            'name'          => $name,
+            'phone'         => $phone,
+            'host'          => $host,
+            'page_url'      => $pageUrl,
+            'telegram_sent' => $telegramSent,
+            'max_sent'      => $maxSent,
+            'ip'            => request()->ip(),
+            'user_agent'    => (string) request()->userAgent(),
+        ]);
+    } catch (\Throwable $e) {
+        \Illuminate\Support\Facades\Log::warning('Lead save failed', [
+            'message' => $e->getMessage(),
+        ]);
+    }
+
     if (!$telegramSent && !$maxSent) {
         throw new \October\Rain\Exception\ApplicationException(
             'Не удалось отправить уведомление. Попробуйте ещё раз позже.'

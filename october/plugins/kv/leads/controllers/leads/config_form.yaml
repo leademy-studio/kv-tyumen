@@ -1,0 +1,9 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: Заявка
+form: fields.yaml
+modelClass: KV\Leads\Models\Lead
+
+defaultRedirect: kv/leads/leads

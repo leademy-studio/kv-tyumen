@@ -1,0 +1,44 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Имя
+        span: left
+    phone:
+        label: Телефон
+        span: right
+    created_at:
+        label: Дата обращения
+        type: datetime
+        span: left
+        disabled: true
+    host:
+        label: Сайт
+        span: right
+        disabled: true
+    page_url:
+        label: Страница
+        span: full
+        disabled: true
+    telegram_sent:
+        label: Отправлено в Telegram
+        type: switch
+        span: left
+        disabled: true
+    max_sent:
+        label: Отправлено в MAX
+        type: switch
+        span: right
+        disabled: true
+    ip:
+        label: IP
+        span: left
+        disabled: true
+    user_agent:
+        label: User-Agent
+        type: textarea
+        size: small
+        span: full
+        disabled: true
