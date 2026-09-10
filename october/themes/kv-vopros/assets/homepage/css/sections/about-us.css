@@ -315,12 +315,10 @@
     opacity: 1;
 }
 
-.about.is-compact .about__cards {
-    pointer-events: auto;
-}
-
 .about.is-compact .about__card {
     opacity: 1;
+    /* Only cards receive clicks; their full-section wrapper stays transparent. */
+    pointer-events: auto;
 }
 
 .about.is-step-1 .about__card:nth-child(1) {
