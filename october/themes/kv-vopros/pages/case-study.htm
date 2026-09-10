@@ -1,6 +1,9 @@
 title = "Детальная страница кейса"
 url = "/portfolio/:slug"
 layout = "default"
+sitemap_section = "Site\\CaseStudy"
+sitemap_identifier = "slug"
+sitemap_parameter = "slug"
 
 [global services]
 handle = "Site\\Services"
@@ -10,9 +13,7 @@ function onStart()
     $slug = $this->param('slug');
     $section = 'Site\\CaseStudy';
 
-    $case = \Tailor\Models\EntryRecord::inSection($section)
-        ->withDrafts()
-        ->where('is_enabled', 1)
+    $case = \App\Classes\SiteSeo::publishedEntries($section)
         ->where('slug', $slug)
         ->first();
 
@@ -37,7 +38,6 @@ function onStart()
         <meta property="og:description" content="{{ seoDescription|e }}" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="{{ ogImage|e }}" />
-        <link rel="canonical" href="{{ canonicalUrl|e }}" />
         <!--/metatextblock-->
         <meta name="format-detection" content="telephone=no" />
         <meta http-equiv="x-dns-prefetch-control" content="on" />

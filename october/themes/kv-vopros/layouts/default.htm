@@ -14,6 +14,12 @@ function onStart()
         || str_ends_with($host, '.local');
 }
 
+function onEnd()
+{
+    $this['seoCanonicalUrl'] = \App\Classes\SiteSeo::canonicalForPage($this->page);
+    $this['seoNoindex'] = !\App\Classes\SiteSeo::isIndexable($this->page);
+}
+
 function onFormSubmit()
 {
     $data = post();
@@ -164,6 +170,7 @@ function onFormSubmit()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% partial 'site/seo' %}
     {% partial 'site/organization' %}
     {% partial 'site/breadcrumbs' %}
     <!-- Yandex.Metrika counter -->

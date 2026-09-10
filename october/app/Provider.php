@@ -25,5 +25,24 @@ class Provider extends AppBase
     public function boot()
     {
         parent::boot();
+
+        $this->app->make(\Illuminate\Contracts\Http\Kernel::class)
+            ->prependMiddleware(\App\Classes\NormalizePublicUrl::class);
+
+        \Event::listen('cms.template.extendTemplateSettingsFields', function ($extension, $data) {
+            if ($data->templateType !== 'page') {
+                return;
+            }
+            $data->settings[] = [
+                'property' => 'canonical_override', 'type' => 'string',
+                'title' => 'Canonical (необязательно)', 'tab' => 'SEO',
+                'description' => 'По умолчанию — адрес самой страницы. Укажите путь или URL другой индексируемой страницы сайта. Недоступный адрес будет проигнорирован.',
+            ];
+            $data->settings[] = [
+                'property' => 'seo_noindex', 'type' => 'checkbox', 'tab' => 'SEO',
+                'title' => 'Запретить индексацию',
+                'description' => 'Добавляет noindex и исключает страницу из sitemap.xml.',
+            ];
+        });
     }
 }

@@ -1,16 +1,24 @@
-User-agent: *
-Allow: /
-
-# Служебные разделы October CMS
+User-agent: Yandex
 Disallow: /backend
+Disallow: /admin
+Disallow: /vendor/
+Disallow: /updates/
+Disallow: /temp/
 Disallow: /storage/framework/
+Disallow: /storage/logs/
 Disallow: /storage/cms/
+Disallow: /storage/temp/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&utm_id&frommarket&_openstat&gclid&yclid&fbclid
 
-# Технические и трекинговые параметры в URL
-Disallow: /*?*_token=
-Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ymclid&gclid&_openstat&from
-
-# Основное зеркало
-Host: https://kv-tyumen.ru
+User-agent: *
+Disallow: /backend
+Disallow: /admin
+Disallow: /vendor/
+Disallow: /updates/
+Disallow: /temp/
+Disallow: /storage/framework/
+Disallow: /storage/logs/
+Disallow: /storage/cms/
+Disallow: /storage/temp/
 
 Sitemap: https://kv-tyumen.ru/sitemap.xml

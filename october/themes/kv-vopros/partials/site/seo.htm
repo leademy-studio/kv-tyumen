@@ -1,0 +1,5 @@
+{% if seoNoindex %}
+<meta name="robots" content="noindex, follow">
+{% elseif seoCanonicalUrl %}
+<link rel="canonical" href="{{ seoCanonicalUrl|e }}">
+{% endif %}

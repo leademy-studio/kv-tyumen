@@ -15,12 +15,13 @@ entryPoints:
   web:
     address: ":80"
     http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
+      # The application returns a single redirect for origin, case and slashes.
+      # Nginx still normalizes paths before filesystem access/security checks.
+      sanitizePath: false
   websecure:
     address: ":443"
+    http:
+      sanitizePath: false
 
 certificatesResolvers:
   letsencrypt:
