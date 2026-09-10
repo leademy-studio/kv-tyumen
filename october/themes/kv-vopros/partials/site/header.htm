@@ -3,17 +3,17 @@
     <div class="header__bar">
         <nav class="header__nav">
             <span class="header__nav-item">
-                <a class="header__link" href="#services" data-header-toggle="services" aria-expanded="false">
+                <button class="header__link" type="button" aria-controls="header-services-menu">
                     Услуги
                     <img class="header__chevron" src="{{ homeAsset }}/img/menu-chevron.svg" alt="" width="6" height="3">
-                </a>
-                <span class="header__dropdown">
+                </button>
+                <span class="header__dropdown" id="header-services-menu">
                     <a class="header__dropdown-link" href="/design-project">Ремонт по&nbsp;дизайн-проекту</a>
                     <a class="header__dropdown-link" href="/repairs">Пакетный ремонт</a>
                 </span>
             </span>
-            <a class="header__link" href="{{ portfolioHref|default('/portfolio') }}">Портфолио</a>
-            <a class="header__link" href="#contacts">Контакты</a>
+            <a class="header__link" href="/portfolio">Портфолио</a>
+            <a class="header__link" href="/contacts">Контакты</a>
         </nav>
 
         <a class="header__logo" href="/">
@@ -21,7 +21,7 @@
         </a>
 
         <div class="header__actions">
-            <a class="header__link" href="#calculate">Заказать звонок</a>
+            <a class="header__link" href="/contacts">Заказать звонок</a>
             <button class="header__burger" type="button" aria-expanded="false" aria-label="Открыть меню">
                 <span class="header__burger-line"></span>
                 <span class="header__burger-line"></span>
@@ -35,14 +35,14 @@
                 <nav class="header__panel-group header__panel-group--services" aria-label="Услуги и разделы">
                     <a class="header__panel-link" href="/design-project">Ремонт по&nbsp;дизайн-проекту</a>
                     <a class="header__panel-link is-accent" href="/repairs">Пакетный ремонт</a>
-                    <a class="header__panel-link" href="{{ portfolioHref|default('/portfolio') }}">Портфолио</a>
+                    <a class="header__panel-link" href="/portfolio">Портфолио</a>
                     <a class="header__panel-link" href="/blog">Блог</a>
                 </nav>
                 <nav class="header__panel-group header__panel-group--info" aria-label="Информация">
                     <a class="header__panel-link" href="/sotrudnichestvo">Сотрудничество</a>
                     <a class="header__panel-link" href="/rabota">Карьера</a>
-                    <a class="header__panel-link" href="{{ aboutHref|default('/about-company') }}">О нас</a>
-                    <a class="header__panel-link" href="#contacts">Контакты</a>
+                    <a class="header__panel-link" href="/about-company">О нас</a>
+                    <a class="header__panel-link" href="/contacts">Контакты</a>
                 </nav>
             </div>
             <div class="header__panel-contacts">
