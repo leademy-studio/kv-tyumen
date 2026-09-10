@@ -114,26 +114,28 @@ function onStart()
                 </div>
 
                 <div class="all-inclusive__cards">
-                    <figure class="all-inclusive__card is-active" style="--i: 0">
-                        <img src="{{ services.cr_card1_image ? services.cr_card1_image|media : repairAsset ~ '/img/repairs-all-1.png' }}" alt="">
-                        <figcaption>Все виды работ — от черновой отделки до установки сантехники</figcaption>
-                    </figure>
-                    <figure class="all-inclusive__card" style="--i: 1">
-                        <img src="{{ services.cr_card2_image ? services.cr_card2_image|media : repairAsset ~ '/img/repairs-all-2.png' }}" alt="">
-                        <figcaption>Доставка, подъём, уборка, вывоз мусора</figcaption>
-                    </figure>
-                    <figure class="all-inclusive__card" style="--i: 2">
-                        <img src="{{ services.cr_card3_image ? services.cr_card3_image|media : repairAsset ~ '/img/repairs-all-3.png' }}" alt="">
-                        <figcaption>Качественные материалы без ограничений в выборе</figcaption>
-                    </figure>
-                    <figure class="all-inclusive__card" style="--i: 3">
-                        <img src="{{ services.cr_card4_image ? services.cr_card4_image|media : repairAsset ~ '/img/repairs-all-4.png' }}" alt="">
-                        <figcaption>Помощь в подборе сочетаний и отделки</figcaption>
-                    </figure>
-                    <figure class="all-inclusive__card" style="--i: 4">
-                        <img src="{{ services.cr_card5_image ? services.cr_card5_image|media : repairAsset ~ '/img/repairs-all-5.png' }}" alt="">
-                        <figcaption>Фиксированная цена — без «неожиданно подорожало»</figcaption>
-                    </figure>
+                    <div class="all-inclusive__cards-stage">
+                        <figure class="all-inclusive__card is-active" style="--i: 0">
+                            <img src="{{ services.cr_card1_image ? services.cr_card1_image|media : repairAsset ~ '/img/repairs-all-1.png' }}" alt="">
+                            <figcaption>Все виды работ — от черновой отделки до установки сантехники</figcaption>
+                        </figure>
+                        <figure class="all-inclusive__card" style="--i: 1">
+                            <img src="{{ services.cr_card2_image ? services.cr_card2_image|media : repairAsset ~ '/img/repairs-all-2.png' }}" alt="">
+                            <figcaption>Доставка, подъём, уборка, вывоз мусора</figcaption>
+                        </figure>
+                        <figure class="all-inclusive__card" style="--i: 2">
+                            <img src="{{ services.cr_card3_image ? services.cr_card3_image|media : repairAsset ~ '/img/repairs-all-3.png' }}" alt="">
+                            <figcaption>Качественные материалы без ограничений в выборе</figcaption>
+                        </figure>
+                        <figure class="all-inclusive__card" style="--i: 3">
+                            <img src="{{ services.cr_card4_image ? services.cr_card4_image|media : repairAsset ~ '/img/repairs-all-4.png' }}" alt="">
+                            <figcaption>Помощь в подборе сочетаний и отделки</figcaption>
+                        </figure>
+                        <figure class="all-inclusive__card" style="--i: 4">
+                            <img src="{{ services.cr_card5_image ? services.cr_card5_image|media : repairAsset ~ '/img/repairs-all-5.png' }}" alt="">
+                            <figcaption>Фиксированная цена — без «неожиданно подорожало»</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </section>
         </div>

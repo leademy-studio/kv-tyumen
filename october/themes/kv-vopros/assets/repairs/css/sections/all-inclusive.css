@@ -49,6 +49,12 @@
     height: 36rem;
 }
 
+.all-inclusive__cards-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 .all-inclusive__card {
     position: absolute;
     inset: 0 auto auto 0;
@@ -89,69 +95,73 @@
 
 @media (max-width: 1200px) {
     .all-inclusive {
-        --static-inset: 2.5rem;
+        --static-inset: clamp(1.25rem, 6.25vw, 2.5rem);
         --static-bottom: 9.375rem;
         --static-columns: minmax(0, 1fr);
+        --mobile-card-height: clamp(20rem, 65.625vw, 26.25rem);
+        --mobile-stack-height: calc(var(--mobile-card-height) + 10rem);
         flex-direction: column;
         align-items: stretch;
         gap: 2.5rem;
-        padding: 0 2.5rem 9.375rem;
+        max-width: 40rem;
+        margin-inline: auto;
+        padding: 0 var(--static-inset) var(--static-bottom);
     }
 
     .all-inclusive__text {
         flex: none;
         width: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
     }
 
     .all-inclusive__title {
-        margin-bottom: 1.25rem;
+        margin: 0;
         font-size: 2.0625rem;
-        line-height: 1.09;
-        letter-spacing: -0.09em;
+        line-height: 2.25rem;
+        letter-spacing: -0.1875rem;
     }
 
     .all-inclusive__subtitle,
     .all-inclusive__body {
-        margin: 0 0 1.25rem;
+        margin: 0;
         font-size: 1rem;
-        line-height: 1.19;
+        line-height: 1.1875rem;
     }
 
-    /* На узких экранах стопка разворачивается в обычный вертикальный список */
+    /* Five mobile states share one sticky stack, with 40px between card tops.
+       Only this track is pinned, so the longer text remains readable on phones. */
     .all-inclusive__cards {
-        position: static;
+        position: relative;
         flex: none;
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-        height: auto;
+        height: calc(var(--mobile-stack-height) + 100svh);
+    }
+
+    .all-inclusive__cards-stage {
+        position: sticky;
+        top: min(5.3125rem, calc(100svh - var(--mobile-stack-height) - 1.25rem));
+        height: var(--mobile-stack-height);
     }
 
     .all-inclusive__card {
-        position: static;
-        width: auto;
-        height: auto;
+        width: 100%;
+        height: var(--mobile-card-height);
         padding: 1.25rem;
-        transform: none;
-        opacity: 1;
-        visibility: visible;
+        gap: 1.25rem;
+        border-radius: 0.5rem;
+        backdrop-filter: blur(13px);
+        -webkit-backdrop-filter: blur(13px);
     }
 
     .all-inclusive__card img {
-        flex: none;
-        aspect-ratio: 520 / 318;
+        height: 0;
+        flex: 1 1 0;
+        aspect-ratio: auto;
     }
 
     .all-inclusive__card figcaption {
         font-size: 1.125rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .all-inclusive {
-        --static-inset: 1.25rem;
-        --static-bottom: 4rem;
-        padding: 0 1.25rem 4rem;
     }
 }
 
@@ -171,6 +181,11 @@
 :is(.no-js, .pin.is-static) .all-inclusive__cards {
     position: static;
     flex: none;
+    height: auto;
+}
+
+:is(.no-js, .pin.is-static) .all-inclusive__cards-stage {
+    position: static;
     display: grid;
     grid-template-columns: var(--static-columns, repeat(auto-fit, minmax(min(100%, 20rem), 1fr)));
     gap: 1.25rem;
@@ -188,18 +203,6 @@
 
 :is(.no-js, .pin.is-static) .all-inclusive__card img {
     flex: none;
+    height: auto;
     aspect-ratio: 520 / 318;
-}
-
-/* Планшетный диапазон: карточки в две колонки, иначе изображения
-   растягиваются на всю ширину экрана */
-@media (min-width: 768px) and (max-width: 1200px) {
-    .all-inclusive {
-        --static-columns: repeat(2, minmax(0, 1fr));
-    }
-    .all-inclusive__cards {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.25rem;
-    }
 }

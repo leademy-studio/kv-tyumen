@@ -1,6 +1,6 @@
 // Run: node scripts/test-all-inclusive-motion.mjs
 import assert from 'node:assert/strict';
-import { sampleCards, CARD_WIDTH, CARD_HEIGHT, BASE_Y } from '../october/themes/kv-vopros/assets/repairs/js/sections/all-inclusive-motion.js';
+import { sampleCards, sampleMobileCards, CARD_WIDTH, CARD_HEIGHT, BASE_Y } from '../october/themes/kv-vopros/assets/repairs/js/sections/all-inclusive-motion.js';
 import { createScene } from '../october/themes/kv-vopros/assets/repairs/js/scroll-scene.js';
 
 const close = (actual, expected, tolerance = 0.0001) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
@@ -47,6 +47,22 @@ for (let i = 100; i >= 0; i--) {
 }
 assert.deepEqual(sampleCards(-1), sampleCards(0));
 assert.deepEqual(sampleCards(2), sampleCards(1));
+
+// Mobile Figma frames: 420px cards at y=0/40/80/120/160, with no rotation.
+for (let state = 0; state < 5; state++) {
+    const cards = sampleMobileCards(state / 4);
+    assert.equal(cards.filter(card => card[3] === 1).length, state + 1);
+    cards.forEach(([x, y, rotation, opacity], index) => {
+        assert.equal(x, 0);
+        assert.equal(y, index * 40);
+        assert.equal(rotation, 0);
+        assert.equal(opacity, index <= state ? 1 : 0);
+    });
+    assert.equal(420 + cards[state][1], [420, 460, 500, 540, 580][state]);
+}
+close(sampleMobileCards(0.125)[1][3], 0.5);
+const mobileForward = Array.from({ length: 101 }, (_, i) => sampleMobileCards(i / 100));
+for (let i = 100; i >= 0; i--) assert.deepEqual(sampleMobileCards(i / 100), mobileForward[i]);
 
 // Exercise scroll progress and cancellation when reduced motion/mobile interrupts a frame.
 const events = new Map();
@@ -99,4 +115,45 @@ events.get('scroll')();
 scene.destroy();
 assert.equal(frames.size, 0);
 assert.equal(events.size, 0);
-console.log('PASS: Figma endpoints, easing, continuity, reverse scroll, 100vh travel, mobile/reduced-motion cancellation');
+
+// Opt-in mobile scene: pin only the cards after the text, below the site header.
+const mobileQuery = queries.get('(max-width: 1200px)');
+const reducedQuery = queries.get('(prefers-reduced-motion: reduce)');
+mobileQuery.matches = true;
+let mobileTop = 85;
+let mobileHeight = 1580;
+const mobileStage = { getBoundingClientRect: () => ({ height: 580 }) };
+const mobileTrack = { getBoundingClientRect: () => ({ top: mobileTop, height: mobileHeight }) };
+globalThis.getComputedStyle = node => node === mobileStage ? { top: '85px' } : { getPropertyValue: () => '4' };
+const responsive = createScene(pin, p => seen.push(p), { mobileScene: { track: mobileTrack, stage: mobileStage } });
+flush();
+assert(!classes.has('is-static'));
+close(seen.at(-1), 0);
+mobileTop = -415;
+events.get('scroll')();
+flush();
+close(seen.at(-1), 0.5);
+mobileHeight = 1380; // viewport resize updates the available scroll distance
+events.get('resize')();
+flush();
+close(seen.at(-1), 0.625);
+events.get('scroll')();
+reducedQuery.matches = true;
+reducedQuery.change();
+assert(classes.has('is-static'));
+close(seen.at(-1), 1);
+const staticCount = seen.length;
+flush();
+assert.equal(seen.length, staticCount);
+mobileQuery.matches = false;
+mobileQuery.change();
+assert(classes.has('is-static'));
+reducedQuery.matches = false;
+reducedQuery.change();
+flush();
+assert(!classes.has('is-static'));
+close(seen.at(-1), 0.5); // desktop now measures the full pinned section again
+responsive.destroy();
+assert.equal(frames.size, 0);
+assert.equal(events.size, 0);
+console.log('PASS: desktop/mobile Figma states, easing, continuity, reverse scroll, mobile card pinning, resize and reduced-motion cancellation');

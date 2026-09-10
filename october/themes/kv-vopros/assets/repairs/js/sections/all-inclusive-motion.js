@@ -58,3 +58,12 @@ export function sampleCards(progress) {
         return from.map((value, property) => mix(value, to[property], property === 3 ? opacity : movement));
     });
 }
+
+// Mobile variants 144:3244–144:3248: unrotated cards overlap by 380px.
+// Each newly visible card sits 40px below the previous one, without desktop flight.
+export function sampleMobileCards(progress) {
+    const position = clamp(progress) * 4;
+    return Array.from({ length: 5 }, (_, index) => [
+        0, index * 40, 0, index === 0 ? 1 : easing(clamp(position - index + 1), 0.42, 0.58),
+    ]);
+}

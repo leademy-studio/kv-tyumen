@@ -7,14 +7,14 @@
 const MOBILE_QUERY = "(max-width: 1200px)";
 const MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
-export function isSceneDisabled() {
+export function isSceneDisabled(disableOnMobile = true) {
     return (
-        window.matchMedia(MOBILE_QUERY).matches ||
+        (disableOnMobile && window.matchMedia(MOBILE_QUERY).matches) ||
         window.matchMedia(MOTION_QUERY).matches
     );
 }
 
-export function createScene(pin, onProgress) {
+export function createScene(pin, onProgress, { mobileScene = null } = {}) {
     if (!pin) {
         return null;
     }
@@ -27,14 +27,17 @@ export function createScene(pin, onProgress) {
     let active = false;
 
     function measure() {
-        const rect = pin.getBoundingClientRect();
-        const travel = rect.height - window.innerHeight;
+        const mobile = mobileScene && window.matchMedia(MOBILE_QUERY).matches;
+        const rect = (mobile ? mobileScene.track : pin).getBoundingClientRect();
+        const stageHeight = mobile ? mobileScene.stage.getBoundingClientRect().height : window.innerHeight;
+        const stickyTop = mobile ? parseFloat(getComputedStyle(mobileScene.stage).top) || 0 : 0;
+        const travel = rect.height - stageHeight;
 
         if (travel <= 0) {
             return { p: 0, step: 0 };
         }
 
-        const p = clamp(-rect.top / travel, 0, 1);
+        const p = clamp((stickyTop - rect.top) / travel, 0, 1);
         const step = Math.min(Math.floor(p * (steps + 1)), steps);
 
         return { p, step };
@@ -57,9 +60,8 @@ export function createScene(pin, onProgress) {
         }
     }
 
-    /* На мобильном и при reduced-motion сцена статична: показываем финал.
-       Решение пересматривается при каждом изменении медиазапросов, иначе
-       сцена, выключенная на узком экране, не оживёт после ресайза. */
+    /* A mobile scene can pin only its cards while the section text scrolls normally.
+       Without one, narrow screens keep the static fallback. Reduced motion always wins. */
     function enable() {
         if (active) {
             return;
@@ -85,7 +87,7 @@ export function createScene(pin, onProgress) {
     }
 
     function sync() {
-        if (isSceneDisabled()) {
+        if (isSceneDisabled(!mobileScene)) {
             disable();
         } else {
             enable();

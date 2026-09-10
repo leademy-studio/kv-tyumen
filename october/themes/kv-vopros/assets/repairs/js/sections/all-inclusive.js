@@ -2,7 +2,7 @@
    Text stays fixed while new cards enter and the previous cards rotate away. */
 
 import { createScene } from "../scroll-scene.js";
-import { sampleCards } from "./all-inclusive-motion.js";
+import { sampleCards, sampleMobileCards } from "./all-inclusive-motion.js";
 
 export function init() {
     const pin = document.querySelector('[data-scene="all-inclusive"]');
@@ -17,8 +17,12 @@ export function init() {
         return;
     }
 
+    const mobile = window.matchMedia("(max-width: 1200px)");
+    const track = pin.querySelector(".all-inclusive__cards");
+    const stage = pin.querySelector(".all-inclusive__cards-stage");
+
     createScene(pin, progress => {
-        const poses = sampleCards(progress);
+        const poses = mobile.matches ? sampleMobileCards(progress) : sampleCards(progress);
         cards.forEach((card, index) => {
             const [x, y, rotation, opacity] = poses[index];
             card.style.setProperty("--card-x", `${(x / 16).toFixed(5)}rem`);
@@ -27,5 +31,5 @@ export function init() {
             card.style.setProperty("--card-opacity", opacity.toFixed(5));
             card.setAttribute("aria-hidden", String(opacity === 0));
         });
-    });
+    }, { mobileScene: track && stage ? { track, stage } : null });
 }
