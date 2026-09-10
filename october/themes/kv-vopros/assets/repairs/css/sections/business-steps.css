@@ -7,11 +7,15 @@
    Мобильный: одна колонка. */
 
 .business-steps {
+    position: relative;
+    isolation: isolate;
     padding: 0 5.1429rem 11.1429rem;
 }
 
 .business-steps__container {
     position: relative;
+    isolation: isolate;
+    background: var(--c-black);
     display: flex;
     flex-direction: column;
     gap: 3.4286rem;
@@ -21,6 +25,8 @@
 }
 
 .business-steps__bg {
+    z-index: 0;
+    pointer-events: none;
     position: absolute;
     inset: 0;
     width: 100%;
@@ -29,6 +35,7 @@
 }
 
 .business-steps__title {
+    z-index: 1;
     position: relative;
     margin: 0;
     font-family: var(--font-display);
@@ -41,6 +48,7 @@
 }
 
 .business-steps__grid {
+    z-index: 1;
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -51,15 +59,27 @@
 }
 
 .step-card {
+    position: relative;
+    isolation: isolate;
     display: flex;
     align-items: flex-start;
     gap: 2.5714rem;
     padding: 1.7143rem;
     border-radius: var(--radius-md);
+    color: var(--c-white);
+}
+
+/* Keep text outside the filtered surface while scrolling/compositing the photo. */
+.step-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
     background: var(--c-glass);
     backdrop-filter: blur(0.8929rem);
     -webkit-backdrop-filter: blur(0.8929rem);
-    color: var(--c-white);
+    pointer-events: none;
 }
 
 .step-card__number {
@@ -81,6 +101,7 @@
 }
 
 .step-card__title {
+    margin: 0;
     font-family: var(--font-display);
     font-weight: 400;
     font-size: 2.6571rem;
@@ -89,6 +110,8 @@
 }
 
 .step-card__text {
+    margin: 0;
+    white-space: pre-line;
     font-size: 1.3714rem;
     line-height: 1.2;
 }

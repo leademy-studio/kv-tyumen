@@ -292,3 +292,39 @@ fields:
         label: Правый столбец списка
         type: richeditor
         tab: Пакетный ремонт
+
+    cr_steps_title:
+        label: Заголовок секции
+        type: text
+        tab: Как мы работаем
+        commentAbove: 'Секция на странице «Пакетный ремонт» (/repairs).'
+
+    cr_steps_background:
+        label: Фоновое изображение
+        type: mediafinder
+        mode: image
+        tab: Как мы работаем
+        commentAbove: 'Если изображение не выбрано, используется фон из макета.'
+
+    cr_steps:
+        label: Этапы работы
+        type: repeater
+        titleFrom: step_title
+        prompt: Добавить этап
+        tab: Как мы работаем
+        commentAbove: 'Перетаскивайте этапы для изменения порядка. Нумерация обновляется автоматически.'
+        form:
+            fields:
+                step_title:
+                    label: Заголовок этапа
+                    type: text
+                description:
+                    label: Описание
+                    type: textarea
+                    size: small
+
+    cr_steps_cta_label:
+        label: Текст кнопки заявки
+        type: text
+        tab: Как мы работаем
+        commentAbove: 'Кнопка открывает форму расчёта на этой странице. Оставьте поле пустым, чтобы скрыть кнопку.'

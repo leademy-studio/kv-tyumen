@@ -1,13 +1,10 @@
 /* Точка входа страницы «Пакетный ремонт»: подключает модули секций. */
 
 import * as header from "../../homepage/js/sections/header.js";
-import * as allInclusive from "./sections/all-inclusive.js";
 
 document.documentElement.classList.remove("no-js");
 
-for (const section of [header, allInclusive]) {
-    section.init();
-}
+header.init();
 
 // Reveal CMS portfolio entries in batches; without JavaScript every case stays visible.
 const portfolio = document.querySelector(".portfolio");

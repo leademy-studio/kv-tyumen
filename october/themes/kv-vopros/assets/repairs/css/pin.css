@@ -1,59 +1,35 @@
-/* Пиннинг секций со сценарной анимацией.
-
-   Секции, у которых в Figma несколько состояний (State=step-N), проигрывают их
-   по мере скролла. --pin-scroll-distance задаёт длину прокрутки,
-   иначе используется один экран на шаг. Внутренний .pin__inner
-   залипает на весь экран, а scroll-scene.js передаёт прогресс секции. */
-
+/* Native scroll animation: no JavaScript classes, handlers, or RAF loops. */
 .pin {
     position: relative;
-    height: calc(100vh + var(--pin-scroll-distance, calc(var(--pin-steps, 1) * 100vh)));
+    isolation: isolate;
+    height: auto;
 }
 
 .pin__inner {
-    position: sticky;
-    top: 0;
+    position: static;
     display: flex;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    height: auto;
 }
 
 .pin__inner > * {
     width: 100%;
 }
 
-/* Без JS и при выключенных анимациях секция ведёт себя как обычный блок */
-.no-js .pin,
-.pin.is-static {
-    height: auto;
-}
+@supports (animation-timeline: --all-inclusive) and (view-timeline-inset: 1px) and (animation-range: contain) {
+    @media (min-width: 1201px) and (prefers-reduced-motion: no-preference) {
+        .pin {
+            height: calc(100vh + var(--pin-scroll-distance, 100vh));
+            view-timeline-name: --all-inclusive;
+            view-timeline-axis: block;
+            view-timeline-inset: 0;
+        }
 
-.no-js .pin__inner,
-.pin.is-static .pin__inner {
-    position: static;
-    height: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .pin {
-        height: auto;
-    }
-
-    .pin__inner {
-        position: static;
-        height: auto;
-    }
-}
-
-@media (max-width: 1200px) {
-    .pin {
-        height: auto;
-    }
-
-    .pin__inner {
-        position: static;
-        height: auto;
-        overflow: visible;
+        .pin__inner {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
     }
 }

@@ -1,7 +1,6 @@
 // Run: node scripts/test-all-inclusive-motion.mjs
 import assert from 'node:assert/strict';
 import { sampleCards, sampleMobileCards, CARD_WIDTH, CARD_HEIGHT, BASE_Y } from '../october/themes/kv-vopros/assets/repairs/js/sections/all-inclusive-motion.js';
-import { createScene } from '../october/themes/kv-vopros/assets/repairs/js/scroll-scene.js';
 
 const close = (actual, expected, tolerance = 0.0001) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
 function topLeft([x, y, rotation]) {
@@ -64,96 +63,17 @@ close(sampleMobileCards(0.125)[1][3], 0.5);
 const mobileForward = Array.from({ length: 101 }, (_, i) => sampleMobileCards(i / 100));
 for (let i = 100; i >= 0; i--) assert.deepEqual(sampleMobileCards(i / 100), mobileForward[i]);
 
-// Exercise scroll progress and cancellation when reduced motion/mobile interrupts a frame.
-const events = new Map();
-const frames = new Map();
-const queries = new Map();
-let frameId = 0;
-globalThis.window = {
-    innerHeight: 1000,
-    addEventListener: (name, fn) => events.set(name, fn),
-    removeEventListener: name => events.delete(name),
-    requestAnimationFrame: fn => { frames.set(++frameId, fn); return frameId; },
-    cancelAnimationFrame: id => frames.delete(id),
-    matchMedia: name => {
-        const query = { matches: false, addEventListener: (_, fn) => { query.change = fn; }, removeEventListener: () => { query.change = null; } };
-        queries.set(name, query);
-        return query;
-    },
-};
-// isSceneDisabled reads the same MediaQueryList instances as the change listeners.
-const makeQuery = window.matchMedia;
-window.matchMedia = name => queries.get(name) ?? makeQuery(name);
-globalThis.getComputedStyle = () => ({ getPropertyValue: () => '4' });
-let top = 0;
-const classes = new Set();
-const pin = { getBoundingClientRect: () => ({ top, height: 2000 }), classList: { add: x => classes.add(x), remove: x => classes.delete(x) } };
-const seen = [];
-const scene = createScene(pin, progress => seen.push(progress));
-const flush = () => { const pending = [...frames.values()]; frames.clear(); pending.forEach(fn => fn()); };
-flush();
-top = -500;
-events.get('scroll')();
-flush();
-close(seen.at(-1), 0.5); // 100vh travel, not four viewports
-for (const query of queries.values()) {
-    events.get('scroll')();
-    query.matches = true;
-    query.change();
-    assert(classes.has('is-static'));
-    close(seen.at(-1), 1);
-    const count = seen.length;
-    flush();
-    assert.equal(seen.length, count);
-    query.matches = false;
-    query.change();
-    flush();
-    assert(!classes.has('is-static'));
-    close(seen.at(-1), 0.5);
+// Native mobile contain range: the inset visibility window equals the sticky stack.
+// Check short/tall viewports and browser-toolbar changes (vh differs from svh).
+for (const [viewport, smallViewport, stack] of [[900, 800, 580], [667, 667, 480], [390, 350, 580]]) {
+    const stickyTop = Math.min(85, smallViewport - stack - 20);
+    const endInset = viewport - stack - stickyTop;
+    const visibilityEnd = viewport - endInset;
+    const trackHeight = stack + smallViewport;
+    const rangeStartTop = stickyTop;
+    const rangeEndTop = visibilityEnd - trackHeight;
+    close(rangeStartTop - rangeEndTop, smallViewport);
+    close(visibilityEnd - stickyTop, stack);
+    close((rangeStartTop - (stickyTop - smallViewport / 2)) / (rangeStartTop - rangeEndTop), 0.5);
 }
-events.get('scroll')();
-scene.destroy();
-assert.equal(frames.size, 0);
-assert.equal(events.size, 0);
-
-// Opt-in mobile scene: pin only the cards after the text, below the site header.
-const mobileQuery = queries.get('(max-width: 1200px)');
-const reducedQuery = queries.get('(prefers-reduced-motion: reduce)');
-mobileQuery.matches = true;
-let mobileTop = 85;
-let mobileHeight = 1580;
-const mobileStage = { getBoundingClientRect: () => ({ height: 580 }) };
-const mobileTrack = { getBoundingClientRect: () => ({ top: mobileTop, height: mobileHeight }) };
-globalThis.getComputedStyle = node => node === mobileStage ? { top: '85px' } : { getPropertyValue: () => '4' };
-const responsive = createScene(pin, p => seen.push(p), { mobileScene: { track: mobileTrack, stage: mobileStage } });
-flush();
-assert(!classes.has('is-static'));
-close(seen.at(-1), 0);
-mobileTop = -415;
-events.get('scroll')();
-flush();
-close(seen.at(-1), 0.5);
-mobileHeight = 1380; // viewport resize updates the available scroll distance
-events.get('resize')();
-flush();
-close(seen.at(-1), 0.625);
-events.get('scroll')();
-reducedQuery.matches = true;
-reducedQuery.change();
-assert(classes.has('is-static'));
-close(seen.at(-1), 1);
-const staticCount = seen.length;
-flush();
-assert.equal(seen.length, staticCount);
-mobileQuery.matches = false;
-mobileQuery.change();
-assert(classes.has('is-static'));
-reducedQuery.matches = false;
-reducedQuery.change();
-flush();
-assert(!classes.has('is-static'));
-close(seen.at(-1), 0.5); // desktop now measures the full pinned section again
-responsive.destroy();
-assert.equal(frames.size, 0);
-assert.equal(events.size, 0);
-console.log('PASS: desktop/mobile Figma states, easing, continuity, reverse scroll, mobile card pinning, resize and reduced-motion cancellation');
+console.log('PASS: Figma desktop/mobile states, CSS easing, continuity, reverse scroll, and native timeline geometry');

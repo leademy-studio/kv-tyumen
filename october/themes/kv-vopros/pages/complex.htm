@@ -81,13 +81,14 @@ function onStart()
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Manrope:wght@400;500&display=swap">
     <link rel="stylesheet" href="{{ homeAsset }}/css/tokens.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/base.css">
-    <link rel="stylesheet" href="{{ repairAsset }}/css/pin.css">
+    <link rel="stylesheet" href="{{ repairAsset }}/css/pin.css?v=20260910-css-motion">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/header.css">
     <link rel="stylesheet" href="{{ repairAsset }}/css/sections/repairs-hero.css">
-    <link rel="stylesheet" href="{{ repairAsset }}/css/sections/all-inclusive.css">
+    <link rel="stylesheet" href="{{ repairAsset }}/css/sections/all-inclusive.css?v=20260910-css-motion">
+    <link rel="stylesheet" href="{{ repairAsset }}/css/sections/all-inclusive-motion.css?v=20260910-css-motion">
     <link rel="stylesheet" href="{{ repairAsset }}/css/sections/pricing.css">
     <link rel="stylesheet" href="{{ repairAsset }}/css/sections/portfolio.css">
-    <link rel="stylesheet" href="{{ repairAsset }}/css/sections/business-steps.css">
+    <link rel="stylesheet" href="{{ repairAsset }}/css/sections/business-steps.css?v=20260910-css-motion">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
 {% endput %}
@@ -115,7 +116,7 @@ function onStart()
 
                 <div class="all-inclusive__cards">
                     <div class="all-inclusive__cards-stage">
-                        <figure class="all-inclusive__card is-active" style="--i: 0">
+                        <figure class="all-inclusive__card" style="--i: 0">
                             <img src="{{ services.cr_card1_image ? services.cr_card1_image|media : repairAsset ~ '/img/repairs-all-1.png' }}" alt="">
                             <figcaption>Все виды работ — от черновой отделки до установки сантехники</figcaption>
                         </figure>
@@ -338,66 +339,28 @@ function onStart()
     </section>
     {% endif %}
 
-    <section class="business-steps">
+    <section class="business-steps" aria-labelledby="business-steps-title">
         <div class="business-steps__container">
-            <img class="business-steps__bg" src="{{ repairAsset }}/img/repairs-steps-bg.png" alt="" aria-hidden="true">
-            <h2 class="business-steps__title">Как мы работаем</h2>
+            <img class="business-steps__bg" src="{{ services.cr_steps_background ? services.cr_steps_background|media : repairAsset ~ '/img/repairs-steps-bg.png' }}" alt="" aria-hidden="true">
+            <h2 class="business-steps__title" id="business-steps-title">{{ services.cr_steps_title|e }}</h2>
             <ol class="business-steps__grid">
+                {% for step in services.cr_steps %}
                 <li class="step-card">
-                    <span class="step-card__number">1</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Выбор пакета</span>
-                        <span class="step-card__text">Выбираете подходящий тариф — Стандарт, Премиум или индивидуальный.</span>
-                    </span>
+                    <span class="step-card__number" aria-hidden="true">{{ loop.index }}</span>
+                    <div class="step-card__content">
+                        <h3 class="step-card__title">{{ step.step_title|e }}</h3>
+                        <p class="step-card__text">{{ step.description|e }}</p>
+                    </div>
                 </li>
-                <li class="step-card">
-                    <span class="step-card__number">2</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Переговоры в офисе</span>
-                        <span class="step-card__text">Обсуждаем детали, показываем материалы и проекты, отвечаем на вопросы.</span>
-                    </span>
-                </li>
-                <li class="step-card">
-                    <span class="step-card__number">3</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Экскурсия на объекты</span>
-                        <span class="step-card__text">Показываем наши работы вживую — в процессе и после сдачи.</span>
-                    </span>
-                </li>
-                <li class="step-card">
-                    <span class="step-card__number">4</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Подписание договора</span>
-                        <span class="step-card__text">Фиксируем сроки, объём работ и финальную стоимость.</span>
-                    </span>
-                </li>
-                <li class="step-card">
-                    <span class="step-card__number">5</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Встреча на объекте с прорабом</span>
-                        <span class="step-card__text">Совместно с мастером уточняем расположение розеток, выключателей, световых сценариев.</span>
-                    </span>
-                </li>
-                <li class="step-card">
-                    <span class="step-card__number">6</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Закупка всех материалов</span>
-                        <span class="step-card__text">Мы подбираем и закупаем черновые и чистовые материалы — вы только утверждаете.</span>
-                    </span>
-                </li>
-                <li class="step-card">
-                    <span class="step-card__number">7</span>
-                    <span class="step-card__content">
-                        <span class="step-card__title">Фото- и видеоотчёты на этапах</span>
-                        <span class="step-card__text">Вы всегда в курсе, что происходит на объекте — без необходимости постоянно присутствовать</span>
-                    </span>
-                </li>
+                {% endfor %}
+                {% if services.cr_steps_cta_label %}
                 <li class="step-card step-card--cta">
                     <a class="step-card__cta-link" href="#calculate">
-                        <span class="step-card__cta-title">Оставить заявку</span>
+                        <span class="step-card__cta-title">{{ services.cr_steps_cta_label|e }}</span>
                         <img class="step-card__cta-icon" src="{{ homeAsset }}/img/arrow-up-right.svg" alt="" width="22" height="22">
                     </a>
                 </li>
+                {% endif %}
             </ol>
         </div>
     </section>
@@ -415,4 +378,4 @@ function onStart()
 
 {% partial 'site/footer' %}
 {% partial 'site/calculate-scripts' %}
-<script type="module" src="{{ repairAsset }}/js/repairs.js"></script>
+<script type="module" src="{{ repairAsset }}/js/repairs.js?v=20260910-css-motion"></script>
