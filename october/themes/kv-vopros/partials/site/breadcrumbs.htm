@@ -1,0 +1,38 @@
+{# Canonical page routes exclude query strings, tracking tags and request hostnames. #}
+{% if this.page.url not in ['/', '/404'] %}
+    {% set breadcrumbRoot = 'https://kv-tyumen.ru' %}
+    {% set breadcrumbItems = [{
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Главная',
+        'item': breadcrumbRoot ~ '/'
+    }] %}
+    {% set breadcrumbPath = this.page.url %}
+    {% set breadcrumbName = this.page.title %}
+
+    {% if this.page.url == '/portfolio/:slug' and case %}
+        {% set breadcrumbItems = breadcrumbItems|merge([{
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Портфолио',
+            'item': breadcrumbRoot ~ '/portfolio'
+        }]) %}
+        {% set breadcrumbPath = '/portfolio/' ~ case.slug|url_encode %}
+        {% set breadcrumbName = case.title %}
+    {% endif %}
+
+    {% set breadcrumbItems = breadcrumbItems|merge([{
+        '@type': 'ListItem',
+        'position': breadcrumbItems|length + 1,
+        'name': breadcrumbName|striptags|trim,
+        'item': breadcrumbRoot ~ breadcrumbPath
+    }]) %}
+    {# JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT = 15.
+       A CMS title cannot terminate the script element or break the JSON. #}
+    <script type="application/ld+json">{{ {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        '@id': breadcrumbRoot ~ breadcrumbPath ~ '#breadcrumb',
+        'itemListElement': breadcrumbItems
+    }|json_encode(15)|raw }}</script>
+{% endif %}
