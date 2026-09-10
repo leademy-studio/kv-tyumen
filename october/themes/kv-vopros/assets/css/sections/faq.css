@@ -1,0 +1,170 @@
+/* faq-section — вопросы и ответы на странице «Пакетный ремонт».
+   Figma: FAQ → faq 1920 (1:3400) и faq 640 (1:3423),
+          вставлено в complex-repair-desktop / complex-repair-mobile.
+
+   Раскрытие — на нативном <details>, без JS.
+   Десктоп: две независимые колонки. Мобильный: одна колонка. */
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5714rem;
+    padding: 0 5.1429rem 11.1429rem;
+}
+
+.faq__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--c-black);
+}
+
+.faq__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.7143rem;
+    align-items: start;
+}
+
+.faq__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7143rem;
+}
+
+.faq-item {
+    position: relative;
+    isolation: isolate;
+    padding: 0.8571rem 1.7143rem;
+    border-radius: var(--radius-md);
+    color: var(--c-black);
+    interpolate-size: allow-keywords;
+}
+
+.faq-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--c-glass);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+    pointer-events: none;
+}
+
+.faq-item__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5714rem;
+    min-height: 4.8rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq-item__question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item__question:focus-visible {
+    outline: 2px solid var(--c-green);
+    outline-offset: 0.25rem;
+    border-radius: var(--radius-sm);
+}
+
+.faq-item__question-text {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.6571rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.faq-item__icon {
+    flex: 0 0 2.2286rem;
+    width: 2.2286rem;
+    height: 1.2857rem;
+    transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-item__icon {
+    transform: rotate(180deg);
+}
+
+.faq-item__answer {
+    margin: 0;
+    padding-top: 0.8571rem;
+    white-space: pre-line;
+    font-size: 1.3714rem;
+    line-height: 1.2;
+}
+
+/* Плавное раскрытие там, где браузер умеет анимировать высоту details. */
+@supports selector(details::details-content) {
+    .faq-item::details-content {
+        block-size: 0;
+        overflow: hidden;
+        transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
+    }
+
+    .faq-item[open]::details-content {
+        block-size: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .faq {
+        gap: 1.875rem;
+        padding: 0 2.5rem 9.375rem;
+    }
+
+    .faq__title {
+        font-size: 2.0625rem;
+        letter-spacing: -0.06em;
+    }
+
+    .faq__grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+    }
+
+    .faq__column {
+        gap: 1.25rem;
+    }
+
+    .faq-item {
+        padding: 0.9375rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .faq-item__question {
+        gap: 1.875rem;
+        min-height: 2.875rem;
+    }
+
+    .faq-item__question-text {
+        font-size: 1.625rem;
+    }
+
+    .faq-item__icon {
+        flex-basis: 1.625rem;
+        width: 1.625rem;
+        height: 0.9375rem;
+    }
+
+    .faq-item__answer {
+        padding-top: 0.625rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .faq {
+        padding: 0 1.25rem 4rem;
+    }
+}

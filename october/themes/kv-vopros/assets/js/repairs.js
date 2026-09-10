@@ -1,6 +1,6 @@
 /* Точка входа страницы «Пакетный ремонт»: подключает модули секций. */
 
-import * as header from "../../homepage/js/sections/header.js";
+import * as header from "../homepage/js/sections/header.js";
 
 document.documentElement.classList.remove("no-js");
 

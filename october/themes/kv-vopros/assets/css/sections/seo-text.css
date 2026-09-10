@@ -1,0 +1,107 @@
+/* seo-text-section — SEO-текст страницы «Пакетный ремонт».
+   Figma: complex-repair-desktop → seo-text-section,
+          complex-repair-mobile  → seo-text-section.
+
+   Заголовок секции и стеклянные карточки с подзаголовком и абзацем.
+   Десктоп: сетка 2×N. Мобильный: одна колонка. */
+
+.seo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5714rem;
+    padding: 0 5.1429rem 11.1429rem;
+}
+
+.seo-text__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--c-black);
+}
+
+.seo-text__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.7143rem;
+}
+
+.seo-text-card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8571rem;
+    padding: 0.8571rem 1.7143rem;
+    border-radius: var(--radius-md);
+    color: var(--c-black);
+}
+
+/* Текст держим вне фильтруемой поверхности — как в step-card. */
+.seo-text-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--c-glass);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+    pointer-events: none;
+}
+
+.seo-text-card__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.6571rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.seo-text-card__body {
+    margin: 0;
+    white-space: pre-line;
+    font-size: 1.3714rem;
+    line-height: 1.2;
+}
+
+@media (max-width: 1200px) {
+    .seo-text {
+        gap: 1.875rem;
+        padding: 0 2.5rem 9.375rem;
+    }
+
+    .seo-text__title {
+        font-size: 2.0625rem;
+        line-height: 1.0909;
+        letter-spacing: -0.06em;
+    }
+
+    .seo-text__grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+    }
+
+    .seo-text-card {
+        gap: 0.625rem;
+        padding: 0.9375rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .seo-text-card__title {
+        font-size: 1.625rem;
+    }
+
+    .seo-text-card__body {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .seo-text {
+        padding: 0 1.25rem 4rem;
+    }
+}

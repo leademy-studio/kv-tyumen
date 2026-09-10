@@ -1,6 +1,6 @@
 // Run: node scripts/test-all-inclusive-motion.mjs
 import assert from 'node:assert/strict';
-import { sampleCards, sampleMobileCards, CARD_WIDTH, CARD_HEIGHT, BASE_Y } from '../october/themes/kv-vopros/assets/repairs/js/sections/all-inclusive-motion.js';
+import { sampleCards, sampleMobileCards, CARD_WIDTH, CARD_HEIGHT, BASE_Y } from '../october/themes/kv-vopros/assets/js/sections/all-inclusive-motion.js';
 
 const close = (actual, expected, tolerance = 0.0001) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
 function topLeft([x, y, rotation]) {
