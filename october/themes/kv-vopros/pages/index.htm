@@ -13,38 +13,6 @@ handle = "Site\\MainPage"
     'design-project': 'Ремонт по дизайн-проекту',
     'package-repair': 'Пакетный ремонт'
 } %}
-{% set fallbackCases = [
-    {
-        title: 'Муравленко',
-        service: 'Ремонт по дизайн-проекту',
-        url: '/portfolio/myravlenko',
-        image: homeAsset ~ '/img/case-1.png'
-    },
-    {
-        title: 'Перевалово',
-        service: 'Ремонт по дизайн-проекту',
-        url: '/portfolio/perevalovo',
-        image: homeAsset ~ '/img/case-2.png'
-    },
-    {
-        title: 'Березяки',
-        service: 'Ремонт по дизайн-проекту',
-        url: '/portfolio/berezyaki',
-        image: homeAsset ~ '/img/case-3.png'
-    },
-    {
-        title: 'Падерина',
-        service: 'Пакетный ремонт',
-        url: '/portfolio/paderina',
-        image: homeAsset ~ '/img/case-4.png'
-    },
-    {
-        title: 'ЖК Красивый',
-        service: 'Ремонт по дизайн-проекту',
-        url: '/portfolio',
-        image: homeAsset ~ '/img/case-5.png'
-    }
-] %}
 {% set animatedImages = ['anim-01.png', 'anim-02.png', 'anim-03.png', 'anim-06.png', 'anim-07.png', 'anim-08.png', 'anim-09.png', 'anim-10.png', 'anim-11.png', 'anim-12.png', 'anim-13.png', 'anim-14.png'] %}
 {% set animatedFrames = [
     '-113,-183,542,325|304,153,237,142|703,345,0,0',
@@ -90,7 +58,7 @@ handle = "Site\\MainPage"
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/all-in-one.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/animated.css">
-    <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cases.css">
+    <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cases.css?v=20260910-1">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/about-us.css?v=20260910-1">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
@@ -230,19 +198,17 @@ handle = "Site\\MainPage"
         </div>
     </div>
 
-    <div class="pin" style="--pin-steps: 4" data-scene="cases" id="cases">
+    {% if selectedCases|length %}
+    <div class="pin" style="--pin-steps: {{ selectedCases|length - 1 }}" data-scene="cases" id="cases">
         <div class="pin__inner">
             <section class="cases">
                 <div class="cases__deck">
-                    {% for i in 0..4 %}
-                        {% set caseEntry = selectedCases|length > i ? selectedCases[i] : null %}
-                        {% set fallbackCase = fallbackCases[i] %}
-                        {% set caseTitle = caseEntry ? caseEntry.title : fallbackCase.title %}
-                        {% set caseService = caseEntry ? (serviceTypeLabels[caseEntry.service_type] ?? caseEntry.service_type) : fallbackCase.service %}
-                        {% set caseImageEntry = caseEntry ? (caseEntry.banner_image ?: caseEntry.main_image) : null %}
-                        {% set caseImage = caseImageEntry ? caseImageEntry|media : fallbackCase.image %}
-                        {% set caseUrl = caseEntry ? '/portfolio/' ~ caseEntry.slug : fallbackCase.url %}
-                        <article class="cases__card{% if loop.first %} is-active{% endif %}" style="--i: {{ i }}" data-kind="{{ caseService|e }}" data-title="{{ caseTitle|e }}" data-url="{{ caseUrl }}">
+                    {% for caseEntry in selectedCases %}
+                        {% set caseTitle = caseEntry.title %}
+                        {% set caseService = serviceTypeLabels[caseEntry.service_type] ?? caseEntry.service_type %}
+                        {% set caseImage = (caseEntry.banner_image ?: caseEntry.main_image)|media %}
+                        {% set caseUrl = '/portfolio/' ~ caseEntry.slug %}
+                        <article class="cases__card{% if loop.first %} is-active{% endif %}" style="--i: {{ loop.index0 }}" data-kind="{{ caseService|e }}" data-title="{{ caseTitle|e }}" data-url="{{ caseUrl }}">
                             <img src="{{ caseImage }}" alt="Кейс: {{ caseTitle|e }}">
                             <a class="cases__caption" href="{{ caseUrl }}">
                                 <span class="cases__caption-text">
@@ -262,6 +228,8 @@ handle = "Site\\MainPage"
             </section>
         </div>
     </div>
+
+    {% endif %}
 
     <div class="pin" style="--pin-steps: 5" data-scene="about-us">
         <div class="pin__inner">
