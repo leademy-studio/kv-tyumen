@@ -24,6 +24,7 @@ export function createScene(pin, onProgress) {
     );
     let frame = 0;
     let lastStep = -1;
+    let active = false;
 
     function measure() {
         const rect = pin.getBoundingClientRect();
@@ -41,6 +42,7 @@ export function createScene(pin, onProgress) {
 
     function update() {
         frame = 0;
+        if (!active) return;
 
         const { p, step } = measure();
         const changed = step !== lastStep;
@@ -58,8 +60,6 @@ export function createScene(pin, onProgress) {
     /* На мобильном и при reduced-motion сцена статична: показываем финал.
        Решение пересматривается при каждом изменении медиазапросов, иначе
        сцена, выключенная на узком экране, не оживёт после ресайза. */
-    let active = false;
-
     function enable() {
         if (active) {
             return;
@@ -72,6 +72,8 @@ export function createScene(pin, onProgress) {
     }
 
     function disable() {
+        window.cancelAnimationFrame(frame);
+        frame = 0;
         if (active) {
             window.removeEventListener("scroll", schedule);
         }
@@ -105,6 +107,9 @@ export function createScene(pin, onProgress) {
 
     return {
         destroy() {
+            active = false;
+            window.cancelAnimationFrame(frame);
+            frame = 0;
             for (const query of queries) {
                 query.removeEventListener("change", sync);
             }

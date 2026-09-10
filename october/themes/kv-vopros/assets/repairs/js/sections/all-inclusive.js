@@ -1,10 +1,8 @@
-/* all-inclusive-section — накопление карточек в стопку.
-
-   Состояния Figma (87:3285 / 144:3249): State=default → State=step-4.
-   Текст секции неизменен, на каждом шаге в стопке появляется
-   следующая карточка — к финалу видны все пять. */
+/* Scroll-driven interpolation of Figma 87:3285, default → step-4.
+   Text stays fixed while new cards enter and the previous cards rotate away. */
 
 import { createScene } from "../scroll-scene.js";
+import { sampleCards } from "./all-inclusive-motion.js";
 
 export function init() {
     const pin = document.querySelector('[data-scene="all-inclusive"]');
@@ -19,15 +17,15 @@ export function init() {
         return;
     }
 
-    function applyStep(step) {
-        cards.forEach((card, i) => {
-            card.classList.toggle("is-active", i <= step);
+    createScene(pin, progress => {
+        const poses = sampleCards(progress);
+        cards.forEach((card, index) => {
+            const [x, y, rotation, opacity] = poses[index];
+            card.style.setProperty("--card-x", `${(x / 16).toFixed(5)}rem`);
+            card.style.setProperty("--card-y", `${(y / 16).toFixed(5)}rem`);
+            card.style.setProperty("--card-rotation", `${rotation.toFixed(5)}deg`);
+            card.style.setProperty("--card-opacity", opacity.toFixed(5));
+            card.setAttribute("aria-hidden", String(opacity === 0));
         });
-    }
-
-    createScene(pin, (progress, step, changed) => {
-        if (changed) {
-            applyStep(step);
-        }
     });
 }

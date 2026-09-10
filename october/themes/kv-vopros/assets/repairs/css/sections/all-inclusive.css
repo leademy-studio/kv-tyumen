@@ -6,6 +6,8 @@
    накапливаются в стопку по мере прокрутки (assets/js/sections/all-inclusive.js). */
 
 .all-inclusive {
+    --static-inset: 5.1429rem;
+    --static-bottom: 4rem;
     display: flex;
     align-items: center;
     gap: 15.9375rem;
@@ -40,8 +42,7 @@
     opacity: 0.6;
 }
 
-/* Стопка карточек: каждая следующая чуть смещена и повёрнута,
-   как в макете. Показываются накопительно — до текущего шага. */
+/* Scroll progress supplies each card's pose between the five Figma states. */
 .all-inclusive__cards {
     position: relative;
     flex: 0 0 54rem;
@@ -60,17 +61,17 @@
     padding: 1.7143rem;
     border-radius: var(--radius-md);
     background: var(--c-surface);
-    transform: translate(calc(var(--i) * 1.7143rem), calc(var(--i) * -0.8571rem))
-        rotate(calc(var(--i) * 2deg));
-    transform-origin: bottom left;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translate(var(--card-x, 0rem), var(--card-y, 0rem))
+        rotate(var(--card-rotation, 0deg));
+    transform-origin: center bottom;
+    opacity: var(--card-opacity, 0);
+    z-index: var(--i);
+    pointer-events: none;
+    will-change: transform, opacity;
 }
 
-.all-inclusive__card.is-active {
-    opacity: 1;
-    visibility: visible;
+.all-inclusive__card:first-child {
+    --card-opacity: 1;
 }
 
 .all-inclusive__card img {
@@ -88,6 +89,9 @@
 
 @media (max-width: 1200px) {
     .all-inclusive {
+        --static-inset: 2.5rem;
+        --static-bottom: 9.375rem;
+        --static-columns: minmax(0, 1fr);
         flex-direction: column;
         align-items: stretch;
         gap: 2.5rem;
@@ -145,13 +149,54 @@
 
 @media (max-width: 640px) {
     .all-inclusive {
+        --static-inset: 1.25rem;
+        --static-bottom: 4rem;
         padding: 0 1.25rem 4rem;
     }
+}
+
+/* Keep every caption accessible when JavaScript or motion is unavailable. */
+:is(.no-js, .pin.is-static) .all-inclusive {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem;
+    padding: 0 var(--static-inset) var(--static-bottom);
+}
+
+:is(.no-js, .pin.is-static) .all-inclusive__text {
+    flex: none;
+    width: auto;
+}
+
+:is(.no-js, .pin.is-static) .all-inclusive__cards {
+    position: static;
+    flex: none;
+    display: grid;
+    grid-template-columns: var(--static-columns, repeat(auto-fit, minmax(min(100%, 20rem), 1fr)));
+    gap: 1.25rem;
+    height: auto;
+}
+
+:is(.no-js, .pin.is-static) .all-inclusive__card {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    opacity: 1;
+    will-change: auto;
+}
+
+:is(.no-js, .pin.is-static) .all-inclusive__card img {
+    flex: none;
+    aspect-ratio: 520 / 318;
 }
 
 /* Планшетный диапазон: карточки в две колонки, иначе изображения
    растягиваются на всю ширину экрана */
 @media (min-width: 768px) and (max-width: 1200px) {
+    .all-inclusive {
+        --static-columns: repeat(2, minmax(0, 1fr));
+    }
     .all-inclusive__cards {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
