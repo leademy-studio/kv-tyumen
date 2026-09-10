@@ -23,7 +23,40 @@ function onStart()
         ->orderByRaw('sort_order is null')
         ->orderBy('sort_order', 'asc')
         ->orderBy('published_at', 'desc')
-        ->get();
+        ->get()
+        ->unique('slug')
+        ->values();
+
+    // The repairs page has its own Figma selection; keep the CMS portfolio order intact.
+    $featured = [
+        ['title' => 'Муравленко', 'image' => 'muravlenko', 'slugs' => ['muravlenko', 'myravlenko']],
+        ['title' => 'Березяки', 'image' => 'berezyaki', 'slugs' => ['berezyaki', 'berezjaki']],
+        ['title' => 'Перевалово', 'image' => 'perevalovo', 'slugs' => ['perevalovo']],
+        ['title' => 'Падерина', 'image' => 'paderina', 'slugs' => ['paderino', 'paderina']],
+        ['title' => 'Айвазовский', 'image' => 'ayvazovskiy', 'slugs' => ['ajvazovskij', 'ayvazovskiy']],
+        ['title' => 'Суходолье', 'image' => 'suhodolye', 'slugs' => ['suhodole', 'suhodolye']],
+    ];
+    $cards = [];
+    $featuredIds = [];
+    foreach ($featured as $item) {
+        $entry = $this['cases']->first(function ($case) use ($item) {
+            return in_array($case->slug, $item['slugs'], true);
+        });
+        $cards[] = [
+            'title' => $item['title'],
+            'slug' => $entry ? $entry->slug : null,
+            'designImage' => $item['image'],
+        ];
+        if ($entry) {
+            $featuredIds[] = $entry->id;
+        }
+    }
+    foreach ($this['cases'] as $entry) {
+        if (!in_array($entry->id, $featuredIds, true)) {
+            $cards[] = ['title' => $entry->title, 'slug' => $entry->slug, 'main_image' => $entry->main_image];
+        }
+    }
+    $this['portfolioCards'] = $cards;
 }
 ==
 {% set homeAsset = '/themes/kv-vopros/assets/homepage' %}
@@ -283,19 +316,21 @@ function onStart()
         <div class="portfolio__inner">
             <h2 class="portfolio__title">Портфолио</h2>
             <div class="portfolio__grid">
-                {% for case in cases %}
-                    <a class="portfolio-card" href="{{ 'case-study'|page({ slug: case.slug }) }}">
-                        <img class="portfolio-card__image" src="{{ case.main_image|media }}" alt="{{ case.title }}" loading="lazy">
-                        <span class="portfolio-card__caption">
-                            <span class="portfolio-card__caption-title">{{ case.title }}</span>
-                            <img class="portfolio-card__caption-icon" src="{{ homeAsset }}/img/arrow-up-right.svg" alt="" width="22" height="22">
+                {% for case in portfolioCards %}
+                    <a class="repair-portfolio-card{% if case.designImage %} repair-portfolio-card--{{ case.designImage }}{% endif %}" href="{{ case.slug ? 'case-study'|page({ slug: case.slug }) : 'portfolio'|page }}">
+                        <img class="repair-portfolio-card__image" src="{{ case.designImage ? repairAsset ~ '/img/portfolio-' ~ case.designImage ~ '.png' : case.main_image|media }}" alt="{{ case.title }}" loading="lazy">
+                        <span class="repair-portfolio-card__caption">
+                            <span class="repair-portfolio-card__caption-title">{{ case.title }}</span>
+                            <span class="repair-portfolio-card__caption-icon" aria-hidden="true">
+                                <img src="{{ repairAsset }}/img/portfolio-arrow.svg" alt="" width="24" height="24">
+                            </span>
                         </span>
                     </a>
                 {% endfor %}
             </div>
         </div>
 
-        {% if cases|length > 6 %}
+        {% if portfolioCards|length > 6 %}
         <button class="portfolio__more" type="button" hidden>Показать еще</button>
         {% endif %}
     </section>

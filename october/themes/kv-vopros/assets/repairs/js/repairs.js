@@ -13,7 +13,7 @@ for (const section of [header, allInclusive]) {
 const portfolio = document.querySelector(".portfolio");
 const more = portfolio?.querySelector(".portfolio__more");
 if (more) {
-    const cards = Array.from(portfolio.querySelectorAll(".portfolio-card"));
+    const cards = Array.from(portfolio.querySelectorAll(".repair-portfolio-card"));
     let visibleCount = 6;
     const update = () => {
         cards.forEach((card, index) => { card.hidden = index >= visibleCount; });
