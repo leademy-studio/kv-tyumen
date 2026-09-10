@@ -63,6 +63,9 @@ function onStart()
 {% set themeAsset = '/themes/kv-vopros/assets' %}
 {% set seoTitle = services.cr_meta_title ?: 'Пакетный ремонт — Квартирный вопрос, Тюмень' %}
 {% set seoDescription = services.cr_meta_description ?: 'Пакетный ремонт под ключ в Тюмени: фиксированная цена за всё — от черновых работ до чистовой отделки и уборки.' %}
+{% set seoBlocks = services.cr_seo_blocks %}
+{% set faqItems = services.cr_faq %}
+{% set faqColumnSize = (faqItems|length / 2)|round(0, 'ceil') %}
 
 {% put head %}
     <title>{{ seoTitle|e }}</title>
@@ -74,6 +77,17 @@ function onStart()
     <meta property="og:image" content="{{ services.cr_background_image ? services.cr_background_image|media : themeAsset ~ '/images/repairs-hero.png' }}">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    {% if faqItems|length %}
+    <script type="application/ld+json">{{ {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': faqItems|map(item => {
+            '@type': 'Question',
+            'name': item.question,
+            'acceptedAnswer': { '@type': 'Answer', 'text': item.answer }
+        })
+    }|json_encode(15)|raw }}</script>
+    {% endif %}
 {% endput %}
 
 {% put pageStyles %}
@@ -88,6 +102,8 @@ function onStart()
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/pricing.css">
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/portfolio.css">
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/business-steps.css?v=20260910-css-motion">
+    <link rel="stylesheet" href="{{ themeAsset }}/css/sections/seo-text.css">
+    <link rel="stylesheet" href="{{ themeAsset }}/css/sections/faq.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
 {% endput %}
@@ -363,6 +379,43 @@ function onStart()
             </ol>
         </div>
     </section>
+    {% if services.cr_seo_title and seoBlocks|length %}
+    <section class="seo-text" aria-labelledby="seo-text-title">
+        <h2 class="seo-text__title" id="seo-text-title">{{ services.cr_seo_title|e }}</h2>
+        <div class="seo-text__grid">
+            {% for block in seoBlocks %}
+            <article class="seo-text-card">
+                <h3 class="seo-text-card__title">{{ block.block_title|e }}</h3>
+                <p class="seo-text-card__body">{{ block.block_text|e }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if faqItems|length %}
+    <section class="faq" aria-labelledby="faq-title">
+        <h2 class="faq__title" id="faq-title">{{ (services.cr_faq_title ?: 'FAQ')|e }}</h2>
+        <div class="faq__grid">
+            {% for column in [faqItems|slice(0, faqColumnSize), faqItems|slice(faqColumnSize)] %}
+            {% if column|length %}
+            <div class="faq__column">
+                {% for item in column %}
+                <details class="faq-item"{% if loop.first and loop.parent.loop.first %} open{% endif %}>
+                    <summary class="faq-item__question">
+                        <span class="faq-item__question-text">{{ item.question|e }}</span>
+                        <img class="faq-item__icon" src="{{ themeAsset }}/images/faq-chevron.svg" alt="" width="36" height="21" aria-hidden="true">
+                    </summary>
+                    <p class="faq-item__answer">{{ item.answer|e }}</p>
+                </details>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
     <section class="cta-calc" id="calculate">
         <div class="cta-calc__panel">
             <div class="cta-calc__text">

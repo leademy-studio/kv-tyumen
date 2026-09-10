@@ -328,3 +328,49 @@ fields:
         type: text
         tab: Как мы работаем
         commentAbove: 'Кнопка открывает форму расчёта на этой странице. Оставьте поле пустым, чтобы скрыть кнопку.'
+
+    cr_seo_title:
+        label: Заголовок SEO-блока
+        type: text
+        tab: SEO-текст и FAQ
+        commentAbove: 'Секция на странице «Пакетный ремонт» (/repairs) под блоком «Как мы работаем». Оставьте поле пустым, чтобы скрыть секцию.'
+
+    cr_seo_blocks:
+        label: Блоки SEO-текста
+        type: repeater
+        titleFrom: block_title
+        prompt: Добавить блок
+        tab: SEO-текст и FAQ
+        commentAbove: 'Блоки выводятся в две колонки в порядке сортировки.'
+        form:
+            fields:
+                block_title:
+                    label: Подзаголовок
+                    type: text
+                block_text:
+                    label: Текст
+                    type: textarea
+                    size: small
+
+    cr_faq_title:
+        label: Заголовок блока FAQ
+        type: text
+        tab: SEO-текст и FAQ
+        commentAbove: 'По умолчанию — FAQ.'
+
+    cr_faq:
+        label: Вопросы и ответы
+        type: repeater
+        titleFrom: question
+        prompt: Добавить вопрос
+        tab: SEO-текст и FAQ
+        commentAbove: 'Первая половина списка попадает в левую колонку, вторая — в правую. Первый вопрос открыт по умолчанию.'
+        form:
+            fields:
+                question:
+                    label: Вопрос
+                    type: text
+                answer:
+                    label: Ответ
+                    type: textarea
+                    size: small
