@@ -1,0 +1,328 @@
+/* pricing-section — «Тарифы».
+   Figma: complex-repair-desktop → pricing-section (1:1505),
+          complex-repair-mobile  → pricing-section (1:2074).
+
+   Десктоп: сетка 2×2 из стеклянных карточек тарифов.
+   Мобильный: горизонтальная лента с прокруткой (pricing-section__plans-track). */
+
+.pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 4.2857rem;
+    padding: 0 5.1429rem 11.1429rem;
+}
+
+.pricing__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.6571rem;
+}
+
+.pricing__title {
+    flex: 0 0 18.75rem;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+.pricing__subtitles {
+    display: flex;
+    flex: 1;
+    gap: 2.6571rem;
+}
+
+.pricing__subtitle {
+    flex: 1;
+    margin: 0;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+    opacity: 0.6;
+}
+
+.pricing__plans {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5714rem;
+}
+
+/* --- Карточка тарифа --- */
+
+.plan-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5714rem;
+    min-height: 33.4286rem;
+    padding: 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-glass);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+}
+
+.plan-card--accent {
+    background: var(--c-green);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.plan-card__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7143rem;
+}
+
+.plan-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1.7143rem;
+}
+
+.plan-card__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.6571rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.plan-card__price {
+    margin: 0;
+    font-size: 1.3714rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.plan-card__features {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2857rem;
+}
+
+.plan-card__features-col {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.6857rem;
+    min-width: 0;
+}
+
+:is(.feature-item, .plan-card__features-col li) {
+    display: flex;
+    align-items: center;
+    gap: 1.0286rem;
+    font-size: 1.3714rem;
+    line-height: 1.2;
+    opacity: 0.6;
+}
+
+/* Маркер — кружок 16.457px из макета; на акцентной карточке он тёмный */
+:is(.feature-item, .plan-card__features-col li)::before {
+    content: "";
+    flex: 0 0 1.0286rem;
+    width: 1.0286rem;
+    height: 1.0286rem;
+    border-radius: 50%;
+    background: var(--c-green);
+}
+
+.plan-card--accent :is(.feature-item, .plan-card__features-col li) {
+    opacity: 1;
+}
+
+.plan-card--accent :is(.feature-item, .plan-card__features-col li)::before {
+    background: var(--c-black);
+}
+
+.plan-card__button {
+    display: flex;
+    align-items: center;
+    gap: 2.1429rem;
+    width: 24.2571rem;
+    height: 4.7143rem;
+    padding: 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-black);
+    color: var(--c-white);
+}
+
+.plan-card__button-label {
+    flex: 1;
+    font-size: 1.6286rem;
+    line-height: 1.15;
+}
+
+.plan-card__button-icon {
+    flex: 0 0 1.3714rem;
+    width: 1.3714rem;
+    height: 1.3714rem;
+}
+
+@media (max-width: 1200px) {
+    .pricing {
+        gap: 1.875rem;
+        padding: 0 2.5rem 9.375rem;
+    }
+
+    .pricing__header {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .pricing__title {
+        flex: none;
+        font-size: 2.0625rem;
+    }
+
+    .pricing__subtitles {
+        gap: 1.25rem;
+    }
+
+    .pricing__subtitle {
+        font-size: 1rem;
+    }
+
+    /* Лента тарифов с горизонтальной прокруткой и «липкими» краями */
+    .pricing__plans {
+        display: flex;
+        gap: 1.25rem;
+        margin: 0 -2.5rem;
+        padding: 0 2.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .pricing__plans::-webkit-scrollbar {
+        display: none;
+    }
+
+    .plan-card {
+        flex: 0 0 17.5rem;
+        gap: 1.25rem;
+        min-height: 32.3125rem;
+        padding: 0.9375rem;
+        scroll-snap-align: start;
+    }
+
+    .plan-card__details {
+        gap: 1.25rem;
+    }
+
+    .plan-card__header {
+        gap: 0.75rem;
+        justify-content: space-between;
+    }
+
+    .plan-card__title {
+        font-size: 1.6875rem;
+    }
+
+    .plan-card__price {
+        font-size: 0.875rem;
+    }
+
+    /* На мобильном обе колонки признаков вытягиваются в один список */
+    .plan-card__features {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .plan-card__features-col {
+        gap: 0.6875rem;
+    }
+
+    .plan-card__features-col + .plan-card__features-col {
+        margin-top: 0.6875rem;
+    }
+
+    :is(.feature-item, .plan-card__features-col li) {
+        align-items: flex-start;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    :is(.feature-item, .plan-card__features-col li)::before {
+        flex-basis: 0.5rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-top: 0.25rem;
+    }
+
+    .plan-card__button {
+        gap: 0.75rem;
+        width: 100%;
+        height: 2.8125rem;
+        padding: 0.875rem 1.25rem;
+    }
+
+    .plan-card__button-label {
+        font-size: 1rem;
+    }
+
+    .plan-card__button-icon {
+        flex-basis: 0.875rem;
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .pricing {
+        padding: 0 1.25rem 4rem;
+    }
+
+    .pricing__plans {
+        margin: 0 -1.25rem;
+        padding: 0 1.25rem;
+    }
+
+    .pricing__subtitles {
+        flex-direction: column;
+    }
+}
+
+/* Планшетный диапазон: в макете его нет, поэтому возвращаем сетку 2×2
+   как на десктопе — лента из узких карточек на такой ширине выглядит пусто. */
+@media (min-width: 768px) and (max-width: 1200px) {
+    .pricing__header {
+        flex-direction: row;
+        gap: 1.875rem;
+    }
+
+    .pricing__title {
+        flex: 0 0 12rem;
+    }
+
+    .pricing__plans {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+    }
+
+    .plan-card {
+        flex: none;
+        min-height: 0;
+        padding: 1.25rem;
+    }
+}
+
+/* Rich editor lists use the same spacing as the static fallback. */
+.plan-card__features-col > ul,
+.plan-card__features-col > ol {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

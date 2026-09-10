@@ -1,0 +1,172 @@
+/* portfolio-section — сетка кейсов.
+   Figma: complex-repair-desktop → portfolio-section (1:1537),
+          complex-repair-mobile  → portfolio-section (1:2145).
+
+   Десктоп: 3 колонки × 2 ряда. Мобильный: одна колонка. */
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 5.1429rem 11.1429rem;
+}
+
+.portfolio__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.portfolio__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+.portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.6571rem;
+}
+
+.portfolio-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    aspect-ratio: 556.8 / 466.29;
+    padding: 1.7143rem;
+    border-radius: 1.2857rem;
+    overflow: hidden;
+}
+
+.portfolio-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-card__caption {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.7143rem;
+    height: 5.8286rem;
+    padding: 0 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-glass);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+    color: var(--c-white);
+}
+
+.portfolio-card__caption-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.6571rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.portfolio-card__caption-icon {
+    flex: 0 0 1.3714rem;
+    width: 1.3714rem;
+    height: 1.3714rem;
+}
+
+.portfolio__more {
+    align-self: center;
+    min-width: 34.8125rem;
+    padding: 1.4rem 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-black);
+    color: var(--c-white);
+    font-size: 1.6286rem;
+    line-height: 1.15;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .portfolio {
+        gap: 1.875rem;
+        padding: 0 2.5rem 9.375rem;
+    }
+
+    .portfolio__inner {
+        gap: 1.875rem;
+    }
+
+    .portfolio__title {
+        font-size: 3rem;
+        letter-spacing: -0.03em;
+    }
+
+    .portfolio__grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.875rem;
+    }
+
+    .portfolio-card {
+        aspect-ratio: 560 / 400;
+        padding: 1.25rem;
+        border-radius: 0.9375rem;
+    }
+
+    .portfolio-card__caption {
+        gap: 1.25rem;
+        height: 4.125rem;
+        padding: 0 1.25rem;
+        border-radius: 0.5rem;
+    }
+
+    .portfolio-card__caption-title {
+        font-size: 1.75rem;
+    }
+
+    .portfolio-card__caption-icon {
+        flex-basis: 0.875rem;
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+
+    .portfolio__more {
+        min-width: 18.75rem;
+        padding: 0.9375rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .portfolio {
+        padding: 0 1.25rem 4rem;
+    }
+
+    .portfolio__title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Планшетный диапазон: две колонки вместо одной во всю ширину */
+@media (min-width: 768px) and (max-width: 1200px) {
+    .portfolio__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .portfolio-card {
+        aspect-ratio: 556.8 / 466.29;
+    }
+}
+
+.portfolio-card[hidden],
+.portfolio__more[hidden] {
+    display: none;
+}

@@ -136,3 +136,20 @@
 {"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-12T10:01:04.103Z"}
 {"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-12T10:01:04.104Z"}
 {"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-08-12T10:31:07.465Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-25T12:44:46.010Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-25T12:44:46.017Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-25T12:44:46.018Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-25T12:44:46.019Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-08-31T09:00:37.659Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-08-31T09:00:37.666Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-08-31T09:00:37.666Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-08-31T09:00:37.667Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-09-07T09:40:26.412Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-09-07T09:40:26.418Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-09-07T09:40:26.419Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-09-07T09:40:26.419Z"}
+{"level":"info","message":"Received SIGTERM, shutting down gracefully","timestamp":"2026-09-07T09:41:01.176Z"}
+{"level":"info","message":"Configuration loaded successfully","timestamp":"2026-09-10T08:36:42.697Z"}
+{"level":"info","message":"All categories enabled","timestamp":"2026-09-10T08:36:42.704Z"}
+{"level":"info","message":"Registered 65 tool handlers","timestamp":"2026-09-10T08:36:42.705Z"}
+{"level":"info","message":"Serpstat MCP Server started and listening on stdio","timestamp":"2026-09-10T08:36:42.705Z"}

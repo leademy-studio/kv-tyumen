@@ -1,0 +1,26 @@
+<form
+                class="cta-calc__form"
+                data-request="onFormSubmit"
+                data-request-validate
+                data-request-flash
+                data-request-success="kvHomepageFormSuccess()"
+                data-request-error="return kvHomepageFormError(context, data);"
+            >
+                <label class="visually-hidden" for="calc-name">Имя</label>
+                <input class="cta-calc__input" id="calc-name" name="name" type="text" placeholder="Имя" autocomplete="name" required>
+                <div class="cta-calc__error" data-validate-for="name"></div>
+
+                <label class="visually-hidden" for="calc-phone">Номер телефона</label>
+                <input class="cta-calc__input" id="calc-phone" name="phone" type="tel" placeholder="Номер телефона" autocomplete="tel" inputmode="numeric" required>
+                <div class="cta-calc__error" data-validate-for="phone"></div>
+
+                <div class="cta-calc__policy">
+                    <input class="cta-calc__checkbox" id="calc-policy" name="policy" type="checkbox" value="1" required>
+                    <label class="cta-calc__policy-label" for="calc-policy">
+                        <span>Согласен с</span> <a href="/policy">политикой обработки персональных данных</a>
+                    </label>
+                </div>
+                <div class="cta-calc__error" data-validate-for="policy"></div>
+
+                <button class="cta-calc__submit" type="submit">Оставить заявку</button>
+            </form>

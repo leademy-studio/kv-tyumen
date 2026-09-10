@@ -1,0 +1,109 @@
+/* hero-section страницы «Пакетный ремонт».
+   Figma: complex-repair-desktop → hero-section (1:1494),
+          complex-repair-mobile → hero-section (1:2061).
+
+   Фото на всю ширину контентной области, поверх — стеклянная плашка
+   с заголовком, прижатая к нижнему левому углу. */
+
+.repairs-hero {
+    padding: 3.5143rem 5.1429rem 11.1429rem;
+}
+
+.repairs-hero__background {
+    position: relative;
+    height: 40.2857rem;
+    border-radius: 1.2857rem;
+    overflow: hidden;
+}
+
+.repairs-hero__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+/* Мягкое световое пятно из макета (radial gradient, 78% прозрачности) */
+.repairs-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        60% 90% at 20% 100%,
+        rgba(255, 255, 255, 0.78),
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+}
+
+.repairs-hero__content {
+    position: absolute;
+    left: 1.7143rem;
+    bottom: 1.7143rem;
+    padding: 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-glass);
+    backdrop-filter: blur(1.1143rem);
+    -webkit-backdrop-filter: blur(1.1143rem);
+}
+
+.repairs-hero__title {
+    width: 45rem;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 5.2286rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--c-black);
+}
+
+@media (max-width: 1200px) {
+    .repairs-hero {
+        padding: 2.5rem 2.5rem 9.375rem;
+    }
+
+    .repairs-hero__background {
+        height: 25rem;
+        padding: 1.25rem;
+        border-radius: 0.9375rem;
+    }
+
+    .repairs-hero__content {
+        left: 1.25rem;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        padding: 0.5rem 0.9375rem;
+        border-radius: 0.5rem;
+    }
+
+    .repairs-hero__title {
+        width: auto;
+        font-size: 3.25rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .repairs-hero {
+        padding: 1.25rem 1.25rem 4rem;
+    }
+
+    .repairs-hero__background {
+        height: 18rem;
+    }
+
+    .repairs-hero__title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Планшетный диапазон: плашка с заголовком обнимает текст, как на десктопе,
+   а не растягивается во всю ширину фото */
+@media (min-width: 768px) and (max-width: 1200px) {
+    .repairs-hero__content {
+        right: auto;
+        max-width: calc(100% - 2.5rem);
+    }
+}

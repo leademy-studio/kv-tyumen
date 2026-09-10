@@ -1,0 +1,71 @@
+<script>
+    window.kvHomepageFormSuccess = function () {
+        if (typeof window.kvReachSubmitFormGoal === "function") {
+            window.kvReachSubmitFormGoal();
+        }
+
+        if (window.oc && window.oc.flashMsg) {
+            window.oc.flashMsg({ text: "Заявка отправлена", class: "success" });
+        }
+
+        var formEl = document.querySelector(".cta-calc__form");
+        if (formEl && typeof formEl.reset === "function") {
+            formEl.reset();
+        }
+    };
+
+    window.kvHomepageFormError = function (context, data) {
+        var message = "";
+        if (data && data.$env && typeof data.$env.getMessage === "function") {
+            message = data.$env.getMessage();
+        }
+        if (!message && data && typeof data.message === "string") {
+            message = data.message;
+        }
+        if (!message) {
+            message = "Не удалось отправить заявку. Попробуйте позже.";
+        }
+
+        if (window.oc && window.oc.flashMsg) {
+            window.oc.flashMsg({ text: message, class: "error" });
+        } else if (typeof alert === "function") {
+            alert(message);
+        }
+
+        return false;
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var phoneInput = document.querySelector(".cta-calc__input[name='phone']");
+        if (!phoneInput) {
+            return;
+        }
+
+        phoneInput.addEventListener("input", function (event) {
+            var value = event.target.value.replace(/\D/g, "");
+            if (value.length > 0) {
+                value = value.startsWith("7") || value.startsWith("8")
+                    ? "7" + value.substring(1)
+                    : "7" + value;
+            }
+            value = value.substring(0, 11);
+
+            var formatted = "";
+            if (value.length > 0) {
+                formatted = "+" + value.substring(0, 1);
+                if (value.length > 1) formatted += " " + value.substring(1, 4);
+                if (value.length > 4) formatted += " " + value.substring(4, 7);
+                if (value.length > 7) formatted += " " + value.substring(7, 9);
+                if (value.length > 9) formatted += " " + value.substring(9, 11);
+            }
+
+            event.target.value = formatted;
+        });
+
+        phoneInput.addEventListener("focus", function (event) {
+            if (event.target.value === "") {
+                event.target.value = "+7 ";
+            }
+        });
+    });
+</script>

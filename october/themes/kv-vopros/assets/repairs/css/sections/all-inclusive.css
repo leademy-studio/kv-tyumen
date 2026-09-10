@@ -1,0 +1,160 @@
+/* all-inclusive-section — «Всё включено, без сюрпризов».
+   Figma: complex-repair-desktop → all-inclusive-section (набор вариантов 87:3285),
+          complex-repair-mobile  → all-inclusive-section-mobile (144:3249).
+
+   Состояния State=default…State=step-4: текст неизменен, карточки
+   накапливаются в стопку по мере прокрутки (assets/js/sections/all-inclusive.js). */
+
+.all-inclusive {
+    display: flex;
+    align-items: center;
+    gap: 15.9375rem;
+    padding-left: 5.1429rem;
+}
+
+.all-inclusive__text {
+    flex: 0 0 44.9375rem;
+    width: 44.9375rem;
+}
+
+.all-inclusive__title {
+    margin: 0 0 3.4286rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 4.4571rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+.all-inclusive__subtitle {
+    margin: 0 0 2.5rem;
+    font-size: 1.5429rem;
+    line-height: 1.15;
+}
+
+.all-inclusive__body {
+    margin: 0;
+    font-size: 1.3714rem;
+    line-height: 1.2;
+    opacity: 0.6;
+}
+
+/* Стопка карточек: каждая следующая чуть смещена и повёрнута,
+   как в макете. Показываются накопительно — до текущего шага. */
+.all-inclusive__cards {
+    position: relative;
+    flex: 0 0 54rem;
+    height: 36rem;
+}
+
+.all-inclusive__card {
+    position: absolute;
+    inset: 0 auto auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7143rem;
+    width: 44.5714rem;
+    height: 36rem;
+    margin: 0;
+    padding: 1.7143rem;
+    border-radius: var(--radius-md);
+    background: var(--c-surface);
+    transform: translate(calc(var(--i) * 1.7143rem), calc(var(--i) * -0.8571rem))
+        rotate(calc(var(--i) * 2deg));
+    transform-origin: bottom left;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.all-inclusive__card.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.all-inclusive__card img {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+}
+
+.all-inclusive__card figcaption {
+    font-size: 1.5429rem;
+    line-height: 1.15;
+}
+
+@media (max-width: 1200px) {
+    .all-inclusive {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2.5rem;
+        padding: 0 2.5rem 9.375rem;
+    }
+
+    .all-inclusive__text {
+        flex: none;
+        width: auto;
+    }
+
+    .all-inclusive__title {
+        margin-bottom: 1.25rem;
+        font-size: 2.0625rem;
+        line-height: 1.09;
+        letter-spacing: -0.09em;
+    }
+
+    .all-inclusive__subtitle,
+    .all-inclusive__body {
+        margin: 0 0 1.25rem;
+        font-size: 1rem;
+        line-height: 1.19;
+    }
+
+    /* На узких экранах стопка разворачивается в обычный вертикальный список */
+    .all-inclusive__cards {
+        position: static;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        height: auto;
+    }
+
+    .all-inclusive__card {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 1.25rem;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .all-inclusive__card img {
+        flex: none;
+        aspect-ratio: 520 / 318;
+    }
+
+    .all-inclusive__card figcaption {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .all-inclusive {
+        padding: 0 1.25rem 4rem;
+    }
+}
+
+/* Планшетный диапазон: карточки в две колонки, иначе изображения
+   растягиваются на всю ширину экрана */
+@media (min-width: 768px) and (max-width: 1200px) {
+    .all-inclusive__cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+}

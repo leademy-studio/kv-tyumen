@@ -1,0 +1,59 @@
+/* Пиннинг секций со сценарной анимацией.
+
+   Секции, у которых в Figma несколько состояний (State=step-N), проигрывают их
+   по мере скролла. Обёртка .pin растягивается на (шаги + 1) экранов,
+   внутренний .pin__inner залипает на весь экран, а прогресс скролла
+   внутри обёртки превращается в номер шага (assets/js/main.js). */
+
+.pin {
+    position: relative;
+    height: calc((var(--pin-steps, 1) + 1) * 100vh);
+}
+
+.pin__inner {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.pin__inner > * {
+    width: 100%;
+}
+
+/* Без JS и при выключенных анимациях секция ведёт себя как обычный блок */
+.no-js .pin,
+.pin.is-static {
+    height: auto;
+}
+
+.no-js .pin__inner,
+.pin.is-static .pin__inner {
+    position: static;
+    height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pin {
+        height: auto;
+    }
+
+    .pin__inner {
+        position: static;
+        height: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .pin {
+        height: auto;
+    }
+
+    .pin__inner {
+        position: static;
+        height: auto;
+        overflow: visible;
+    }
+}
