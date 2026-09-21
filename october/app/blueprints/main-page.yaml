@@ -8,15 +8,19 @@ customMessages:
 
 primaryNavigation:
     label: Главная страница
-    icon: icon-bank
+    icon: icon-home
     order: 90
 
 navigation:
     label: Главная страница
-    icon: icon-bank
+    icon: icon-home
     order: 10
 
 fields:
+    content_version:
+        type: hidden
+        tab: SEO
+
     _section_meta:
         label: Мета-теги
         type: section
@@ -24,16 +28,266 @@ fields:
 
     meta_title:
         label: Title
-        commentAbove: 'Текст для тега <title> и og:title'
+        commentAbove: 'Текст для тега <title> и og:title.'
         type: text
         tab: SEO
 
     meta_description:
         label: Description
-        commentAbove: 'Текст для meta name="description" и og:description'
+        commentAbove: 'Текст для meta name="description" и og:description.'
         type: textarea
         size: small
         tab: SEO
+
+    og_image:
+        label: Изображение для соцсетей
+        commentAbove: 'Используется в og:image при публикации ссылки на главную страницу.'
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: SEO
+
+    _section_hero:
+        label: Первый экран
+        type: section
+        tab: Первый экран
+
+    hero_title:
+        label: Заголовок
+        type: text
+        tab: Первый экран
+
+    hero_subtitle:
+        label: Подзаголовок
+        type: textarea
+        size: small
+        tab: Первый экран
+
+    hero_glow_right_desktop:
+        label: Правое изображение — десктоп
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Первый экран
+
+    hero_glow_right_mobile:
+        label: Правое изображение — мобильная версия
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Первый экран
+
+    hero_glow_left_desktop:
+        label: Левое изображение — десктоп
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Первый экран
+
+    hero_glow_left_mobile:
+        label: Левое изображение — мобильная версия
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Первый экран
+
+    _section_services:
+        label: Услуги
+        type: section
+        tab: Услуги
+
+    service_cards:
+        label: Карточки услуг
+        type: repeater
+        titleFrom: title
+        prompt: Добавить услугу
+        minItems: 1
+        maxItems: 2
+        tab: Услуги
+        commentAbove: 'Макет главной рассчитан на две карточки.'
+        form:
+            fields:
+                title:
+                    label: Заголовок карточки
+                    type: textarea
+                    size: tiny
+                    commentAbove: 'Перенос строки в поле будет сохранён на странице.'
+                hover_title:
+                    label: Заголовок при наведении
+                    type: textarea
+                    size: tiny
+                subtitle_desktop:
+                    label: Подзаголовок — десктоп
+                    type: textarea
+                    size: small
+                subtitle_mobile:
+                    label: Подзаголовок — мобильная версия
+                    type: textarea
+                    size: small
+                url:
+                    label: Ссылка
+                    type: text
+                icon:
+                    label: Основное изображение
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                hover_icon_desktop:
+                    label: Изображение при наведении — десктоп
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                hover_icon_mobile:
+                    label: Изображение при наведении — мобильная версия
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                image_alt:
+                    label: Alt-текст изображения
+                    type: text
+
+    _section_promo:
+        label: Акция
+        type: section
+        tab: Акция
+
+    promo_title:
+        label: Заголовок
+        type: text
+        tab: Акция
+
+    promo_subtitle:
+        label: Подзаголовок
+        type: textarea
+        size: small
+        tab: Акция
+
+    promo_button_label:
+        label: Текст кнопки
+        type: text
+        tab: Акция
+
+    promo_button_url:
+        label: Ссылка кнопки
+        type: text
+        tab: Акция
+
+    promo_image:
+        label: Изображение
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Акция
+
+    promo_image_alt:
+        label: Alt-текст изображения
+        type: text
+        tab: Акция
+
+    _section_all_in_one:
+        label: Дом · Материалы · Ремонт
+        type: section
+        tab: Дом · Материалы · Ремонт
+
+    block1_title:
+        label: Заголовок слайда 1
+        type: text
+        tab: Дом · Материалы · Ремонт
+
+    block1_subtitle:
+        label: Текст слайда 1
+        type: richeditor
+        size: small
+        tab: Дом · Материалы · Ремонт
+
+    block1_image:
+        label: Изображение слайда 1
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Дом · Материалы · Ремонт
+
+    block1_image_alt:
+        label: Alt-текст изображения 1
+        type: text
+        tab: Дом · Материалы · Ремонт
+
+    block2_title:
+        label: Заголовок слайда 2
+        type: text
+        tab: Дом · Материалы · Ремонт
+
+    block2_subtitle:
+        label: Текст слайда 2
+        type: richeditor
+        size: small
+        tab: Дом · Материалы · Ремонт
+
+    block2_image:
+        label: Изображение слайда 2
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Дом · Материалы · Ремонт
+
+    block2_image_alt:
+        label: Alt-текст изображения 2
+        type: text
+        tab: Дом · Материалы · Ремонт
+
+    block3_title:
+        label: Заголовок слайда 3
+        type: text
+        tab: Дом · Материалы · Ремонт
+
+    block3_subtitle:
+        label: Текст слайда 3
+        type: richeditor
+        size: small
+        tab: Дом · Материалы · Ремонт
+
+    block3_image:
+        label: Изображение слайда 3
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        tab: Дом · Материалы · Ремонт
+
+    block3_image_alt:
+        label: Alt-текст изображения 3
+        type: text
+        tab: Дом · Материалы · Ремонт
+
+    _section_animation:
+        label: Анимированная галерея
+        type: section
+        tab: Анимация
+
+    animation_title:
+        label: Заголовок
+        type: textarea
+        size: small
+        tab: Анимация
+
+    animation_images:
+        label: Изображения
+        type: repeater
+        titleFrom: image_alt
+        prompt: Добавить изображение
+        minItems: 1
+        maxItems: 12
+        tab: Анимация
+        commentAbove: 'Порядок изображений соответствует позициям в анимации. Макет рассчитан максимум на 12 изображений.'
+        form:
+            fields:
+                image:
+                    label: Изображение
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                image_alt:
+                    label: Alt-текст
+                    type: text
 
     _section_cases:
         label: Кейсы
@@ -42,144 +296,198 @@ fields:
 
     cases_entries:
         label: Карточки портфолио (5)
-        commentAbove: 'Выберите 5 кейсов: ссылки, hero-изображения и типы ремонта берутся из записи.'
+        commentAbove: 'Выберите до 5 кейсов: ссылки и изображения берутся из записей портфолио.'
         type: entries
         source: Site\CaseStudy
         maxItems: 5
         tab: Кейсы
 
-    _section_advantages:
-        label: Преимущества
+    case_design_label:
+        label: Название типа «Дизайн-проект»
+        type: text
+        tab: Кейсы
+
+    case_package_label:
+        label: Название типа «Пакетный ремонт»
+        type: text
+        tab: Кейсы
+
+    case_image_alt_prefix:
+        label: Префикс alt-текста изображения
+        commentAbove: 'Например: «Кейс:». После префикса автоматически добавляется название кейса.'
+        type: text
+        tab: Кейсы
+
+    cases_button_label:
+        label: Текст кнопки
+        type: text
+        tab: Кейсы
+
+    cases_button_url:
+        label: Ссылка кнопки
+        type: text
+        tab: Кейсы
+
+    _section_about:
+        label: О компании
         type: section
-        tab: Преимущества
+        tab: О компании
+
+    about_title:
+        label: Заголовок
+        type: text
+        tab: О компании
+
+    about_lead:
+        label: Подзаголовок
+        type: textarea
+        size: small
+        tab: О компании
+
+    about_more_title:
+        label: Надпись над ссылкой
+        type: text
+        tab: О компании
+
+    about_more_link_label:
+        label: Текст ссылки
+        type: text
+        tab: О компании
+
+    about_more_link_url:
+        label: Адрес ссылки
+        type: text
+        tab: О компании
+
+    about_description:
+        label: Текст о компании
+        type: textarea
+        size: small
+        tab: О компании
 
     advantages_image:
         label: Изображение секции
         type: mediafinder
         mode: image
-        tab: Преимущества
+        maxItems: 1
+        tab: О компании
 
-    _section_advantage1:
-        label: Преимущество 1
-        type: section
-        tab: Преимущества
+    advantages_image_alt:
+        label: Alt-текст изображения
+        type: text
+        tab: О компании
 
     advantage1_title:
-        label: Заголовок
+        label: Заголовок преимущества 1
         type: text
-        tab: Преимущества
+        tab: О компании
 
     advantage1_subtitle:
-        label: Подзаголовок
+        label: Текст преимущества 1
         type: richeditor
         size: small
-        tab: Преимущества
-
-    _section_advantage2:
-        label: Преимущество 2
-        type: section
-        tab: Преимущества
+        tab: О компании
 
     advantage2_title:
-        label: Заголовок
+        label: Заголовок преимущества 2
         type: text
-        tab: Преимущества
+        tab: О компании
 
     advantage2_subtitle:
-        label: Подзаголовок
+        label: Текст преимущества 2
         type: richeditor
         size: small
-        tab: Преимущества
-
-    _section_advantage3:
-        label: Преимущество 3
-        type: section
-        tab: Преимущества
+        tab: О компании
 
     advantage3_title:
-        label: Заголовок
+        label: Заголовок преимущества 3
         type: text
-        tab: Преимущества
+        tab: О компании
 
     advantage3_subtitle:
-        label: Подзаголовок
+        label: Текст преимущества 3
         type: richeditor
         size: small
-        tab: Преимущества
-
-    _section_advantage4:
-        label: Преимущество 4
-        type: section
-        tab: Преимущества
+        tab: О компании
 
     advantage4_title:
-        label: Заголовок
+        label: Заголовок преимущества 4
         type: text
-        tab: Преимущества
+        tab: О компании
 
     advantage4_subtitle:
-        label: Подзаголовок
+        label: Текст преимущества 4
         type: richeditor
         size: small
-        tab: Преимущества
+        tab: О компании
 
-    _section_about:
-        label: О компании
+    _section_calculation:
+        label: Расчёт стоимости
         type: section
+        tab: Форма расчёта
 
-    _section_block1:
-        label: Слайд 1
-        type: section
-
-    block1_title:
+    calculation_title:
         label: Заголовок
-        commentAbove: 'Текст заголовка (например: Дом)'
         type: text
+        tab: Форма расчёта
 
-    block1_subtitle:
-        label: Подзаголовок слайда 1
-        type: richeditor
+    calculation_subtitle:
+        label: Подзаголовок
+        type: textarea
         size: small
+        tab: Форма расчёта
 
-    block1_image:
-        label: Изображение слайда 1
-        type: mediafinder
-        mode: image
-
-    _section_block2:
-        label: Слайд 2
+    _section_seo_text:
+        label: SEO-текст
         type: section
+        tab: SEO-текст и FAQ
 
-    block2_title:
-        label: Слайд 2
-        commentAbove: 'Текст заголовка (например: Материалы)'
+    seo_text_title:
+        label: Заголовок SEO-блока
         type: text
+        tab: SEO-текст и FAQ
+        commentAbove: 'Оставьте заголовок или список блоков пустым, чтобы скрыть секцию.'
 
-    block2_subtitle:
-        label: Подзаголовок слайда 2
-        type: richeditor
-        size: small
+    seo_text_blocks:
+        label: Блоки SEO-текста
+        type: repeater
+        titleFrom: block_title
+        prompt: Добавить блок
+        tab: SEO-текст и FAQ
+        commentAbove: 'На десктопе блоки выводятся в две колонки, на мобильном — в одну.'
+        form:
+            fields:
+                block_title:
+                    label: Подзаголовок
+                    type: text
+                block_text:
+                    label: Текст
+                    type: textarea
+                    size: small
 
-    block2_image:
-        label: Изображение слайда 2
-        type: mediafinder
-        mode: image
-
-    _section_block3:
-        label: Слайд 3
+    _section_faq:
+        label: FAQ
         type: section
+        tab: SEO-текст и FAQ
 
-    block3_title:
-        label: Заголовок слайда 3
-        commentAbove: 'Текст заголовка (3-й слайд)'
+    faq_title:
+        label: Заголовок FAQ
         type: text
+        tab: SEO-текст и FAQ
 
-    block3_subtitle:
-        label: Подзаголовок слайда 3
-        type: richeditor
-        size: small
-
-    block3_image:
-        label: Изображение слайда 3
-        type: mediafinder
-        mode: image
+    faq_items:
+        label: Вопросы и ответы
+        type: repeater
+        titleFrom: question
+        prompt: Добавить вопрос
+        tab: SEO-текст и FAQ
+        commentAbove: 'Первый вопрос открыт по умолчанию. Удалите все вопросы, чтобы скрыть секцию и FAQ-разметку.'
+        form:
+            fields:
+                question:
+                    label: Вопрос
+                    type: text
+                answer:
+                    label: Ответ
+                    type: textarea
+                    size: small

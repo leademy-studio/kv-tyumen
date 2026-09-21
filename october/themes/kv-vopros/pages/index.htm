@@ -9,11 +9,6 @@ floatingWidgetHref = "#calculate"
 handle = "Site\\MainPage"
 ==
 {% set homeAsset = '/themes/kv-vopros/assets/homepage' %}
-{% set serviceTypeLabels = {
-    'design-project': 'Ремонт по дизайн-проекту',
-    'package-repair': 'Пакетный ремонт'
-} %}
-{% set animatedImages = ['anim-01.png', 'anim-02.png', 'anim-03.png', 'anim-06.png', 'anim-07.png', 'anim-08.png', 'anim-09.png', 'anim-10.png', 'anim-11.png', 'anim-12.png', 'anim-13.png', 'anim-14.png'] %}
 {% set animatedFrames = [
     '-113,-183,542,325|304,153,237,142|703,345,0,0',
     '407,42,147,215|596,318,1,1|703,345,0,0',
@@ -29,20 +24,38 @@ handle = "Site\\MainPage"
     '-1224,674,837,498|-46,514,363,216|703,345,0,0'
 ] %}
 {% set selectedCases = mainPage.cases_entries ?: [] %}
-{% set seoTitle = mainPage.meta_title ?: 'Квартирный вопрос — ремонт квартир в Тюмени' %}
-{% set seoDescription = mainPage.meta_description ?: 'С нами ремонт — ваш путь к дому, в котором хочется жить. Ремонт по дизайн-проекту и пакетный ремонт в Тюмени.' %}
+{% set serviceCards = mainPage.service_cards ?: [] %}
+{% set animationImages = mainPage.animation_images ?: [] %}
+{% set seoBlocks = mainPage.seo_text_blocks ?: [] %}
+{% set faqItems = mainPage.faq_items ?: [] %}
+{% set faqColumnSize = (faqItems|length / 2)|round(0, 'ceil') %}
+{% set serviceTypeLabels = {
+    'design-project': mainPage.case_design_label,
+    'package-repair': mainPage.case_package_label
+} %}
 
 {% put head %}
-    <title>{{ seoTitle|e }}</title>
-    <meta name="description" content="{{ seoDescription|e }}">
+    <title>{{ mainPage.meta_title|e }}</title>
+    <meta name="description" content="{{ mainPage.meta_description|e }}">
     <meta property="og:url" content="https://kv-tyumen.ru">
-    <meta property="og:title" content="{{ seoTitle|e }}">
-    <meta property="og:description" content="{{ seoDescription|e }}">
+    <meta property="og:title" content="{{ mainPage.meta_title|e }}">
+    <meta property="og:description" content="{{ mainPage.meta_description|e }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ homeAsset }}/img/cta-image.png">
+    <meta property="og:image" content="{{ mainPage.og_image|media }}">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png">
+    {% if faqItems|length %}
+    <script type="application/ld+json">{{ {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': faqItems|map(item => {
+            '@type': 'Question',
+            'name': item.question,
+            'acceptedAnswer': { '@type': 'Answer', 'text': item.answer }
+        })
+    }|json_encode(15)|raw }}</script>
+    {% endif %}
 {% endput %}
 
 {% put pageStyles %}
@@ -60,6 +73,8 @@ handle = "Site\\MainPage"
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/animated.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cases.css?v=20260910-1">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/about-us.css?v=20260910-1">
+    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/seo-text.css">
+    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/faq.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
 {% endput %}
@@ -68,113 +83,87 @@ handle = "Site\\MainPage"
 
 <main>
     <section class="hero">
-        <img class="hero__glow hero__glow--right hero__glow--desktop" src="{{ homeAsset }}/img/hero-bg-1.png" alt="" aria-hidden="true">
-        <img class="hero__glow hero__glow--right hero__glow--mobile" src="{{ homeAsset }}/img/hero-mobile-right.png" alt="" aria-hidden="true">
-        <img class="hero__glow hero__glow--left hero__glow--desktop" src="{{ homeAsset }}/img/hero-bg-2.png" alt="" aria-hidden="true">
-        <img class="hero__glow hero__glow--left hero__glow--mobile" src="{{ homeAsset }}/img/hero-mobile-left.png" alt="" aria-hidden="true">
+        {% if mainPage.hero_glow_right_desktop %}<img class="hero__glow hero__glow--right hero__glow--desktop" src="{{ mainPage.hero_glow_right_desktop|media }}" alt="" aria-hidden="true">{% endif %}
+        {% if mainPage.hero_glow_right_mobile %}<img class="hero__glow hero__glow--right hero__glow--mobile" src="{{ mainPage.hero_glow_right_mobile|media }}" alt="" aria-hidden="true">{% endif %}
+        {% if mainPage.hero_glow_left_desktop %}<img class="hero__glow hero__glow--left hero__glow--desktop" src="{{ mainPage.hero_glow_left_desktop|media }}" alt="" aria-hidden="true">{% endif %}
+        {% if mainPage.hero_glow_left_mobile %}<img class="hero__glow hero__glow--left hero__glow--mobile" src="{{ mainPage.hero_glow_left_mobile|media }}" alt="" aria-hidden="true">{% endif %}
 
         <div class="hero__content">
-            <h1 class="hero__title">Квартирный вопрос</h1>
-            <p class="hero__subtitle">с нами ремонт – ваш путь к дому, в котором хочется жить</p>
+            <h1 class="hero__title">{{ mainPage.hero_title|e }}</h1>
+            <p class="hero__subtitle">{{ mainPage.hero_subtitle|e|nl2br }}</p>
         </div>
     </section>
 
+    {% if serviceCards|length %}
     <section class="services" id="services">
-        <a class="services__card" href="/design-project">
-            <img class="services__icon" src="{{ homeAsset }}/img/service-icon.png" alt="" width="298" height="298">
-            <h2 class="services__label">Ремонт по<br>дизайн-проекту</h2>
+        {% for card in serviceCards %}
+        <a class="services__card" href="{{ card.url|e }}">
+            <img class="services__icon" src="{{ card.icon|media }}" alt="{{ card.image_alt|e }}" width="298" height="298">
+            <h2 class="services__label">{{ card.title|e|nl2br }}</h2>
             <span class="services__hover" aria-hidden="true">
                 <img class="services__hover-arrow" src="{{ homeAsset }}/img/service-hover-arrow.svg" alt="" width="35" height="35">
-                <img class="services__hover-icon services__hover-icon--desktop" src="{{ homeAsset }}/img/service-hover-icon.gif" alt="" width="298" height="298">
-                <img class="services__hover-icon services__hover-icon--mobile" src="{{ homeAsset }}/img/service-mobile-icon-design.png" alt="" width="50" height="50">
+                <img class="services__hover-icon services__hover-icon--desktop" src="{{ card.hover_icon_desktop|media }}" alt="" width="298" height="298">
+                <img class="services__hover-icon services__hover-icon--mobile" src="{{ card.hover_icon_mobile|media }}" alt="" width="50" height="50">
                 <span class="services__hover-text">
-                    <span class="services__hover-title">Ремонт по<br>дизайн-проекту</span>
+                    <span class="services__hover-title">{{ card.hover_title|e|nl2br }}</span>
                     <span class="services__hover-subtitle">
-                        <span class="services__subtitle-text services__subtitle-text--desktop">Индивидуальное решение + авторский надзор</span>
-                        <span class="services__subtitle-text services__subtitle-text--mobile">Мы занимаемся ремонтом квартир и собрали команду</span>
+                        <span class="services__subtitle-text services__subtitle-text--desktop">{{ card.subtitle_desktop|e }}</span>
+                        <span class="services__subtitle-text services__subtitle-text--mobile">{{ card.subtitle_mobile|e }}</span>
                     </span>
                 </span>
             </span>
         </a>
-        <a class="services__card" href="/repairs">
-            <img class="services__icon" src="{{ homeAsset }}/img/service-icon.png" alt="" width="298" height="298">
-            <h2 class="services__label">Пакетный<br>ремонт</h2>
-            <span class="services__hover" aria-hidden="true">
-                <img class="services__hover-arrow" src="{{ homeAsset }}/img/service-hover-arrow.svg" alt="" width="35" height="35">
-                <img class="services__hover-icon services__hover-icon--desktop" src="{{ homeAsset }}/img/service-hover-icon.gif" alt="" width="298" height="298">
-                <img class="services__hover-icon services__hover-icon--mobile" src="{{ homeAsset }}/img/service-mobile-icon-repair.png" alt="" width="50" height="50">
-                <span class="services__hover-text">
-                    <span class="services__hover-title">Пакетный<br>ремонт</span>
-                    <span class="services__hover-subtitle">Готовые варианты с&nbsp;фиксированной ценой и&nbsp;сроками</span>
-                </span>
-            </span>
-        </a>
+        {% endfor %}
     </section>
+    {% endif %}
 
+    {% if mainPage.promo_title %}
     <section class="cta">
         <div class="cta__panel">
             <div class="cta__content">
                 <div class="cta__text">
-                    <h2 class="cta__title">Дизайн-проект — в подарок при заказе ремонта</h2>
-                    <p class="cta__subtitle">Только до конца месяца — поможем создать интерьер вашей мечты с нуля и воплотим его под ключ.</p>
+                    <h2 class="cta__title">{{ mainPage.promo_title|e }}</h2>
+                    <p class="cta__subtitle">{{ mainPage.promo_subtitle|e|nl2br }}</p>
                 </div>
-                <a class="cta__button" href="#calculate">
-                    <span class="cta__button-text">Заказать</span>
+                <a class="cta__button" href="{{ mainPage.promo_button_url|e }}">
+                    <span class="cta__button-text">{{ mainPage.promo_button_label|e }}</span>
                     <img class="cta__button-icon" src="{{ homeAsset }}/img/arrow-right.svg" alt="" width="22" height="22">
                 </a>
             </div>
             <figure class="cta__image">
-                <img src="{{ homeAsset }}/img/cta-image.png" alt="Интерьер после ремонта">
+                <img src="{{ mainPage.promo_image|media }}" alt="{{ mainPage.promo_image_alt|e }}">
             </figure>
         </div>
     </section>
+    {% endif %}
 
     <div class="pin" style="--pin-steps: 2" data-scene="all-in-one">
         <div class="pin__inner">
             <section class="all-in-one">
                 <div class="all-in-one__text">
                     <div class="all-in-one__titles">
-                        <h2 class="all-in-one__title is-revealed" data-step="0">{{ mainPage.block1_title ?: 'Дом' }}</h2>
-                        <p class="all-in-one__title" data-step="1">{{ mainPage.block2_title ?: 'Материалы' }}</p>
-                        <p class="all-in-one__title" data-step="2">{{ mainPage.block3_title ?: 'Ремонт' }}</p>
+                        <h2 class="all-in-one__title is-revealed" data-step="0">{{ mainPage.block1_title|e }}</h2>
+                        <p class="all-in-one__title" data-step="1">{{ mainPage.block2_title|e }}</p>
+                        <p class="all-in-one__title" data-step="2">{{ mainPage.block3_title|e }}</p>
                     </div>
 
                     <div class="all-in-one__copy-stack">
                         <div class="all-in-one__copy is-active" data-step="0">
-                            {% if mainPage.block1_subtitle %}
-                                {{ mainPage.block1_subtitle|raw }}
-                            {% else %}
-                                <p>в который хочется возвращаться</p>
-                                <p>Каждый проект мы создаём под клиента: с учётом образа жизни, вкуса, привычек и будущих сценариев.</p>
-                                <p>Никаких шаблонов — только индивидуальный подход, внимание к деталям и чистая эстетика.</p>
-                                <p>В итоге вы получаете не просто красивую визуализацию, а настоящую основу будущего интерьера, где всё логично и удобно.</p>
-                            {% endif %}
+                            {{ mainPage.block1_subtitle|raw }}
                         </div>
                         <div class="all-in-one__copy" data-step="1">
-                            {% if mainPage.block2_subtitle %}
-                                {{ mainPage.block2_subtitle|raw }}
-                            {% else %}
-                                <p>Превращаем идею в реальность: подбираем и закупаем материалы.</p>
-                                <p>Мы не просто рисуем красивый проект — мы сразу подбираем реальные отделочные материалы, мебель и декор, доступные в Тюмени или на ближайших складах.</p>
-                                <p>Все закупки и логистика — на нас. Вы экономите время, нервы и бюджет.</p>
-                            {% endif %}
+                            {{ mainPage.block2_subtitle|raw }}
                         </div>
                         <div class="all-in-one__copy" data-step="2">
-                            {% if mainPage.block3_subtitle %}
-                                {{ mainPage.block3_subtitle|raw }}
-                            {% else %}
-                                <p>От мечты до готовой квартиры — мы берём на себя всё.</p>
-                                <p>Мы занимаемся полным циклом ремонта: от первых набросков до чистовой отделки. Команда дизайнеров, снабженцев, мастеров и прораба работает слаженно, под вашим кураторством или полностью самостоятельно.</p>
-                                <p>Хотите — участвуйте в каждом шаге. Хотите — просто получите ключи и переезжайте в готовый интерьер.</p>
-                            {% endif %}
+                            {{ mainPage.block3_subtitle|raw }}
                         </div>
                     </div>
                 </div>
 
                 <figure class="all-in-one__media">
-                    <img class="is-active" src="{{ mainPage.block1_image ? mainPage.block1_image|media : homeAsset ~ '/img/all-in-one-1.png' }}" alt="Дизайн-проект интерьера">
-                    <img src="{{ mainPage.block2_image ? mainPage.block2_image|media : homeAsset ~ '/img/all-in-one-2.png' }}" alt="Подбор отделочных материалов">
-                    <img src="{{ mainPage.block3_image ? mainPage.block3_image|media : homeAsset ~ '/img/all-in-one-3.png' }}" alt="Ремонт под ключ">
+                    <img class="is-active" src="{{ mainPage.block1_image|media }}" alt="{{ mainPage.block1_image_alt|e }}">
+                    <img src="{{ mainPage.block2_image|media }}" alt="{{ mainPage.block2_image_alt|e }}">
+                    <img src="{{ mainPage.block3_image|media }}" alt="{{ mainPage.block3_image_alt|e }}">
                 </figure>
             </section>
         </div>
@@ -184,13 +173,12 @@ handle = "Site\\MainPage"
         <div class="pin__inner">
             <section class="animated">
                 <div class="animated__stage">
-                    <h2 class="animated__heading">ваш путь к дому, в котором
-хочется жить</h2>
+                    <h2 class="animated__heading">{{ mainPage.animation_title|e }}</h2>
 
-                    {% for image in animatedImages %}
+                    {% for image in animationImages %}
                         {% set frames = animatedFrames[loop.index0]|split('|') %}
                         <figure class="animated__photo" data-k1="{{ frames[0] }}" data-k2="{{ frames[1] }}" data-k3="{{ frames[2] }}">
-                            <img src="{{ homeAsset }}/img/{{ image }}" alt="">
+                            <img src="{{ image.image|media }}" alt="{{ image.image_alt|e }}">
                         </figure>
                     {% endfor %}
                 </div>
@@ -209,7 +197,7 @@ handle = "Site\\MainPage"
                         {% set caseImage = (caseEntry.banner_image ?: caseEntry.main_image)|media %}
                         {% set caseUrl = '/portfolio/' ~ caseEntry.slug %}
                         <article class="cases__card{% if loop.first %} is-active{% endif %}" style="--i: {{ loop.index0 }}" data-kind="{{ caseService|e }}" data-title="{{ caseTitle|e }}" data-url="{{ caseUrl }}">
-                            <img src="{{ caseImage }}" alt="Кейс: {{ caseTitle|e }}">
+                            <img src="{{ caseImage }}" alt="{{ mainPage.case_image_alt_prefix|e }} {{ caseTitle|e }}">
                             <a class="cases__caption" href="{{ caseUrl }}">
                                 <span class="cases__caption-text">
                                     <span class="cases__caption-kind">{{ caseService|e|replace({' по ': ' по<br>'})|raw }}</span>
@@ -221,8 +209,8 @@ handle = "Site\\MainPage"
                     {% endfor %}
                 </div>
 
-                <a class="cases__button" href="/portfolio">
-                    <span class="cases__button-text">Все кейсы</span>
+                <a class="cases__button" href="{{ mainPage.cases_button_url|e }}">
+                    <span class="cases__button-text">{{ mainPage.cases_button_label|e }}</span>
                     <img class="cases__button-icon" src="{{ homeAsset }}/img/arrow-right.svg" alt="" width="22" height="22">
                 </a>
             </section>
@@ -235,43 +223,43 @@ handle = "Site\\MainPage"
         <div class="pin__inner">
             <section class="about" id="about">
                 <div class="about__intro">
-                    <h2 class="about__title">12 лет</h2>
-                    <p class="about__lead">Мы занимаемся ремонтом квартир и собрали команду, которой можно доверять.</p>
+                    <h2 class="about__title">{{ mainPage.about_title|e }}</h2>
+                    <p class="about__lead">{{ mainPage.about_lead|e|nl2br }}</p>
                 </div>
 
                 <div class="about__content">
                     <div class="about__detailed">
                         <div class="about__more">
-                            <span class="about__more-title">Больше о нас</span>
-                            <a class="about__more-link" href="/about-company">
-                                Перейти
+                            <span class="about__more-title">{{ mainPage.about_more_title|e }}</span>
+                            <a class="about__more-link" href="{{ mainPage.about_more_link_url|e }}">
+                                {{ mainPage.about_more_link_label|e }}
                                 <img class="about__more-icon" src="{{ homeAsset }}/img/arrow-right.svg" alt="" width="19" height="19">
                             </a>
                         </div>
-                        <p class="about__description">Мы берём на себя всё: от проекта до последней розетки. Без задержек, лишних затрат и «самодеятельности» на объекте.</p>
+                        <p class="about__description">{{ mainPage.about_description|e|nl2br }}</p>
                     </div>
 
                     <figure class="about__image">
-                        <img src="{{ mainPage.advantages_image ? mainPage.advantages_image|media : homeAsset ~ '/img/about-us-image.png' }}" alt="Готовый интерьер">
+                        <img src="{{ mainPage.advantages_image|media }}" alt="{{ mainPage.advantages_image_alt|e }}">
                     </figure>
                 </div>
 
                 <div class="about__cards">
                     <article class="about__card">
-                        <h3 class="about__card-title">{{ mainPage.advantage1_title ?: '13 лет опыта' }}</h3>
-                        <div class="about__card-text">{{ mainPage.advantage1_subtitle ? mainPage.advantage1_subtitle|raw : 'Мы занимаемся ремонтом квартир с 2012 года. За это время выстроили процессы так, чтобы вам было максимально комфортно: понятные этапы, прозрачные сметы, фиксированные сроки. Мы знаем, как сделать ремонт без нервов и сюрпризов.' }}</div>
+                        <h3 class="about__card-title">{{ mainPage.advantage1_title|e }}</h3>
+                        <div class="about__card-text">{{ mainPage.advantage1_subtitle|raw }}</div>
                     </article>
                     <article class="about__card">
-                        <h3 class="about__card-title">{{ mainPage.advantage2_title ?: 'Сильная команда' }}</h3>
-                        <div class="about__card-text">{{ mainPage.advantage2_subtitle ? mainPage.advantage2_subtitle|raw : 'В нашей команде работают дизайнеры, прорабы, снабженцы и мастера, которых объединяет одно — любовь к своему делу. Каждый берёт личную ответственность за результат и работает так, как сделал бы для себя.' }}</div>
+                        <h3 class="about__card-title">{{ mainPage.advantage2_title|e }}</h3>
+                        <div class="about__card-text">{{ mainPage.advantage2_subtitle|raw }}</div>
                     </article>
                     <article class="about__card">
-                        <h3 class="about__card-title">{{ mainPage.advantage3_title ?: 'Ремонт с заботой' }}</h3>
-                        <div class="about__card-text">{{ mainPage.advantage3_subtitle ? mainPage.advantage3_subtitle|raw : 'Мы ценим ваше время и силы. Поэтому сделали ремонт простым и удобным: фото- и видеоотчёты, понятный график работ и один ответственный менеджер на весь проект.' }}</div>
+                        <h3 class="about__card-title">{{ mainPage.advantage3_title|e }}</h3>
+                        <div class="about__card-text">{{ mainPage.advantage3_subtitle|raw }}</div>
                     </article>
                     <article class="about__card">
-                        <h3 class="about__card-title">{{ mainPage.advantage4_title ?: 'Под ключ' }}</h3>
-                        <div class="about__card-text">{{ mainPage.advantage4_subtitle ? mainPage.advantage4_subtitle|raw : 'От дизайн-проекта до финальной отделки — всё в одних руках. Мы подберём материалы, организуем закупку и доставку, проконтролируем каждый этап. Вам остаётся только принимать готовый результат.' }}</div>
+                        <h3 class="about__card-title">{{ mainPage.advantage4_title|e }}</h3>
+                        <div class="about__card-text">{{ mainPage.advantage4_subtitle|raw }}</div>
                     </article>
                 </div>
             </section>
@@ -281,13 +269,50 @@ handle = "Site\\MainPage"
     <section class="cta-calc" id="calculate">
         <div class="cta-calc__panel">
             <div class="cta-calc__text">
-                <h2 class="cta-calc__title">Рассчитаем стоимость ремонта за 3 часа — бесплатно</h2>
-                <p class="cta-calc__subtitle">Оставьте заявку — подберём решение, сориентируем по срокам и бюджету.</p>
+                <h2 class="cta-calc__title">{{ mainPage.calculation_title|e }}</h2>
+                <p class="cta-calc__subtitle">{{ mainPage.calculation_subtitle|e|nl2br }}</p>
             </div>
 
             {% partial 'site/calculate-form' %}
         </div>
     </section>
+
+    {% if mainPage.seo_text_title and seoBlocks|length %}
+    <section class="seo-text" aria-labelledby="homepage-seo-text-title">
+        <h2 class="seo-text__title" id="homepage-seo-text-title">{{ mainPage.seo_text_title|e }}</h2>
+        <div class="seo-text__grid">
+            {% for block in seoBlocks %}
+            <article class="seo-text-card">
+                <h3 class="seo-text-card__title">{{ block.block_title|e }}</h3>
+                <p class="seo-text-card__body">{{ block.block_text|e }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if faqItems|length %}
+    <section class="faq" aria-labelledby="homepage-faq-title">
+        <h2 class="faq__title" id="homepage-faq-title">{{ mainPage.faq_title|e }}</h2>
+        <div class="faq__grid">
+            {% for column in [faqItems|slice(0, faqColumnSize), faqItems|slice(faqColumnSize)] %}
+            {% if column|length %}
+            <div class="faq__column">
+                {% for item in column %}
+                <details class="faq-item"{% if loop.first and loop.parent.loop.first %} open{% endif %}>
+                    <summary class="faq-item__question">
+                        <span class="faq-item__question-text">{{ item.question|e }}</span>
+                        <img class="faq-item__icon" src="/themes/kv-vopros/assets/images/faq-chevron.svg" alt="" width="36" height="21" aria-hidden="true">
+                    </summary>
+                    <p class="faq-item__answer">{{ item.answer|e }}</p>
+                </details>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 </main>
 
 {% partial 'site/footer' %}
