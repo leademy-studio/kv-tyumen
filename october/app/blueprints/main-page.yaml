@@ -272,7 +272,7 @@ fields:
     animation_images:
         label: Изображения
         type: repeater
-        titleFrom: image_alt
+        titleFrom: image
         prompt: Добавить изображение
         minItems: 1
         maxItems: 12
