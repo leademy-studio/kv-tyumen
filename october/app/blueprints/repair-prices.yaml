@@ -1,0 +1,81 @@
+uuid: a78597b6-ae87-4840-a26a-a7de1783a9ec
+handle: Site\RepairPrices
+type: global
+name: Тарифы ремонта
+
+customMessages:
+    titleUpdateForm: Редактирование тарифов ремонта
+
+primaryNavigation:
+    label: Тарифы ремонта
+    icon: icon-money
+    order: 92
+
+navigation:
+    label: Тарифы ремонта
+    icon: icon-money
+    order: 12
+
+fields:
+    content_version:
+        type: hidden
+
+    _section_content:
+        label: Заголовок секции
+        type: section
+
+    section_title:
+        label: Заголовок
+        type: text
+
+    subtitle_left:
+        label: Подзаголовок слева
+        type: textarea
+        size: small
+
+    subtitle_right:
+        label: Подзаголовок справа
+        type: textarea
+        size: small
+
+    button_label:
+        label: Текст кнопки
+        type: text
+
+    button_url:
+        label: Ссылка кнопки
+        type: text
+        commentAbove: 'Например: #calculate'
+
+    _section_plans:
+        label: Тарифы и цены
+        type: section
+
+    plans:
+        label: Тарифы
+        type: repeater
+        titleFrom: title
+        prompt: Добавить тариф
+        minItems: 1
+        commentAbove: 'Перетаскивайте тарифы для изменения порядка. Тариф без названия или цены не выводится на сайте.'
+        form:
+            fields:
+                title:
+                    label: Название тарифа
+                    type: text
+                price:
+                    label: Цена
+                    type: text
+                    commentAbove: 'Например: 29 000 ₽ / м² или По запросу'
+                features_left:
+                    label: Состав тарифа — левый столбец
+                    type: richeditor
+                    size: small
+                features_right:
+                    label: Состав тарифа — правый столбец
+                    type: richeditor
+                    size: small
+                is_accent:
+                    label: Выделить тариф зелёным
+                    type: switch
+                    default: false

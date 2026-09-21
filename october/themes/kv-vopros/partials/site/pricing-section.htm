@@ -1,0 +1,49 @@
+{% set visiblePlans = [] %}
+{% for plan in pricing.plans ?: [] %}
+    {% if plan.title|trim and plan.price|trim %}
+        {% set visiblePlans = visiblePlans|merge([plan]) %}
+    {% endif %}
+{% endfor %}
+
+{% if pricing.section_title|trim and visiblePlans|length %}
+<section class="pricing" id="pricing">
+    <div class="pricing__header">
+        <h2 class="pricing__title">{{ pricing.section_title|e }}</h2>
+        {% if pricing.subtitle_left|trim or pricing.subtitle_right|trim %}
+        <div class="pricing__subtitles">
+            {% if pricing.subtitle_left|trim %}<p class="pricing__subtitle">{{ pricing.subtitle_left|e }}</p>{% endif %}
+            {% if pricing.subtitle_right|trim %}<p class="pricing__subtitle">{{ pricing.subtitle_right|e }}</p>{% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="pricing__plans">
+        {% for plan in visiblePlans %}
+        <article class="plan-card{% if plan.is_accent %} plan-card--accent{% endif %}">
+            <div class="plan-card__details">
+                <div class="plan-card__header">
+                    <h3 class="plan-card__title">{{ plan.title|e }}</h3>
+                    <p class="plan-card__price">{{ plan.price|e }}</p>
+                </div>
+                {% if plan.features_left|trim or plan.features_right|trim %}
+                <div class="plan-card__features">
+                    {% if plan.features_left|trim %}
+                    <div class="plan-card__features-col">{{ plan.features_left|raw }}</div>
+                    {% endif %}
+                    {% if plan.features_right|trim %}
+                    <div class="plan-card__features-col">{{ plan.features_right|raw }}</div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            {% if pricing.button_label|trim and pricing.button_url|trim %}
+            <a class="plan-card__button" href="{{ pricing.button_url|e }}">
+                <span class="plan-card__button-label">{{ pricing.button_label|e }}</span>
+                <img class="plan-card__button-icon" src="{{ themeAsset }}/images/arrow-up-right-plan.svg" alt="" width="22" height="22">
+            </a>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

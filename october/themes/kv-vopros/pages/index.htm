@@ -7,8 +7,12 @@ floatingWidgetHref = "#calculate"
 
 [global mainPage]
 handle = "Site\\MainPage"
+
+[global repairPrices]
+handle = "Site\\RepairPrices"
 ==
 {% set homeAsset = '/themes/kv-vopros/assets/homepage' %}
+{% set themeAsset = '/themes/kv-vopros/assets' %}
 {% set animatedFrames = [
     '-113,-183,542,325|304,153,237,142|703,345,0,0',
     '407,42,147,215|596,318,1,1|703,345,0,0',
@@ -83,6 +87,7 @@ handle = "Site\\MainPage"
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/animated.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cases.css?v=20260910-1">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/about-us.css?v=20260910-1">
+    <link rel="stylesheet" href="{{ themeAsset }}/css/sections/pricing.css">
     <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/seo-text.css">
     <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/faq.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
@@ -275,6 +280,8 @@ handle = "Site\\MainPage"
             </section>
         </div>
     </div>
+
+    {% partial 'site/pricing-section' pricing=repairPrices themeAsset=themeAsset %}
 
     <section class="cta-calc" id="calculate">
         <div class="cta-calc__panel">
