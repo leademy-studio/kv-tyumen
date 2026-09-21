@@ -6,7 +6,7 @@
 # Что делает:
 # 1) Коммит + push локальных изменений.
 # 2) На сервере: обновляет репозиторий, поднимает контейнеры, собирает ассеты,
-#    обновляет зависимости и выполняет October-миграции (october:up).
+#    обновляет зависимости и выполняет October-миграции (october:migrate).
 #
 # ВАЖНО:
 # - Данные из админки хранятся в БД (volume) и не должны теряться при рестарте.
@@ -161,7 +161,7 @@ docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && if [ -f c
 
 echo '--- 7. Artisan (storage link, migrations, cache clear) ---'
 docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan storage:link --force || true'
-docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan october:up'
+docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan october:migrate'
 docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan theme:clear && php artisan theme:cache'
 docker compose exec -T --user www-data app sh -lc 'cd /var/www/html && php artisan route:clear && php artisan view:clear && php artisan config:clear && php artisan cache:clear'
 
