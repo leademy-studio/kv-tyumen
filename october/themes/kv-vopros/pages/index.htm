@@ -26,8 +26,18 @@ handle = "Site\\MainPage"
 {% set selectedCases = mainPage.cases_entries ?: [] %}
 {% set serviceCards = mainPage.service_cards ?: [] %}
 {% set animationImages = mainPage.animation_images ?: [] %}
-{% set seoBlocks = mainPage.seo_text_blocks ?: [] %}
-{% set faqItems = mainPage.faq_items ?: [] %}
+{% set seoBlocks = [] %}
+{% for block in mainPage.seo_text_blocks ?: [] %}
+    {% if block.block_title|trim and block.block_text|trim %}
+        {% set seoBlocks = seoBlocks|merge([block]) %}
+    {% endif %}
+{% endfor %}
+{% set faqItems = [] %}
+{% for item in mainPage.faq_items ?: [] %}
+    {% if item.question|trim and item.answer|trim %}
+        {% set faqItems = faqItems|merge([item]) %}
+    {% endif %}
+{% endfor %}
 {% set faqColumnSize = (faqItems|length / 2)|round(0, 'ceil') %}
 {% set serviceTypeLabels = {
     'design-project': mainPage.case_design_label,
@@ -45,7 +55,7 @@ handle = "Site\\MainPage"
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/themes/kv-vopros/assets/images/tild3365-6131-4163-b038-373235396664__logo.png">
-    {% if faqItems|length %}
+    {% if mainPage.faq_title|trim and faqItems|length %}
     <script type="application/ld+json">{{ {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
@@ -277,7 +287,7 @@ handle = "Site\\MainPage"
         </div>
     </section>
 
-    {% if mainPage.seo_text_title and seoBlocks|length %}
+    {% if mainPage.seo_text_title|trim and seoBlocks|length %}
     <section class="seo-text" aria-labelledby="homepage-seo-text-title">
         <h2 class="seo-text__title" id="homepage-seo-text-title">{{ mainPage.seo_text_title|e }}</h2>
         <div class="seo-text__grid">
@@ -291,7 +301,7 @@ handle = "Site\\MainPage"
     </section>
     {% endif %}
 
-    {% if faqItems|length %}
+    {% if mainPage.faq_title|trim and faqItems|length %}
     <section class="faq" aria-labelledby="homepage-faq-title">
         <h2 class="faq__title" id="homepage-faq-title">{{ mainPage.faq_title|e }}</h2>
         <div class="faq__grid">

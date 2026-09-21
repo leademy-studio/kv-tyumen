@@ -67,6 +67,20 @@ try {
     checkHomepage(count($faqs) === 1, 'Exactly one FAQPage schema must be rendered');
     checkHomepage($faqs[0]['mainEntity'][0]['acceptedAnswer']['text'] === $faq->answer, 'FAQ schema does not match CMS content');
 
+    foreach ($page->seo_text_blocks()->get() as $emptySeo) {
+        $emptySeo->block_title = '';
+        $emptySeo->block_text = '';
+        $emptySeo->save();
+    }
+    foreach ($page->faq_items()->get() as $emptyFaq) {
+        $emptyFaq->question = '';
+        $emptyFaq->answer = '';
+        $emptyFaq->save();
+    }
+    $html = renderHomepage();
+    checkHomepage(!str_contains($html, 'class="faq"') && !str_contains($html, '"FAQPage"'), 'Blank FAQ rows still render');
+    checkHomepage(!str_contains($html, 'class="seo-text"'), 'Blank SEO rows still render');
+
     $page->faq_items()->delete();
     $page->seo_text_blocks()->delete();
     $html = renderHomepage();
