@@ -26,9 +26,38 @@ function checkPricing(bool $condition, string $message): void
     }
 }
 
+function parsePricingSchemas(string $html): array
+{
+    preg_match_all('~<script type="application/ld\+json">(.*?)</script>~s', $html, $matches);
+    return array_map(
+        fn ($json) => json_decode($json, true, 512, JSON_THROW_ON_ERROR),
+        $matches[1]
+    );
+}
+
 DB::beginTransaction();
 try {
     $prices = GlobalRecord::inGlobal('Site\\RepairPrices')->firstOrFail();
+    $initialHomepage = renderPricingPage('/');
+    $serviceSchemas = array_values(array_filter(
+        parsePricingSchemas($initialHomepage),
+        fn ($schema) => ($schema['@id'] ?? '') === 'https://kv-tyumen.ru/#repair-service'
+    ));
+    checkPricing(count($serviceSchemas) === 1, 'Homepage must contain exactly one repair pricing Service schema');
+    $catalog = $serviceSchemas[0]['hasOfferCatalog'] ?? [];
+    $offers = $catalog['itemListElement'] ?? [];
+    checkPricing(($catalog['@type'] ?? '') === 'OfferCatalog', 'Repair pricing schema has no OfferCatalog');
+    checkPricing(count($offers) === 4, 'Repair pricing schema offer count is invalid');
+    checkPricing(
+        array_column(array_column($offers, 'priceSpecification'), 'price') === ['29000', '35000', '45000', '60000'],
+        'Repair pricing schema prices differ from visible CMS prices'
+    );
+    foreach ($offers as $offer) {
+        $specification = $offer['priceSpecification'] ?? [];
+        checkPricing(($specification['priceCurrency'] ?? '') === 'RUB', 'Repair pricing schema currency is invalid');
+        checkPricing(($specification['unitText'] ?? '') === 'м²', 'Repair pricing schema unit is invalid');
+    }
+
     $plan = $prices->plans()->orderBy('sort_order')->firstOrFail();
     $plan->price = 'Тестовая цена из отдельной сущности';
     $plan->save();
@@ -54,10 +83,12 @@ try {
         $emptyPlan->price = '';
         $emptyPlan->save();
     }
-    checkPricing(!str_contains(renderPricingPage('/'), 'class="pricing"'), 'Blank pricing rows still render on homepage');
+    $emptyHomepage = renderPricingPage('/');
+    checkPricing(!str_contains($emptyHomepage, 'class="pricing"'), 'Blank pricing rows still render on homepage');
+    checkPricing(!str_contains($emptyHomepage, 'https://kv-tyumen.ru/#repair-service'), 'Blank pricing rows still render Service schema');
     checkPricing(!str_contains(renderPricingPage('/repairs'), 'class="pricing"'), 'Blank pricing rows still render on repairs');
 
-    echo "PASS: dedicated prices render on both pages, keep their homepage order, and hide when empty.\n";
+    echo "PASS: dedicated prices and homepage Service/Offer schema render from CMS data and hide when empty.\n";
 } finally {
     DB::rollBack();
 }

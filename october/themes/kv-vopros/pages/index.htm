@@ -43,6 +43,33 @@ handle = "Site\\RepairPrices"
     {% endif %}
 {% endfor %}
 {% set faqColumnSize = (faqItems|length / 2)|round(0, 'ceil') %}
+{% set pricingOffers = [] %}
+{% for plan in repairPrices.plans ?: [] %}
+    {% if plan.title|trim and plan.price|trim %}
+        {% set numericPrice = plan.price|split('₽')|first|replace({' ': '', ' ': '', ',': '.'})|trim %}
+        {% set pricingOffer = {
+            '@type': 'Offer',
+            'name': plan.title,
+            'url': 'https://kv-tyumen.ru/#pricing',
+            'itemOffered': {
+                '@type': 'Service',
+                'name': plan.title
+            }
+        } %}
+        {% if numericPrice matches '/^\\d+(?:\\.\\d+)?$/' %}
+            {% set pricingOffer = pricingOffer|merge({
+                'priceSpecification': {
+                    '@type': 'UnitPriceSpecification',
+                    'price': numericPrice,
+                    'priceCurrency': 'RUB',
+                    'unitText': 'м²'
+                }
+            }) %}
+        {% endif %}
+        {% set pricingOffers = pricingOffers|merge([pricingOffer]) %}
+    {% endif %}
+{% endfor %}
+{% set pricingDescription = (repairPrices.subtitle_left|trim ~ ' ' ~ repairPrices.subtitle_right|trim)|trim %}
 {% set serviceTypeLabels = {
     'design-project': mainPage.case_design_label,
     'package-repair': mainPage.case_package_label
@@ -69,6 +96,25 @@ handle = "Site\\RepairPrices"
             'acceptedAnswer': { '@type': 'Answer', 'text': item.answer }
         })
     }|json_encode(15)|raw }}</script>
+    {% endif %}
+    {% if repairPrices.section_title|trim and pricingOffers|length %}
+    {% set pricingSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        '@id': 'https://kv-tyumen.ru/#repair-service',
+        'name': repairPrices.section_title,
+        'url': 'https://kv-tyumen.ru/#pricing',
+        'provider': { '@id': 'https://kv-tyumen.ru/#organization' },
+        'hasOfferCatalog': {
+            '@type': 'OfferCatalog',
+            'name': repairPrices.section_title,
+            'itemListElement': pricingOffers
+        }
+    } %}
+    {% if pricingDescription %}
+        {% set pricingSchema = pricingSchema|merge({ 'description': pricingDescription }) %}
+    {% endif %}
+    <script type="application/ld+json">{{ pricingSchema|json_encode(15)|raw }}</script>
     {% endif %}
 {% endput %}
 
