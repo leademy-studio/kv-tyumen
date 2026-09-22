@@ -18,7 +18,8 @@ navigation:
 
 fields:
     content_version:
-        type: hidden
+        type: text
+        hidden: true
 
     _section_content:
         label: Заголовок секции

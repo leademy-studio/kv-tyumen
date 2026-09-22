@@ -20,6 +20,11 @@ $form = new \Backend\Widgets\Form($controller, [
     'fields' => [],
 ]);
 $form->bindToController();
+$renderedForm = $form->render();
+
+if (!str_contains($renderedForm, 'GlobalRecord[section_title]')) {
+    throw new \RuntimeException('Repair pricing backend form did not render its editable fields.');
+}
 
 foreach (['section_title', 'subtitle_left', 'subtitle_right', 'button_label', 'button_url', 'plans'] as $name) {
     if (!$form->getField($name)) {

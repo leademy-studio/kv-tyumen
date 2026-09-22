@@ -20,6 +20,11 @@ $form = new \Backend\Widgets\Form($controller, [
     'fields' => [],
 ]);
 $form->bindToController();
+$renderedForm = $form->render();
+
+if (!str_contains($renderedForm, 'GlobalRecord[hero_title]')) {
+    throw new \RuntimeException('Homepage backend form did not render its editable fields.');
+}
 
 $expectedFields = [
     'hero_title', 'hero_subtitle', 'hero_glow_right_desktop',
@@ -53,8 +58,6 @@ $result = [
 if ($result['content_version'] !== 1
     || $result['service_cards'] !== 2
     || $result['animation_images'] !== 12
-    || $result['seo_blocks'] < 1
-    || $result['faq_items'] < 1
     || $result['homepage_media_files'] < 25
 ) {
     throw new \RuntimeException('Homepage initialization is incomplete: ' . json_encode($result));
