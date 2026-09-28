@@ -29,7 +29,8 @@ function checkHomepage(bool $condition, string $message): void
 DB::beginTransaction();
 try {
     $page = GlobalRecord::inGlobal('Site\\MainPage')->firstOrFail();
-    $page->hero_title = 'Проверка заголовка главной';
+    $page->hero_title = 'Проверка названия первого экрана';
+    $page->hero_subtitle = 'Проверка главного заголовка';
     $page->promo_title = 'Проверка редактирования акции';
     $page->calculation_title = 'Проверка формы расчёта';
     $page->save();
@@ -49,7 +50,8 @@ try {
 
     $html = renderHomepage();
     foreach ([
-        'Проверка заголовка главной',
+        'Проверка названия первого экрана',
+        'Проверка главного заголовка',
         'Проверка редактирования акции',
         'Проверка формы расчёта',
         'Проверка карточки услуги',
@@ -58,6 +60,15 @@ try {
     ] as $value) {
         checkHomepage(str_contains($html, $value), 'Edited homepage content was not rendered: ' . $value);
     }
+    checkHomepage(
+        str_contains($html, '<p class="hero__title">Проверка названия первого экрана</p>'),
+        'Homepage hero title must be rendered as a paragraph'
+    );
+    checkHomepage(
+        str_contains($html, '<h1 class="hero__subtitle">Проверка главного заголовка</h1>'),
+        'Homepage hero subtitle must be rendered as H1'
+    );
+    checkHomepage(substr_count($html, '<h1') === 1, 'Homepage must contain exactly one H1');
     checkHomepage(str_contains($html, '/storage/app/media/homepage/cta-image.png'), 'Media Library homepage image was not rendered');
     checkHomepage(!str_contains($html, '</script><script>проверка'), 'FAQ JSON-LD can close its script element');
 

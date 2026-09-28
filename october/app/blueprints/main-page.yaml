@@ -54,12 +54,14 @@ fields:
         tab: Первый экран
 
     hero_title:
-        label: Заголовок
+        label: Название (P)
+        commentAbove: 'Крупная верхняя строка первого экрана. На странице выводится как абзац <p>.'
         type: text
         tab: Первый экран
 
     hero_subtitle:
-        label: Подзаголовок
+        label: Главный заголовок (H1)
+        commentAbove: 'Основной заголовок страницы. На странице выводится как <h1>.'
         type: textarea
         size: small
         tab: Первый экран

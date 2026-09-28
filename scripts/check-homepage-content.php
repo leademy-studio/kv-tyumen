@@ -26,6 +26,12 @@ if (!str_contains($renderedForm, 'GlobalRecord[hero_title]')) {
     throw new \RuntimeException('Homepage backend form did not render its editable fields.');
 }
 
+$heroTitleField = $form->getField('hero_title');
+$heroSubtitleField = $form->getField('hero_subtitle');
+if ($heroTitleField?->label !== 'Название (P)' || $heroSubtitleField?->label !== 'Главный заголовок (H1)') {
+    throw new \RuntimeException('Homepage hero field labels do not match the rendered HTML semantics.');
+}
+
 $expectedFields = [
     'hero_title', 'hero_subtitle', 'hero_glow_right_desktop',
     'service_cards', 'promo_title', 'promo_image',
@@ -45,6 +51,8 @@ $mediaFiles = glob(storage_path('app/media/homepage/*')) ?: [];
 $blueprint = \Tailor\Classes\BlueprintIndexer::instance()->findGlobalByHandle('Site\\MainPage');
 $result = [
     'admin_path' => '/' . config('backend.uri') . '/tailor/globals/' . $blueprint->handleSlug,
+    'hero_title_label' => $heroTitleField->label,
+    'hero_subtitle_label' => $heroSubtitleField->label,
     'content_version' => (int) $model->content_version,
     'backend_fields_checked' => count($expectedFields),
     'service_cards' => $model->service_cards()->count(),
