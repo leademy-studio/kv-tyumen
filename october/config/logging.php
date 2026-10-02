@@ -53,6 +53,13 @@ return [
 
     'channels' => [
 
+        'images' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/images.log'),
+            'level' => 'info',
+            'days' => 14,
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),

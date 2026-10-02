@@ -255,7 +255,7 @@ handle = "Site\\RepairPrices"
                     {% for caseEntry in selectedCases %}
                         {% set caseTitle = caseEntry.title %}
                         {% set caseService = serviceTypeLabels[caseEntry.service_type] ?? caseEntry.service_type %}
-                        {% set caseImage = (caseEntry.banner_image ?: caseEntry.main_image)|media %}
+                        {% set caseImage = (caseEntry.banner_image ?: caseEntry.main_image)|optimized_media %}
                         {% set caseUrl = '/portfolio/' ~ caseEntry.slug %}
                         <article class="cases__card{% if loop.first %} is-active{% endif %}" style="--i: {{ loop.index0 }}" data-kind="{{ caseService|e }}" data-title="{{ caseTitle|e }}" data-url="{{ caseUrl }}">
                             <img src="{{ caseImage }}" alt="{{ mainPage.case_image_alt_prefix|e }} {{ caseTitle|e }}">

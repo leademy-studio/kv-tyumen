@@ -31,6 +31,14 @@ return [
 
     'connections' => [
 
+        // Dedicated queue; other application jobs retain their existing driver.
+        'images' => [
+            'driver' => 'database',
+            'table' => 'jobs',
+            'queue' => 'images',
+            'retry_after' => 180,
+        ],
+
         'sync' => [
             'driver' => 'sync',
         ],

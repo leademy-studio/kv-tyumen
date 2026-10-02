@@ -167,7 +167,7 @@ function onStart()
             <div class="portfolio__grid">
                 {% for case in portfolioCards %}
                     <a class="repair-portfolio-card{% if case.designImage %} repair-portfolio-card--{{ case.designImage }}{% endif %}" href="{{ case.slug ? 'case-study'|page({ slug: case.slug }) : 'portfolio'|page }}">
-                        <img class="repair-portfolio-card__image" src="{{ case.designImage ? themeAsset ~ '/images/portfolio-' ~ case.designImage ~ '.png' : case.main_image|media }}" alt="{{ case.title }}" loading="lazy">
+                        <img class="repair-portfolio-card__image" src="{{ case.designImage ? themeAsset ~ '/images/portfolio-' ~ case.designImage ~ '.png' : case.main_image|optimized_media }}" alt="{{ case.title }}" loading="lazy">
                         <span class="repair-portfolio-card__caption">
                             <span class="repair-portfolio-card__caption-title">{{ case.title }}</span>
                             <span class="repair-portfolio-card__caption-icon" aria-hidden="true">

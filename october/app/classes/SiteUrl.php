@@ -9,7 +9,7 @@ class SiteUrl
     {
         $prefixes = ['backend', trim((string) config('backend.uri', 'admin'), '/'),
             'admin', 'api', 'combine', 'themes', 'modules', 'plugins', 'vendor',
-            'storage', 'updates', 'temp', 'config'];
+            'image-preview', 'storage', 'updates', 'temp', 'config'];
         $first = strtolower(explode('/', ltrim(rawurldecode($path), '/'))[0]);
         return in_array($first, $prefixes, true);
     }

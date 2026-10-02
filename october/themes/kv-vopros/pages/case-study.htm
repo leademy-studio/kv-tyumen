@@ -27,7 +27,7 @@ function onStart()
 {% set seoTitle = case.meta_title ?: case.title %}
 {% set seoDescription = case.meta_description ?: '' %}
 {% set canonicalUrl = 'https://kv-tyumen.ru/portfolio/' ~ case.slug %}
-{% set ogImage = case.banner_image ? case.banner_image|media : '/themes/kv-vopros/assets/images/tild6361-3863-4466-a566-313462386439__photo.png' %}
+{% set ogImage = case.banner_image ? case.banner_image|optimized_media : '/themes/kv-vopros/assets/images/tild6361-3863-4466-a566-313462386439__photo.png' %}
 {% put head %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <!--metatextblock-->
@@ -8220,7 +8220,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <!--/header-->
     {% set gallery = case.gallery_images ?: [] %}
     <section class="case-study-hero" >
-        <div class="case-study-banner" style="background-image: url('{{ case.banner_image|media }}');">
+        <div class="case-study-banner" style="background-image: url('{{ case.banner_image|optimized_media }}');">
             <div class="case-study-plaque">
                 <h1 class="case-study-plaque-title">{{ case.title }}</h1>
             </div>
@@ -8240,14 +8240,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="case-study-gallery {% if isLargeLeft %}large-left{% else %}large-right{% endif %}">
                         {% if rowItems[largeIndex] is defined %}
                             {% set largeImage = rowItems[largeIndex] %}
-                            {% set largeImageUrl = largeImage and largeImage.path is defined ? largeImage.path : (largeImage ? largeImage|media : '') %}
+                            {% set largeImageUrl = largeImage and largeImage.path is defined ? largeImage.path : (largeImage ? largeImage|optimized_media : '') %}
                             <div class="gallery-item large-image" style="background-image: url('{{ largeImageUrl }}');"></div>
                         {% endif %}
                         <div class="small-images-grid">
                             {% for i in smallStart..smallEnd %}
                                 {% if rowItems[i] is defined %}
                                     {% set galleryImage = rowItems[i] %}
-                                    {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|media : '') %}
+                                    {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|optimized_media : '') %}
                                     <div class="gallery-item" style="background-image: url('{{ galleryImageUrl }}');"></div>
                                 {% endif %}
                             {% endfor %}
@@ -8256,7 +8256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {% else %}
                     <div class="case-study-gallery case-study-gallery--strip" style="--strip-columns: {{ rowLength }};">
                         {% for galleryImage in rowItems %}
-                            {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|media : '') %}
+                            {% set galleryImageUrl = galleryImage and galleryImage.path is defined ? galleryImage.path : (galleryImage ? galleryImage|optimized_media : '') %}
                             <div class="gallery-item" style="background-image: url('{{ galleryImageUrl }}');"></div>
                         {% endfor %}
                     </div>

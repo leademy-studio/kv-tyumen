@@ -31,11 +31,39 @@ services:
     volumes:
       - ./october:/var/www/html
       - ./october/.env:/var/www/html/.env:ro
+      - ./php/fpm-observability.conf:/usr/local/etc/php-fpm.d/zz-observability.conf:ro
     depends_on:
       db:
         condition: service_healthy
     networks:
       - kv_vopros_network
+
+  # One bounded worker keeps image decoding out of web requests.
+  image-worker:
+    image: kv-vopros/app:${TAG:-latest}
+    container_name: kv_vopros_image_worker
+    restart: unless-stopped
+    user: www-data
+    entrypoint: ["php", "-d", "memory_limit=512M", "artisan"]
+    command: ["queue:work", "images", "--queue=images", "--sleep=1", "--tries=3", "--timeout=120", "--memory=384", "--max-time=3600"]
+    working_dir: /var/www/html
+    env_file:
+      - ./.env
+      - ./october/.env
+    volumes:
+      - ./october:/var/www/html
+    mem_limit: 640m
+    cpus: 0.75
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - kv_vopros_network
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # Сервис Nginx (веб-сервер)
   nginx:
