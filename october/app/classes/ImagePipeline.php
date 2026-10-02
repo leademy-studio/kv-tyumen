@@ -164,7 +164,7 @@ class ImagePipeline
         $spec = $pipeline->mediaSpec($path, 1920, 1920, ['extension' => 'webp', 'quality' => 82]);
         if (!$spec) return $original;
         if (is_file($pipeline->path($spec))) {
-            return filesize($pipeline->path($spec)) < filesize($spec['source']) ? $pipeline->publicUrl($spec) : $original;
+            return filesize($pipeline->path($spec)) < filesize($spec['source']) ? url($pipeline->publicUrl($spec)) : $original;
         }
         $pipeline->enqueue($spec);
         // Public pages remain usable while the background worker prepares the copy.
