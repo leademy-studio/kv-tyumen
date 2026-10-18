@@ -28,6 +28,11 @@
     gap: 1.7143rem;
 }
 
+/* На главной 1–3 заполненных блока занимают всю ширину сетки. */
+.seo-text__grid--single-column {
+    grid-template-columns: minmax(0, 1fr);
+}
+
 .seo-text-card {
     position: relative;
     isolation: isolate;

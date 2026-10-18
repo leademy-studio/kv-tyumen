@@ -134,7 +134,7 @@ handle = "Site\\RepairPrices"
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cases.css?v=20260910-1">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/about-us.css?v=20260910-1">
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/pricing.css">
-    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/seo-text.css">
+    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/seo-text.css?v=20261018-1">
     <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/faq.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
@@ -343,7 +343,7 @@ handle = "Site\\RepairPrices"
     {% if mainPage.seo_text_title|trim and seoBlocks|length %}
     <section class="seo-text" aria-labelledby="homepage-seo-text-title">
         <h2 class="seo-text__title" id="homepage-seo-text-title">{{ mainPage.seo_text_title|e }}</h2>
-        <div class="seo-text__grid">
+        <div class="seo-text__grid{% if seoBlocks|length < 4 %} seo-text__grid--single-column{% endif %}">
             {% for block in seoBlocks %}
             <article class="seo-text-card">
                 <h3 class="seo-text-card__title">{{ block.block_title|e }}</h3>
