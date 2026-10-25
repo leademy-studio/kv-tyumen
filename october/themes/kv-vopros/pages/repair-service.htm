@@ -1,0 +1,37 @@
+title = "Страница ремонта"
+url = "/repairs/:slug"
+layout = "default"
+htmlClass = "no-js"
+bodyClass = "kv-repairs kv-repair-service"
+floatingWidgetHref = "#calculate"
+sitemap_section = "Site\\RepairPage"
+sitemap_identifier = "slug"
+sitemap_parameter = "slug"
+
+[global repairPrices]
+handle = "Site\\RepairPrices"
+==
+function onStart()
+{
+    $entry = \App\Classes\SiteSeo::publishedEntries('Site\\RepairPage')
+        ->where('slug', $this->param('slug'))
+        ->first();
+
+    if (!$entry) {
+        $response = (new \Cms\Classes\Controller)->run('/404');
+        $html = is_string($response) ? $response : $response->getContent();
+        return \Response::make($html, 404);
+    }
+
+    $services = \Tailor\Models\GlobalRecord::inGlobal('Site\\Services')->first();
+    $this['repairPage'] = $entry;
+    $this['repairContent'] = \App\Classes\RepairPage::content($entry, $services);
+    $this['repairCanonicalUrl'] = \App\Classes\SiteUrl::canonical('/repairs/' . $entry->slug);
+    $this->page->title = $entry->title;
+
+    foreach (\App\Classes\RepairPage::portfolioData() as $key => $value) {
+        $this[$key] = $value;
+    }
+}
+==
+{% partial 'site/repair-page' services=repairContent repairPrices=repairPrices %}

@@ -21,6 +21,17 @@
         {% set breadcrumbName = case.title %}
     {% endif %}
 
+    {% if this.page.url == '/repairs/:slug' and repairPage %}
+        {% set breadcrumbItems = breadcrumbItems|merge([{
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Пакетный ремонт',
+            'item': breadcrumbRoot ~ '/repairs'
+        }]) %}
+        {% set breadcrumbPath = '/repairs/' ~ repairPage.slug|url_encode %}
+        {% set breadcrumbName = repairPage.title %}
+    {% endif %}
+
     {% set breadcrumbItems = breadcrumbItems|merge([{
         '@type': 'ListItem',
         'position': breadcrumbItems|length + 1,

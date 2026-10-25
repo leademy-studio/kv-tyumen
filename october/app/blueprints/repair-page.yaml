@@ -1,0 +1,200 @@
+uuid: c6e784d2-741e-48dc-9a7b-06a8302d8e01
+handle: Site\RepairPage
+type: stream
+name: Страницы ремонта
+drafts: true
+navigation:
+    label: Страницы ремонта
+    icon: icon-files-o
+    parent: Site\Services
+    order: 30
+fields:
+    title:
+        label: Название страницы / H1
+        type: text
+        required: true
+        tab: Страница
+    slug:
+        label: Адрес страницы
+        type: slug
+        preset:
+            field: title
+        required: true
+        validation: required|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/
+        commentAbove: 'Латиница, цифры и дефисы. Например: remont-odnokomnatnoj-kvartiry. Адрес: /repairs/remont-odnokomnatnoj-kvartiry.'
+        tab: Страница
+    _template_help:
+        label: Шаблон пакетного ремонта
+        type: section
+        comment: Изображения, вводный блок и этапы наследуются от страницы «Пакетный ремонт», если оставить их пустыми.
+            SEO-текст и FAQ заполняются отдельно для каждой страницы. Тарифы и портфолио общие.
+        tab: Страница
+    meta_title:
+        label: Title
+        type: text
+        commentAbove: Если пусто, используется название страницы.
+        tab: SEO
+    meta_description:
+        label: Description
+        type: textarea
+        size: small
+        tab: SEO
+    cr_card1_image:
+        label: Изображение карточки 1
+        type: mediafinder
+        mode: image
+        tab: Первый экран и преимущества
+    cr_card2_image:
+        label: Изображение карточки 2
+        type: mediafinder
+        mode: image
+        tab: Первый экран и преимущества
+    cr_card3_image:
+        label: Изображение карточки 3
+        type: mediafinder
+        mode: image
+        tab: Первый экран и преимущества
+    cr_card4_image:
+        label: Изображение карточки 4
+        type: mediafinder
+        mode: image
+        tab: Первый экран и преимущества
+    cr_card5_image:
+        label: Изображение карточки 5
+        type: mediafinder
+        mode: image
+        tab: Первый экран и преимущества
+    cr_background_image:
+        label: Фоновое изображение страницы
+        type: mediafinder
+        mode: image
+        tab: Первый экран и преимущества
+    cr_section2_title:
+        label: Заголовок второй секции
+        type: text
+        tab: Первый экран и преимущества
+    cr_section2_subtitle:
+        label: Подзаголовок
+        type: richeditor
+        size: small
+        tab: Первый экран и преимущества
+    cr_steps_title:
+        label: Заголовок секции
+        type: text
+        tab: Как мы работаем
+        commentAbove: Если пусто, используется заголовок со страницы «Пакетный ремонт».
+    cr_steps_background:
+        label: Фоновое изображение
+        type: mediafinder
+        mode: image
+        tab: Как мы работаем
+        commentAbove: Если изображение не выбрано, используется фон из макета.
+    cr_steps:
+        label: Этапы работы
+        type: repeater
+        titleFrom: step_title
+        prompt: Добавить этап
+        tab: Как мы работаем
+        commentAbove: Если список пуст, используются этапы со страницы «Пакетный ремонт».
+        form:
+            fields:
+                step_title:
+                    label: Заголовок этапа
+                    type: text
+                description:
+                    label: Описание
+                    type: textarea
+                    size: small
+    cr_steps_cta_label:
+        label: Текст кнопки заявки
+        type: text
+        tab: Как мы работаем
+        commentAbove: Если пусто, используется подпись со страницы «Пакетный ремонт».
+    cr_seo_title:
+        label: Заголовок SEO-блока
+        type: text
+        tab: SEO-текст и FAQ
+        commentAbove: Уникальный SEO-текст этой страницы. Пустой заголовок скрывает секцию.
+    cr_seo_blocks:
+        label: Блоки SEO-текста
+        type: repeater
+        titleFrom: block_title
+        prompt: Добавить блок
+        tab: SEO-текст и FAQ
+        commentAbove: Блоки выводятся в две колонки в порядке сортировки.
+        form:
+            fields:
+                block_title:
+                    label: Подзаголовок
+                    type: text
+                    required: true
+                block_text:
+                    label: Текст
+                    type: textarea
+                    size: small
+                    required: true
+    cr_faq_title:
+        label: Заголовок блока FAQ
+        type: text
+        tab: SEO-текст и FAQ
+        commentAbove: По умолчанию — FAQ.
+    cr_faq:
+        label: Вопросы и ответы
+        type: repeater
+        titleFrom: question
+        prompt: Добавить вопрос
+        tab: SEO-текст и FAQ
+        commentAbove: Первая половина списка попадает в левую колонку, вторая — в правую. Первый вопрос открыт по
+            умолчанию.
+        form:
+            fields:
+                question:
+                    label: Вопрос
+                    type: text
+                    required: true
+                answer:
+                    label: Ответ
+                    type: textarea
+                    size: small
+                    required: true
+    cr_card1_caption:
+        label: Подпись карточки 1
+        type: textarea
+        size: small
+        tab: Первый экран и преимущества
+    cr_card2_caption:
+        label: Подпись карточки 2
+        type: textarea
+        size: small
+        tab: Первый экран и преимущества
+    cr_card3_caption:
+        label: Подпись карточки 3
+        type: textarea
+        size: small
+        tab: Первый экран и преимущества
+    cr_card4_caption:
+        label: Подпись карточки 4
+        type: textarea
+        size: small
+        tab: Первый экран и преимущества
+    cr_card5_caption:
+        label: Подпись карточки 5
+        type: textarea
+        size: small
+        tab: Первый экран и преимущества
+    cr_section2_body:
+        label: Основной текст блока преимуществ
+        type: textarea
+        tab: Первый экран и преимущества
+    cr_portfolio_title:
+        label: Заголовок портфолио
+        type: text
+        tab: Заявка и портфолио
+    cr_cta_title:
+        label: Заголовок формы заявки
+        type: text
+        tab: Заявка и портфолио
+    cr_cta_subtitle:
+        label: Подзаголовок формы заявки
+        type: textarea
+        tab: Заявка и портфолио
