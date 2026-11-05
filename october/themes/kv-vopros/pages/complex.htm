@@ -13,9 +13,7 @@ handle = "Site\\RepairPrices"
 ==
 function onStart()
 {
-    foreach (\App\Classes\RepairPage::portfolioData() as $key => $value) {
-        $this[$key] = $value;
-    }
+    $this['portfolioCards'] = \App\Classes\RepairPage::portfolioCards();
 }
 ==
 {% partial 'site/repair-page' services=services repairPrices=repairPrices %}

@@ -29,9 +29,7 @@ function onStart()
     $this['repairCanonicalUrl'] = \App\Classes\SiteUrl::canonical('/repairs/' . $entry->slug);
     $this->page->title = $entry->title;
 
-    foreach (\App\Classes\RepairPage::portfolioData() as $key => $value) {
-        $this[$key] = $value;
-    }
+    $this['portfolioCards'] = \App\Classes\RepairPage::portfolioCards($entry);
 }
 ==
 {% partial 'site/repair-page' services=repairContent repairPrices=repairPrices %}

@@ -31,24 +31,26 @@ class RepairPage
         return $content;
     }
 
-    public static function portfolioData(): array
+    public static function portfolioCards($page = null): array
     {
-        $section = 'Site\\CaseStudy';
-        // Include drafts so we can apply our own publish filters and avoid Tailor scoping them out
-        $cases = \Tailor\Models\EntryRecord::inSection($section)->withDrafts()
-            ->where('is_enabled', 1)
-            ->where(function ($q) {
-                $q->whereNull('published_at')->orWhere('published_at', '<=', now());
-            })
-            ->where(function ($q) {
-                $q->whereNull('expired_at')->orWhere('expired_at', '>=', now());
-            })
+        $selection = $page?->cr_portfolio_cases();
+        // Check stored links before filtering visibility so a hidden case cannot trigger the default set.
+        $selectedIds = $selection?->newPivotQuery()->pluck($selection->getRelatedPivotKeyName())->all() ?? [];
+        $query = SiteSeo::publishedEntries('Site\\CaseStudy');
+        $cases = ($selectedIds ? $query->whereKey($selectedIds) : $query->withDrafts())
             ->orderByRaw('sort_order is null')
             ->orderBy('sort_order', 'asc')
             ->orderBy('published_at', 'desc')
             ->get()
             ->unique('slug')
             ->values();
+
+        if ($selectedIds) {
+            return $cases->map(fn ($case) => self::caseCard($case))->all();
+        }
+        if ($cases->isEmpty()) {
+            return [];
+        }
 
         // The repairs page has its own Figma selection; keep the CMS portfolio order intact.
         $featured = [
@@ -76,9 +78,14 @@ class RepairPage
         }
         foreach ($cases as $entry) {
             if (!in_array($entry->id, $featuredIds, true)) {
-                $cards[] = ['title' => $entry->title, 'slug' => $entry->slug, 'main_image' => $entry->main_image];
+                $cards[] = self::caseCard($entry);
             }
         }
-        return ['cases' => $cases, 'portfolioCards' => $cards];
+        return $cards;
+    }
+
+    private static function caseCard($entry): array
+    {
+        return ['title' => $entry->title, 'slug' => $entry->slug, 'main_image' => $entry->main_image];
     }
 }

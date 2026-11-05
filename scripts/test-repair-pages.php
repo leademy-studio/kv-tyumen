@@ -24,6 +24,10 @@ function repairSchemas($html) {
     preg_match_all('~<script type="application/ld\+json">(.*?)</script>~s', $html, $matches);
     return array_map(fn ($json) => json_decode($json, true, 512, JSON_THROW_ON_ERROR), $matches[1]);
 }
+function repairPortfolio($html) {
+    preg_match('~<section class="portfolio" id="portfolio">.*?</section>~s', $html, $matches);
+    return $matches[0] ?? '';
+}
 
 DB::beginTransaction();
 try {
@@ -40,6 +44,22 @@ try {
     $prices->section_title = 'Тарифы ремонта';
     $prices->save();
     $prices->plans()->create(['title' => 'Общий тариф', 'price' => 'Тестовая цена', 'sort_order' => 1]);
+    $caseIds = [];
+    foreach ([['selected', 2], ['other-selected', 1], ['unselected', 3], ['disabled', 4], ['future', 5], ['expired', 6]] as [$slug, $order]) {
+        $case = EntryRecord::inSection('Site\\CaseStudy');
+        $case->title = 'Тестовый кейс ' . $slug;
+        $case->slug = 'repair-template-case-' . $slug;
+        $case->service_type = 'package-repair';
+        $case->main_image = '/repair-test-' . $slug . '.jpg';
+        $case->banner_image = $case->main_image;
+        $case->sort_order = $order;
+        $case->is_enabled = $slug !== 'disabled';
+        $case->published_at = $slug === 'future' ? now()->addDay() : now()->subDays(2);
+        $case->expired_at = $slug === 'expired' ? now()->subDay() : null;
+        $case->setDraftPublish();
+        $case->save();
+        $caseIds[$slug] = $case->id;
+    }
     $sourceBefore = renderRepairPage('/repairs')[0];
 
     $entries = [];
@@ -70,6 +90,7 @@ try {
     $first->cr_cta_title = 'Расчёт для однокомнатной';
     $first->cr_seo_title = 'Подробнее об однокомнатной';
     $first->save();
+    $first->cr_portfolio_cases()->sync(array_values(array_diff_key($caseIds, ['unselected' => true])));
     $first->cr_seo_blocks()->create(['block_title' => 'Планировка', 'block_text' => 'Текст об однокомнатной', 'sort_order' => 1]);
     $answer = 'Ответ </script><script>alert(1)</script> & "кавычки"';
     $first->cr_faq()->create(['question' => 'Вопрос однокомнатной?', 'answer' => $answer, 'sort_order' => 1]);
@@ -88,10 +109,19 @@ try {
     expectRepairPage(count($faq) === 1 && $faq[0]['mainEntity'][0]['acceptedAnswer']['text'] === $answer, 'FAQ JSON-LD matches own answer');
     $crumbs = array_values(array_filter($schemas, fn ($item) => ($item['@type'] ?? '') === 'BreadcrumbList'));
     expectRepairPage($crumbs[0]['itemListElement'][2]['item'] === 'https://kv-tyumen.ru/repairs/' . $first->slug, 'Breadcrumb uses resolved URL');
+    $portfolio = repairPortfolio($html);
+    preg_match_all('~href="[^"]*/portfolio/([^"]+)"~', $portfolio, $links);
+    expectRepairPage($links[1] === ['repair-template-case-other-selected', 'repair-template-case-selected'], 'Only public selected cases appear, in portfolio order');
+    expectRepairPage(str_contains($portfolio, 'Тестовый кейс selected') && str_contains($portfolio, 'repair-test-selected.jpg'), 'Selected cards use the case title and image');
 
     $secondHtml = renderRepairPage('/repairs/' . $entries[1]->slug)[0];
     expectRepairPage(str_contains($secondHtml, 'Общие преимущества ремонта'), 'Empty shared fields inherit source');
     expectRepairPage(!str_contains($secondHtml, 'Текст об однокомнатной') && !str_contains($secondHtml, '"FAQPage"'), 'Pages have independent SEO text and FAQ');
+    expectRepairPage(repairPortfolio($secondHtml) === repairPortfolio($sourceBefore), 'Page without a selection shows the default portfolio');
+    $first->cr_portfolio_cases()->sync([$caseIds['disabled']]);
+    expectRepairPage(repairPortfolio(renderRepairPage('/repairs/' . $first->slug)[0]) === '', 'An unavailable selection hides the portfolio');
+    $first->cr_portfolio_cases()->sync([]);
+    expectRepairPage(repairPortfolio(renderRepairPage('/repairs/' . $first->slug)[0]) === repairPortfolio($sourceBefore), 'Clearing selection restores the default portfolio');
     expectRepairPage(renderRepairPage('/repairs')[0] === $sourceBefore, 'Source page remains unchanged');
     $urls = array_column(SiteSeo::sitemap(), 'loc');
     expectRepairPage(in_array('https://kv-tyumen.ru/repairs/' . $first->slug, $urls, true), 'Published page is in sitemap');
@@ -113,7 +143,7 @@ try {
     $html = renderRepairPage('/repairs/' . $first->slug)[0];
     expectRepairPage(!str_contains($html, 'class="faq"') && !str_contains($html, '"FAQPage"'), 'Deleted FAQ stays absent');
     expectRepairPage(!str_contains($html, 'class="seo-text"'), 'Deleted SEO text stays absent');
-    echo "PASS: independent pages, metadata, inherited visuals, pricing, FAQ, canonical, breadcrumbs, sitemap, publication states and 404; source unchanged.\n";
+    echo "PASS: independent pages, selected and default portfolio cards, metadata, inherited visuals, pricing, FAQ, canonical, breadcrumbs, sitemap, publication states and 404; source unchanged.\n";
 } catch (Throwable $exception) {
     fwrite(STDERR, 'FAIL: ' . $exception->getMessage() . "\n");
     $failed = true;
