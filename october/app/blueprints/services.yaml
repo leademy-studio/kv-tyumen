@@ -244,6 +244,28 @@ fields:
                     type: textarea
                     size: small
 
+    cr_extra_seo_title:
+        label: Заголовок дополнительной SEO-секции
+        type: text
+        tab: SEO-текст и FAQ
+        commentAbove: 'Дополнительная секция страницы /repairs перед FAQ. Пустой заголовок скрывает секцию.'
+
+    cr_extra_seo_blocks:
+        label: Карточки дополнительной SEO-секции
+        type: repeater
+        titleFrom: block_title
+        prompt: Добавить блок
+        tab: SEO-текст и FAQ
+        form:
+            fields:
+                block_title:
+                    label: Подзаголовок
+                    type: text
+                block_text:
+                    label: Текст
+                    type: textarea
+                    size: small
+
     cr_faq_title:
         label: Заголовок блока FAQ
         type: text

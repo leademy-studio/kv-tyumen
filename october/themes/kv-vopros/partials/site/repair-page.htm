@@ -148,11 +148,16 @@
         </div>
     </section>
     {% endif %}
-    {% if services.cr_seo_title and seoBlocks|length %}
-    <section class="seo-text" aria-labelledby="seo-text-title">
-        <h2 class="seo-text__title" id="seo-text-title">{{ services.cr_seo_title|e }}</h2>
+    {% set seoSections = [
+        { title: services.cr_seo_title, blocks: seoBlocks, headingId: 'seo-text-title' },
+        { title: extraSeoTitle|default(''), blocks: extraSeoBlocks|default([]), headingId: 'extra-seo-text-title' }
+    ] %}
+    {% for section in seoSections %}
+    {% if section.title and section.blocks|length %}
+    <section class="seo-text" aria-labelledby="{{ section.headingId }}">
+        <h2 class="seo-text__title" id="{{ section.headingId }}">{{ section.title|e }}</h2>
         <div class="seo-text__grid">
-            {% for block in seoBlocks %}
+            {% for block in section.blocks %}
             <article class="seo-text-card">
                 <h3 class="seo-text-card__title">{{ block.block_title|e }}</h3>
                 <p class="seo-text-card__body">{{ block.block_text|e }}</p>
@@ -161,6 +166,7 @@
         </div>
     </section>
     {% endif %}
+    {% endfor %}
 
     {% if faqItems|length %}
     <section class="faq" aria-labelledby="faq-title">

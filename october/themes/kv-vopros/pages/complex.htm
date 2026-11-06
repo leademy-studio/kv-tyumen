@@ -16,4 +16,9 @@ function onStart()
     $this['portfolioCards'] = \App\Classes\RepairPage::portfolioCards();
 }
 ==
-{% partial 'site/repair-page' services=services repairPrices=repairPrices %}
+{% partial 'site/repair-page'
+    services=services
+    repairPrices=repairPrices
+    extraSeoTitle=services.cr_extra_seo_title
+    extraSeoBlocks=services.cr_extra_seo_blocks
+%}
