@@ -66,9 +66,12 @@ class RepairSchema
         }
         $webpage = [
             '@type' => 'WebPage', '@id' => $url . '#webpage', 'url' => $url,
-            'name' => self::text($page['title']), 'inLanguage' => 'ru-RU',
+            'inLanguage' => 'ru-RU',
             'publisher' => ['@id' => $organizationId],
         ];
+        if (self::text($page['title'] ?? '') !== '') {
+            $webpage['name'] = self::text($page['title']);
+        }
         $serviceName = self::text($page['service_name'] ?? '');
         $service = null;
         if ($serviceName !== '') {

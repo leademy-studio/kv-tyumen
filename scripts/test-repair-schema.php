@@ -71,3 +71,8 @@ checkSchema(count($autoNodes['BreadcrumbList']['itemListElement']) === 3, 'New p
 checkSchema(!isset($autoNodes['Service']['description']), 'No invented description');
 checkSchema(RepairSchema::forPage($newPage, null, null, null, $newEntry, $pricing) === null, 'Nonindexable page is not marked as a service');
 echo "PASS: CMS adapter automatically handles a new repair page without hand-written JSON-LD\n";
+
+$blank = $page; $blank['title'] = ''; $blank['service_name'] = '';
+$blankNodes = array_column(RepairSchema::build($blank, [], $company)['@graph'], null, '@type');
+checkSchema(!isset($blankNodes['WebPage']['name']) && !isset($blankNodes['WebPage']['mainEntity']) && !isset($blankNodes['Service']), 'Empty metadata and dangling service references omitted');
+echo "PASS: empty metadata omitted\n";
