@@ -29,22 +29,29 @@ $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
     ]];
     $imported = 0;
     foreach ($items as [$model, $prefix, $fields]) {
-        $before = $model->content;
-        $changed = false;
+        $global = $model instanceof \Tailor\Models\GlobalRecord;
+        $before = $global ? $model->content : $model->getAttributes();
+        $patch = [];
         foreach ($fields as $key => $value) {
             $field = $prefix . $key;
             // An intentional CMS deletion/empty value must survive subsequent runs.
-            if (!array_key_exists($field, $before)) {
-                $model->$field = $value;
-                $changed = true;
+            if (!array_key_exists($field, $before) || (!$global && $before[$field] === null)) {
+                $patch[$field] = $value;
                 $imported++;
             }
         }
-        if ($changed) {
-            $model->save();
+        if ($patch) {
+            if ($global) {
+                foreach ($patch as $key => $value) { $model->$key = $value; }
+                $model->save();
+            } else {
+                // Patch only the published row's metadata, without creating a draft or changing publication state.
+                \DB::table($model->getTable())->where('id', $model->id)->update($patch);
+            }
             $model->refresh();
+            $after = $global ? $model->content : $model->getAttributes();
             foreach ($before as $key => $value) {
-                if (($model->content[$key] ?? null) !== $value) {
+                if (!array_key_exists($key, $patch) && ($after[$key] ?? null) !== $value) {
                     throw new RuntimeException('Existing content changed: ' . $key);
                 }
             }
