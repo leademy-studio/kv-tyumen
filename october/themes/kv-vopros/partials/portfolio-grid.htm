@@ -1,5 +1,9 @@
 <div class="portfolio-grid-wrapper">
+    {% if headingTag == 'h2' %}
+    <h2 class="portfolio-title">Портфолио</h2>
+    {% else %}
     <h1 class="portfolio-title">Портфолио</h1>
+    {% endif %}
     <div class="portfolio-tabs-container">
         <button class="portfolio-tab active" data-filter="all">Все</button>
         <button class="portfolio-tab" data-filter="design-project">Ремонт по дизайн проекту</button>
