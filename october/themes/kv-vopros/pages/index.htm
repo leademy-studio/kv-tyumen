@@ -143,17 +143,7 @@ handle = "Site\\RepairPrices"
 {% partial 'site/header' %}
 
 <main>
-    <section class="hero">
-        {% if mainPage.hero_glow_right_desktop %}<img class="hero__glow hero__glow--right hero__glow--desktop" src="{{ mainPage.hero_glow_right_desktop|media }}" alt="" aria-hidden="true">{% endif %}
-        {% if mainPage.hero_glow_right_mobile %}<img class="hero__glow hero__glow--right hero__glow--mobile" src="{{ mainPage.hero_glow_right_mobile|media }}" alt="" aria-hidden="true">{% endif %}
-        {% if mainPage.hero_glow_left_desktop %}<img class="hero__glow hero__glow--left hero__glow--desktop" src="{{ mainPage.hero_glow_left_desktop|media }}" alt="" aria-hidden="true">{% endif %}
-        {% if mainPage.hero_glow_left_mobile %}<img class="hero__glow hero__glow--left hero__glow--mobile" src="{{ mainPage.hero_glow_left_mobile|media }}" alt="" aria-hidden="true">{% endif %}
-
-        <div class="hero__content">
-            <p class="hero__title">{{ mainPage.hero_title|e }}</p>
-            <h1 class="hero__subtitle">{{ mainPage.hero_subtitle|e|nl2br }}</h1>
-        </div>
-    </section>
+    {% partial 'site/hero' %}
 
     {% if serviceCards|length %}
     <section class="services" id="services">
