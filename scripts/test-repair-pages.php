@@ -22,7 +22,8 @@ function renderRepairPage($path) {
 }
 function repairSchemas($html) {
     preg_match_all('~<script type="application/ld\+json">(.*?)</script>~s', $html, $matches);
-    return array_map(fn ($json) => json_decode($json, true, 512, JSON_THROW_ON_ERROR), $matches[1]);
+    $schemas = array_map(fn ($json) => json_decode($json, true, 512, JSON_THROW_ON_ERROR), $matches[1]);
+    return array_merge(...array_map(fn ($schema) => $schema['@graph'] ?? [$schema], $schemas));
 }
 function repairPortfolio($html) {
     preg_match('~<section class="portfolio" id="portfolio">.*?</section>~s', $html, $matches);

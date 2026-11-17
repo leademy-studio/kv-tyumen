@@ -9,6 +9,22 @@ navigation:
     parent: Site\Services
     order: 30
 fields:
+    service_name:
+        label: Название услуги для микроразметки
+        type: text
+        tab: Микроразметка
+        commentAbove: Если пусто, используется H1 страницы. Не подставляйте рекламный Title.
+    service_type:
+        label: Тип услуги
+        type: text
+        tab: Микроразметка
+        commentAbove: Например, «Ремонт однокомнатной квартиры». Если пусто, используется название услуги.
+    service_description:
+        label: Краткое описание услуги
+        type: textarea
+        size: small
+        tab: Микроразметка
+        commentAbove: Описывайте услугу, представленную на странице. Пустое описание не попадает в JSON-LD.
     title:
         label: Название страницы / H1
         type: text

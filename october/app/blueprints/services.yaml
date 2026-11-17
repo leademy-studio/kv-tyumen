@@ -14,6 +14,22 @@ navigation:
     order: 25
 
 fields:
+    cr_service_name:
+        label: Название услуги для микроразметки
+        type: text
+        tab: Микроразметка
+        commentAbove: Если пусто, используется H1 страницы. Не подставляйте рекламный Title.
+    cr_service_type:
+        label: Тип услуги
+        type: text
+        tab: Микроразметка
+        commentAbove: Например, «Ремонт однокомнатной квартиры». Если пусто, используется название услуги.
+    cr_service_description:
+        label: Краткое описание услуги
+        type: textarea
+        size: small
+        tab: Микроразметка
+        commentAbove: Описывайте услугу, представленную на странице. Пустое описание не попадает в JSON-LD.
     _section_design_project_seo:
         label: Мета-теги страницы "Дизайн-проект"
         type: section

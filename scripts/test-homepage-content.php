@@ -74,6 +74,7 @@ try {
 
     preg_match_all('~<script type="application/ld\+json">(.*?)</script>~s', $html, $matches);
     $schemas = array_map(fn ($json) => json_decode($json, true, 512, JSON_THROW_ON_ERROR), $matches[1]);
+    $schemas = array_merge(...array_map(fn ($schema) => $schema['@graph'] ?? [$schema], $schemas));
     $faqs = array_values(array_filter($schemas, fn ($schema) => ($schema['@type'] ?? '') === 'FAQPage'));
     checkHomepage(count($faqs) === 1, 'Exactly one FAQPage schema must be rendered');
     checkHomepage($faqs[0]['mainEntity'][0]['acceptedAnswer']['text'] === $faq->answer, 'FAQ schema does not match CMS content');

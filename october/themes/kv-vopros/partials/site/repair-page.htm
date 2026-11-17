@@ -16,17 +16,6 @@
     <meta property="og:image" content="{{ services.cr_background_image ? services.cr_background_image|media : themeAsset ~ '/images/repairs-hero.png' }}">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    {% if faqItems|length %}
-    <script type="application/ld+json">{{ {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        'mainEntity': faqItems|map(item => {
-            '@type': 'Question',
-            'name': item.question,
-            'acceptedAnswer': { '@type': 'Answer', 'text': item.answer }
-        })
-    }|json_encode(15)|raw }}</script>
-    {% endif %}
 {% endput %}
 
 {% put pageStyles %}

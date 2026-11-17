@@ -18,6 +18,10 @@ function onEnd()
 {
     $this['seoCanonicalUrl'] = \App\Classes\SiteSeo::canonicalForPage($this->page);
     $this['seoNoindex'] = !\App\Classes\SiteSeo::isIndexable($this->page);
+    $this['schema_graph_json'] = \App\Classes\RepairSchema::forPage(
+        $this->page, $this['seoCanonicalUrl'], $this['mainPage'] ?? null,
+        $this['services'] ?? null, $this['repairPage'] ?? null, $this['repairPrices'] ?? null
+    );
 }
 
 function onFormSubmit()
@@ -171,8 +175,12 @@ function onFormSubmit()
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% partial 'site/seo' %}
+    {% if schema_graph_json %}
+    <script type="application/ld+json">{{ schema_graph_json|raw }}</script>
+    {% else %}
     {% partial 'site/organization' %}
     {% partial 'site/breadcrumbs' %}
+    {% endif %}
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
