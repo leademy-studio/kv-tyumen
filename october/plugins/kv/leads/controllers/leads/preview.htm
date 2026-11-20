@@ -1,1 +1,4 @@
 <?= $this->formRenderPreview() ?>
+<?php if ($resume = $this->formGetModel()->resume): ?>
+    <p><a href="<?= e($resume->getPath()) ?>">Скачать резюме — <?= e($resume->file_name) ?></a></p>
+<?php endif ?>

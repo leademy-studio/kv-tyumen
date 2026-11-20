@@ -26,14 +26,19 @@ function onEnd()
 
 function onFormSubmit()
 {
-    $data = post();
+    $data = request()->all();
+    $isResume = $this->page->baseFileName === 'rabota' && ($data['application_type'] ?? '') === 'resume';
 
     $validator = \Illuminate\Support\Facades\Validator::make($data, [
         'name' => 'required|string|max:100',
         'phone' => 'required|string|max:30',
         'policy' => 'accepted',
+        'resume' => $isResume ? 'nullable|file|mimes:pdf,doc,docx|extensions:pdf,doc,docx|max:5120' : 'prohibited',
     ], [
         'name.required' => 'Введите имя.',
+        'resume.mimes' => 'Выберите резюме в формате PDF, DOC или DOCX.',
+        'resume.extensions' => 'Выберите резюме в формате PDF, DOC или DOCX.',
+        'resume.max' => 'Размер резюме не должен превышать 5 МБ.',
         'phone.required' => 'Введите номер телефона.',
         'policy.accepted' => 'Необходимо согласие с политикой обработки данных.',
     ]);
@@ -44,7 +49,7 @@ function onFormSubmit()
 
     $name = trim((string) ($data['name'] ?? ''));
     $phone = trim((string) ($data['phone'] ?? ''));
-    $pageUrl = request()->fullUrl();
+    $pageUrl = request()->fullUrl() . ($isResume ? '#zeroformresume' : '');
     $host = request()->getHost();
     $submittedAt = now()->format('d.m.Y H:i:s');
     $telegramToken = trim((string) env('TELEGRAM_BOT_TOKEN', ''));
@@ -55,14 +60,43 @@ function onFormSubmit()
     $telegramSent = false;
     $maxSent = false;
 
+    $lead = null;
+    try {
+        $lead = \Illuminate\Support\Facades\DB::transaction(function () use ($name, $phone, $host, $pageUrl) {
+            $lead = \KV\Leads\Models\Lead::create([
+                'name' => $name,
+                'phone' => $phone,
+                'host' => $host,
+                'page_url' => $pageUrl,
+                'ip' => request()->ip(),
+                'user_agent' => (string) request()->userAgent(),
+            ]);
+            if ($file = request()->file('resume')) {
+                $lead->resume()->create(['data' => $file]);
+            }
+            return $lead;
+        });
+    } catch (\Throwable $e) {
+        if ($isResume) {
+            throw new \October\Rain\Exception\ApplicationException('Не удалось сохранить отклик. Попробуйте ещё раз.');
+        }
+        \Illuminate\Support\Facades\Log::warning('Lead save failed', ['exception' => get_class($e)]);
+    }
+
+    $heading = $isResume ? 'Отклик на вакансию' : 'Новая заявка с сайта';
     $message = implode("\n", [
-        '<b>Новая заявка с сайта</b>',
+        '<b>' . $heading . '</b>',
         '<b>Имя:</b> ' . e($name),
         '<b>Телефон:</b> ' . e($phone),
         '<b>Сайт:</b> ' . e($host),
         '<b>Страница:</b> ' . e($pageUrl),
         '<b>Время:</b> ' . e($submittedAt),
     ]);
+
+    if ($isResume && $lead) {
+        $applicationUrl = \Backend::url('kv/leads/leads/preview/' . $lead->id);
+        $message .= "\n" . e($applicationUrl);
+    }
 
     if ($telegramToken !== '' && $telegramChatId !== '') {
         try {
@@ -97,7 +131,7 @@ function onFormSubmit()
     if ($maxToken !== '' && ($maxChatId !== '' || $maxUserId !== '')) {
         $maxPayload = [
             'text' => implode("\n", [
-                'Новая заявка с сайта',
+                $heading,
                 'Имя: ' . $name,
                 'Телефон: ' . $phone,
                 'Сайт: ' . $host,
@@ -106,32 +140,40 @@ function onFormSubmit()
             ]),
         ];
 
+        if ($isResume && $lead) {
+            $maxPayload['text'] .= "\n" . $applicationUrl;
+        }
+
         $maxRecipientQuery = $maxChatId !== ''
             ? ['chat_id' => (int) $maxChatId]
             : ['user_id' => (int) $maxUserId];
 
         $maxEndpoint = 'https://platform-api.max.ru/messages?' . http_build_query($maxRecipientQuery);
 
-        $maxResponse = \Illuminate\Support\Facades\Http::withHeaders([
-            'Authorization' => $maxToken,
-        ])->timeout(10)->post($maxEndpoint, $maxPayload);
-
-        if (
-            !$maxResponse->successful()
-            && !str_contains($maxToken, ' ')
-        ) {
+        try {
             $maxResponse = \Illuminate\Support\Facades\Http::withHeaders([
-                'Authorization' => 'Bearer ' . $maxToken,
+                'Authorization' => $maxToken,
             ])->timeout(10)->post($maxEndpoint, $maxPayload);
-        }
 
-        if ($maxResponse->successful()) {
-            $maxSent = true;
-        } else {
-            \Illuminate\Support\Facades\Log::warning('MAX notification failed', [
-                'status' => $maxResponse->status(),
-                'body' => $maxResponse->body(),
-            ]);
+            if (
+                !$maxResponse->successful()
+                && !str_contains($maxToken, ' ')
+            ) {
+                $maxResponse = \Illuminate\Support\Facades\Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $maxToken,
+                ])->timeout(10)->post($maxEndpoint, $maxPayload);
+            }
+
+            if ($maxResponse->successful()) {
+                $maxSent = true;
+            } else {
+                \Illuminate\Support\Facades\Log::warning('MAX notification failed', [
+                    'status' => $maxResponse->status(),
+                    'body' => $maxResponse->body(),
+                ]);
+            }
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            \Illuminate\Support\Facades\Log::warning('MAX notification connection failed');
         }
     } elseif ($maxToken !== '') {
         \Illuminate\Support\Facades\Log::warning(
@@ -139,21 +181,12 @@ function onFormSubmit()
         );
     }
 
-    try {
-        \KV\Leads\Models\Lead::create([
-            'name'          => $name,
-            'phone'         => $phone,
-            'host'          => $host,
-            'page_url'      => $pageUrl,
-            'telegram_sent' => $telegramSent,
-            'max_sent'      => $maxSent,
-            'ip'            => request()->ip(),
-            'user_agent'    => (string) request()->userAgent(),
-        ]);
-    } catch (\Throwable $e) {
-        \Illuminate\Support\Facades\Log::warning('Lead save failed', [
-            'message' => $e->getMessage(),
-        ]);
+    if ($lead && ($telegramSent || $maxSent)) {
+        try {
+            $lead->update(['telegram_sent' => $telegramSent, 'max_sent' => $maxSent]);
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Lead notification status update failed', ['lead_id' => $lead->id]);
+        }
     }
 
     if (!$telegramSent && !$maxSent) {
@@ -212,6 +245,10 @@ function onFormSubmit()
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/themes/kv-vopros/assets/css/portfolio-grid.css" rel="stylesheet">
     <link href="/themes/kv-vopros/assets/css/footer.css" rel="stylesheet">
+    {% if floatingWidgetHref == '#zeroform' %}
+    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/lead-form.css">
+    <script src="/themes/kv-vopros/assets/js/lead-form.js" defer></script>
+    {% endif %}
     {% placeholder pageStyles %}
     <style>
         .kv-floating-widget {
@@ -249,119 +286,6 @@ function onFormSubmit()
     <a class="kv-floating-widget" href="{{ floatingWidgetHref }}" aria-label="Открыть форму обратной связи">
         <img src="/themes/kv-vopros/assets/images/pop-up.svg" alt="" aria-hidden="true">
     </a>
-
-    <script>
-        (function () {
-            function isBlockedMessage(text) {
-                if (typeof text !== 'string') {
-                    return false;
-                }
-
-                var normalized = text.toLowerCase();
-                return normalized.indexOf('данные заявки не были приняты') !== -1
-                    || (normalized.indexOf('истекла') !== -1 && normalized.indexOf('подписк') !== -1);
-            }
-
-            function removeBlockedPopups(root) {
-                if (!root || root.nodeType !== 1) {
-                    return;
-                }
-
-                var selectors = [
-                    '.t-form-success-popup',
-                    '#tildaformsuccesspopup',
-                    '#tildaformsuccesspopup-new',
-                    '.t-form__errorbox',
-                ];
-
-                var nodes = [];
-                selectors.forEach(function (selector) {
-                    if (root.matches && root.matches(selector)) {
-                        nodes.push(root);
-                    }
-                    nodes = nodes.concat(Array.prototype.slice.call(root.querySelectorAll(selector)));
-                });
-
-                nodes.forEach(function (node) {
-                    var text = (node.textContent || '').trim();
-                    if (!isBlockedMessage(text)) {
-                        return;
-                    }
-
-                    var popup = node.closest('.t-form-success-popup, .t-popup, .t-form__errorbox') || node;
-                    if (popup && popup.parentNode) {
-                        popup.parentNode.removeChild(popup);
-                    }
-                });
-            }
-
-            function patchTildaFormApi() {
-                if (!window.tildaForm || window.tildaForm.__kvPatched) {
-                    return;
-                }
-
-                var api = window.tildaForm;
-                var wrapMethod = function (name) {
-                    if (typeof api[name] !== 'function') {
-                        return;
-                    }
-
-                    var original = api[name];
-                    api[name] = function () {
-                        var args = Array.prototype.slice.call(arguments);
-                        var blocked = args.some(function (arg) {
-                            return isBlockedMessage(typeof arg === 'string' ? arg : '');
-                        });
-
-                        if (blocked) {
-                            return;
-                        }
-
-                        return original.apply(this, args);
-                    };
-                };
-
-                wrapMethod('showErrorInPopup');
-                wrapMethod('showSuccessPopup');
-                wrapMethod('showSuccessPopupNew');
-
-                api.__kvPatched = true;
-            }
-
-            var observer = new MutationObserver(function (mutations) {
-                mutations.forEach(function (mutation) {
-                    Array.prototype.forEach.call(mutation.addedNodes || [], function (node) {
-                        removeBlockedPopups(node);
-                    });
-                });
-            });
-
-            if (document.documentElement) {
-                observer.observe(document.documentElement, {
-                    childList: true,
-                    subtree: true,
-                });
-            }
-
-            var tryPatch = function () {
-                patchTildaFormApi();
-                removeBlockedPopups(document.body);
-            };
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', tryPatch);
-            } else {
-                tryPatch();
-            }
-
-            var patchTimer = setInterval(function () {
-                patchTildaFormApi();
-                if (window.tildaForm && window.tildaForm.__kvPatched) {
-                    clearInterval(patchTimer);
-                }
-            }, 1000);
-        })();
-    </script>
 
     {% framework extras %}
     {% scripts %}

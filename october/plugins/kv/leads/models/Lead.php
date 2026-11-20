@@ -13,6 +13,10 @@ class Lead extends Model
 
     public $timestamps = true;
 
+    public $attachOne = [
+        'resume' => [Resume::class, 'public' => false],
+    ];
+
     protected $guarded = ['*'];
 
     protected $fillable = [

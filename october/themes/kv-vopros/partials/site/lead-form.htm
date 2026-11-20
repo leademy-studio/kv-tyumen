@@ -1,0 +1,23 @@
+<form class="kv-popup-form" data-request="onFormSubmit" {% if resume %}data-request-files{% endif %} data-request-validate data-request-flash data-request-success="kvPopupFormSuccess(this)" data-request-error="return kvPopupFormError(context, data);">
+ <input autocomplete="name" class="kv-popup-form__input" maxlength="100" name="name" placeholder="Имя" required type="text"/>
+ <div class="kv-popup-form__error" data-validate-for="name"></div>
+ <input autocomplete="tel" class="kv-popup-form__input kv-popup-form__phone" inputmode="numeric" maxlength="18" name="phone" placeholder="+7 (999) 999-99-99" required type="tel"/>
+ <div class="kv-popup-form__error" data-validate-for="phone"></div>
+ {% if resume %}
+ <input type="hidden" name="application_type" value="resume">
+ <label class="kv-popup-form__file">Прикрепить файл с резюме (PDF, DOC, DOCX, до 5 МБ)
+  <input type="file" name="resume" accept=".pdf,.doc,.docx">
+ </label>
+ <div class="kv-popup-form__error" data-validate-for="resume"></div>
+ {% endif %}
+ <label class="kv-popup-form__policy">
+  <input name="policy" required type="checkbox" value="1"/>
+  <span>
+   Согласен с <a href="/policy" rel="noreferrer noopener" target="_blank">политикой обработки персональных данных</a>
+  </span>
+ </label>
+ <div class="kv-popup-form__error" data-validate-for="policy"></div>
+ <button class="kv-popup-form__submit" type="submit">
+  Отправить
+ </button>
+</form>
