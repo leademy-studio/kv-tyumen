@@ -1,0 +1,74 @@
+.reviews {
+    padding: 4.2857rem 5.1429rem;
+    background: var(--c-page);
+    color: var(--c-black);
+}
+
+.reviews__title {
+    margin: 0 0 2.5714rem;
+    font: 400 4.4571rem/1 var(--font-display);
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+.reviews__link {
+    text-decoration: underline;
+}
+
+.reviews .sw-app:has(.sw-review-item) + .reviews__link {
+    display: none;
+}
+
+/* SmartWidgets injects its own stylesheet after the theme. */
+#reviews .sw-app {
+    --swiper-theme-color: var(--c-black);
+    color: var(--c-black) !important;
+    font-family: var(--font-text) !important;
+}
+
+#reviews .sw-app-body {
+    width: 100% !important;
+}
+
+#reviews .sw-review-box,
+#reviews .sw-review-item {
+    border-radius: var(--radius-md) !important;
+    background: var(--c-surface) !important;
+    box-shadow: none !important;
+}
+
+#reviews .sw-review-box-tab.active {
+    background: var(--c-green) !important;
+    color: var(--c-black) !important;
+}
+
+#reviews .sw-reviews-btn {
+    border: 0 !important;
+    border-radius: var(--radius-sm) !important;
+    background: var(--c-black) !important;
+    color: var(--c-white) !important;
+    box-shadow: none !important;
+}
+
+#reviews .sw-reviews-btn:hover,
+#reviews .sw-reviews-btn:focus-visible {
+    background: var(--c-green) !important;
+    color: var(--c-black) !important;
+}
+
+@media (max-width: 1200px) {
+    .reviews {
+        padding: 0 16px 64px;
+    }
+
+    .reviews__title {
+        margin-bottom: 1.875rem;
+        font-size: 2.0625rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .reviews {
+        padding: 0 20px 60px;
+    }
+}
