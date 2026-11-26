@@ -1,6 +1,7 @@
 <?php
 // Pure PHP tests: no database writes or network requests.
 require __DIR__ . '/../october/app/classes/RepairSchema.php';
+require __DIR__ . '/../october/app/classes/FaqAnswer.php';
 use App\Classes\RepairSchema;
 function checkSchema($condition, $message) {
     if (!$condition) { throw new RuntimeException($message); }

@@ -104,6 +104,31 @@
     line-height: 1.2;
 }
 
+.faq-item__answer p,
+.faq-item__answer ul,
+.faq-item__answer ol {
+    margin: 0;
+}
+
+.faq-item__answer ul,
+.faq-item__answer ol {
+    padding-inline-start: 1.5em;
+}
+
+.faq-item__answer ul {
+    list-style: disc;
+}
+
+.faq-item__answer > * + * {
+    margin-top: 0.6em;
+}
+
+.faq-item__answer a {
+    color: inherit;
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+
 /* Плавное раскрытие там, где браузер умеет анимировать высоту details. */
 @supports selector(details::details-content) {
     .faq-item::details-content {

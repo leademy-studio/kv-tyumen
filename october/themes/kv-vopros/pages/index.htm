@@ -38,7 +38,7 @@ handle = "Site\\RepairPrices"
 {% endfor %}
 {% set faqItems = [] %}
 {% for item in mainPage.faq_items ?: [] %}
-    {% if item.question|trim and item.answer|trim %}
+    {% if item.question|trim and item.answer|faq_answer_text %}
         {% set faqItems = faqItems|merge([item]) %}
     {% endif %}
 {% endfor %}
@@ -79,7 +79,7 @@ handle = "Site\\RepairPrices"
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/about-us.css?v=20260910-1">
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/pricing.css">
     <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/seo-text.css?v=20261018-1">
-    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/faq.css">
+    <link rel="stylesheet" href="/themes/kv-vopros/assets/css/sections/faq.css?v=20261126">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
 {% endput %}
@@ -308,7 +308,7 @@ handle = "Site\\RepairPrices"
                         <span class="faq-item__question-text">{{ item.question|e }}</span>
                         <img class="faq-item__icon" src="/themes/kv-vopros/assets/images/faq-chevron.svg" alt="" width="36" height="21" aria-hidden="true">
                     </summary>
-                    <p class="faq-item__answer">{{ item.answer|e }}</p>
+                    <div class="faq-item__answer">{{ item.answer|faq_answer_html|raw }}</div>
                 </details>
                 {% endfor %}
             </div>

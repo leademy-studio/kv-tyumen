@@ -170,7 +170,8 @@ fields:
                     required: true
                 answer:
                     label: Ответ
-                    type: textarea
+                    type: richeditor
+                    toolbarButtons: bold|italic|underline|formatUL|formatOL|insertLink|undo|redo
                     size: small
                     required: true
     cr_card1_caption:

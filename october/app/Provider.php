@@ -19,7 +19,11 @@ class Provider extends AppBase
 
     public function registerMarkupTags()
     {
-        return ['filters' => ['optimized_media' => [\App\Classes\ImagePipeline::class, 'mediaUrl', false]]];
+        return ['filters' => [
+            'optimized_media' => [\App\Classes\ImagePipeline::class, 'mediaUrl', false],
+            'faq_answer_html' => [\App\Classes\FaqAnswer::class, 'html', false],
+            'faq_answer_text' => [\App\Classes\FaqAnswer::class, 'text', false],
+        ]];
     }
 
     /**

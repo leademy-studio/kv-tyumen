@@ -3,7 +3,7 @@
 {% set seoTitle = services.cr_meta_title ?: 'Пакетный ремонт — Квартирный вопрос, Тюмень' %}
 {% set seoDescription = services.cr_meta_description ?: 'Пакетный ремонт под ключ в Тюмени: фиксированная цена за всё — от черновых работ до чистовой отделки и уборки.' %}
 {% set seoBlocks = services.cr_seo_blocks %}
-{% set faqItems = services.cr_faq %}
+{% set faqItems = (services.cr_faq ?: [])|filter(item => item.question|trim and item.answer|faq_answer_text) %}
 {% set faqColumnSize = (faqItems|length / 2)|round(0, 'ceil') %}
 
 {% put head %}
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/portfolio.css">
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/business-steps.css?v=20260910-css-motion">
     <link rel="stylesheet" href="{{ themeAsset }}/css/sections/seo-text.css">
-    <link rel="stylesheet" href="{{ themeAsset }}/css/sections/faq.css">
+    <link rel="stylesheet" href="{{ themeAsset }}/css/sections/faq.css?v=20261126">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/cta-calculate.css">
     <link rel="stylesheet" href="{{ homeAsset }}/css/sections/footer.css">
 {% endput %}
@@ -170,7 +170,7 @@
                         <span class="faq-item__question-text">{{ item.question|e }}</span>
                         <img class="faq-item__icon" src="{{ themeAsset }}/images/faq-chevron.svg" alt="" width="36" height="21" aria-hidden="true">
                     </summary>
-                    <p class="faq-item__answer">{{ item.answer|e }}</p>
+                    <div class="faq-item__answer">{{ item.answer|faq_answer_html|raw }}</div>
                 </details>
                 {% endfor %}
             </div>

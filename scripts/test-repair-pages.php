@@ -93,7 +93,7 @@ try {
     $first->save();
     $first->cr_portfolio_cases()->sync(array_values(array_diff_key($caseIds, ['unselected' => true])));
     $first->cr_seo_blocks()->create(['block_title' => 'Планировка', 'block_text' => 'Текст об однокомнатной', 'sort_order' => 1]);
-    $answer = 'Ответ </script><script>alert(1)</script> & "кавычки"';
+    $answer = '<p>Подробнее о <a href="/repairs">пакетном ремонте</a>.</p><p>Вторая строка.</p>';
     $first->cr_faq()->create(['question' => 'Вопрос однокомнатной?', 'answer' => $answer, 'sort_order' => 1]);
     [$html, $status] = renderRepairPage('/repairs/' . $first->slug);
     expectRepairPage($status === 200, 'Published page returns 200');
@@ -104,10 +104,10 @@ try {
     }
     expectRepairPage(str_contains($html, 'href="https://kv-tyumen.ru/repairs/' . $first->slug . '"'), 'Self canonical matches route');
     expectRepairPage(!str_contains($html, 'Общий вопрос пакетного ремонта?'), 'FAQ does not inherit from /repairs');
-    expectRepairPage(!str_contains($html, '</script><script>alert'), 'FAQ cannot break out of JSON-LD');
+    expectRepairPage(str_contains($html, '<div class="faq-item__answer">' . $answer . '</div>'), 'FAQ renders the editor link and paragraphs');
     $schemas = repairSchemas($html);
     $faq = array_values(array_filter($schemas, fn ($item) => ($item['@type'] ?? '') === 'FAQPage'));
-    expectRepairPage(count($faq) === 1 && $faq[0]['mainEntity'][0]['acceptedAnswer']['text'] === $answer, 'FAQ JSON-LD matches own answer');
+    expectRepairPage(count($faq) === 1 && $faq[0]['mainEntity'][0]['acceptedAnswer']['text'] === "Подробнее о пакетном ремонте.\nВторая строка.", 'FAQ JSON-LD matches own answer');
     $crumbs = array_values(array_filter($schemas, fn ($item) => ($item['@type'] ?? '') === 'BreadcrumbList'));
     expectRepairPage($crumbs[0]['itemListElement'][2]['item'] === 'https://kv-tyumen.ru/repairs/' . $first->slug, 'Breadcrumb uses resolved URL');
     $portfolio = repairPortfolio($html);

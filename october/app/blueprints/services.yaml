@@ -302,5 +302,6 @@ fields:
                     type: text
                 answer:
                     label: Ответ
-                    type: textarea
+                    type: richeditor
+                    toolbarButtons: bold|italic|underline|formatUL|formatOL|insertLink|undo|redo
                     size: small

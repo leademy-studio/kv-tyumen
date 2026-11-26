@@ -140,7 +140,7 @@ class RepairSchema
         $questions = [];
         foreach ($page['faq'] ?? [] as $item) {
             $question = self::text(self::value($item, 'question'));
-            $answer = self::text(self::value($item, 'answer'));
+            $answer = FaqAnswer::text(self::value($item, 'answer'));
             if ($question !== '' && $answer !== '') {
                 $questions[] = ['@type' => 'Question', 'name' => $question,
                     'acceptedAnswer' => ['@type' => 'Answer', 'text' => $answer]];
